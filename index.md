@@ -57,7 +57,7 @@ Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocume
     curl-add-experiment
     curl-add-plan
     curl-bind-experiment-to-plan-with-resource
-    curl-add-workbook
+    curl-create-workbook
     curl-produce-experiment-tasks
     ```
 
