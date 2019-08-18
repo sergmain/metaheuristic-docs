@@ -86,7 +86,7 @@ It’ll be /mh-root in follow text.</p>
 </code></pre></div>    </div>
   </li>
   <li>Change dir to /mh-root and run command:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> java  -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> java -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
 </code></pre></div>    </div>
   </li>
 </ol>
