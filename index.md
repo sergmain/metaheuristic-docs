@@ -91,7 +91,7 @@ login - q, password - 123
 
 
 ## License and licensing
-Metaheuristic has 2-license type.
+Metaheuristic has dual licensing.
 
 All code in repository (https://github.com/sergmain/metaheuristic) is licensed under GPL-3.0  
 
