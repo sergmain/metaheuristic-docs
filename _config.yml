@@ -1,4 +1,5 @@
 theme: jekyll-theme-architect
-title: Documentation for Metaheuristic project
-description: Documentation for Metaheuristic project
-repository: sergmain/metaheuristic-docs
+title: Metaheuristic
+description: Distributer framework for hyper-parameter optimization and AutoML.
+repository: sergmain/metaheuristic
+exclude: [.idea, CNAME, Gemfile, Gemfile.lock]
