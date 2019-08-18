@@ -5,7 +5,7 @@ layout: default
 ## Table of contents
 
 - [Quick start](#quick-start)
-- [Quick start for evaluation UI only](#quick-start-for-evaluation-ui-only)
+- [Quick start for evaluating UI only](#quick-start-for-evaluating-ui-only)
 - [Quick start with running the actual tasks](#quick-start-with-running-the-actual-tasks)
 - [License and licensing](#license-and-licensing)
 - [Copyright](#copyright)
@@ -24,7 +24,7 @@ Right now there isn't any known bug which restricts to use certain JDK.
 >**Attention**. The 'Quick start' mode is working with embedded db which is hosting in memory. 
 As a result after stopping Metaheuristic all data will be lost.
 
-##### Quick start for evaluation UI only
+##### Quick start for evaluating UI only
 
 1. Create temporary dir for Metaheuristic, i.e. /mh-root 
 It'll be /mh-root in follow text. 
