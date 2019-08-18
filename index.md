@@ -2,33 +2,17 @@
 layout: default
 ---
 
-<!---
-<p align="center">
-  <a href="https://getbootstrap.com/">
-    <img src="https://docs.metaheuristic.ai/assets/brand/mh-logo.svg" alt="Metaheuristic logo" width="72" height="72">
-  </a>
-</p>
---->
- 
-<h3 align="center">Metaheuristic</h3>
-
-<p align="center">
-  Distributer framework for hyper-parameter optimization and AutoML.
-  <br>
-  <a href="https://docs.metaheuristic.ai">Explore Metaheuristic docs »</a>
-</p>
-
-
 ## Table of contents
 
 - [Quick start](#quick-start)
 - [Quick start for evaluation UI only](#quick-start-for-evaluation-ui-only)
 - [Quick start with running the actual tasks](#quick-start-with-running-the-actual-tasks)
 - [License and licensing](#license-and-licensing)
+- [Copyright](#copyright)
 
 ## Prerequisites: Java Development Kit (JDK) 11
 
-To run Metaheuristic you have to have jdk 11
+To run Metaheuristic you have to have jdk 11  
 Right now there isn't any known bug which restricts to use certain JDK.
 
 [Amazon Corretto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)  
@@ -37,6 +21,8 @@ Right now there isn't any known bug which restricts to use certain JDK.
 
 
 ## Quick start
+>**Attention**. The 'Quick start' mode is working with embedded db which is hosting in memory. 
+As a result after stopping Metaheuristic all data will be lost.
 
 ##### Quick start for evaluation UI only
 
@@ -61,33 +47,34 @@ It'll be /mh-root in follow text.
 
 ##### Quick start with running the actual tasks
 >To run actual tasks in Metaheuristic you have to have python 3.x.  
-Be sure to add the python bin dir to your **$PATH**
+Be sure to add the python bin dir to your **$PATH**  
+Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocumentation) 
 
 1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
     ```
-    curl-snippet-as-one-file
-    curl-resource-stub
-    curl-experiment
-    curl-plan
+    curl-add-snippet-as-one-file
+    curl-add-resource-stub
+    curl-add-experiment
+    curl-add-plan
     curl-bind-experiment-to-plan-with-resource
     curl-add-workbook
-    curl-experiment-produce-tasks
+    curl-produce-experiment-tasks
     ```
 
 1. At this point Metaheuristic started to produce tasks 
 and you have to have until status will 'PRODUCED'. You can check current status by running script
     ```
-    curl-experiment-processing-status
+    curl-get-experiment-processing-status
     ```
 
 1. After being changed to 'PRODUCED' run the command:
     ```
-    curl-experiment-start-processing-of-tasks
+    curl-start-processing-of-experiment-tasks
     ```
 
 1. All tasks will be completed in 10 minutes approximately. You can get the current status of processing by command:
     ```
-    curl-experiment-processing-status
+    curl-get-experiment-processing-status
     ```
 
     there are 3 possible statuses at this point:  
@@ -104,15 +91,23 @@ login - q, password - 123
 
 
 ## License and licensing
+Metaheuristic has 2-license type.
 
-| | [H2](https://h2database.com/) | [Derby](https://db.apache.org/derby) | [HSQLDB](http://hsqldb.org) | [MySQL](https://www.mysql.com/) | [PostgreSQL](https://www.postgresql.org) |
-|--------------------------------|---------|---------|---------|-------|---------|
-| Pure Java                      | Yes     | Yes     | Yes     | No    | No      |
-| Memory Mode                    | Yes     | Yes     | Yes     | No    | No      |
-| Encrypted Database             | Yes     | Yes     | Yes     | No    | No      |
-| ODBC Driver                    | Yes     | No      | No      | Yes   | Yes     |
-| Fulltext Search                | Yes     | No      | No      | Yes   | Yes     |
-| Multi Version Concurrency      | Yes     | No      | Yes     | Yes   | Yes     |
-| Footprint (embedded database)  | ~2 MB   | ~3 MB   | ~1.5 MB | —     | —       |
-| Footprint (JDBC client driver) | ~500 KB | ~600 KB | ~1.5 MB | ~1 MB | ~700 KB |
+All code in repository (https://github.com/sergmain/metaheuristic) is licensed under GPL-3.0  
 
+For commercial use you must buy commercial annual subscription if needed:
+
+| Type of customer (Org or personal)                     | Conditions of using |
+|--------------------------------------------------------|---------------------|
+| Personal use  (using in commercial project prohibited) | Free to use         |
+| Scientific researches                                  | Free to use, citing | 
+| Non-profit organizations                               | Free to use, citing | 
+| Commercial use, less than 25 Stations\*                | Free to use         | 
+| All other cases when there are 25 Stations\* or more   | Annual subscription, $50k for Launchpad\*\*, $500 per Station\* | 
+
+\* Station is a client part of metaheuristic which is processing tasks.   
+\*\* Launchpad is a server part of metaheuristic which is serving all configurations 
+and managing the process of assigning tasks to Stations. 
+
+## Copyright
+Innovation platforms LLC, San Francisco, US 

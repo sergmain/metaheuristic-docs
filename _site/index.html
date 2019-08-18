@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=0f66d320d5089b99ec18699a758c3d44ed61d8ce" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a23c6d77b0745cd2cf76d025f824db1a909fcdd4" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -12,9 +12,9 @@
     <![endif]-->
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<title>Table of contents | Metaheuristic</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Metaheuristic" />
+<meta property="og:title" content="Table of contents" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Metaheuristic" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/","name":"Metaheuristic","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/","name":"Metaheuristic","headline":"Table of contents","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -44,34 +44,19 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <!---
-<p align="center">
-  <a href="https://getbootstrap.com/">
-    <img src="https://docs.metaheuristic.ai/assets/brand/mh-logo.svg" alt="Metaheuristic logo" width="72" height="72">
-  </a>
-</p>
---->
-
-<h3 align="center">Metaheuristic</h3>
-
-<p align="center">
-  Distributer framework for hyper-parameter optimization and AutoML.
-  <br />
-  <a href="https://docs.metaheuristic.ai">Explore Metaheuristic docs »</a>
-</p>
-
-<h2 id="table-of-contents">Table of contents</h2>
+          <h2 id="table-of-contents">Table of contents</h2>
 
 <ul>
   <li><a href="#quick-start">Quick start</a></li>
   <li><a href="#quick-start-for-evaluation-ui-only">Quick start for evaluation UI only</a></li>
   <li><a href="#quick-start-with-running-the-actual-tasks">Quick start with running the actual tasks</a></li>
   <li><a href="#license-and-licensing">License and licensing</a></li>
+  <li><a href="#copyright">Copyright</a></li>
 </ul>
 
 <h2 id="prerequisites-java-development-kit-jdk-11">Prerequisites: Java Development Kit (JDK) 11</h2>
 
-<p>To run Metaheuristic you have to have jdk 11
+<p>To run Metaheuristic you have to have jdk 11<br />
 Right now there isn’t any known bug which restricts to use certain JDK.</p>
 
 <p><a href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html">Amazon Corretto 11</a><br />
@@ -79,6 +64,10 @@ Right now there isn’t any known bug which restricts to use certain JDK.</p>
 <a href="https://www.azul.com/downloads/zulu-community/?&amp;version=java-11-lts">Zulu JDK 11</a></p>
 
 <h2 id="quick-start">Quick start</h2>
+<blockquote>
+  <p><strong>Attention</strong>. The ‘Quick start’ mode is working with embedded db which is hosting in memory. 
+As a result after stopping Metaheuristic all data will be lost.</p>
+</blockquote>
 
 <h5 id="quick-start-for-evaluation-ui-only">Quick start for evaluation UI only</h5>
 
@@ -105,31 +94,32 @@ It’ll be /mh-root in follow text.</p>
 <h5 id="quick-start-with-running-the-actual-tasks">Quick start with running the actual tasks</h5>
 <blockquote>
   <p>To run actual tasks in Metaheuristic you have to have python 3.x.<br />
-Be sure to add the python bin dir to your <strong>$PATH</strong></p>
+Be sure to add the python bin dir to your <strong>$PATH</strong><br />
+Also PyYAML 5.1 package must <a href="https://pyyaml.org/wiki/PyYAMLDocumentation">be installed</a></p>
 </blockquote>
 
 <ol>
   <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-snippet-as-one-file
- curl-resource-stub
- curl-experiment
- curl-plan
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-add-snippet-as-one-file
+ curl-add-resource-stub
+ curl-add-experiment
+ curl-add-plan
  curl-bind-experiment-to-plan-with-resource
  curl-add-workbook
- curl-experiment-produce-tasks
+ curl-produce-experiment-tasks
 </code></pre></div>    </div>
   </li>
   <li>At this point Metaheuristic started to produce tasks 
 and you have to have until status will ‘PRODUCED’. You can check current status by running script
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-experiment-processing-status
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-get-experiment-processing-status
 </code></pre></div>    </div>
   </li>
   <li>After being changed to ‘PRODUCED’ run the command:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-experiment-start-processing-of-tasks
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-start-processing-of-experiment-tasks
 </code></pre></div>    </div>
   </li>
   <li>All tasks will be completed in 10 minutes approximately. You can get the current status of processing by command:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-experiment-processing-status
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-get-experiment-processing-status
 </code></pre></div>    </div>
 
     <p>there are 3 possible statuses at this point:<br />
@@ -148,86 +138,49 @@ login - q, password - 123</p>
 </ol>
 
 <h2 id="license-and-licensing">License and licensing</h2>
+<p>Metaheuristic has 2-license type.</p>
+
+<p>All code in repository (https://github.com/sergmain/metaheuristic) is licensed under GPL-3.0</p>
+
+<p>For commercial use you must buy commercial annual subscription if needed:</p>
 
 <table>
   <thead>
     <tr>
-      <th> </th>
-      <th><a href="https://h2database.com/">H2</a></th>
-      <th><a href="https://db.apache.org/derby">Derby</a></th>
-      <th><a href="http://hsqldb.org">HSQLDB</a></th>
-      <th><a href="https://www.mysql.com/">MySQL</a></th>
-      <th><a href="https://www.postgresql.org">PostgreSQL</a></th>
+      <th>Type of customer (Org or personal)</th>
+      <th>Conditions of using</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Pure Java</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
+      <td>Personal use  (using in commercial project prohibited)</td>
+      <td>Free to use</td>
     </tr>
     <tr>
-      <td>Memory Mode</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
+      <td>Scientific researches</td>
+      <td>Free to use, citing</td>
     </tr>
     <tr>
-      <td>Encrypted Database</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
+      <td>Non-profit organizations</td>
+      <td>Free to use, citing</td>
     </tr>
     <tr>
-      <td>ODBC Driver</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>Yes</td>
+      <td>Commercial use, less than 25 Stations*</td>
+      <td>Free to use</td>
     </tr>
     <tr>
-      <td>Fulltext Search</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>Multi Version Concurrency</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>Footprint (embedded database)</td>
-      <td>~2 MB</td>
-      <td>~3 MB</td>
-      <td>~1.5 MB</td>
-      <td>—</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td>Footprint (JDBC client driver)</td>
-      <td>~500 KB</td>
-      <td>~600 KB</td>
-      <td>~1.5 MB</td>
-      <td>~1 MB</td>
-      <td>~700 KB</td>
+      <td>All other cases when there are 25 Stations* or more</td>
+      <td>Annual subscription, $50k for Launchpad**, $500 per Station*</td>
     </tr>
   </tbody>
 </table>
 
+<p>* Station is a client part of metaheuristic which is processing tasks. <br />
+** Launchpad is a server part of metaheuristic which is serving all configurations 
+and managing the process of assigning tasks to Stations.</p>
+
+<h2 id="copyright">Copyright</h2>
+<p>Innovation platforms LLC, San Francisco, US</p>
 
         </section>
 

@@ -1,0 +1,6 @@
+build and serve site locally:
+    bundle exec jekyll serve --incremental
+
+
+markdown basic syntax:
+    https://www.markdownguide.org/basic-syntax/

@@ -2,4 +2,4 @@ theme: jekyll-theme-architect
 title: Metaheuristic
 description: Distributer framework for hyper-parameter optimization and AutoML.
 repository: sergmain/metaheuristic
-exclude: [.idea, CNAME, Gemfile, Gemfile.lock]
+exclude: [.idea, CNAME, Gemfile, Gemfile.lock,how-to.txt]
