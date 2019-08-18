@@ -39,10 +39,25 @@ It'll be /mh-root in follow text.
     ```
     mvnw clean install -f pom.xml -Dmaven.test.skip=true
     ```
+
+1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
+    ```
+    curl-upload-simple-metrics-to-atlas
+    ```
+
 1. Change dir to /mh-root and run command:
     ```
     java -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
     ```
+
+1. Now you can find our experiment data at http://localhost:8080/launchpad/atlas/atlas-experiments
+login - q, password - 123
+
+1. Press 'Details' for experiment info (there should be only one record in atlas)
+
+1. Press 'Info' button and on the next page 'Info' button at the bottom of page.
+
+1. Select 2 axes, (i.e. RNN and batches) and press 'Draw plot' 
 
 
 ##### Quick start with running the actual tasks
@@ -52,7 +67,7 @@ Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocume
 
 1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
     ```
-    curl-add-snippet-as-one-file
+    curl-upload-snippet-as-one-file
     curl-add-resource-stub
     curl-add-experiment
     curl-add-plan
