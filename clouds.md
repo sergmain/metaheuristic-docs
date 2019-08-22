@@ -20,6 +20,28 @@ MAVEN_CONFIG
 value:
 -f pom-heroku.xml
 
+Set SPRING_APPLICATION_JSON  
+    ```
+{  
+  "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.PostgreSQL95Dialect",    
+  "spring.jpa.hibernate.ddl-auto": "none",  
+  "spring.datasource.driver-class-name": "org.postgresql.Driver",  
+  "spring.datasource.platform": "postgresql",  
+  "spring.datasource.continue-on-error": false,  
+  
+  "mh.thread-number": 4,  
+  "mh.launchpad.is-ssl-required": true,  
+  "mh.launchpad.master-password": "$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu",  
+  "mh.launchpad.master-username": "q",  
+  "mh.launchpad.public-key": "<public-key>",  
+  "mh.launchpad.enabled": true,  
+  "mh.launchpad.dir": "./mh-launchpad",  
+  "mh.launchpad.is-replace-snapshot": false,  
+  "mh.launchpad.chunk-size": "900k",  
+  "mh.station.enabled": false,  
+  "mh.branding": "<desired-branding-name>"
+}  
+    ```
 
 ## Jelastic
 Create an environment topology:
@@ -78,11 +100,9 @@ Link github repo =======
 
 
 =====================
-If everything will be ok then you can use a configured credential to login into Metaheuristic :
-login: q=1
+login into Metaheuristic :
+login: q
 pass: 123
-
-!! login is exactly q=1 - 3 chars
 
 
 ## GCP
