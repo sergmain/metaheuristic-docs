@@ -2,6 +2,8 @@ Create an environment topology:
 
 Load balanser =========
 - NGiNX 1.14.x
+
+Optional step if your cloud provider doesn't support :
 - change redirection rule by adding to nginx-jelastic.conf the following line in the HTTP (80) server block:
 return 301 https://$host$request_uri;
 
@@ -16,7 +18,6 @@ Application server =====
   MH_JDBC_DRIVER_CLASS_NAME = com.mysql.cj.jdbc.Driver
   MH_HIBERNATE_DIALECT = org.hibernate.dialect.MySQL57Dialect
   MH_MASTER_PASSWORD = $2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu
-  MH_MASTER_TOKEN = 1
   MH_MASTER_USERNAME = q
   MH_IS_SSL_REQUIRED = true
   MH_DEFAULT_RESULT_FILE_EXTENSION = <desired-default-extension>
