@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8f93c2310c497bb7c02c66c6f12de2aa9bbb139" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -18,11 +18,11 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/snippet.html" />
-<meta property="og:url" content="http://localhost:4000/snippet.html" />
+<link rel="canonical" href="http://localhost:4000/docs/aiai-on-windows-as-service.txt" />
+<meta property="og:url" content="http://localhost:4000/docs/aiai-on-windows-as-service.txt" />
 <meta property="og:site_name" content="Metaheuristic" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/snippet.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/docs/aiai-on-windows-as-service.txt","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -44,19 +44,27 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <ul>
-  <li><a href="#index">Index</a></li>
-</ul>
+          - [Index](#index)
 
-<h2 id="table-of-contents">Table of contents</h2>
+how to:
+    https://www.javadevjournal.com/spring-boot/spring-boot-application-as-a-service/
 
-<ul>
-  <li><a href="#definition">Definition</a></li>
-  <li><a href="#"></a></li>
-</ul>
+sources for winsw
+    https://github.com/kohsuke/winsw
 
-<h3 id="definition">Definition</h3>
+download .exe winsw
+    https://github.com/kohsuke/winsw/releases
 
+config:
+<?xml version="1.0" encoding="UTF-8"?>
+          <service>
+             <id>Aiai-service</id>
+             <name>aiai</name>
+             <description>Aiai Spring Boot as a service.</description>
+             <executable>java</executable>
+             <arguments>-XX:+PerfDisableSharedMem -XX:+AlwaysActAsServerClassMachine -Dhttps.protocols=TLSv1.2,SSLv3 -Xrs -Xms512m -Xmx512m -jar "%BASE%\git\apps\aiai\target\aiai.jar" --httpPort=8080</arguments>
+             <logmode>rotate</logmode>
+          </service>
         </section>
 
         <aside id="sidebar">

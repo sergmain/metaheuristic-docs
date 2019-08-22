@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Metaheuristic" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/snippet.html" />
+<meta property="og:url" content="http://localhost:4000/p/snippet.html" />
+<meta property="og:site_name" content="Metaheuristic" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/p/snippet.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Metaheuristic</h1>
+        </a>
+        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
+        
+          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <ul>
+  <li><a href="/index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#configuration">Configuration</a></li>
+  <li><a href="#packaging">Packaging</a></li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+
+<p>A processing module which is configured at Launchpad and is being run at Station is a Snippet.
+Snippet can be executable application, .jar file, python notebook, 
+file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on.</p>
+
+<p>From delivery point of view Snippet can be provisioned from Launchpad or from git repository.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>To upload snippet to Launchpad, the Snippet have to configured with snippet.yaml file</p>
+
+<p>snippet.yaml for the case with external .py file:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
+- code: simple-snippet-1.2
+  env: python-3
+  file: some-python-file.py
+  params: param1 param2 param3
+  metas:
+  - key: mh.task-params-version
+    value: '3'
+  metrics: false
+  skipParams: false
+  sourcing: launchpad
+  type: simple-snippet
+</code></pre></div></div>
+
+<p>So, how does it work?
+python3 is a string reference to environment which is configured at Station side. Such configuration is done in env.yaml file 
+I.e.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>envs:
+  python-3: /anaconda3/envs/python-3.6/python
+</code></pre></div></div>
+
+<p>And final command to execute snippet at Station side will be</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3
+</code></pre></div></div>
+
+<p>Fields in snippet.yaml:</p>
+<ul>
+  <li>code - string representation of code of concrete snippet must be unique within Launchpad</li>
+  <li>env - string reference to environment</li>
+  <li>file - name of file which must be provisioned along side with snippet.yaml</li>
+  <li>params - parameters for file, which is specified in field ‘file’</li>
+  <li>metas - dictionary for key-value based configuration parameters <br />
+– mh.task-params-version - the version of format of params.yaml file which 
+ is the last parameter for executable file (skipParams must be false)</li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>mh.task-params-version defines which format must be used for params.yaml file which is provided to snippet 
+ as the last parameter in command line (skipParams is false). For details see <a href="task-params-yaml">Task params.yaml config</a></li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>metrics - boolean, true/false, should we collect metrics after executing this snippet?</li>
+  <li>skipParams - boolean, true/false, should params.yaml file be omitted?</li>
+  <li>
+    <p>sourcing - enum, possible values - launchpad, station, git
+–        launchpad - snippet will be downloaded from launchpad <br />
+–        station - snippet already has been deployed locally at station <br />
+–        git - snippet will be downloaded from git</p>
+  </li>
+  <li>type - a freely defined field. There are only two cases when this field must be defined in certain way: <br />
+– fit - this snippet is for fitting <br />
+– predict - this snippet is for predicting</li>
+</ul>
+
+<p>snippet.yaml for the case when scripting file is embedded in config:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
+  - code: simple-metrics.fit:1.2
+    type: fit
+    env: python-3
+    sourcing: station
+    metas:
+      - key: mh.task-params-version
+        value: 2
+      - key: mh.snippet-params-as-file
+        value: true
+      - key: mh.snippet-params-file-ext
+        value: .py
+    params: |+
+      import sys
+      from datetime import datetime
+
+      print(sys.argv)
+      print(str(datetime.now()))
+</code></pre></div></div>
+
+<p>Fields in this snippet.yaml almoth the same as previous one, except the follow:</p>
+<ul>
+  <li>sourcing - station . This value tells Station that it doesn’t need to download Snippet from Launchpad</li>
+  <li>params - contains the code for executing. Will be stored in file and 
+ this file will be executed in defined environment(env field)</li>
+  <li>metas - for this case two additional metas must be configured <br />
+– mh.snippet-params-as-file - true, tells that the params field must be evaluated as scripting file <br />
+– mh.snippet-params-file-ext - extension for scripting file which will be created at Station side</li>
+</ul>
+
+<p>snippet.yaml for the case when snippet will be provisioned from git repository:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
+  - code: simple-metrics.fit:1.2
+    type: fit
+    file: examples/simple-metrics/snippets/simple-metrics-fit.py
+    env: python-3
+    sourcing: git
+    git:
+      repo: https://github.com/sergmain/metaheuristic-assets.git
+      branch: master
+      commit: 5d809f50e3ccb45688deefd9e1e70f6202d8d18a
+</code></pre></div></div>
+
+<p>For using git as source of snippet two fields must be defined:</p>
+<ul>
+  <li>sourcing - git . This value tells Station that it snippet is stored in git repository</li>
+  <li>git - definition of git, the follow additional fields must be specified:   <br />
+– repo - url to git repo <br />
+– branch - name of branch which will be used <br />
+– commit - sha256 representation of commit in current branch</li>
+</ul>
+
+<h3 id="packaging">Packaging</h3>
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

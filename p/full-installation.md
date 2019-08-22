@@ -2,7 +2,7 @@
 layout: default
 ---
 
-- [Index](#index)
+- [Index](/index)
 
 ## Table of contents
 

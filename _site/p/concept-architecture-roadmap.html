@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8f93c2310c497bb7c02c66c6f12de2aa9bbb139" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -18,11 +18,11 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/concept-architecture-roadmap.html" />
-<meta property="og:url" content="http://localhost:4000/concept-architecture-roadmap.html" />
+<link rel="canonical" href="http://localhost:4000/p/concept-architecture-roadmap.html" />
+<meta property="og:url" content="http://localhost:4000/p/concept-architecture-roadmap.html" />
 <meta property="og:site_name" content="Metaheuristic" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/concept-architecture-roadmap.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/concept-architecture-roadmap.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -45,7 +45,7 @@
       <div class="inner clearfix">
         <section id="main-content">
           <ul>
-  <li><a href="#index">Index</a></li>
+  <li><a href="/index">Index</a></li>
 </ul>
 
 <h2 id="table-of-contents">Table of contents</h2>
@@ -57,7 +57,10 @@
 </ul>
 
 <h2 id="concept">Concept</h2>
-<p>Metaheuristic is an application for AI model’s hyper-parameter optimization purpose.</p>
+<p>Metaheuristic is an application for an AI model’s hyper-parameter optimization purpose. 
+Each set of optimization is presented as Experiment. An Experiment consists of some Tasks.
+Tasks are created at Launchpad and distributed to Stations. For evaluating a performance of models, 
+a metrics are collected and could be evaluated later.</p>
 
 <h2 id="architecture">Architecture</h2>
 <p>Metaheuristic has two main modules - Launchpad and Station
@@ -71,21 +74,21 @@ tasks from unlimited number of Launchpads.</p>
 <p>A processing module which is configured at Launchpad and is being run at Station is a Snippet.
 Snippet can be executable application, .jar file, python notebook, 
 file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on
-For full description of Snippet see <a href="snippet.md">documentation on Snippets</a></p>
+For full description of Snippet see <a href="snippet">documentation on Snippets</a></p>
 
 <p>From delivery point of view Snippet can be provisioned from Lauchpad or from git repository.</p>
 
 <p>There are two special type of Snippets for fitting and predicting with AI models. 
 Those Snippets are configured while configuring an Experiment. An Experiment is 
 special set of tasks which is processing hyper-parameter optimization. For full 
-description of Experiment see <a href="experiment.md">documentation on Experiment</a></p>
+description of Experiment see <a href="experiment">documentation on Experiment</a></p>
 
 <p>For creating set of tasks Launchpad is using a directed acyclic graph which define the order 
 in which Stations have to process tasks.</p>
 
 <p>Tasks can have any kind of resources for its execution purpose. 
 The most common case is when resource is dataset for model fitting/predicting.
-For full description of Resource see <a href="resource.md">documentation on Resource</a></p>
+For full description of Resource see <a href="resource">documentation on Resource</a></p>
 
 <h2 id="roadmap">Roadmap</h2>
 

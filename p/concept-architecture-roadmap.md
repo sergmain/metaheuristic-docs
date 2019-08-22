@@ -2,7 +2,7 @@
 layout: default
 ---
 
-- [Index](#index)
+- [Index](/index)
 
 ## Table of contents
 
@@ -11,7 +11,10 @@ layout: default
 - [Roadmap](#roadmap)
 
 ## Concept
-Metaheuristic is an application for AI model's hyper-parameter optimization purpose.  
+Metaheuristic is an application for an AI model's hyper-parameter optimization purpose. 
+Each set of optimization is presented as Experiment. An Experiment consists of some Tasks.
+Tasks are created at Launchpad and distributed to Stations. For evaluating a performance of models, 
+a metrics are collected and could be evaluated later.  
 
 ## Architecture
 Metaheuristic has two main modules - Launchpad and Station
@@ -25,21 +28,21 @@ tasks from unlimited number of Launchpads.
 A processing module which is configured at Launchpad and is being run at Station is a Snippet.
 Snippet can be executable application, .jar file, python notebook, 
 file in any scripting language. It can be 'curl' command to request external url, send e-mail and so on
-For full description of Snippet see [documentation on Snippets](snippet.md)  
+For full description of Snippet see [documentation on Snippets](snippet)  
 
 From delivery point of view Snippet can be provisioned from Lauchpad or from git repository.
 
 There are two special type of Snippets for fitting and predicting with AI models. 
 Those Snippets are configured while configuring an Experiment. An Experiment is 
 special set of tasks which is processing hyper-parameter optimization. For full 
-description of Experiment see [documentation on Experiment](experiment.md) 
+description of Experiment see [documentation on Experiment](experiment) 
 
 For creating set of tasks Launchpad is using a directed acyclic graph which define the order 
 in which Stations have to process tasks.
 
 Tasks can have any kind of resources for its execution purpose. 
 The most common case is when resource is dataset for model fitting/predicting.
-For full description of Resource see [documentation on Resource](resource.md)
+For full description of Resource see [documentation on Resource](resource)
 
 ## Roadmap
 
