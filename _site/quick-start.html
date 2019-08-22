@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=d8f93c2310c497bb7c02c66c6f12de2aa9bbb139" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Metaheuristic" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/quick-start.html" />
+<meta property="og:url" content="http://localhost:4000/quick-start.html" />
+<meta property="og:site_name" content="Metaheuristic" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/quick-start.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Metaheuristic</h1>
+        </a>
+        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
+        
+          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <ul>
+  <li><a href="#index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#quick-start">Quick start</a></li>
+  <li><a href="#quick-start-for-evaluating-ui-only">Quick start for evaluating UI only</a></li>
+  <li><a href="#quick-start-with-running-the-actual-tasks">Quick start with running the actual tasks</a></li>
+</ul>
+
+<h2 id="prerequisites-java-development-kit-jdk-11">Prerequisites: Java Development Kit (JDK) 11</h2>
+
+<p>To run Metaheuristic you have to have jdk 11<br />
+Right now there isn’t any known bug which restricts to use certain JDK.</p>
+
+<p><a href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html">Amazon Corretto 11</a><br />
+<a href="https://adoptopenjdk.net/?variant=openjdk11&amp;jvmVariant=hotspot">AdoptOpenJDK (AKA OpenJDK) 11</a><br />
+<a href="https://www.azul.com/downloads/zulu-community/?&amp;version=java-11-lts">Zulu JDK 11</a></p>
+
+<h2 id="quick-start">Quick start</h2>
+<blockquote>
+  <p><strong>Attention</strong>. The ‘Quick start’ mode is working with embedded db which is hosting in memory. 
+As a result after stopping Metaheuristic all data will be lost.</p>
+</blockquote>
+
+<h5 id="quick-start-for-evaluating-ui-only">Quick start for evaluating UI only</h5>
+
+<ol>
+  <li>
+    <p>Create temporary dir for Metaheuristic, i.e. /mh-root 
+It’ll be /mh-root in follow text.</p>
+  </li>
+  <li>from /mh-root run git cloning command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/sergmain/metaheuristic.git
+ git clone https://github.com/sergmain/metaheuristic-assets.git
+</code></pre></div>    </div>
+  </li>
+  <li>Change dir to /mh-root/metaheuristis and run command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mvnw clean install -f pom.xml -Dmaven.test.skip=true
+</code></pre></div>    </div>
+  </li>
+  <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-upload-simple-metrics-to-atlas
+</code></pre></div>    </div>
+  </li>
+  <li>Change dir to /mh-root and run command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> java -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now you can find our experiment data at http://localhost:8080/launchpad/atlas/atlas-experiments
+login - q, password - 123</p>
+  </li>
+  <li>
+    <p>Press ‘Details’ for experiment info (there should be only one record in atlas)</p>
+  </li>
+  <li>
+    <p>Press ‘Info’ button and on the next page ‘Info’ button at the bottom of page.</p>
+  </li>
+  <li>Select 2 axes, (i.e. RNN and batches) and press ‘Draw plot’</li>
+</ol>
+
+<h5 id="quick-start-with-running-the-actual-tasks">Quick start with running the actual tasks</h5>
+<blockquote>
+  <p>To run actual tasks in Metaheuristic you have to have python 3.x.<br />
+Be sure to add the python bin dir to your <strong>$PATH</strong><br />
+Also PyYAML 5.1 package must <a href="https://pyyaml.org/wiki/PyYAMLDocumentation">be installed</a></p>
+</blockquote>
+
+<ol>
+  <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-upload-snippet-as-one-file
+ curl-add-resource-stub
+ curl-add-experiment
+ curl-add-plan
+ curl-bind-experiment-to-plan-with-resource
+ curl-create-workbook
+ curl-produce-experiment-tasks
+</code></pre></div>    </div>
+  </li>
+  <li>At this point Metaheuristic started to produce tasks 
+and you have to have until status will ‘PRODUCED’. You can check current status by running script
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-get-experiment-processing-status
+</code></pre></div>    </div>
+  </li>
+  <li>After being changed to ‘PRODUCED’ run the command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-start-processing-of-experiment-tasks
+</code></pre></div>    </div>
+  </li>
+  <li>All tasks will be completed in 10 minutes approximately. You can get the current status of processing by command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-get-experiment-processing-status
+</code></pre></div>    </div>
+
+    <p>there are 3 possible statuses at this point:<br />
+ STARTED - processing of tasks was started<br />
+ STOPPED - processing of tasks was stopped<br />
+ FINISHED - processing of tasks was finished</p>
+  </li>
+  <li>
+    <p>After status will change to FINISHED you can find our experiment at http://localhost:8080/launchpad/experiment/experiments<br />
+login - q, password - 123</p>
+  </li>
+  <li>
+    <p>Press ‘Info’ button and on the next page ‘Info’ button at the bottom of page.</p>
+  </li>
+  <li>Select 2 axes, (i.e. RNN and batches) and press ‘Draw plot’</li>
+</ol>
+
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

@@ -18,11 +18,11 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/aiai-on-windows-as-service.txt" />
-<meta property="og:url" content="http://localhost:4000/aiai-on-windows-as-service.txt" />
+<link rel="canonical" href="http://localhost:4000/snippet.html" />
+<meta property="og:url" content="http://localhost:4000/snippet.html" />
 <meta property="og:site_name" content="Metaheuristic" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/aiai-on-windows-as-service.txt","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/snippet.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -44,27 +44,19 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          - [Index](#index)
+          <ul>
+  <li><a href="#index">Index</a></li>
+</ul>
 
-how to:
-    https://www.javadevjournal.com/spring-boot/spring-boot-application-as-a-service/
+<h2 id="table-of-contents">Table of contents</h2>
 
-sources for winsw
-    https://github.com/kohsuke/winsw
+<ul>
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#"></a></li>
+</ul>
 
-download .exe winsw
-    https://github.com/kohsuke/winsw/releases
+<h3 id="definition">Definition</h3>
 
-config:
-<?xml version="1.0" encoding="UTF-8"?>
-          <service>
-             <id>Aiai-service</id>
-             <name>aiai</name>
-             <description>Aiai Spring Boot as a service.</description>
-             <executable>java</executable>
-             <arguments>-XX:+PerfDisableSharedMem -XX:+AlwaysActAsServerClassMachine -Dhttps.protocols=TLSv1.2,SSLv3 -Xrs -Xms512m -Xmx512m -jar "%BASE%\git\apps\aiai\target\aiai.jar" --httpPort=8080</arguments>
-             <logmode>rotate</logmode>
-          </service>
         </section>
 
         <aside id="sidebar">

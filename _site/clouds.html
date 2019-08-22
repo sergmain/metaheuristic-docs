@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=d8f93c2310c497bb7c02c66c6f12de2aa9bbb139" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Metaheuristic" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/clouds.html" />
+<meta property="og:url" content="http://localhost:4000/clouds.html" />
+<meta property="og:site_name" content="Metaheuristic" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/clouds.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Metaheuristic</h1>
+        </a>
+        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
+        
+          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <ul>
+  <li><a href="#index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#heroku">Heroku</a></li>
+  <li><a href="#jelastic">Jelastic</a></li>
+  <li><a href="#gcp">GCP</a></li>
+  <li><a href="#aws">AWS</a></li>
+  <li><a href="#docker">Docker</a></li>
+  <li><a href="#k8s">K8s</a></li>
+</ul>
+
+<h2 id="heroku">Heroku</h2>
+<p>set environment variable:</p>
+
+<pre><code class="language-/">MAVEN_CONFIG = -f pom-heroku.xml
+
+SPRING_APPLICATION_JSON =   
+{  
+  "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.PostgreSQL95Dialect",    
+  "spring.jpa.hibernate.ddl-auto": "none",  
+  "spring.datasource.driver-class-name": "org.postgresql.Driver",  
+  "spring.datasource.platform": "postgresql",  
+  "spring.datasource.continue-on-error": false,  
+  
+  "mh.thread-number": 4,  
+  "mh.launchpad.is-ssl-required": true,  
+  "mh.launchpad.master-password": "$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu",  
+  "mh.launchpad.master-username": "q",  
+  "mh.launchpad.public-key": "&lt;public-key&gt;",  
+  "mh.launchpad.enabled": true,  
+  "mh.launchpad.dir": "./mh-launchpad",  
+  "mh.launchpad.is-replace-snapshot": false,  
+  "mh.launchpad.chunk-size": "900k",  
+  "mh.station.enabled": false,  
+  "mh.branding": "&lt;desired-branding-name&gt;"
+}  
+</code></pre>
+
+<h2 id="jelastic">Jelastic</h2>
+<p>Create an environment topology:</p>
+
+<p>Load balanser =========</p>
+<ul>
+  <li>NGiNX 1.14.x</li>
+</ul>
+
+<p>Optional step if your cloud provider doesn’t support :</p>
+<ul>
+  <li>change redirection rule by adding to nginx-jelastic.conf the following line in the HTTP (80) server block:
+return 301 https://$host$request_uri;</li>
+</ul>
+
+<p>Application server =====</p>
+<ul>
+  <li>SpringBoot, jdk - OpenJDK 11.0.2<br />
+min 2, max 4 cloudlets, Horizontal scaling - 1 node, statefull<br />
+Variables:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JDBC_DATABASE_PASSWORD = &lt;pass-for-db&gt;  
+JDBC_DATABASE_URL = jdbc:mysql://&lt;ip-address&gt;:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;allowPublicKeyRetrieval=true    
+JDBC_DATABASE_USERNAME = mh  
+MH_JDBC_DRIVER_CLASS_NAME = com.mysql.cj.jdbc.Driver    
+MH_HIBERNATE_DIALECT = org.hibernate.dialect.MySQL57Dialect    
+MH_MASTER_PASSWORD = $2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu    
+MH_MASTER_USERNAME = q  
+MH_IS_SSL_REQUIRED = true  
+MH_DEFAULT_RESULT_FILE_EXTENSION = &lt;desired-default-extension&gt;  
+MH_BRANDING = &lt;desired-branding-name&gt;  
+MH_LAUNCHPAD_DIR = target/launchpad  
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>SQL DB =================</p>
+<ul>
+  <li>Mysql CE 8.0.16,<br />
+min 3, max 4 cloudlets, Horizontal scaling - 1 node, stateless</li>
+</ul>
+
+<p>Preparing:</p>
+<ul>
+  <li>create database mh</li>
+  <li>run scrip https://github.com/sergmain/metaheuristic/blob/master/sql/schema-mysql.sql in mh database</li>
+  <li>create user mh, grant all to it, use SSL required</li>
+  <li>replace <pass-for-db> in app server's variable JDBC_DATABASE_PASSWORD</pass-for-db></li>
+  <li>replace <ip-address>: in app server's variable JDBC_DATABASE_URL</ip-address></li>
+</ul>
+
+<p>Build node =============</p>
+<ul>
+  <li>Maven 3.6.1, jdk - OpenJDK 11.0.2<br />
+min 1, max 4 cloudlets<br />
+variables:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAVEN_DEPLOY_ARTIFACT = metaheuristic.jar  
+MAVEN_OPTS = -Dmaven.test.skip=true  
+MAVEN_RUN_ARGS = -T2 -f pom-heroku.xml  
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Link github repo =======</p>
+<ul>
+  <li>after creating a topology add a link to git repository - https://github.com/sergmain/metaheuristic.git <br />
+branch - release</li>
+</ul>
+
+<p>=====================<br />
+login into Metaheuristic :<br />
+login: q<br />
+pass: 123</p>
+
+<h2 id="gcp">GCP</h2>
+<p>TBD</p>
+
+<h2 id="aws">AWS</h2>
+<p>TBD</p>
+
+<h2 id="docker">Docker</h2>
+<p>TBD</p>
+
+<h2 id="k8s">K8s</h2>
+<p>TBD</p>
+
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
