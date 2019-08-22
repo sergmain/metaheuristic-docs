@@ -14,12 +14,12 @@ layout: default
 
 ### Definition
 
-A processing module which is configured at Launchpad and is being run at Station is a Snippet.
+A processing module which is configured, packaged, uploaded to the Launchpad, and is being run at Station is a Snippet.
 Snippet can be executable application, .jar file, python notebook, 
 file in any scripting language. It can be 'curl' command to request external url, send e-mail and so on.
   
 
-From delivery point of view Snippet can be provisioned from Launchpad or from git repository.
+From a delivery point of view, the Snippet can be provisioned from Launchpad or from git repository.
 
 ### Configuration
 
