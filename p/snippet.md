@@ -9,6 +9,7 @@ layout: default
 - [Definition](#definition)
 - [Configuration](#configuration)
 - [Packaging](#packaging)
+- [Uploading](#uploading)
 
 
 ### Definition
@@ -135,3 +136,33 @@ For using git as source of snippet two fields must be defined:
 
 
 ### Packaging
+
+In some cases snippet has to be packaged before uploading to Launchpad:   
+- snippet is an external file (like .py, .jar, and so on)    
+- snippet has to be signed so Launchpad can verify legibility of snippet's source 
+
+An application 'package-snippet' is used for packaging purpose. For details see [Package snippet](package-snippet) page.
+
+Default steps for packaging snippet are:   
+- create temporary folder   
+- in that temp folder, create file snippets.yaml and configure desired parameters   
+- from this temp folder, run the follow command  
+
+java -jar /mh/git/apps/package-snippet/target/package-snippet.jar snippet.zip \[path to private key file\]   
+
+- first parameter is the name of resulted .zip archive (in this example it's snippet.zip)   
+- second parameter is optional and is used only when the snippet has to be signed.   
+\[path to private key file\] must point to a valid private key, i.e. /mh/git/private-key.txt
+
+For details how to generate public and privat keys, see [Gen keys](gen-keys) page   
+
+
+### Uploading
+After snippet is prepared in form of snippet.yaml or snippet.zip it has to be uploaded to Launchpad.  
+
+This can be done via web interface at url [http://localhost:8080/launchpad/snippet/snippets]()
+
+Other way to upload snippet is using REST-based url:      
+```   
+curl -u q:123 -F "file=@simple-metrics-snippets-as-one-file.yaml"  http://localhost:8080/rest/v1/launchpad/snippet/snippet-upload-from-file
+```

@@ -54,6 +54,7 @@
   <li><a href="#definition">Definition</a></li>
   <li><a href="#configuration">Configuration</a></li>
   <li><a href="#packaging">Packaging</a></li>
+  <li><a href="#uploading">Uploading</a></li>
 </ul>
 
 <h3 id="definition">Definition</h3>
@@ -180,6 +181,40 @@ I.e.</p>
 </ul>
 
 <h3 id="packaging">Packaging</h3>
+
+<p>In some cases snippet has to be packaged before uploading to Launchpad:</p>
+<ul>
+  <li>snippet is an external file (like .py, .jar, and so on)</li>
+  <li>snippet has to be signed so Launchpad can verify legibility of snippet’s source</li>
+</ul>
+
+<p>An application ‘package-snippet’ is used for packaging purpose. For details see <a href="package-snippet">Package snippet</a> page.</p>
+
+<p>Default steps for packaging snippet are:</p>
+<ul>
+  <li>create temporary folder</li>
+  <li>in that temp folder, create file snippets.yaml and configure desired parameters</li>
+  <li>from this temp folder, run the follow command</li>
+</ul>
+
+<p>java -jar /mh/git/apps/package-snippet/target/package-snippet.jar snippet.zip [path to private key file]</p>
+
+<ul>
+  <li>first parameter is the name of resulted .zip archive (in this example it’s snippet.zip)</li>
+  <li>second parameter is optional and is used only when the snippet has to be signed. <br />
+[path to private key file] must point to a valid private key, i.e. /mh/git/private-key.txt</li>
+</ul>
+
+<p>For details how to generate public and privat keys, see <a href="gen-keys">Gen keys</a> page</p>
+
+<h3 id="uploading">Uploading</h3>
+<p>After snippet is prepared in form of snippet.yaml or snippet.zip it has to be uploaded to Launchpad.</p>
+
+<p>This can be done via web interface at url <a href="">http://localhost:8080/launchpad/snippet/snippets</a></p>
+
+<p>Other way to upload snippet is using REST-based url:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -u q:123 -F "file=@simple-metrics-snippets-as-one-file.yaml"  http://localhost:8080/rest/v1/launchpad/snippet/snippet-upload-from-file
+</code></pre></div></div>
 
         </section>
 
