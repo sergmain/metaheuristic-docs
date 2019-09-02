@@ -47,10 +47,11 @@ For full description of Resource see [documentation on Resource](resource)
 
 ## Roadmap
 
-- Overfitting detector.   
+- Overfitting detector in Experiment.   
 - Series of Experiments.   
-- Implementation the different strategies for Series - Evolutionary algorithm, Bayesian optimization. 
+- Implementation the different strategies for Series - Genetic algorithm, Bayesian optimization, GRASP, ILS. 
  The concrete algo which will be implemented in first place will be chosen later.
+- DSL for fitness function (in term of GA) or adapt a standard language for this purpose   
 - Prototype 2-side platform for optimization based on Metaheuristic.
 - TBD   
 
