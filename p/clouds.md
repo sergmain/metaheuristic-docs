@@ -16,7 +16,7 @@ layout: default
 ## Heroku
 set environment variable:
 
-```/
+```
 MAVEN_CONFIG = -f pom-heroku.xml
 
 SPRING_APPLICATION_JSON =   
@@ -40,6 +40,11 @@ SPRING_APPLICATION_JSON =
   "mh.branding": "<desired-branding-name>"
 }  
 ```
+
+> - Heroku has limitation that output of server can't be more that 1Mb. 
+So you must keep the value of mh.launchpad.chunk-size below 1Mb. From experience, the best value is 900k.
+[See on Heroku 'HTTP response buffering'](https://devcenter.heroku.com/articles/http-routing#response-buffering)   
+
 
 ## Jelastic
 Create an environment topology:

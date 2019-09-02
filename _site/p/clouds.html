@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=17d6bd58c5ec8702a3ad182d08b7975b6fae295c" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -62,7 +62,7 @@
 <h2 id="heroku">Heroku</h2>
 <p>set environment variable:</p>
 
-<pre><code class="language-/">MAVEN_CONFIG = -f pom-heroku.xml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAVEN_CONFIG = -f pom-heroku.xml
 
 SPRING_APPLICATION_JSON =   
 {  
@@ -84,7 +84,15 @@ SPRING_APPLICATION_JSON =
   "mh.station.enabled": false,  
   "mh.branding": "&lt;desired-branding-name&gt;"
 }  
-</code></pre>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>Heroku has limitation that output of server can’t be more that 1Mb. 
+So you must keep the value of mh.launchpad.chunk-size below 1Mb. From experience, the best value is 900k.
+<a href="https://devcenter.heroku.com/articles/http-routing#response-buffering">See on Heroku ‘HTTP response buffering’</a></li>
+  </ul>
+</blockquote>
 
 <h2 id="jelastic">Jelastic</h2>
 <p>Create an environment topology:</p>

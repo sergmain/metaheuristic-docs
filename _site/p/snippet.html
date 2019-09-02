@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=17d6bd58c5ec8702a3ad182d08b7975b6fae295c" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -135,7 +135,7 @@ I.e.</p>
     sourcing: station
     metas:
       - key: mh.task-params-version
-        value: 2
+        value: 3
       - key: mh.snippet-params-as-file
         value: true
       - key: mh.snippet-params-file-ext
@@ -148,7 +148,7 @@ I.e.</p>
       print(str(datetime.now()))
 </code></pre></div></div>
 
-<p>Fields in this snippet.yaml almoth the same as previous one, except the follow:</p>
+<p>Fields in this snippet.yaml almost the same as the previous one, except the follow:</p>
 <ul>
   <li>sourcing - station . This value tells Station that it doesn’t need to download Snippet from Launchpad</li>
   <li>params - contains the code for executing. Will be stored in file and 
@@ -165,6 +165,9 @@ I.e.</p>
     file: examples/simple-metrics/snippets/simple-metrics-fit.py
     env: python-3
     sourcing: git
+    metas:
+      - key: mh.task-params-version
+        value: 3
     git:
       repo: https://github.com/sergmain/metaheuristic-assets.git
       branch: master
@@ -205,7 +208,7 @@ I.e.</p>
 [path to private key file] must point to a valid private key, i.e. /mh/git/private-key.txt</li>
 </ul>
 
-<p>For details how to generate public and privat keys, see <a href="gen-keys">Gen keys</a> page</p>
+<p>For details how to generate public and privat keys, see <a href="/p/gen-keys">Gen keys</a> page</p>
 
 <h3 id="uploading">Uploading</h3>
 <p>After snippet is prepared in form of snippet.yaml or snippet.zip it has to be uploaded to Launchpad.</p>

@@ -12,9 +12,9 @@ layout: default
 
 ## Concept
 Metaheuristic is an application for an AI model's hyper-parameter optimization purpose. 
-Each set of optimization is presented as Experiment. An Experiment consists of some Tasks.
+Each step of optimization is presented as Experiment. An Experiment consists of some Tasks.
 Tasks are created at Launchpad and distributed to Stations. For evaluating a performance of models, 
-a metrics are collected and could be evaluated later.  
+metrics and other data are collected and are evaluated later by Metaheuristic.  
 
 ## Architecture
 Metaheuristic has two main modules - Launchpad and Station
@@ -22,8 +22,9 @@ The purpose of Launchpad is to manage tasks which will be processed at Station s
 Station is an module of Metaheuristic which is responsible for receiving tasks, 
 preparing assets, processing task, and delivering results of processing of task to the Launchpad.
 
-Typical configuration is one Launchpad and N Station. But Station could be configured to host 
-tasks from unlimited number of Launchpads.
+The typical configuration is one Launchpad and N Station. But Station could be configured to host 
+tasks from unlimited number of Launchpads. The current algorithm to determine the order of receiving 
+tasks from Launchpads is round-robin.
 
 A processing module which is configured at Launchpad and is being run at Station is a Snippet.
 Snippet can be executable application, .jar file, python notebook, 
@@ -46,3 +47,11 @@ For full description of Resource see [documentation on Resource](resource)
 
 ## Roadmap
 
+- Overfitting detector.   
+- Series of Experiments.   
+- Implementation the different strategies for Series - Evolutionary algorithm, Bayesian optimization. 
+ The concrete algo which will be implemented in first place will be chosen later.
+- Prototype 2-side platform for optimization based on Metaheuristic.
+- TBD   
+
+ 

@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=17d6bd58c5ec8702a3ad182d08b7975b6fae295c" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -52,8 +52,84 @@
 
 <ul>
   <li><a href="#definition">Definition</a></li>
-  <li><a href="#configuration">Configuration</a></li>
-  <li><a href="#packaging">Packaging</a></li>
+  <li><a href="#structure">Structure</a></li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+
+<p>When snippet is being invoked it will be supplied with an absolute path to parameter file. 
+This parameter will always be the last parameter in the list of parameters which snippet will receive.</p>
+
+<h3 id="structure">Structure</h3>
+
+<p>This parameter file has the follow structure:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>taskYaml:
+  inputResourceAbsolutePaths:
+    mainDocument:
+<span class="p">    -</span> /sandbox/git/mh/mh-station/task/localhost-8080/11/6691/DATA/uploaded-file-17064922919341969220-264882960313000.bin
+  inputResourceCodes:
+    mainDocument:
+<span class="p">    -</span> uploaded-file-17064922919341969220-264882960313000.bin
+  outputResourceAbsolutePath: /sandbox/git/mh/mh-station/task/localhost-8080/11/6691/artifacts/1449-1-fake-snippet-1_1-simple-app-with-timeout-0
+  outputResourceCode: 1449-1-fake-snippet-1_1-simple-app-with-timeout-0
+  realNames:
+    uploaded-file-17064922919341969220-264882960313000.bin: 81509 some file name.xml
+  resourceStorageUrls:
+    uploaded-file-17064922919341969220-264882960313000.bin:
+      sourcing: launchpad
+    1449-1-fake-snippet-1_1-simple-app-with-timeout-0:
+      sourcing: launchpad
+  snippet:
+    checksum: '{"checksums":{"SHA256":"6e8ac7a2d3c6c6ea5ac01cf9ca678106f6fc61b045fd0a045580b54908c1d731"}}'
+    code: fake-snippet:1.1
+    env: fake
+    info:
+      length: 0
+      signed: false
+    metas:
+<span class="p">    -</span> key: task-params-version
+      value: '3'
+    metrics: false
+    skipParams: false
+    sourcing: station
+    type: fileless
+  timeoutBeforeTerminate: 2
+  workingPath: /sandbox/git/mh/mh-station/task/localhost-8080/11/6691
+version: 3
+</code></pre></div></div>
+
+<p>Top-level fields in params-v3.yaml:</p>
+<ul>
+  <li>version - The current version of format of params.yaml file.</li>
+  <li>taskYaml - The holder of all fields, except field ‘version’</li>
+</ul>
+
+<p>Fields in taskYaml:</p>
+<ul>
+  <li>inputResourceAbsolutePaths - A dictionary of absolute paths to resources. 
+ Key is name group, value - absolute path.</li>
+  <li>inputResourceCodes - A dictionary of resource files. The key is name group, the value - name of resource file. 
+ Names of file is auto-generated and mean nothing. 
+ You should use the key of this dictionary to understand which file is which.</li>
+  <li>outputResourceAbsolutePath - An absolute path to result file. 
+ Whatever your snippet is doing the result of snippet must be written to this file.</li>
+  <li>outputResourceCode - The name of result file.</li>
+  <li>realNames - A dictionary of mapping resouce code to the real file name. 
+ In some cases you need to know the actual name of file and you can find it in this dictionary.</li>
+  <li>resourceStorageUrls - A dictionary of types of resources’ sourcing. 
+ The key is resource code, the value - sourcing type. Right now there are three type of sourcing:
+    <ul>
+      <li>launchpad - resources will be provisioned from launchpad by MH</li>
+      <li>git - resources will be provisioned from git repository by MH</li>
+      <li>disk - resources already has been deployed locally at station</li>
+    </ul>
+  </li>
+  <li>snippet - A config of current snippet. In most cases isn’t using. 
+The fields is the same as in config of snippet - see <a href="/p/snippet.html">documentation on snippet’s config</a></li>
+  <li>timeoutBeforeTerminate - A timeout before the execution of snippet will be terminated. Value in seconds. 
+If this field is omitted or value is 0, then execution will last as long as snippet needs to finish its work.</li>
+  <li>workingPath - A current working dir. A snippet will be started in this directory.</li>
 </ul>
 
 

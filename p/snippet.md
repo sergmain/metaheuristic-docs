@@ -89,7 +89,7 @@ snippets:
     sourcing: station
     metas:
       - key: mh.task-params-version
-        value: 2
+        value: 3
       - key: mh.snippet-params-as-file
         value: true
       - key: mh.snippet-params-file-ext
@@ -102,7 +102,7 @@ snippets:
       print(str(datetime.now()))
 ```
 
-Fields in this snippet.yaml almoth the same as previous one, except the follow:      
+Fields in this snippet.yaml almost the same as the previous one, except the follow:      
 - sourcing - station . This value tells Station that it doesn't need to download Snippet from Launchpad   
 - params - contains the code for executing. Will be stored in file and 
  this file will be executed in defined environment(env field)    
@@ -120,6 +120,9 @@ snippets:
     file: examples/simple-metrics/snippets/simple-metrics-fit.py
     env: python-3
     sourcing: git
+    metas:
+      - key: mh.task-params-version
+        value: 3
     git:
       repo: https://github.com/sergmain/metaheuristic-assets.git
       branch: master
