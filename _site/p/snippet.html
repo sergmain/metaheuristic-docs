@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=17d6bd58c5ec8702a3ad182d08b7975b6fae295c" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=21221d14dbf968c801c523c56cc5982658bd6405" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -53,6 +53,7 @@
 <ul>
   <li><a href="#definition">Definition</a></li>
   <li><a href="#configuration">Configuration</a></li>
+  <li><a href="#metadata">Metadata</a></li>
   <li><a href="#packaging">Packaging</a></li>
   <li><a href="#uploading">Uploading</a></li>
 </ul>
@@ -181,6 +182,36 @@ I.e.</p>
 – repo - url to git repo <br />
 – branch - name of branch which will be used <br />
 – commit - sha256 representation of commit in current branch</li>
+</ul>
+
+<h3 id="metadata">Metadata</h3>
+<p>Metadata is using for configuring a snippet. 
+Metadata as solution for flexible configuration of snippet was chosen because in this case we can upgrade 
+the code of Metaheuristic without loosing backward compatibility.</p>
+
+<p>Declaration of metadata in snippet’s config is follow:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
+  - code: simple-metrics.fit:1.2
+    metas:
+      - key: mh.task-params-version
+        value: 3
+      - key: mh.snippet-supported-os
+        value: linux, macos
+      - key: mh.snippet-params-as-file
+        value: true
+      - key: mh.snippet-params-file-ext
+        value: .py
+</code></pre></div></div>
+
+<p>Current list of metadatas includes:</p>
+<ul>
+  <li>mh.task-params-version -  defines which version of params.yaml must be used for invoking snippet. 
+  If requested version is below of current default version, a downgrade will be tried</li>
+  <li>mh.snippet-params-as-file - defines that the field ‘params’ contains actual code of script and 
+  must be stored in temporary file.</li>
+  <li>mh.snippet-params-file-ext - if meta ‘mh.snippet-params-as-file’ is defined, extension of temporary file can be specified if needed.</li>
+  <li>mh.snippet-supported-os - if Metaheuristic’s stations installed in heterogeneous environment (i.e. on windows OS and on Linux ), target OS can be specified.
+ Possible values are - windows, linux, macos. Values can be combined in comma-separated list.</li>
 </ul>
 
 <h3 id="packaging">Packaging</h3>

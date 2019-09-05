@@ -8,6 +8,7 @@ layout: default
 
 - [Definition](#definition)
 - [Configuration](#configuration)
+- [Metadata](#metadata)
 - [Packaging](#packaging)
 - [Uploading](#uploading)
 
@@ -137,6 +138,35 @@ For using git as source of snippet two fields must be defined:
 -- commit - sha256 representation of commit in current branch    
 
 
+### Metadata
+Metadata is using for configuring a snippet. 
+Metadata as solution for flexible configuration of snippet was chosen because in this case we can upgrade 
+the code of Metaheuristic without loosing backward compatibility. 
+
+Declaration of metadata in snippet's config is follow:
+```
+snippets:
+  - code: simple-metrics.fit:1.2
+    metas:
+      - key: mh.task-params-version
+        value: 3
+      - key: mh.snippet-supported-os
+        value: linux, macos
+      - key: mh.snippet-params-as-file
+        value: true
+      - key: mh.snippet-params-file-ext
+        value: .py
+```
+
+Current list of metadatas includes: 
+- mh.task-params-version -  defines which version of params.yaml must be used for invoking snippet. 
+    If requested version is below of current default version, a downgrade will be tried
+- mh.snippet-params-as-file - defines that the field 'params' contains actual code of script and 
+    must be stored in temporary file. 
+- mh.snippet-params-file-ext - if meta 'mh.snippet-params-as-file' is defined, extension of temporary file can be specified if needed.
+- mh.snippet-supported-os - if Metaheuristic's stations installed in heterogeneous environment (i.e. on windows OS and on Linux ), target OS can be specified.
+ Possible values are - windows, linux, macos. Values can be combined in comma-separated list. 
+  
 
 ### Packaging
 
