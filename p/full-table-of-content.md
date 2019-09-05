@@ -2,18 +2,11 @@
 layout: default
 ---
 
-## Table of contents
-
-- [Quick start](/p/quick-start)
-- [Concept, architecture, roadmap](/p/concept-architecture-roadmap)
-- [Full installation](/p/full-installation)
-- [Cloud specific](/p/clouds)
-- [Full table of content](/p/full-table-of-content)
-- [License, Licensing, and Copyright](/p/license-licensing-copyright)
+- [Index](/index)
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) D [E](#e) F [G](#g) H [I](#i) J K [L](#l) M N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
+- [A](#a) b [C](#c) d [E](#e) f [G](#g) h [I](#i) j k [L](#l) m n o p [Q](#q) [R](#r) [S](#s) [T](#t) u v w x y z 
 
 ### A
 - [Architecture](concept-architecture-roadmap.md#architecture)
@@ -22,6 +15,9 @@ layout: default
 - [Clounds](clouds.md)
 - [Concept](concept-architecture-roadmap.md#concept)
 - [Copyright](license-licensing-copyright.md#copyright)
+
+### D
+- 
 
 ### E
 - [Experiment](experiment.md)
