@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=60d81832e119e8bf525e5d2fab45c76c66c4a1c1" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -51,9 +51,149 @@
 <h2 id="table-of-contents">Table of contents</h2>
 
 <ul>
-  <li><a href="#license-and-licensing">License and licensing</a></li>
-  <li><a href="#copyright">Copyright</a></li>
+  <li><a href="#prerequisites">Prerequisites</a></li>
+  <li><a href="#on-premises-installation">On-premises installation</a></li>
 </ul>
+
+<blockquote>
+  <p>This documentation is about how to install Metaheuristic locally. For cloud installation see <a href="/p/clouds.html">Clouds</a></p>
+</blockquote>
+
+<h2 id="prerequisites">Prerequisites:</h2>
+<h4 id="java-development-kit-jdk-11">Java Development Kit (JDK) 11</h4>
+
+<p>To run Metaheuristic you have to have jdk 11<br />
+Right now there isn’t any known bug which restricts to use certain JDK.</p>
+
+<p><a href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html">Amazon Corretto 11</a><br />
+<a href="https://adoptopenjdk.net/?variant=openjdk11&amp;jvmVariant=hotspot">AdoptOpenJDK (AKA OpenJDK) 11</a><br />
+<a href="https://www.azul.com/downloads/zulu-community/?&amp;version=java-11-lts">Zulu JDK 11</a></p>
+
+<h4 id="database">Database</h4>
+<p>At this moment we are supporting two databases - mysql and postgresql.  <br />
+By supporting we means that there is sql scripts for initialization of db. 
+Quick start is using H2 db, so this db is fine too. 
+Sql files for H2 <a href="https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-h2.sql">is there</a></p>
+
+<p>In this documentation we expect that you’ll create db’s scheme ‘mh’, db’s user will be ‘mh’ and password will be ‘qwe321’</p>
+
+<h2 id="on-premises-installation">On-premises installation</h2>
+
+<ul>
+  <li>
+    <p>Create dir for Metaheuristic, i.e. /mh-root 
+It’ll be /mh-root in the follow text.</p>
+  </li>
+  <li>
+    <p>Change dir to /mh-root and the follow dirs:</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/mh-root/config
+/mh-root/logs
+/mh-root/mh-launchpad
+/mh-root/mh-station
+</code></pre></div></div>
+
+<ul>
+  <li>From /mh-root run the git cloning command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/sergmain/metaheuristic.git
+</code></pre></div>    </div>
+  </li>
+  <li>Change dir to /mh-root/metaheuristic and run the command:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvnw clean install -f pom.xml -Dmaven.test.skip=true
+</code></pre></div>    </div>
+  </li>
+  <li>Change dir to /mh-root/config and create file application.properties with follow content:</li>
+</ul>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">launchpad, station</span>
+
+<span class="c"># ------------- Logging -----------------
+</span><span class="py">logging.file</span><span class="p">=</span><span class="s">logs/logs/mh.log</span>
+<span class="py">logging.level.root</span> <span class="p">=</span> <span class="s">warn</span>
+<span class="py">logging.level.ai.metaheuristic.ai.Monitoring</span><span class="p">=</span><span class="s">error</span>
+<span class="err">logging.level.ai.metaheuristic.ai.*=warn</span>
+
+<span class="c"># ===============================
+# = DATA SOURCE
+# ===============================
+</span>
+<span class="c"># postgresql db @localhost
+#spring.datasource.url=jdbc:postgresql://localhost:5432/mh?user=mh&amp;password=qwe321&amp;sslmode=require
+#spring.datasource.username=mh
+#spring.datasource.password=qwe321
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+</span>
+<span class="c"># mysql db @localhost
+</span><span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+<span class="py">spring.datasource.url</span> <span class="p">=</span> <span class="s">jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;sslMode=DISABLED&amp;allowPublicKeyRetrieval=true</span>
+<span class="py">spring.datasource.username</span> <span class="p">=</span> <span class="s">mh</span>
+<span class="py">spring.datasource.password</span> <span class="p">=</span> <span class="s">qwe321</span>
+
+<span class="py">spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults</span> <span class="p">=</span> <span class="s">false</span>
+<span class="py">spring.jpa.properties.hibernate.dialect</span> <span class="p">=</span> <span class="s">org.hibernate.dialect.MySQL57Dialect</span>
+
+
+<span class="c"># Keep the connection alive if idle for a long time (needed in production)
+</span><span class="py">spring.datasource.testWhileIdle</span> <span class="p">=</span> <span class="s">true</span>
+<span class="py">spring.datasource.validationQuery</span> <span class="p">=</span> <span class="s">SELECT 1</span>
+
+<span class="c"># ============== ai.metaheuristic ==================
+# ------------- Launchpad -----------------
+</span><span class="py">mh.launchpad.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
+<span class="c"># password is 123
+</span><span class="py">mh.launchpad.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
+<span class="py">mh.launchpad.master-username</span><span class="p">=</span><span class="s">q</span>
+<span class="py">mh.launchpad.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.launchpad.dir</span><span class="p">=</span><span class="s">./mh-launchpad</span>
+<span class="py">mh.launchpad.is-replace-snapshot</span><span class="p">=</span><span class="s">true</span>
+
+<span class="c"># ------------- Station -----------------
+</span><span class="py">mh.station.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.station.dir</span><span class="p">=</span><span class="s">./mh-station</span>
+</code></pre></div></div>
+
+<p>This config file is for installation with mysql. 
+If you are using postgresql, you need to uncomment section for postgresql and comment out for mysql one.</p>
+
+<p>Current connection parameters to database are: <br />
+    – spring.datasource.username = mh  - defines db’s username <br />
+    – spring.datasource.password = qwe321 - defines db’s username <br />
+    – spring.datasource.url = jdbc:mysql://localhost:3306/mh - defines IP address (localhost) and port (3306) of db,
+        and db scheme (mh). If you want to use the different values, you need to change them accordingly</p>
+
+<p>Descriptions of all mh.* parameters can be found in <a href="mh-application-properties">mh.* parameters</a></p>
+
+<ul>
+  <li>Create file /mh-root/mh-station/launchpad.yaml with follow content:</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>   
+  <span class="pi">-</span> <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>   
+    <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>   
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>   
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q</span>   
+    <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>   
+      <span class="no">workingDay: 0:00-23:59   </span>
+      <span class="no">weekend: 0:00-23:59   </span>
+    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
+</code></pre></div></div>
+
+<ul>
+  <li>Create file /mh-root/mh-station/env.yaml with follow content:</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
+  <span class="na">python-3</span><span class="pi">:</span> <span class="s">python.exe</span>
+  <span class="na">java-11</span><span class="pi">:</span> <span class="s">java -jar</span>
+</code></pre></div></div>
+
 
         </section>
 

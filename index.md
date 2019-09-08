@@ -13,38 +13,42 @@ layout: default
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) D [E](#e) F [G](#g) H [I](#i) J K [L](#l) M N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
+- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) M N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
 
 ### A
-- [Architecture](concept-architecture-roadmap.md#architecture)
+- [Architecture](/p/concept-architecture-roadmap.md#architecture)
 
 ### C
-- [Clounds](clouds.md)
-- [Concept](concept-architecture-roadmap.md#concept)
-- [Copyright](license-licensing-copyright.md#copyright)
+- [Clounds](/p/clouds.md)
+- [Concept](/p/concept-architecture-roadmap.md#concept)
+- [Copyright](/p/license-licensing-copyright.md#copyright)
 
 ### E
-- [Experiment](experiment.md)
+- [Experiment](/p/experiment.md)
+
+### F
+- [Full installation](/p/full-installation.md)
 
 ### G
-- [Gen keys](gen-keys.md)
+- [Gen keys](/p/gen-keys.md)
 
 ### I
-- [Installation (full)](full-installation.md)
+- [Installation (full)](/p/full-installation.md)
+- [Installation (quick)](/p/quick-start.md)
 
 ### L
-- [License, licensing](license-licensing-copyright.md#license-and-licensing)
+- [License, licensing](/p/license-licensing-copyright.md#license-and-licensing)
 
 ### Q
-- [Quick start](quick-start.md)
+- [Quick start](/p/quick-start.md)
 
 ### R
-- [Roadmap](concept-architecture-roadmap.md#roadmap)
+- [Roadmap](/p/concept-architecture-roadmap.md#roadmap)
 
 ### S
-- [Schedule](schedule.md)
-- [Snippet](snippet.md)
+- [Schedule](/p/schedule.md)
+- [Snippet](/p/snippet.md)
 
 ### T
-- [Task params yaml file](task-params-yaml.md)
+- [Task params yaml file](/p/task-params-yaml.md)
 

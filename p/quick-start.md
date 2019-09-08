@@ -21,7 +21,7 @@ Right now there isn't any known bug which restricts to use certain JDK.
 
 
 ## Quick start
->**Attention**. The 'Quick start' mode is working with embedded db which is hosting in memory. 
+>**Attention**. The 'Quick start' mode is working with embedded db which is being hosted in memory. 
 As a result after stopping Metaheuristic all data will be lost.
 
 ##### Quick start for evaluating UI only
