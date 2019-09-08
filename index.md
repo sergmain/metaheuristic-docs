@@ -52,6 +52,7 @@ layout: default
 - [Quick start](/p/quick-start.md)
 
 ### R
+- [Resources](/p/resources)
 - [Roadmap](/p/concept-architecture-roadmap.md#roadmap)
 
 ### S

@@ -31,9 +31,10 @@ mirrors:
 ```
 
 Top-level fields in env.yaml:   
-- disk <meta> - The current version of format of params.yaml file.   
-- envs <key-value> - defines pair of key-value for code of env (key) and executable (value)
-- mirrors <key-value> - defines pair of key-value for real url of git's repository (key) and 
+- disk \<meta\> - Meta object has two fields - code and path. Code defines the code of metadata 
+    and path is path to dir where resources are stored.    
+- envs \<key-value\> - defines pair of key-value for code of env (key) and executable (value)
+- mirrors \<key-value\> - defines pair of key-value for real url of git's repository (key) and 
     local dir which represents the mirror of remote git's repository. So in this string:   
 ```text
   https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git

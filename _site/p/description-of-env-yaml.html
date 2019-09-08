@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=972e901cdf530f1720efb07a28437c188a2fb67d" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=aec10e2b762fb26d63aa63a45d798d25809768f0" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -76,11 +76,12 @@ This parameter will always be the last parameter in the list of parameters which
 
 <p>Top-level fields in env.yaml:</p>
 <ul>
-  <li>disk <meta /> - The current version of format of params.yaml file.</li>
-  <li>envs <key-value> - defines pair of key-value for code of env (key) and executable (value)</key-value></li>
-  <li>mirrors <key-value> - defines pair of key-value for real url of git's repository (key) and 
-  local dir which represents the mirror of remote git's repository. So in this string:
-</key-value>    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
+  <li>disk &lt;meta&gt; - Meta object has two fields - code and path. Code defines the code of metadata 
+  and path is path to dir where resources are stored.</li>
+  <li>envs &lt;key-value&gt; - defines pair of key-value for code of env (key) and executable (value)</li>
+  <li>mirrors &lt;key-value&gt; - defines pair of key-value for real url of git’s repository (key) and 
+  local dir which represents the mirror of remote git’s repository. So in this string:
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
 </code></pre></div>    </div>
     <p>https://github.com/sergmain/metaheuristic.git - remote git’s url
 /git-mirror/mh/metaheuristic.git - local directory of git’s repository</p>

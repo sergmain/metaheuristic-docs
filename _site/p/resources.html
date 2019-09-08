@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=0e39a9f874cb0a2b31c312c8a33d83662116d82d" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Metaheuristic" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/resources.html" />
+<meta property="og:url" content="http://localhost:4000/p/resources.html" />
+<meta property="og:site_name" content="Metaheuristic" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/p/resources.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Metaheuristic</h1>
+        </a>
+        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
+        
+          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <ul>
+  <li><a href="/index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#creation">Creation</a></li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+
+<p>Resource in Metaheuristic is any information which stored in Metaheuristic’s database and has its own code and pool code.</p>
+
+<p>Pool code is using to group resources in pool. When <a href="/p/snippet">Snippet</a> is executed, 
+pool code will be used to decide which resources need to be provided to snippet.</p>
+
+<p>For example, we have historical data in number of files, i.e. year-by-year. 
+While uploading those files we will specify pool code, i.e. ‘historical-dataset’
+Then we can transform all files which are loaded with this pool code into one dataset file 
+and then this result of transforming will eb sended to other snippet as input resource.</p>
+
+<h3 id="creation">Creation</h3>
+
+<p>There are <a href="http://localhost:8080/launchpad/resource/resources">two forms of uploading resources</a></p>
+
+<p>The first one is for uploading files and assign pool code (required) and code (optional) for uploaded resource.</p>
+
+<p>The second one is for defining resources which isn’t controlled by Metaheuristic and 
+stored somewhere else.
+Right now two type of remote sourcing of resources are supported - ‘git’ and ‘disk’
+ – git - resources is in a git repository and Station has to clone repository before accessing that resource</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sourcing</span><span class="pi">:</span> <span class="s">git</span>
+<span class="na">git</span><span class="pi">:</span>
+  <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/sergmain/metaheuristic.git</span>
+  <span class="na">branch</span><span class="pi">:</span> <span class="s">master</span>
+  <span class="na">commit</span><span class="pi">:</span> <span class="s">b25331edba72a1a901634212ac55752238fd2dd5</span>
+</code></pre></div></div>
+
+<p>– disk - resources are stored on shared devices (i.e. shared dir)</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sourcing</span><span class="pi">:</span> <span class="s">disk</span>
+<span class="na">disk</span><span class="pi">:</span>
+  <span class="na">code</span><span class="pi">:</span> <span class="s">storage-code</span>
+  <span class="na">mask</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*'</span>
+</code></pre></div></div>
+
+<p>Field disk/code must have the value which is specified as metadata disk/code in <a href="/p/description-of-env-yaml#structure">env.yaml file</a>.
+For supporting the yaml config which is showed above, env.yaml must be like this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">disk</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">storage-code</span>
+  <span class="na">path</span><span class="pi">:</span> <span class="s">/dataset/input-dir</span>
+<span class="na">envs</span><span class="pi">:</span>
+  <span class="na">python-3</span><span class="pi">:</span> <span class="s">python3</span>
+  <span class="na">java-11</span><span class="pi">:</span> <span class="s">java -jar</span>
+<span class="na">mirrors</span><span class="pi">:</span>
+  <span class="s">https://github.com/sergmain/metaheuristic.git</span><span class="pi">:</span> <span class="s">/git-mirror/mh/metaheuristic.git</span>
+</code></pre></div></div>
+
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
