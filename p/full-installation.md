@@ -24,8 +24,12 @@ Right now there isn't any known bug which restricts to use certain JDK.
 #### Database
 At this moment we are supporting two databases - mysql and postgresql.    
 By supporting we means that there is sql scripts for initialization of db. 
-Quick start is using H2 db, so this db is fine too. 
-Sql files for H2 [is there](https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-h2.sql)
+Quick start is using H2 db, so this db is fine too.
+ 
+Sql files for db's scheme:   
+ -- [Postgresql](https://github.com/sergmain/metaheuristic/blob/master/sql/schema-postgresql.sql)   
+ -- [Mysql](https://github.com/sergmain/metaheuristic/blob/master/sql/schema-mysql.sql)   
+ -- [H2](https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-h2.sql)   
 
 In this documentation we expect that you'll create db's scheme 'mh', db's user will be 'mh' and password will be 'qwe321'
 
@@ -36,7 +40,7 @@ It'll be /mh-root in the follow text.
 
 - Change dir to /mh-root and the follow dirs:
    
-```
+```text
 /mh-root/config
 /mh-root/logs
 /mh-root/mh-launchpad
@@ -44,12 +48,12 @@ It'll be /mh-root in the follow text.
 ```
 
 - From /mh-root run the git cloning command:   
-```
+```text
 git clone https://github.com/sergmain/metaheuristic.git
 ```
 
 - Change dir to /mh-root/metaheuristic and run the command:   
-```
+```text
 mvnw clean install -f pom.xml -Dmaven.test.skip=true
 ```
 
@@ -114,7 +118,12 @@ Current connection parameters to database are:
     -- spring.datasource.url = jdbc:mysql://localhost:3306/mh - defines IP address (localhost) and port (3306) of db,
         and db scheme (mh). If you want to use the different values, you need to change them accordingly   
 
-Descriptions of all mh.* parameters can be found in [mh.* parameters](mh-application-properties) 
+Descriptions of all mh.* parameters can be found in [mh.* parameters](description-of-mh-application-properties) 
+
+#### Configure Station
+
+Now you need to configure station. You can skip this part for now and launch 
+Metaheuristic with predefined files by going to [Launching of Metaheuristic]{Launching of Metaheuristic} section.
 
 - Create file /mh-root/mh-station/launchpad.yaml with follow content:
    
@@ -132,17 +141,32 @@ launchpads:
       weekend: 0:00-23:59   
     acceptOnlySignedSnippets: false   
 ```
+Descriptions of all parameters can be found in [description of launchpad.yaml](description-of-launchpad-yaml) 
+
 
 - Create file /mh-root/mh-station/env.yaml with follow content:
    
 ```yaml
 envs:
-  python-3: python.exe
+  python-3: python
   java-11: java -jar
 ```
+Descriptions of all parameters can be found in [description of env.yaml](description-of-env-yaml) 
 
 
+#### Launching of Metaheuristic
 
+- That's all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:
+
+If you skipped the creation of launchpad.yaml and env.yaml, the command for launching is:
+```text
+java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+```
+
+If you created custom version of launchpad.yaml and env.yaml, the command for launching is:
+```text
+java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
+```
 
 
 

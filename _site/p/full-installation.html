@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=60d81832e119e8bf525e5d2fab45c76c66c4a1c1" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=972e901cdf530f1720efb07a28437c188a2fb67d" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -72,8 +72,12 @@ Right now there isn’t any known bug which restricts to use certain JDK.</p>
 <h4 id="database">Database</h4>
 <p>At this moment we are supporting two databases - mysql and postgresql.  <br />
 By supporting we means that there is sql scripts for initialization of db. 
-Quick start is using H2 db, so this db is fine too. 
-Sql files for H2 <a href="https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-h2.sql">is there</a></p>
+Quick start is using H2 db, so this db is fine too.</p>
+
+<p>Sql files for db’s scheme: <br />
+ – <a href="https://github.com/sergmain/metaheuristic/blob/master/sql/schema-postgresql.sql">Postgresql</a> <br />
+ – <a href="https://github.com/sergmain/metaheuristic/blob/master/sql/schema-mysql.sql">Mysql</a> <br />
+ – <a href="https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-h2.sql">H2</a></p>
 
 <p>In this documentation we expect that you’ll create db’s scheme ‘mh’, db’s user will be ‘mh’ and password will be ‘qwe321’</p>
 
@@ -89,7 +93,7 @@ It’ll be /mh-root in the follow text.</p>
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/mh-root/config
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/mh-root/config
 /mh-root/logs
 /mh-root/mh-launchpad
 /mh-root/mh-station
@@ -97,11 +101,11 @@ It’ll be /mh-root in the follow text.</p>
 
 <ul>
   <li>From /mh-root run the git cloning command:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/sergmain/metaheuristic.git
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/sergmain/metaheuristic.git
 </code></pre></div>    </div>
   </li>
   <li>Change dir to /mh-root/metaheuristic and run the command:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvnw clean install -f pom.xml -Dmaven.test.skip=true
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvnw clean install -f pom.xml -Dmaven.test.skip=true
 </code></pre></div>    </div>
   </li>
   <li>Change dir to /mh-root/config and create file application.properties with follow content:</li>
@@ -165,7 +169,12 @@ If you are using postgresql, you need to uncomment section for postgresql and co
     – spring.datasource.url = jdbc:mysql://localhost:3306/mh - defines IP address (localhost) and port (3306) of db,
         and db scheme (mh). If you want to use the different values, you need to change them accordingly</p>
 
-<p>Descriptions of all mh.* parameters can be found in <a href="mh-application-properties">mh.* parameters</a></p>
+<p>Descriptions of all mh.* parameters can be found in <a href="description-of-mh-application-properties">mh.* parameters</a></p>
+
+<h4 id="configure-station">Configure Station</h4>
+
+<p>Now you need to configure station. You can skip this part for now and launch 
+Metaheuristic with predefined files by going to [Launching of Metaheuristic]{Launching of Metaheuristic} section.</p>
 
 <ul>
   <li>Create file /mh-root/mh-station/launchpad.yaml with follow content:</li>
@@ -184,14 +193,30 @@ If you are using postgresql, you need to uncomment section for postgresql and co
       <span class="no">weekend: 0:00-23:59   </span>
     <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
 </code></pre></div></div>
+<p>Descriptions of all parameters can be found in <a href="description-of-launchpad-yaml">description of launchpad.yaml</a></p>
 
 <ul>
   <li>Create file /mh-root/mh-station/env.yaml with follow content:</li>
 </ul>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
-  <span class="na">python-3</span><span class="pi">:</span> <span class="s">python.exe</span>
+  <span class="na">python-3</span><span class="pi">:</span> <span class="s">python</span>
   <span class="na">java-11</span><span class="pi">:</span> <span class="s">java -jar</span>
+</code></pre></div></div>
+<p>Descriptions of all parameters can be found in <a href="description-of-env-yaml">description of env.yaml</a></p>
+
+<h4 id="launching-of-metaheuristic">Launching of Metaheuristic</h4>
+
+<ul>
+  <li>That’s all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:</li>
+</ul>
+
+<p>If you skipped the creation of launchpad.yaml and env.yaml, the command for launching is:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+</code></pre></div></div>
+
+<p>If you created custom version of launchpad.yaml and env.yaml, the command for launching is:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
 </code></pre></div></div>
 
 
