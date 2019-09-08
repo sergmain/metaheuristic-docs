@@ -55,5 +55,5 @@ layout: default
 - [Snippet](/p/snippet.md)
 
 ### T
-- [Task's params.yaml file](/p/task-params-yaml.md)
+- [Task's params.yaml file](/p/description-of-task-params-yaml.md)
 
