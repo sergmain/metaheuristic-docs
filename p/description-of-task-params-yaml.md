@@ -20,7 +20,7 @@ This parameter will always be the last parameter in the list of parameters which
 
 This parameter file has the follow structure:   
 
-```markdown
+```yaml
 taskYaml:
   inputResourceAbsolutePaths:
     mainDocument:

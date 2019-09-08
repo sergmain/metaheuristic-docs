@@ -39,8 +39,8 @@ layout: default
 
 ### S
 - [Schedule](schedule.md)
-- [Snippet](snippet.md)
+- [Snippet.yaml](description-of-snippet-yaml.md)
 
 ### T
-- [Task params yaml file](task-params-yaml.md)
+- [Task's params.yaml file](description-of-task-params-yaml.md)
 

@@ -30,25 +30,25 @@ As a result after stopping Metaheuristic all data will be lost.
 It'll be /mh-root in follow text. 
 
 1. from /mh-root run git cloning command:
-    ```
+    ```text
     git clone https://github.com/sergmain/metaheuristic.git
     git clone https://github.com/sergmain/metaheuristic-assets.git
     ```
 
 1. Change dir to /mh-root/metaheuristis and run command:
-    ```
+    ```text
     mvnw clean install -f pom.xml -Dmaven.test.skip=true
     ```
 
 1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    ```
+    ```text
     curl-upload-simple-metrics-to-atlas
     ```
 
 1. Change dir to /mh-root and run command:
-    ```
-    java -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
-    ```
+```text
+java -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+```
 
 1. Now you can find our experiment data at http://localhost:8080/launchpad/atlas/atlas-experiments
 login - q, password - 123
@@ -66,7 +66,7 @@ Be sure to add the python bin dir to your **$PATH**
 Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocumentation) 
 
 1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    ```
+    ```text
     curl-upload-snippet-as-one-file
     curl-add-resource-stub
     curl-add-experiment
@@ -78,17 +78,17 @@ Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocume
 
 1. At this point Metaheuristic started to produce tasks 
 and you have to have until status will 'PRODUCED'. You can check current status by running script
-    ```
+    ```text
     curl-get-experiment-processing-status
     ```
 
 1. After being changed to 'PRODUCED' run the command:
-    ```
+    ```text
     curl-start-processing-of-experiment-tasks
     ```
 
 1. All tasks will be completed in 10 minutes approximately. You can get the current status of processing by command:
-    ```
+    ```text
     curl-get-experiment-processing-status
     ```
 

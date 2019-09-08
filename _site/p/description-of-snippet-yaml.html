@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=21221d14dbf968c801c523c56cc5982658bd6405" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=972e901cdf530f1720efb07a28437c188a2fb67d" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -18,11 +18,11 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/p/snippet.html" />
-<meta property="og:url" content="http://localhost:4000/p/snippet.html" />
+<link rel="canonical" href="http://localhost:4000/p/description-of-snippet-yaml.html" />
+<meta property="og:url" content="http://localhost:4000/p/description-of-snippet-yaml.html" />
 <meta property="og:site_name" content="Metaheuristic" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/snippet.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/description-of-snippet-yaml.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -71,29 +71,29 @@ file in any scripting language. It can be ‘curl’ command to request external
 <p>To upload snippet to Launchpad, the Snippet have to configured with snippet.yaml file</p>
 
 <p>snippet.yaml for the case with external .py file:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
-- code: simple-snippet-1.2
-  env: python-3
-  file: some-python-file.py
-  params: param1 param2 param3
-  metas:
-  - key: mh.task-params-version
-    value: '3'
-  metrics: false
-  skipParams: false
-  sourcing: launchpad
-  type: simple-snippet
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-snippet-1.2</span>
+  <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
+  <span class="na">file</span><span class="pi">:</span> <span class="s">some-python-file.py</span>
+  <span class="na">params</span><span class="pi">:</span> <span class="s">param1 param2 param3</span>
+  <span class="na">metas</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+    <span class="na">value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+  <span class="na">metrics</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">skipParams</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">sourcing</span><span class="pi">:</span> <span class="s">launchpad</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">simple-snippet</span>
 </code></pre></div></div>
 
 <p>So, how does it work?
 python3 is a string reference to environment which is configured at Station side. Such configuration is done in env.yaml file 
 I.e.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>envs:
-  python-3: /anaconda3/envs/python-3.6/python
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
+  <span class="na">python-3</span><span class="pi">:</span> <span class="s">/anaconda3/envs/python-3.6/python</span>
 </code></pre></div></div>
 
 <p>And final command to execute snippet at Station side will be</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3
 </code></pre></div></div>
 
 <p>Fields in snippet.yaml:</p>
@@ -110,7 +110,7 @@ I.e.</p>
 <blockquote>
   <ul>
     <li>mh.task-params-version defines which format must be used for params.yaml file which is provided to snippet 
- as the last parameter in command line (skipParams is false). For details see <a href="task-params-yaml">Task params.yaml config</a></li>
+ as the last parameter in command line (skipParams is false). For details see <a href="description-of-task-params-yaml.md">description of task’s params.yaml config</a></li>
   </ul>
 </blockquote>
 
@@ -129,24 +129,24 @@ I.e.</p>
 </ul>
 
 <p>snippet.yaml for the case when scripting file is embedded in config:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
-  - code: simple-metrics.fit:1.2
-    type: fit
-    env: python-3
-    sourcing: station
-    metas:
-      - key: mh.task-params-version
-        value: 3
-      - key: mh.snippet-params-as-file
-        value: true
-      - key: mh.snippet-params-file-ext
-        value: .py
-    params: |+
-      import sys
-      from datetime import datetime
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">fit</span>
+    <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
+    <span class="na">sourcing</span><span class="pi">:</span> <span class="s">station</span>
+    <span class="na">metas</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.snippet-params-as-file</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.snippet-params-file-ext</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">.py</span>
+    <span class="na">params</span><span class="pi">:</span> <span class="pi">|+</span>
+      <span class="no">import sys</span>
+      <span class="no">from datetime import datetime</span>
 
-      print(sys.argv)
-      print(str(datetime.now()))
+      <span class="no">print(sys.argv)</span>
+      <span class="no">print(str(datetime.now()))</span>
 </code></pre></div></div>
 
 <p>Fields in this snippet.yaml almost the same as the previous one, except the follow:</p>
@@ -160,19 +160,19 @@ I.e.</p>
 </ul>
 
 <p>snippet.yaml for the case when snippet will be provisioned from git repository:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
-  - code: simple-metrics.fit:1.2
-    type: fit
-    file: examples/simple-metrics/snippets/simple-metrics-fit.py
-    env: python-3
-    sourcing: git
-    metas:
-      - key: mh.task-params-version
-        value: 3
-    git:
-      repo: https://github.com/sergmain/metaheuristic-assets.git
-      branch: master
-      commit: 5d809f50e3ccb45688deefd9e1e70f6202d8d18a
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">fit</span>
+    <span class="na">file</span><span class="pi">:</span> <span class="s">examples/simple-metrics/snippets/simple-metrics-fit.py</span>
+    <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
+    <span class="na">sourcing</span><span class="pi">:</span> <span class="s">git</span>
+    <span class="na">metas</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
+    <span class="na">git</span><span class="pi">:</span>
+      <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/sergmain/metaheuristic-assets.git</span>
+      <span class="na">branch</span><span class="pi">:</span> <span class="s">master</span>
+      <span class="na">commit</span><span class="pi">:</span> <span class="s">5d809f50e3ccb45688deefd9e1e70f6202d8d18a</span>
 </code></pre></div></div>
 
 <p>For using git as source of snippet two fields must be defined:</p>
@@ -190,17 +190,17 @@ Metadata as solution for flexible configuration of snippet was chosen because in
 the code of Metaheuristic without loosing backward compatibility.</p>
 
 <p>Declaration of metadata in snippet’s config is follow:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snippets:
-  - code: simple-metrics.fit:1.2
-    metas:
-      - key: mh.task-params-version
-        value: 3
-      - key: mh.snippet-supported-os
-        value: linux, macos
-      - key: mh.snippet-params-as-file
-        value: true
-      - key: mh.snippet-params-file-ext
-        value: .py
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
+    <span class="na">metas</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.snippet-supported-os</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">linux, macos</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.snippet-params-as-file</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.snippet-params-file-ext</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">.py</span>
 </code></pre></div></div>
 
 <p>Current list of metadatas includes:</p>
@@ -239,7 +239,7 @@ the code of Metaheuristic without loosing backward compatibility.</p>
 [path to private key file] must point to a valid private key, i.e. /mh/git/private-key.txt</li>
 </ul>
 
-<p>For details how to generate public and privat keys, see <a href="/p/gen-keys">Gen keys</a> page</p>
+<p>For details how to generate public and privat keys, see <a href="gen-keys">Gen keys</a> page</p>
 
 <h3 id="uploading">Uploading</h3>
 <p>After snippet is prepared in form of snippet.yaml or snippet.zip it has to be uploaded to Launchpad.</p>
@@ -247,7 +247,7 @@ the code of Metaheuristic without loosing backward compatibility.</p>
 <p>This can be done via web interface at url <a href="">http://localhost:8080/launchpad/snippet/snippets</a></p>
 
 <p>Other way to upload snippet is using REST-based url:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -u q:123 -F "file=@simple-metrics-snippets-as-one-file.yaml"  http://localhost:8080/rest/v1/launchpad/snippet/snippet-upload-from-file
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -u q:123 -F "file=@simple-metrics-snippets-as-one-file.yaml"  http://localhost:8080/rest/v1/launchpad/snippet/snippet-upload-from-file
 </code></pre></div></div>
 
         </section>

@@ -28,7 +28,7 @@ To upload snippet to Launchpad, the Snippet have to configured with snippet.yaml
 
 
 snippet.yaml for the case with external .py file:
-```
+```yaml
 snippets:
 - code: simple-snippet-1.2
   env: python-3
@@ -46,13 +46,13 @@ snippets:
 So, how does it work?
 python3 is a string reference to environment which is configured at Station side. Such configuration is done in env.yaml file 
 I.e.
-```
+```yaml
 envs:
   python-3: /anaconda3/envs/python-3.6/python
 ```
 
 And final command to execute snippet at Station side will be 
-```
+```text
   /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3
 ```
 
@@ -66,7 +66,7 @@ Fields in snippet.yaml:
  is the last parameter for executable file (skipParams must be false)   
  
 > - mh.task-params-version defines which format must be used for params.yaml file which is provided to snippet 
- as the last parameter in command line (skipParams is false). For details see [Task params.yaml config](task-params-yaml)   
+ as the last parameter in command line (skipParams is false). For details see [description of task's params.yaml config](description-of-task-params-yaml.md)   
    
  
 - metrics - boolean, true/false, should we collect metrics after executing this snippet?   
@@ -82,7 +82,7 @@ Fields in snippet.yaml:
 
 
 snippet.yaml for the case when scripting file is embedded in config:
-```
+```yaml
 snippets:
   - code: simple-metrics.fit:1.2
     type: fit
@@ -114,7 +114,7 @@ Fields in this snippet.yaml almost the same as the previous one, except the foll
 
 
 snippet.yaml for the case when snippet will be provisioned from git repository:
-```
+```yaml
 snippets:
   - code: simple-metrics.fit:1.2
     type: fit
@@ -144,7 +144,7 @@ Metadata as solution for flexible configuration of snippet was chosen because in
 the code of Metaheuristic without loosing backward compatibility. 
 
 Declaration of metadata in snippet's config is follow:
-```
+```yaml
 snippets:
   - code: simple-metrics.fit:1.2
     metas:
@@ -196,6 +196,6 @@ After snippet is prepared in form of snippet.yaml or snippet.zip it has to be up
 This can be done via web interface at url [http://localhost:8080/launchpad/snippet/snippets]()
 
 Other way to upload snippet is using REST-based url:      
-```   
+```text   
 curl -u q:123 -F "file=@simple-metrics-snippets-as-one-file.yaml"  http://localhost:8080/rest/v1/launchpad/snippet/snippet-upload-from-file
 ```

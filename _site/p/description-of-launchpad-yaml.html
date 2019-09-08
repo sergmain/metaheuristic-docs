@@ -44,7 +44,141 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          
+          <ul>
+  <li><a href="/index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#structure">Structure</a></li>
+  <li><a href="#Schedule">Schedule</a></li>
+  <li><a href="#WeekTimePeriod">WeekTimePeriod</a></li>
+  <li><a href="#Schedule samples">Schedule samples</a></li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+
+<p>When snippet is being invoked it will be supplied with an absolute path to parameter file. 
+This parameter will always be the last parameter in the list of parameters which snippet will receive.</p>
+
+<h3 id="structure">Structure</h3>
+
+<p>This parameter file has the follow structure:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>   
+  <span class="pi">-</span> <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>   
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>   
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q</span>   
+    <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>   
+      <span class="no">workingDay: 0:00-23:59   </span>
+      <span class="no">weekend: 0:00-23:59   </span>
+    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
+</code></pre></div></div>
+
+<p>Top-level fields in launchpad.yaml:</p>
+<ul>
+  <li>launchpads - The list of configuration of launchpad</li>
+</ul>
+
+<p>Fields in launchpads:</p>
+<ul>
+  <li>securityEnabled: <boolean> - does Launchpad required to provide authentication data to connect to Launchpad</boolean></li>
+  <li>url: http://localhost:8080 <string> - url of Launchpad</string></li>
+  <li>lookupType: direct - right now there is only one value which is ‘direct’</li>
+  <li>authType: basic - right now there is only one value which is ‘basic’</li>
+  <li>restPassword: <string> - password for connecting to Launchpad</string></li>
+  <li>restUsername: <String> - login for connecting to Launchpad</String></li>
+  <li>taskProcessingTime <String> - schedule when tasks have to processed at Station side. 
+  Full description see [below](#schedule)</String></li>
+  <li>acceptOnlySignedSnippets: <boolean> - should Snippet be signed or not</boolean></li>
+</ul>
+
+<h3 id="schedule">Schedule</h3>
+
+<p>For purpose of controlling when Station can process the task, there is taskProcessingTime parameter:</p>
+
+<ul>
+  <li>dayMask - mask which defines the format of date for fields workingDay and workingDay, i.e dd/MM/yyyy</li>
+  <li>workingDay - comma separated list of time periods when Station is active while working day (mon-fri), i.e.:
+  – 0:00-23:59 
+  – 0:00-8:45, 19:00-23:59</li>
+  <li>weekend - comma separated list of time periods when Station is active while working day (sat, sun), i.e.:
+  – 0:00-23:59 
+  – 0:00-8:45, 19:00-23:59</li>
+  <li>holiday - comma separated list of days which must be evaluated as holidays, i.e. 15/01/2019, 16/01/2019</li>
+  <li>exceptionWorkingDay - comma separated list of days which must be evaluated as working day, 
+  i.e. 15/01/2019, 16/01/2019</li>
+  <li>week <WeekTimePeriod> - scherule for every day of week. See [WeekTimePeriod](#WeekTimePeriod) below</WeekTimePeriod></li>
+  <li>policy strict/normal - should task be terminated immediately if working time is over,
+           with strict task will be terminated immediately, with normal task can finish its execution in normal way</li>
+</ul>
+
+<h4 id="weektimeperiod">WeekTimePeriod</h4>
+<p>Structure WeekTimePeriod has 7 fields - mon, tue, wed, thu, fri, sat, sun. 
+Each field has value of comma separated list of time periods when Station is active while working day.</p>
+
+<h4 id="schedule-samples">Schedule samples</h4>
+
+<p>Sample #1, Station is working without interruption</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>   
+  <span class="pi">-</span> <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>   
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>   
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q</span>   
+    <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>   
+      <span class="no">workingDay: 0:00-23:59   </span>
+      <span class="no">weekend: 0:00-23:59   </span>
+    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
+</code></pre></div></div>
+
+<p>Sample #2, Station is working with interruption on mon, the, and sat. 
+There are two holidays (15/01/2019 and 16/01/2019) and one working day which is on Saturday (19/01/2019)</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>   
+  <span class="pi">-</span> <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>   
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>   
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q</span>   
+    <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>   
+      <span class="no">week:</span>
+        <span class="no">mon: 0:00-8:45, 19:00-23:59</span>
+        <span class="no">thu: 0:00-8:45, 19:00-23:59</span>
+        <span class="no">sat: 0:00-8:45, 19:00-23:59</span>
+      <span class="no">dayMask: dd/MM/yyyy</span>
+      <span class="no">holiday: 15/01/2019,16/01/2019</span>
+      <span class="no">exceptionWorkingDay: 19/01/2019</span>
+    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
+</code></pre></div></div>
+
+<p>Sample #3, Station is working at night only (from 19:00 till 8:45) and full day at holidays (sat, sun)<br />
+There are two holidays (15/01/2019 and 16/01/2019) and one working day which is on Saturday (19/01/2019)</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>   
+  <span class="pi">-</span> <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>   
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>   
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q</span>   
+    <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>   
+      <span class="no">workingDay: 0:00-8:45, 19:00-23:59</span>
+      <span class="no">weekend: 0:00-23:59</span>
+      <span class="no">dayMask: dd/MM/yyyy</span>
+      <span class="no">holiday: 15/01/2019,16/01/2019</span>
+      <span class="no">exceptionWorkingDay: 19/01/2019</span>
+    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
+</code></pre></div></div>
+
 
         </section>
 

@@ -13,7 +13,7 @@ layout: default
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) M N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
+- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
 
 ### A
 - [Architecture](/p/concept-architecture-roadmap.md#architecture)
@@ -25,6 +25,7 @@ layout: default
 
 ### E
 - [Experiment](/p/experiment.md)
+- [env.yaml file](/p/description-of-env-yaml.md)
 
 ### F
 - [Full installation](/p/full-installation.md)
@@ -38,6 +39,10 @@ layout: default
 
 ### L
 - [License, licensing](/p/license-licensing-copyright.md#license-and-licensing)
+- [launchpad.yaml file](/p/description-of-launchpad-yaml)
+
+### M
+- [mh.* params in application.properties file](/p/description-of-mh-application-properties.md)
 
 ### Q
 - [Quick start](/p/quick-start.md)
@@ -50,5 +55,5 @@ layout: default
 - [Snippet](/p/snippet.md)
 
 ### T
-- [Task params yaml file](/p/task-params-yaml.md)
+- [Task's params.yaml file](/p/task-params-yaml.md)
 

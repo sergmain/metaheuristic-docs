@@ -44,7 +44,49 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          
+          <ul>
+  <li><a href="/index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#structure">Structure</a></li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+
+<p>When snippet is being invoked it will be supplied with an absolute path to parameter file. 
+This parameter will always be the last parameter in the list of parameters which snippet will receive.</p>
+
+<h3 id="structure">Structure</h3>
+
+<p>This parameter file has the follow structure:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">disk</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">input-dir</span>
+  <span class="na">path</span><span class="pi">:</span> <span class="s">/dataset/input-dir</span>
+<span class="na">envs</span><span class="pi">:</span>
+  <span class="na">python-3</span><span class="pi">:</span> <span class="s">python3</span>
+  <span class="na">java-11</span><span class="pi">:</span> <span class="s">java -jar</span>
+<span class="na">mirrors</span><span class="pi">:</span>
+  <span class="s">https://github.com/sergmain/metaheuristic.git</span><span class="pi">:</span> <span class="s">/git-mirror/mh/metaheuristic.git</span>
+</code></pre></div></div>
+
+<p>Top-level fields in env.yaml:</p>
+<ul>
+  <li>disk <meta /> - The current version of format of params.yaml file.</li>
+  <li>envs <key-value> - defines pair of key-value for code of env (key) and executable (value)</key-value></li>
+  <li>mirrors <key-value> - defines pair of key-value for real url of git's repository (key) and 
+  local dir which represents the mirror of remote git's repository. So in this string:
+</key-value>    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
+</code></pre></div>    </div>
+    <p>https://github.com/sergmain/metaheuristic.git - remote git’s url
+/git-mirror/mh/metaheuristic.git - local directory of git’s repository</p>
+  </li>
+</ul>
+
 
         </section>
 
