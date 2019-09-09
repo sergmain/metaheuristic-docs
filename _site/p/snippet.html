@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=972e901cdf530f1720efb07a28437c188a2fb67d" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=2274b23c9daa2bbfc3c7789527ad7e45b8cb50ee" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -68,7 +68,7 @@ file in any scripting language. It can be ‘curl’ command to request external
 
 <h3 id="configuration">Configuration</h3>
 
-<p>To upload snippet to Launchpad, the Snippet have to configured with snippet.yaml file</p>
+<p>To upload snippet to Launchpad, the Snippet have to be configured with snippet.yaml file</p>
 
 <p>snippet.yaml for the case with external .py file:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
@@ -86,7 +86,7 @@ file in any scripting language. It can be ‘curl’ command to request external
 </code></pre></div></div>
 
 <p>So, how does it work?
-python3 is a string reference to environment which is configured at Station side. Such configuration is done in env.yaml file 
+python3 is a string reference to environment which is configured at Station side. Such configuration is done in <a href="/p/description-of-env-yaml">env.yaml file</a> 
 I.e.</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
   <span class="na">python-3</span><span class="pi">:</span> <span class="s">/anaconda3/envs/python-3.6/python</span>
@@ -110,7 +110,7 @@ I.e.</p>
 <blockquote>
   <ul>
     <li>mh.task-params-version defines which format must be used for params.yaml file which is provided to snippet 
- as the last parameter in command line (skipParams is false). For details see <a href="description-of-task-params-yaml.md">description of task’s params.yaml config</a></li>
+ as the last parameter in command line (skipParams is false). For details see <a href="/p/description-of-task-params-yaml.html">description of task’s params.yaml config</a></li>
   </ul>
 </blockquote>
 
@@ -185,8 +185,8 @@ I.e.</p>
 </ul>
 
 <h3 id="metadata">Metadata</h3>
-<p>Metadata is using for configuring a snippet. 
-Metadata as solution for flexible configuration of snippet was chosen because in this case we can upgrade 
+<p>Metadata is being used for configuring a snippet. 
+Metadata as a solution for flexible configuration of snippet was chosen because in this case we can upgrade 
 the code of Metaheuristic without loosing backward compatibility.</p>
 
 <p>Declaration of metadata in snippet’s config is follow:</p>

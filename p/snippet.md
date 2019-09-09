@@ -24,7 +24,7 @@ From a delivery point of view, the Snippet can be provisioned from Launchpad or 
 
 ### Configuration
 
-To upload snippet to Launchpad, the Snippet have to configured with snippet.yaml file
+To upload snippet to Launchpad, the Snippet have to be configured with snippet.yaml file
 
 
 snippet.yaml for the case with external .py file:
@@ -44,7 +44,7 @@ snippets:
 ```
 
 So, how does it work?
-python3 is a string reference to environment which is configured at Station side. Such configuration is done in env.yaml file 
+python3 is a string reference to environment which is configured at Station side. Such configuration is done in [env.yaml file](/p/description-of-env-yaml) 
 I.e.
 ```yaml
 envs:
@@ -139,8 +139,8 @@ For using git as source of snippet two fields must be defined:
 
 
 ### Metadata
-Metadata is using for configuring a snippet. 
-Metadata as solution for flexible configuration of snippet was chosen because in this case we can upgrade 
+Metadata is being used for configuring a snippet. 
+Metadata as a solution for flexible configuration of snippet was chosen because in this case we can upgrade 
 the code of Metaheuristic without loosing backward compatibility. 
 
 Declaration of metadata in snippet's config is follow:
