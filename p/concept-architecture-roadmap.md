@@ -31,7 +31,7 @@ Snippet can be executable application, .jar file, python notebook,
 file in any scripting language. It can be 'curl' command to request external url, send e-mail and so on
 For full description of Snippet see [documentation on Snippets](snippet)  
 
-From delivery point of view Snippet can be provisioned from Lauchpad or from git repository.
+From delivery point of view Snippet can be provisioned from Launchpad or from git repository.
 
 There are two special type of Snippets for fitting and predicting with AI models. 
 Those Snippets are configured while configuring an Experiment. An Experiment is 
