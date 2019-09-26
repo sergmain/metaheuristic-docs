@@ -1,5 +1,5 @@
 theme: jekyll-theme-architect
-title: STP Baikal
+title: Metaheuristic.ai
 description: Distributer framework for hyper-parameter optimization and AutoML.
-repository: sergmain/stp-baikal-411
+repository: sergmain/metaheuristic
 exclude: [.idea, CNAME, Gemfile, Gemfile.lock,how-to.txt]
