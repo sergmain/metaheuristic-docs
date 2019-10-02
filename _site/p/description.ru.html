@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=eef18f1f5b9fd8e71b1e8cad2af034b0e89d585f" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=221e164ebe509f1884f8e2448fc439f980a6e6b1" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -12,17 +12,17 @@
     <![endif]-->
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Metaheuristic" />
+<meta property="og:title" content="Metaheuristic.ai" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <link rel="canonical" href="http://localhost:4000/p/description.ru.html" />
 <meta property="og:url" content="http://localhost:4000/p/description.ru.html" />
-<meta property="og:site_name" content="Metaheuristic" />
+<meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/description.ru.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/description.ru.html","headline":"Metaheuristic.ai","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -31,7 +31,7 @@
     <header>
       <div class="inner">
         <a href="http://localhost:4000/">
-          <h1>Metaheuristic</h1>
+          <h1>Metaheuristic.ai</h1>
         </a>
         <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
         
@@ -50,8 +50,9 @@
   <li>Сущности, общая концепция</li>
 </ol>
 
-<p>1.1 Общая концепция
-логически Metaheuristic состоит из 2-ух верхнеуровневых модулей:</p>
+<p>1.1 Общая концепция</p>
+
+<p>логически Metaheuristic состоит из 2-ух верхнеуровневых модулей:</p>
 <ul>
   <li>launchpad - стартовая площадка</li>
   <li>station - станция</li>
@@ -62,25 +63,30 @@
 Выбор стартовой площадки у которой необходимо запросить новое задание на выполнение осучествляется
 на основе Round-robin алгоритма.</p>
 
-<p>1.2 Plan (план)
-План - это описатель содержащий описания процессов, которые будут выполняться для перобразования
+<p>1.2 Plan (план)</p>
+
+<p>План - это описатель содержащий описания процессов, которые будут выполняться для перобразования
 данных из начальной формы в конечную. План, как описатель, не содержит состояния
 выполнения процесса преобразования данных.</p>
 
-<p>1.3 Workbook (рабочая книга)
-Рабочая книга - это сущность, которая включает в себя инфрмацию о выполнении преобразования данных.</p>
+<p>1.3 Workbook (рабочая книга)</p>
 
-<p>1.4 Resource (ресурс)
-Ресурс - это данные, которые используются или создаются в процессе преобразования данных потоком.
+<p>Рабочая книга - это сущность, которая включает в себя инфрмацию о выполнении преобразования данных.</p>
+
+<p>1.4 Resource (ресурс)</p>
+
+<p>Ресурс - это данные, которые используются или создаются в процессе преобразования данных потоком.
 Ресурны бывают 2-ух типов - DATA (данные), SNIPPET(спипет)
 Данные - это все, что загружается в снипеты или является продуктом их работы.
 Снипет, как ресурс - это исполняемый код, который соответствует одному из описателей снипетов</p>
 
-<p>1.5 Snippet (спипет)
-Снипет - это описатель исполняемого кода, который будет вызываться при выполнении задачи.</p>
+<p>1.5 Snippet (спипет)</p>
 
-<p>1.6 Task (задача)
-Задача - описание, что нужно выполнить, с какими параметрами, какой результат получить</p>
+<p>Снипет - это описатель исполняемого кода, который будет вызываться при выполнении задачи.</p>
+
+<p>1.6 Task (задача)</p>
+
+<p>Задача - описание, что нужно выполнить, с какими параметрами, какой результат получить</p>
 
 <ol>
   <li>Общая схема взаимодействия сушностей</li>
@@ -112,6 +118,7 @@
 и имеет смысл только для целей разработки и тестирования</p>
 
 <p>3.1. Директории</p>
+
 <ul>
   <li>для конфигурации стартовой площадки надо выбрать и создать рабочий директорий,
 в котором стартовая площадка будет создавать свои артифакты</li>
@@ -123,80 +130,92 @@
 \mh\station - директорий для станции</li>
 </ul>
 
-<p>3.2 git
-перейти в \mh  (или другой директорий, который выбран, как основной)
-выполнить команду
-git clone https://github.com/sergmain/metaheuristic.git git</p>
+<p>3.2 git</p>
 
-<p>3.3 Сборка
-для сборки проекта требуется java 11. 
-Скачать текущий релиз JDK11 надо по ссылке https://jdk.java.net/11/</p>
+<p>перейти в \mh  (или другой директорий, который выбран, как основной)
+выполнить команду</p>
 
-<p>в директории \mh\git запустить
-mvn-all.bat</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/sergmain/metaheuristic.git git
+</code></pre></div></div>
 
-<p>3.4 Database
-создать нового пользователя и схему(базу данных).</p>
+<p>3.3 Сборка</p>
 
-<p>используя соответствующий скрипт создать таблицы в БД в созданной ранее схеме
-MySql       - sql/schema-mysql.sql
+<p>для сборки проекта требуется java 11.  Скачать текущий релиз JDK11 надо по ссылке</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://jdk.java.net/11/
+</code></pre></div></div>
+
+<p>в директории \mh\git запустить</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn-all.bat
+</code></pre></div></div>
+
+<p>3.4 Database</p>
+
+<p>создать нового пользователя и схему(базу данных).</p>
+
+<p>используя соответствующий скрипт создать таблицы в БД в созданной ранее схеме <br />
+MySql       - sql/schema-mysql.sql <br />
 Postgresql  - sql/schema-postgresql.sql</p>
 
-<p>3.5 application.properties
-за основу можно взять файл, который доступен по url -
-https://raw.githubusercontent.com/sergmain/metaheuristic/master/apps/metaheuristic/src/main/resources/application.properties</p>
+<p>3.5 application.properties</p>
+
+<p>за основу можно взять файл, который доступен по url -</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://raw.githubusercontent.com/sergmain/metaheuristic/master/apps/metaheuristic/src/main/resources/application.properties
+</code></pre></div></div>
 
 <p>при этом заменив значения, которые берутся из окружения, на конкретные значения</p>
 
-<p>3.5.1 общие значения для стартовой площадки и станции
-mh.thread-number=3
+<p>3.5.1 общие значения для стартовой площадки и станции</p>
+
+<p>mh.thread-number=3
 определяет количество потоков, которые будет использоваться для паралельной работы Metaheuristic
 делать количество потоков больше, чем количестов виртуальных ядер (ядер с учетом гипер-трединга) смысла нет.</p>
 
-<p>3.6 Стартовая площадка
-3.6.1 application.properties для стартовой площадки
-конфигурация конфиг файла заключается в задании следующий параметров</p>
+<p>3.6 Стартовая площадка</p>
+
+<p>3.6.1 application.properties для стартовой площадки</p>
+
+<p>конфигурация конфиг файла заключается в задании следующий параметров</p>
 
 <p>spring.profiles.active=launchpad</p>
 
-<p>для mysql
-spring.datasource.url = jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;sslMode=DISABLED
-spring.datasource.username = mh
-spring.datasource.password = qwe321
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect</p>
+<p>для mysql</p>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.datasource.url</span> <span class="p">=</span> <span class="s">jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;sslMode=DISABLED</span>
+<span class="py">spring.datasource.username</span> <span class="p">=</span> <span class="s">mh</span>
+<span class="py">spring.datasource.password</span> <span class="p">=</span> <span class="s">qwe321</span>
+<span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+<span class="py">spring.jpa.properties.hibernate.dialect</span> <span class="p">=</span> <span class="s">org.hibernate.dialect.MySQL57Dialect</span>
+</code></pre></div></div>
 
 <p>временную зону в url для mysql ( serverTimezone=America/Los_Angeles ) выбрать согласно документации на mysql 
 и изменить в spring.datasource.url
 в приведеном выше примере временная зона - serverTimezone=America/Los_Angele</p>
 
-<p>для postgresql
-spring.datasource.url=jdbc:postgresql://host:5432/database?user=abc&amp;password=xxx&amp;sslmode=require
-spring.datasource.username=abc
-spring.datasource.password=xxx
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect</p>
+<p>для postgresql</p>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.datasource.url</span><span class="p">=</span><span class="s">jdbc:postgresql://host:5432/database?user=abc&amp;password=xxx&amp;sslmode=require</span>
+<span class="py">spring.datasource.username</span><span class="p">=</span><span class="s">abc</span>
+<span class="py">spring.datasource.password</span><span class="p">=</span><span class="s">xxx</span>
+<span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">org.postgresql.Driver</span>
+<span class="py">spring.jpa.properties.hibernate.dialect</span><span class="p">=</span><span class="s">org.hibernate.dialect.PostgreSQL95Dialect</span>
+</code></pre></div></div>
 
 <p>указать специфические для стартовой площадки параметры:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>======================
-mh.launchpad.enabled=true
-mh.launchpad.dir=./launchpad
-mh.launchpad.is-replace-snapshot=true
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">mh.launchpad.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.launchpad.dir</span><span class="p">=</span><span class="s">./launchpad</span>
+<span class="py">mh.launchpad.is-replace-snapshot</span><span class="p">=</span><span class="s">true</span>
 
-mh.launchpad.is-ssl-required=false
+<span class="py">mh.launchpad.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
 
 
-# password - 123
-mh.launchpad.master-password=$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu
-mh.launchpad.master-username=q
+<span class="c"># password - 123
+</span><span class="py">mh.launchpad.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
+<span class="py">mh.launchpad.master-username</span><span class="p">=</span><span class="s">q</span>
 
-mh.launchpad.rest-password=$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu
-mh.launchpad.rest-username=q1
+<span class="py">mh.launchpad.rest-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
+<span class="py">mh.launchpad.rest-username</span><span class="p">=</span><span class="s">q1</span>
 
-mh.launchpad.public-key= &lt;!!! insert real public key here !!!&gt; 
-
-=========================
+<span class="py">mh.launchpad.public-key</span><span class="p">=</span> <span class="s">&lt;!!! insert real public key here !!!&gt; </span>
 </code></pre></div></div>
 
 <p>mh.launchpad.is-replace-snapshot - можно ли перезаписывать snapshot-спипеты новыми версиями</p>
@@ -220,33 +239,36 @@ mh.launchpad.master-password
 
 <p>-username выбирается самостоятельно, но не может включать в себя символ ‘=’ (символ равно)</p>
 
-<p>3.7 Станция
-3.7.1 application.properties для станции
-spring.profiles.active=station</p>
+<p>3.7 Станция</p>
 
-<p>mh.station.enabled=true
-mh.station.dir=./station</p>
+<p>3.7.1 application.properties для станции</p>
 
-<p>3.7.2 Конфигурация launchpad.yaml
-Для конфигурации стартовых площадок, с которыми будет взаимодействовать конкретная станция используется
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">station</span>
+
+<span class="py">mh.station.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.station.dir</span><span class="p">=</span><span class="s">./station</span>
+</code></pre></div></div>
+
+<p>3.7.2 Конфигурация launchpad.yaml</p>
+
+<p>Для конфигурации стартовых площадок, с которыми будет взаимодействовать конкретная станция используется
 конфиг файл launchpad.yaml. Данный файл должен располагаться в директории который является главным для станции,
 в данном руковосдстве это \mh\station
-формат файла:
-launchpads:</p>
-<ul>
-  <li>signatureRequired: false
-securityEnabled: true
-url: http://localhost:8080
-lookupType: direct
-authType: basic
-restPassword: 123
-restUsername: q1
-taskProcessingTime: |
-  workingDay: 0:00-23:59
-  weekend: 0:00-23:59
-publicKey: &lt;!!! insert real public key here !!!&gt;
-acceptOnlySignedSnippets: false</li>
-</ul>
+формат файла:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q1</span>
+    <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="no">workingDay: 0:00-23:59</span>
+      <span class="no">weekend: 0:00-23:59</span>
+    <span class="na">publicKey</span><span class="pi">:</span> <span class="s">&lt;!!! insert real public key here !!!&gt;</span>
+    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
 
 <p>Описание параметров:
 signatureRequired: пребуется ли подпись (в настоящее время не используется)
@@ -267,8 +289,9 @@ taskProcessingTime: рассписание, когда задачи с данн�
 
 <p>для publicKey необходимо использовать приложение из apps/gen-keys, подробнее см “Конфигурация стартовой плащадки”</p>
 
-<p>3.8 Конфигурация spring.profiles.active
-в настоящее время в Metaheuristic поддерживается 2 профиля - launchpad и station
+<p>3.8 Конфигурация spring.profiles.active</p>
+
+<p>в настоящее время в Metaheuristic поддерживается 2 профиля - launchpad и station
 эти профили можно использовать как по отдельности, так и комбинировать. В любом случаев,
 в файле application.properties должна быть только ОДНА строка spring.profiles.active=
 Например:
@@ -281,20 +304,26 @@ spring.profiles.active=station</p>
 <p>!Внимание! данная инструкция написана для случая когда используются оба профиля.
 поэтому параметр spring.profiles.active в apllication.properties должен быть следующим:</p>
 
-<p>spring.profiles.active=launchpad, station</p>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">launchpad, station</span>
+</code></pre></div></div>
 
-<p>3.9 конфигурация Http сервера на стороне стартовой площадки
-3.9.1 IP адрес
-для точного указания на какой IP адрес биндить http используется параметр server.address
-Например:
-server.address=127.0.0.1</p>
+<p>3.9 Конфигурация Http сервера на стороне стартовой площадки</p>
+
+<p>3.9.1 IP адрес</p>
+
+<p>для точного указания на какой IP адрес биндить http используется параметр server.address
+Например:</p>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+</code></pre></div></div>
 
 <ol>
-  <li>apps/gen-keys
-для генерации ключей необходимо запустить</li>
+  <li>apps/gen-keys</li>
 </ol>
 
-<p>java -jar apps/gen-keys/target/gen-keys.jar</p>
+<p>для генерации ключей необходимо запустить</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar apps/gen-keys/target/gen-keys.jar
+</code></pre></div></div>
 
 <p>новые ключи (публичный и частный) будут напечатаны в консоле
 как и где будут использоваться публичный и частный ключи будет написано далее</p>
@@ -308,191 +337,225 @@ server.address=127.0.0.1</p>
 
 <p>для преобразования паролей в формат Metaheuristic (bcrypt, 10 циклов) запустить</p>
 
-<p>java -jar apps/gen-passwords/target/gen-passwords.jar <master password=""> <rest password=""></rest></master></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar apps/gen-passwords/target/gen-passwords.jar &lt;master password&gt; &lt;rest password&gt;
+</code></pre></div></div>
 
-<master password=""> - пароль для доступа к веб-консоле стартовой площадки
-<rest password=""> - пароль для доступа к rest-api
+<p>&lt;master password&gt; - пароль для доступа к веб-консоле стартовой площадки <br />
+&lt;rest password&gt; - пароль для доступа к rest-api</p>
 
-результат работы поместить в соответствующие параметры:
-master password --&gt; mh.launchpad.master-password
+<p>результат работы поместить в соответствующие параметры:
+master password –&gt; mh.launchpad.master-password</p>
 
-токены могут быть изменены по желанию,
-но не должны быть пустыми и включать в себя символ '=' (символ равно)
+<p>токены могут быть изменены по желанию,
+но не должны быть пустыми и включать в себя символ ‘=’ (символ равно)</p>
 
-6. Запуск
-для запуска Metaheuristic (как стартовой плошадки, так и станции) необходимо
-из директория \mh запустить команду
+<ol>
+  <li>Запуск</li>
+</ol>
 
-java -jar git/apps/metaheuristic/target/metaheuristic.jar
+<p>для запуска Metaheuristic (как стартовой плошадки, так и станции) необходимо
+из директория \mh запустить команду</p>
 
-6.1 обновление кодовой базы
-для того чтобы забрать последние изменения в проекте необходимо перейти в \mh\git
-и выполнить команды:
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar git/apps/metaheuristic/target/metaheuristic.jar
+</code></pre></div></div>
 
-git pull origin master
+<p>6.1 обновление кодовой базы</p>
+
+<p>для того чтобы забрать последние изменения в проекте необходимо перейти в \mh\git
+и выполнить команды:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin master
 mvn-all.bat
+</code></pre></div></div>
 
-7. Управление стартовой площадкой
-после того, как все параметры были прописаны, можно запустить стартовую площадку
+<ol>
+  <li>Управление стартовой площадкой</li>
+</ol>
+
+<p>после того, как все параметры были прописаны, можно запустить стартовую площадку
 по адресу на котором она была запущена
 логин - mh.launchpad.master-username
-пароль - mh.launchpad.master-password
+пароль - mh.launchpad.master-password</p>
 
-если все запустилось успешно, то можно перейти к созданию сущеностей
+<p>если все запустилось успешно, то можно перейти к созданию сущеностей</p>
 
-8. Plan (план)
-создать простейший план, состоящий из одного процесса.
-Создать план можно перейдя по адресу /launchpad/plan/plan-add
+<ol>
+  <li>Plan (план)</li>
+</ol>
 
-значения полей:
-Code of plan --&gt;  simple-plan
+<p>создать простейший план, состоящий из одного процесса.
+Создать план можно перейдя по адресу /launchpad/plan/plan-add</p>
 
-Parameters of plan --&gt;
+<p>значения полей:
+Code of plan –&gt;  simple-plan</p>
 
-processes:
-- code: simple-app
-  collectResources: false
-  name: Simple snippet
-  type: FILE_PROCESSING
-  parallelExec: false
-  snippetCodes:
-  - simple-app:1.1
+<p>Parameters of plan –&gt;</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">processes</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-app</span>
+  <span class="na">collectResources</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Simple snippet</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">FILE_PROCESSING</span>
+  <span class="na">parallelExec</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">snippetCodes</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">simple-app:1.1</span>
+</code></pre></div></div>
 
+<p>сразу после создания данный план не будет валиден
+т.к. необходимо создать сниппет simple-app:1.1</p>
 
+<ol>
+  <li>Снипет</li>
+</ol>
 
+<p>создание снипета, который будет загружен через стартовую площадку состоит из нескольких этапов</p>
+<ul>
+  <li>создать приложение, которое будет обрабатывать данные</li>
+  <li>создать конфиг описания снипета</li>
+  <li>запаковать снипет приложением apps/package-snippet</li>
+  <li>если окружение сконфигурировано на использование только подписанных снипетов,
+то при паковке снипета так же подписать его используя приватный ключ</li>
+</ul>
 
-сразу после создания данный план не будет валиден
-т.к. необходимо создать сниппет simple-app:1.1
+<p>9.1 снипет без исполняемого кода</p>
 
+<p>для простоты мы будем создавать снипет, который не содержит исполняемый код</p>
 
-9. Снипет
-создание снипета, который будет загружен через стартовую площадку состоит из нескольких этапов
-- создать приложение, которое будет обрабатывать данные
-- создать конфиг описания снипета
-- запаковать снипет приложением apps/package-snippet
-- если окружение сконфигурировано на использование только подписанных снипетов,
-то при паковке снипета так же подписать его используя приватный ключ
+<p>9.2 конфиг снипета</p>
 
+<p>отсутствие необходимости иметь исполняемый код помечается в
+fileProvided=true</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">simple-app</span>
+      <span class="na">version</span><span class="pi">:</span> <span class="s">1.1</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">simple</span>
+      <span class="na">env</span><span class="pi">:</span> <span class="s">simple-app</span>
+      <span class="na">fileProvided</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
 
-9.1 снипет без исполняемого кода
-для простоты мы будем создавать снипет, который не содержит исполняемый код
+<p>сама ссылка на исполняемое приложение конфигурируется в env: simple-app</p>
 
-9.2 конфиг снипета
-отсутствие необходимости иметь исполняемый код помечается в
-fileProvided=true
+<p>9.3 подписание снипета</p>
 
-snippets:
-    - name: simple-app
-      version: 1.1
-      type: simple
-      env: simple-app
-      fileProvided: true
+<p>создать временный директорий и в нем создать файл snippets.yaml
+поместить в данный файл конфиг снипета</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">simple-app</span>
+      <span class="na">version</span><span class="pi">:</span> <span class="s">1.1</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">simple</span>
+      <span class="na">env</span><span class="pi">:</span> <span class="s">simple-app</span>
+      <span class="na">fileProvided</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
 
+<p>используя приложние apps/package-snippet запаковать и подписать снипет. 
+package-snippet описан в п.10</p>
 
-сама ссылка на исполняемое приложение конфигурируется в env: simple-app
+<ol>
+  <li>apps/package-snippet</li>
+</ol>
 
-9.3 подписание снипета
-создать временный директорий и в нем создать файл snippets.yaml
-поместить в данный файл конфиг снипета
-snippets:
-    - name: simple-app
-      version: 1.1
-      type: simple
-      env: simple-app
-      fileProvided: true
+<p>для запаковывания снипета и его подписания необходимо:</p>
+<ul>
+  <li>создать временный директорий</li>
+  <li>в данном временном директории создать файл snippets.yaml и заполнить его настройками согласно п.9.3</li>
+  <li>из временного директория запустить</li>
+</ul>
 
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar \mh\git\apps/package-snippet/target/package-snippet.jar snippet.zip &lt;path to private key file&gt;
+</code></pre></div></div>
 
-используя приложние apps/package-snippet запаковать и подписать снипет. 
-package-snippet описан в п.10
+<ul>
+  <li>для корректного запуска &lt;path to private key file&gt; должен указывать на созданный ранее частный ключ, например:
+ \mh\git\private-key.txt</li>
+</ul>
 
-
-10. apps/package-snippet
-
-для запаковывания снипета и его подписания необходимо:
-- создать временный директорий
-- в данном временном директории создать файл snippets.yaml и заполнить его настройками согласно п.9.3
-- из временного директория запустить 
-
-java -jar \mh\git\apps/package-snippet/target/package-snippet.jar snippet.zip <path to="" private="" key="" file="">
-
-- для корректного запуска <path to="" private="" key="" file=""> должен указывать на созданный ранее частный ключ, например:
- \mh\git\private-key.txt
-
-первый параметр (в примере это snippet.zip) указывает название архива в который будет запакован снипет
+<p>первый параметр (в примере это snippet.zip) указывает название архива в который будет запакован снипет
 если второй параметр определен, то снипет будет подписан.
-второй параметр это путь до файла с частным ключом. Частный ключ генерится приложением gen-keys
+второй параметр это путь до файла с частным ключом. Частный ключ генерится приложением gen-keys</p>
 
+<ol>
+  <li>загрузка снипетов</li>
+</ol>
 
-11. загрузка снипетов
-используя веб-интерфейс стартовой площадки загрузить снипет, перейдя по адресу
+<p>используя веб-интерфейс стартовой площадки загрузить снипет, перейдя по адресу</p>
 
-http://localhost:8080/launchpad/snippets
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:8080/launchpad/snippets
+</code></pre></div></div>
 
-после успешной загрузки снипета валидация Плана больше не должна выдавать сообщние, что снипет
-не обнаружен
+<p>после успешной загрузки снипета валидация Плана больше не должна выдавать сообщние, что снипет
+не обнаружен</p>
 
-12. окружение станции
-12.1 env.yaml
-для того, чтобы снипеты запускались на стороне станции необходимо сконфигурировать
-исполняемое окуржение. для этого необходимо создать файл \mh\station\env.yaml
+<ol>
+  <li>окружение станции</li>
+</ol>
 
-конфиг:
-envs:
-  simple-app: java -jar C:\aia\git\apps\simple-app\target\simple-app.jar
+<p>12.1 env.yaml</p>
 
+<p>для того, чтобы снипеты запускались на стороне станции необходимо сконфигурировать
+исполняемое окуржение. для этого необходимо создать файл \mh\station\env.yaml</p>
 
-в нашем примере исполяемой командой будет запуск простого приложения
+<p>конфиг:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
+  <span class="na">simple-app</span><span class="pi">:</span> <span class="s">java -jar C:\aia\git\apps\simple-app\target\simple-app.jar</span>
+</code></pre></div></div>
 
-12.2 app/simple-app
-данное приложение должно быть уже собрано после выполнения команды mvn-all.bat
-для провеки необходимо из командной строки запустить:
-java -jar \mh\git\apps\simple-app\target\simple-app.jar
+<p>в нашем примере исполяемой командой будет запуск простого приложения</p>
 
-если все приложение simple-app собрано успешкно то в консоле будет выведено:
-Parameter file wasn't specified
+<p>12.2 app/simple-app</p>
 
+<p>данное приложение должно быть уже собрано после выполнения команды mvn-all.bat
+для провеки необходимо из командной строки запустить:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar \mh\git\apps\simple-app\target\simple-app.jar
+</code></pre></div></div>
 
-13. Загрузка данных
-для инициализации данных для обработки нашим снипетом загрузим любой текстовый файл
-через интерфейс работы с ресурсами
+<p>если все приложение simple-app собрано успешкно то в консоле будет выведено:
+Parameter file wasn’t specified</p>
 
-http://localhost:8080/launchpad/resources
+<ol>
+  <li>Загрузка данных</li>
+</ol>
 
-указать
+<p>для инициализации данных для обработки нашим снипетом загрузим любой текстовый файл
+через интерфейс работы с ресурсами</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:8080/launchpad/resources
+</code></pre></div></div>
+
+<p>указать
 Resource code - simple-resource
-Resource pool code - simple-resource-pool
+Resource pool code - simple-resource-pool</p>
 
+<ol>
+  <li>Создание рабочей книги (Workbook)</li>
+</ol>
 
-14. Создание рабочей книги (Workbook)
-перейти по адресу
-http://localhost:8080/launchpad/plan/plans
+<p>перейти по адресу
+http://localhost:8080/launchpad/plan/plans</p>
 
-и выбрать План, который был ранее создан
+<p>и выбрать План, который был ранее создан</p>
 
-и затем нажать кнопку 'Workbooks'
+<p>и затем нажать кнопку ‘Workbooks’</p>
 
-Создать Workbook:
-Input pool code for this plan - simple-resource-pool
+<p>Создать Workbook:
+Input pool code for this plan - simple-resource-pool</p>
 
+<ol>
+  <li>запуск Рабочей книги</li>
+</ol>
 
-15. запуск Рабочей книги
+<p>после успешного создания Рабочей книги (Workbook) запустить генерацию задач
+нажав кнопку “Produce”</p>
 
-после успешного создания Рабочей книги (Workbook) запустить генерацию задач
-нажав кнопку "Produce"
+<p>дождаться когда статус будет изменен с PRODUCING на PRODUCED
+Примечание: в настоящее время автоматическое обновление старницы не реализовано.</p>
 
-дождаться когда статус будет изменен с PRODUCING на PRODUCED
-Примечание: в настоящее время автоматическое обновление старницы не реализовано.
+<p>Запустить поток на выполнение нажатием кнопки “Start”</p>
 
-Запустить поток на выполнение нажатием кнопки "Start"
-
-в директории \mh\station\task
+<p>в директории \mh\station\task
 должен появиться директорий 0 и в нем директорий с номером задачи.
 в директории \mh\station\task\0\xxx\system после выполнения задачи
 будет содан файл system-console.log в котором будет выведно содержимое файла,
-который мы загрузили как ресурс.
+который мы загрузили как ресурс.</p>
 
-
-</path></path></rest></master>
 
         </section>
 

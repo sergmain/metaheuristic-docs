@@ -7,6 +7,7 @@ layout: default
 1. Сущности, общая концепция
 
 1.1 Общая концепция
+
 логически Metaheuristic состоит из 2-ух верхнеуровневых модулей:
 - launchpad - стартовая площадка
 - station - станция
@@ -17,24 +18,29 @@ layout: default
 на основе Round-robin алгоритма.
 
 1.2 Plan (план)
+
 План - это описатель содержащий описания процессов, которые будут выполняться для перобразования
 данных из начальной формы в конечную. План, как описатель, не содержит состояния
 выполнения процесса преобразования данных.
 
 1.3 Workbook (рабочая книга)
+
 Рабочая книга - это сущность, которая включает в себя инфрмацию о выполнении преобразования данных.
 
 1.4 Resource (ресурс)
+
 Ресурс - это данные, которые используются или создаются в процессе преобразования данных потоком.
 Ресурны бывают 2-ух типов - DATA (данные), SNIPPET(спипет)
 Данные - это все, что загружается в снипеты или является продуктом их работы.
 Снипет, как ресурс - это исполняемый код, который соответствует одному из описателей снипетов
 
 1.5 Snippet (спипет)
+
 Снипет - это описатель исполняемого кода, который будет вызываться при выполнении задачи.
 
 
 1.6 Task (задача)
+
 Задача - описание, что нужно выполнить, с какими параметрами, какой результат получить
 
 
@@ -64,6 +70,7 @@ layout: default
 и имеет смысл только для целей разработки и тестирования
 
 3.1. Директории
+
 - для конфигурации стартовой площадки надо выбрать и создать рабочий директорий,
 в котором стартовая площадка будет создавать свои артифакты
 - выбрать директорий, в котором будет запускаться собственно Metaheuristic. Рекомендуемая схема директориев:
@@ -74,66 +81,85 @@ layout: default
 \mh\station - директорий для станции
 
 3.2 git
+
 перейти в \mh  (или другой директорий, который выбран, как основной)
 выполнить команду
+
+```text
 git clone https://github.com/sergmain/metaheuristic.git git
+```
 
 3.3 Сборка
-для сборки проекта требуется java 11. 
-Скачать текущий релиз JDK11 надо по ссылке https://jdk.java.net/11/
+
+для сборки проекта требуется java 11.  Скачать текущий релиз JDK11 надо по ссылке 
+```text
+https://jdk.java.net/11/
+```
 
 в директории \mh\git запустить
+```text
 mvn-all.bat
+```
 
 3.4 Database
+
 создать нового пользователя и схему(базу данных).
 
-используя соответствующий скрипт создать таблицы в БД в созданной ранее схеме
-MySql       - sql/schema-mysql.sql
-Postgresql  - sql/schema-postgresql.sql
+используя соответствующий скрипт создать таблицы в БД в созданной ранее схеме   
+MySql       - sql/schema-mysql.sql   
+Postgresql  - sql/schema-postgresql.sql   
 
 
 3.5 application.properties
+
 за основу можно взять файл, который доступен по url -
+
+```text
 https://raw.githubusercontent.com/sergmain/metaheuristic/master/apps/metaheuristic/src/main/resources/application.properties
+```
 
 при этом заменив значения, которые берутся из окружения, на конкретные значения
 
 3.5.1 общие значения для стартовой площадки и станции
+
 mh.thread-number=3
 определяет количество потоков, которые будет использоваться для паралельной работы Metaheuristic
 делать количество потоков больше, чем количестов виртуальных ядер (ядер с учетом гипер-трединга) смысла нет.
 
 
 3.6 Стартовая площадка
+
 3.6.1 application.properties для стартовой площадки
+
 конфигурация конфиг файла заключается в задании следующий параметров
 
 spring.profiles.active=launchpad
 
 для mysql
+```properties
 spring.datasource.url = jdbc:mysql://localhost:3306/mh?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Los_Angeles&sslMode=DISABLED
 spring.datasource.username = mh
 spring.datasource.password = qwe321
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect
+```
 
 временную зону в url для mysql ( serverTimezone=America/Los_Angeles ) выбрать согласно документации на mysql 
 и изменить в spring.datasource.url
 в приведеном выше примере временная зона - serverTimezone=America/Los_Angele
 
 для postgresql
+```properties
 spring.datasource.url=jdbc:postgresql://host:5432/database?user=abc&password=xxx&sslmode=require
 spring.datasource.username=abc
 spring.datasource.password=xxx
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
-
+```
 
 указать специфические для стартовой площадки параметры:
 
-```
-======================
+```properties
 mh.launchpad.enabled=true
 mh.launchpad.dir=./launchpad
 mh.launchpad.is-replace-snapshot=true
@@ -149,8 +175,6 @@ mh.launchpad.rest-password=$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdO
 mh.launchpad.rest-username=q1
 
 mh.launchpad.public-key= <!!! insert real public key here !!!> 
-
-=========================
 ```
 
 mh.launchpad.is-replace-snapshot - можно ли перезаписывать snapshot-спипеты новыми версиями
@@ -177,18 +201,23 @@ mh.launchpad.master-password
 -username выбирается самостоятельно, но не может включать в себя символ '=' (символ равно)
 
 3.7 Станция
+
 3.7.1 application.properties для станции
+
+```properties
 spring.profiles.active=station
 
 mh.station.enabled=true
 mh.station.dir=./station
-
+```
 
 3.7.2 Конфигурация launchpad.yaml
+
 Для конфигурации стартовых площадок, с которыми будет взаимодействовать конкретная станция используется
 конфиг файл launchpad.yaml. Данный файл должен располагаться в директории который является главным для станции,
 в данном руковосдстве это \mh\station
 формат файла:
+```yaml
 launchpads:
   - signatureRequired: false
     securityEnabled: true
@@ -202,7 +231,7 @@ launchpads:
       weekend: 0:00-23:59
     publicKey: <!!! insert real public key here !!!>
     acceptOnlySignedSnippets: false
-
+```
 
 Описание параметров:
 signatureRequired: пребуется ли подпись (в настоящее время не используется)
@@ -227,6 +256,7 @@ acceptOnlySignedSnippets: принимать только подписанные
 
 
 3.8 Конфигурация spring.profiles.active
+
 в настоящее время в Metaheuristic поддерживается 2 профиля - launchpad и station
 эти профили можно использовать как по отдельности, так и комбинировать. В любом случаев,
 в файле application.properties должна быть только ОДНА строка spring.profiles.active=
@@ -240,21 +270,28 @@ spring.profiles.active=station
 !Внимание! данная инструкция написана для случая когда используются оба профиля.
 поэтому параметр spring.profiles.active в apllication.properties должен быть следующим:
 
+```properties
 spring.profiles.active=launchpad, station
+```
   
+3.9 Конфигурация Http сервера на стороне стартовой площадки
 
-
-3.9 конфигурация Http сервера на стороне стартовой площадки
 3.9.1 IP адрес
+
 для точного указания на какой IP адрес биндить http используется параметр server.address
 Например:
+```properties
 server.address=127.0.0.1
+```
 
 
 4. apps/gen-keys
+
 для генерации ключей необходимо запустить
 
+```text
 java -jar apps/gen-keys/target/gen-keys.jar
+```
 
 новые ключи (публичный и частный) будут напечатаны в консоле
 как и где будут использоваться публичный и частный ключи будет написано далее
@@ -266,10 +303,12 @@ java -jar apps/gen-keys/target/gen-keys.jar
 
 для преобразования паролей в формат Metaheuristic (bcrypt, 10 циклов) запустить
 
+```text
 java -jar apps/gen-passwords/target/gen-passwords.jar <master password> <rest password>
+```
 
-<master password> - пароль для доступа к веб-консоле стартовой площадки
-<rest password> - пароль для доступа к rest-api
+&lt;master password> - пароль для доступа к веб-консоле стартовой площадки   
+&lt;rest password> - пароль для доступа к rest-api   
 
 результат работы поместить в соответствующие параметры:
 master password --> mh.launchpad.master-password
@@ -278,19 +317,26 @@ master password --> mh.launchpad.master-password
 но не должны быть пустыми и включать в себя символ '=' (символ равно)
 
 6. Запуск
+
 для запуска Metaheuristic (как стартовой плошадки, так и станции) необходимо
 из директория \mh запустить команду
 
+```text
 java -jar git/apps/metaheuristic/target/metaheuristic.jar
+```
 
 6.1 обновление кодовой базы
+
 для того чтобы забрать последние изменения в проекте необходимо перейти в \mh\git
 и выполнить команды:
 
+```text
 git pull origin master
 mvn-all.bat
+```
 
 7. Управление стартовой площадкой
+
 после того, как все параметры были прописаны, можно запустить стартовую площадку
 по адресу на котором она была запущена
 логин - mh.launchpad.master-username
@@ -299,6 +345,7 @@ mvn-all.bat
 если все запустилось успешно, то можно перейти к созданию сущеностей
 
 8. Plan (план)
+
 создать простейший план, состоящий из одного процесса.
 Создать план можно перейдя по адресу /launchpad/plan/plan-add
 
@@ -306,7 +353,7 @@ mvn-all.bat
 Code of plan -->  simple-plan
 
 Parameters of plan -->
-
+```yaml
 processes:
 - code: simple-app
   collectResources: false
@@ -315,8 +362,7 @@ processes:
   parallelExec: false
   snippetCodes:
   - simple-app:1.1
-
-
+```
 
 
 сразу после создания данный план не будет валиден
@@ -324,6 +370,7 @@ processes:
 
 
 9. Снипет
+
 создание снипета, который будет загружен через стартовую площадку состоит из нескольких этапов
 - создать приложение, которое будет обрабатывать данные
 - создать конфиг описания снипета
@@ -333,32 +380,36 @@ processes:
 
 
 9.1 снипет без исполняемого кода
+
 для простоты мы будем создавать снипет, который не содержит исполняемый код
 
 9.2 конфиг снипета
+
 отсутствие необходимости иметь исполняемый код помечается в
 fileProvided=true
-
+```yaml
 snippets:
     - name: simple-app
       version: 1.1
       type: simple
       env: simple-app
       fileProvided: true
-
+```
 
 сама ссылка на исполняемое приложение конфигурируется в env: simple-app
 
 9.3 подписание снипета
+
 создать временный директорий и в нем создать файл snippets.yaml
 поместить в данный файл конфиг снипета
+```yaml
 snippets:
     - name: simple-app
       version: 1.1
       type: simple
       env: simple-app
       fileProvided: true
-
+```
 
 используя приложние apps/package-snippet запаковать и подписать снипет. 
 package-snippet описан в п.10
@@ -371,9 +422,11 @@ package-snippet описан в п.10
 - в данном временном директории создать файл snippets.yaml и заполнить его настройками согласно п.9.3
 - из временного директория запустить 
 
+```text
 java -jar \mh\git\apps/package-snippet/target/package-snippet.jar snippet.zip <path to private key file>
+```
 
-- для корректного запуска <path to private key file> должен указывать на созданный ранее частный ключ, например:
+- для корректного запуска &lt;path to private key file> должен указывать на созданный ранее частный ключ, например:
  \mh\git\private-key.txt
 
 первый параметр (в примере это snippet.zip) указывает название архива в который будет запакован снипет
@@ -382,39 +435,51 @@ java -jar \mh\git\apps/package-snippet/target/package-snippet.jar snippet.zip <p
 
 
 11. загрузка снипетов
+
 используя веб-интерфейс стартовой площадки загрузить снипет, перейдя по адресу
 
+```text
 http://localhost:8080/launchpad/snippets
+```
 
 после успешной загрузки снипета валидация Плана больше не должна выдавать сообщние, что снипет
 не обнаружен
 
 12. окружение станции
+
 12.1 env.yaml
+
 для того, чтобы снипеты запускались на стороне станции необходимо сконфигурировать
 исполняемое окуржение. для этого необходимо создать файл \mh\station\env.yaml
 
 конфиг:
+```yaml
 envs:
   simple-app: java -jar C:\aia\git\apps\simple-app\target\simple-app.jar
-
+```
 
 в нашем примере исполяемой командой будет запуск простого приложения
 
 12.2 app/simple-app
+
 данное приложение должно быть уже собрано после выполнения команды mvn-all.bat
 для провеки необходимо из командной строки запустить:
+```text
 java -jar \mh\git\apps\simple-app\target\simple-app.jar
+```
 
 если все приложение simple-app собрано успешкно то в консоле будет выведено:
 Parameter file wasn't specified
 
 
 13. Загрузка данных
+
 для инициализации данных для обработки нашим снипетом загрузим любой текстовый файл
 через интерфейс работы с ресурсами
 
+```text
 http://localhost:8080/launchpad/resources
+```
 
 указать
 Resource code - simple-resource
@@ -422,6 +487,7 @@ Resource pool code - simple-resource-pool
 
 
 14. Создание рабочей книги (Workbook)
+
 перейти по адресу
 http://localhost:8080/launchpad/plan/plans
 
