@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=25d93bfa0922dd234147fb01ca18e44fa053e1e2" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Metaheuristic.ai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/application_properties.html" />
+<meta property="og:url" content="http://localhost:4000/p/application_properties.html" />
+<meta property="og:site_name" content="Metaheuristic.ai" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/p/application_properties.html","headline":"Metaheuristic.ai","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Metaheuristic.ai</h1>
+        </a>
+        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
+        
+          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
+        
+        
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <ul>
+  <li><a href="/index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#application.properties">application.properties</a></li>
+  <li><a href="#Metaheuristic properties">Metaheuristic properties</a></li>
+</ul>
+
+<h2 id="applicationproperties">application.properties:</h2>
+<p>application.properties file is the main config file which is control how Metaheuristic behave.
+Usually, its location is dir ‘config’. But there are some other options how to specify this file -<br />
+<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">Spring Externalized Configuration</a></p>
+
+<p>Common properties and values of application.properties are:</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">launchpad, station</span>
+
+<span class="c"># ------------- Logging -----------------
+</span><span class="py">logging.file</span><span class="p">=</span><span class="s">logs/logs/mh.log</span>
+<span class="py">logging.level.root</span> <span class="p">=</span> <span class="s">warn</span>
+<span class="py">logging.level.ai.metaheuristic.ai.Monitoring</span><span class="p">=</span><span class="s">error</span>
+<span class="err">logging.level.ai.metaheuristic.ai.*=warn</span>
+
+<span class="c"># ===============================
+# = DATA SOURCE
+# ===============================
+</span>
+<span class="c"># postgresql db @localhost
+</span><span class="py">spring.datasource.url</span><span class="p">=</span><span class="s">jdbc:postgresql://localhost:5432/mh?user=mh&amp;password=qwe321&amp;sslmode=require</span>
+<span class="py">spring.datasource.username</span><span class="p">=</span><span class="s">mh</span>
+<span class="py">spring.datasource.password</span><span class="p">=</span><span class="s">qwe321</span>
+<span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">org.postgresql.Driver</span>
+<span class="py">spring.jpa.properties.hibernate.dialect</span><span class="p">=</span><span class="s">org.hibernate.dialect.PostgreSQL95Dialect</span>
+<span class="err">/</span><span class="c">#
+</span><span class="py">spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults</span> <span class="p">=</span> <span class="s">false</span>
+
+
+<span class="c"># Keep the connection alive if idle for a long time (needed in production)
+</span><span class="py">spring.datasource.testWhileIdle</span> <span class="p">=</span> <span class="s">true</span>
+<span class="py">spring.datasource.validationQuery</span> <span class="p">=</span> <span class="s">SELECT 1</span>
+
+<span class="c"># ============== ai.metaheuristic ==================
+</span>
+<span class="c"># ------------- Launchpad -----------------
+</span><span class="py">mh.launchpad.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
+<span class="c"># password is 123
+</span><span class="py">mh.launchpad.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
+<span class="py">mh.launchpad.master-username</span><span class="p">=</span><span class="s">q</span>
+<span class="py">mh.launchpad.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.launchpad.dir</span><span class="p">=</span><span class="s">./mh-launchpad</span>
+<span class="py">mh.launchpad.is-replace-snapshot</span><span class="p">=</span><span class="s">true</span>
+
+<span class="c"># ------------- Station -----------------
+</span><span class="py">mh.station.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.station.dir</span><span class="p">=</span><span class="s">./mh-station</span>
+</code></pre></div></div>
+
+<p>The full list of Spring’s properties you can find here:
+<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html">list of Spring’s properties</a></p>
+
+<h2 id="metaheuristic-properties">Metaheuristic properties</h2>
+
+<p>Metaheuristic’s properties divided in 3 big groups - globals, launchpad related, and station related</p>
+
+<p>Globals properties</p>
+<ul>
+  <li>mh.thread-number - integer value in range from 1 to 16, default value is 4. This property defines how many threads will be used.</li>
+  <li>mh.is-testing - boolean, default value is false. Its purpose is only for testing.</li>
+  <li>mh.system-owner - string, default value is not specified. Isn’t used right now.</li>
+  <li>mh.branding - string, default value is ‘Metaheuristic project’. Branding title for web interface.</li>
+  <li>mh.is-event-enabled - boolean, default value is false. Specifies will MH’s internal events be stored in db or not.</li>
+</ul>
+
+<p>in development state:</p>
+<ul>
+  <li>mh.cors-allowed-origins - string, url of site which will be allowed by CORS, i.e. http://acme.com, default value not specified</li>
+</ul>
+
+<p>Launchpad related properties: <br />
+    @Value(“${mh.launchpad.is-security-enabled:#{true}}”)
+    @Value(“${mh.launchpad.is-ssl-required:#{true}}”)
+    @Value(“${mh.launchpad.snippet-checksum-required:#{true}}”)
+    @Value(“${mh.launchpad.snippet-signature-required:#{true}}”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty(‘mh.launchpad.master-username’)) }”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty(‘mh.launchpad.master-password’)) }”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty(‘mh.launchpad.public-key’)) }”)
+    @Value(“${mh.launchpad.enabled:#{false}}”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty(‘mh.launchpad.dir’ )) }”)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.max-tasks-per-workbook'), 1, 100000, 5000) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.resource-table-rows-limit'), 5, 100, 20) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.experiment-table-rows-limit'), 5, 30, 10) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.atlas-experiment-table-rows-limit'), 5, 100, 20) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.plan-table-rows-limit'), 5, 50, 10) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.workbook-table-rows-limit'), 5, 50, 20) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.station-table-rows-limit'), 5, 100, 50) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.launchpad.account-table-rows-limit'), 5, 100, 20) }")
+
+@Value("${mh.launchpad.is-replace-snapshot:#{true}}")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.launchpad.default-result-file-extension')) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.launchpad.chunk-size')) }")
+</code></pre></div></div>
+
+<p>Station related properties: <br />
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty(‘mh.logging.file’ )) }”)
+    @Value(“${mh.station.enabled:#{false}}”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty(‘mh.station.dir’ )) }”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty(‘mh.station.default-launchpad-yaml-file’ )) }”)
+    @Value(“#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty(‘mh.station.default-env-yaml-file’ )) }”)</p>
+
+        </section>
+
+        <aside id="sidebar">
+          
+
+          
+            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
+          
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

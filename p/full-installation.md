@@ -81,13 +81,13 @@ logging.level.ai.metaheuristic.ai.*=warn
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
 
 # mysql db @localhost
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url = jdbc:mysql://localhost:3306/mh?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Los_Angeles&sslMode=DISABLED&allowPublicKeyRetrieval=true
 spring.datasource.username = mh
 spring.datasource.password = qwe321
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect
 
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect
 
 
 # Keep the connection alive if idle for a long time (needed in production)

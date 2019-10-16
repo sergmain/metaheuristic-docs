@@ -16,6 +16,7 @@ layout: default
 - [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
 
 ### A
+- [application.properties](/p/application_properties.md)
 - [Architecture](/p/concept-architecture-roadmap.md#architecture)
 
 ### C
@@ -46,7 +47,6 @@ layout: default
 - [launchpad.yaml file](/p/description-of-launchpad-yaml)
 
 ### M
-- [mh.* params in application.properties file](/p/description-of-mh-application-properties.md)
 
 ### Q
 - [Quick start](/p/quick-start.md)
