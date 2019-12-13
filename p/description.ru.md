@@ -389,11 +389,11 @@ processes:
 fileProvided=true
 ```yaml
 snippets:
-    - name: simple-app
-      version: 1.1
-      type: simple
-      env: simple-app
-      fileProvided: true
+    - code: simple-app:1.0
+      type: query
+      sourcing: station
+      file: curl http://localhost:8888
+      skipParams: true
 ```
 
 сама ссылка на исполняемое приложение конфигурируется в env: simple-app
@@ -404,11 +404,11 @@ snippets:
 поместить в данный файл конфиг снипета
 ```yaml
 snippets:
-    - name: simple-app
-      version: 1.1
-      type: simple
-      env: simple-app
-      fileProvided: true
+    - code: simple-app:1.0
+      type: query
+      sourcing: station
+      file: curl http://localhost:8888
+      skipParams: true
 ```
 
 используя приложние apps/package-snippet запаковать и подписать снипет. 
