@@ -1,4 +1,4 @@
-theme: jekyll-theme-architect
+theme: jekyll-theme-cayman
 title: Metaheuristic.ai
 description: Distributer framework for hyper-parameter optimization and AutoML.
 repository: sergmain/metaheuristic
