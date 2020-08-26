@@ -15,52 +15,51 @@ layout: default
 
 ### Definition
 
-A processing module which is configured, packaged, uploaded to the Launchpad, and is being run at Station is a Snippet.
-Snippet can be executable application, .jar file, python notebook, 
+A processing entity which is configured, packaged, and uploaded to the Dispatcher, and is being run at Processor is a Function.
+Function can be executable application, .jar file, python notebook, 
 file in any scripting language. It can be 'curl' command to request external url, send e-mail and so on.
   
 
-From a delivery point of view, the Snippet can be provisioned from Launchpad or from git repository.
+From a delivery point of view, the Function can be provisioned from Dispatcher or from git repository.
 
 ### Configuration
 
-To upload snippet to Launchpad, the Snippet have to be configured with snippet.yaml file
+Before uploading of Function to Dispatcher, the Function has to be configured with function.yaml file
 
 
-snippet.yaml for the case with external .py file:
+sunction.yaml for the case with external .py file:
 ```yaml
-snippets:
-- code: simple-snippet-1.2
+functions:
+- code: simple-function-1.2
   env: python-3
   file: some-python-file.py
   params: param1 param2 param3
   metas:
   - key: mh.task-params-version
-    value: '3'
-  metrics: false
+    value: '1'
   skipParams: false
-  sourcing: launchpad
-  type: simple-snippet
+  sourcing: dispatcher
+  type: simple-function
 ```
 
-So, how does it work?
-python3 is a string reference to environment which is configured at Station side. Such configuration is done in [env.yaml file](/p/description-of-env-yaml) 
+How does it work?
+python3 is a string reference to environment which is configured at Processor side. Such a configuration is done in [env.yaml file](/p/description-of-env-yaml) 
 I.e.
 ```yaml
 envs:
   python-3: /anaconda3/envs/python-3.6/python
 ```
 
-And final command to execute snippet at Station side will be 
+The final command to execute Function at Processor side will be 
 ```text
-  /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3
+  /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3 <full-path-to-file>/params.yaml
 ```
 
-Fields in snippet.yaml:   
-- code - string representation of code of concrete snippet must be unique within Launchpad   
+Fields in function.yaml:   
+- code - string representation of code of concrete Function must be unique within Dispatcher   
 - env - string reference to environment   
-- file - name of file which must be provisioned along side with snippet.yaml   
-- params - parameters for file, which is specified in field 'file'   
+- file - name of file which must be provisioned alongside with function.yaml   
+- params - parameters for a file, which is specified in the field 'file'   
 - metas - dictionary for key-value based configuration parameters   
 -- mh.task-params-version - the version of format of params.yaml file which 
  is the last parameter for executable file (skipParams must be false)   
@@ -69,31 +68,27 @@ Fields in snippet.yaml:
  as the last parameter in command line (skipParams is false). For details see [description of task's params.yaml config](description-of-task-params-yaml.md)   
    
  
-- metrics - boolean, true/false, should we collect metrics after executing this snippet?   
 - skipParams - boolean, true/false, should params.yaml file be omitted?   
-- sourcing - enum, possible values - launchpad, station, git
---        launchpad - snippet will be downloaded from launchpad   
---        station - snippet already has been deployed locally at station   
---        git - snippet will be downloaded from git   
-
-- type - a freely defined field. There are only two cases when this field must be defined in certain way:   
--- fit - this snippet is for fitting   
--- predict - this snippet is for predicting   
+- sourcing - enum, possible values - dispatcher, processor, git
+   -  dispatcher - Function will be downloaded from Dispatcher   
+   - processor - Function already has been deployed locally at Processor   
+   - git - snippet will be downloaded from git   
+- type - a freely defined field   
 
 
-snippet.yaml for the case when scripting file is embedded in config:
+function.yaml for the case when scripting file is embedded in a config:
 ```yaml
-snippets:
+functions:
   - code: simple-metrics.fit:1.2
     type: fit
     env: python-3
-    sourcing: station
+    sourcing: processor
     metas:
       - key: mh.task-params-version
         value: 3
-      - key: mh.snippet-params-as-file
+      - key: mh.function-params-as-file
         value: true
-      - key: mh.snippet-params-file-ext
+      - key: mh.function-params-file-ext
         value: .py
     params: |+
       import sys
@@ -103,22 +98,22 @@ snippets:
       print(str(datetime.now()))
 ```
 
-Fields in this snippet.yaml almost the same as the previous one, except the follow:      
-- sourcing - station . This value tells Station that it doesn't need to download Snippet from Launchpad   
+Fields in this function.yaml almost the same as the previous one, except the follow:      
+- sourcing - processor . This value tells Processor that it doesn't need to download Function from Dispatcher   
 - params - contains the code for executing. Will be stored in file and 
  this file will be executed in defined environment(env field)    
 - metas - for this case two additional metas must be configured   
--- mh.snippet-params-as-file - true, tells that the params field must be evaluated as scripting file   
--- mh.snippet-params-file-ext - extension for scripting file which will be created at Station side   
+-- mh.function-params-as-file - true, tells that the params field must be evaluated as scripting file   
+-- mh.function-params-file-ext - extension for scripting file which will be created at Station side   
 
 
 
-snippet.yaml for the case when snippet will be provisioned from git repository:
+function.yaml for the case when Function will be provisioned from git repository:
 ```yaml
-snippets:
+functions:
   - code: simple-metrics.fit:1.2
     type: fit
-    file: examples/simple-metrics/snippets/simple-metrics-fit.py
+    file: examples/simple-metrics/functions/simple-metrics-fit.py
     env: python-3
     sourcing: git
     metas:
@@ -131,7 +126,7 @@ snippets:
 ```
  
 For using git as source of snippet two fields must be defined:            
-- sourcing - git . This value tells Station that it snippet is stored in git repository   
+- sourcing - git . This value tells Station that it function is stored in git repository   
 - git - definition of git, the follow additional fields must be specified:     
 -- repo - url to git repo   
 -- branch - name of branch which will be used   

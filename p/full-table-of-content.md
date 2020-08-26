@@ -6,7 +6,7 @@ layout: default
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
+- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
 
 ### A
 - [application.properties](/p/application_properties)
@@ -19,7 +19,7 @@ layout: default
 - [Cases](/p/c/cases)
 
 ### D
-- 
+- [dispatcher.yaml file](/p/description-of-dispatcher-yaml)
 
 ### E
 - [Experiment](/p/experiment)
@@ -27,6 +27,7 @@ layout: default
 
 ### F
 - [Full installation](/p/full-installation)
+- [Function](/p/function)
 
 ### G
 - [Gen keys](/p/gen-keys)
@@ -37,7 +38,6 @@ layout: default
 
 ### L
 - [License, licensing](/p/license-licensing-copyright#license-and-licensing)
-- [launchpad.yaml file](/p/description-of-launchpad-yaml)
 
 ### M
 
@@ -45,13 +45,13 @@ layout: default
 - [Quick start](/p/quick-start)
 
 ### R
-- [Resources](/p/resources)
 - [Roadmap](/p/concept-architecture-roadmap#roadmap)
 
 ### S
 - [Schedule](/p/schedule)
-- [Snippet](/p/snippet)
 
 ### T
 - [Task's params.yaml file](/p/description-of-task-params-yaml)
 
+### V
+- [Variables](/p/variable)

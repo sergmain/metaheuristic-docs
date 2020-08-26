@@ -15,16 +15,16 @@ layout: default
 #### Java Development Kit (JDK) 11
 
 To run Metaheuristic you have to have jdk 11  
-Right now there isn't any known bug which restricts to use certain JDK.
+Right now, there isn't any known bug which restricts to use certain JDK.
 
 [Amazon Corretto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)  
 [AdoptOpenJDK (AKA OpenJDK) 11](https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot)  
 [Zulu JDK 11](https://www.azul.com/downloads/zulu-community/?&version=java-11-lts)  
 
 #### Database
-At this moment we are supporting two databases - mysql and postgresql.    
-By supporting we means that there is sql scripts for initialization of db. 
-Quick start is using H2 db, so this db is fine too.
+At this moment we are supporting two databases for production environment - mysql and postgresql.    
+By supporting we mean that there is sql scripts for initialization of db. 
+Quick start is using H2 db, so this db is fine too but only for testing environment.
  
 Sql files for db's scheme:   
  -- [Postgresql](https://github.com/sergmain/metaheuristic/blob/master/sql/schema-postgresql.sql)   
@@ -38,13 +38,13 @@ In this documentation we expect that you'll create db's scheme 'mh', db's user w
 - Create dir for Metaheuristic, i.e. /mh-root 
 It'll be /mh-root in the follow text. 
 
-- Change dir to /mh-root and the follow dirs:
+- Change dir to /mh-root and create the follow dirs:
    
 ```text
 /mh-root/config
 /mh-root/logs
-/mh-root/mh-launchpad
-/mh-root/mh-station
+/mh-root/mh-dispatcher
+/mh-root/mh-processor
 ```
 
 - From /mh-root run the git cloning command:   
@@ -57,11 +57,11 @@ git clone https://github.com/sergmain/metaheuristic.git
 mvnw clean install -f pom.xml -Dmaven.test.skip=true
 ```
 
-- Change dir to /mh-root/config and create file application.properties with follow content:   
+- Change dir to /mh-root/config and create file application.properties with the follow content:   
 
 ```properties
 server.address=127.0.0.1
-spring.profiles.active=launchpad, station
+spring.profiles.active=dispatcher, processor
 
 # ------------- Logging -----------------
 logging.file=logs/logs/mh.log
@@ -73,19 +73,21 @@ logging.level.ai.metaheuristic.ai.*=warn
 # = DATA SOURCE
 # ===============================
 
-# postgresql db @localhost
+# start of postgresql section db @localhost
 #spring.datasource.url=jdbc:postgresql://localhost:5432/mh?user=mh&password=qwe321&sslmode=require
 #spring.datasource.username=mh
 #spring.datasource.password=qwe321
 #spring.datasource.driver-class-name=org.postgresql.Driver
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+# end of postgresql section
 
-# mysql db @localhost
+# # start of mysql section db @localhost
 spring.datasource.url = jdbc:mysql://localhost:3306/mh?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Los_Angeles&sslMode=DISABLED&allowPublicKeyRetrieval=true
 spring.datasource.username = mh
 spring.datasource.password = qwe321
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect
+# end of mysql section
 
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
 
@@ -95,42 +97,40 @@ spring.datasource.testWhileIdle = true
 spring.datasource.validationQuery = SELECT 1
 
 # ============== ai.metaheuristic ==================
-# ------------- Launchpad -----------------
-mh.launchpad.is-ssl-required=false
+# ------------- Dispatcher -----------------
+mh.dispatcher.is-ssl-required=false
 # password is 123
-mh.launchpad.master-password=$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu
-mh.launchpad.master-username=q
-mh.launchpad.enabled=true
-mh.launchpad.dir=./mh-launchpad
-mh.launchpad.is-replace-snapshot=true
+mh.dispatcher.master-password=$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu
+mh.dispatcher.master-username=q
+mh.dispatcher.enabled=true
+mh.dispatcher.dir=./mh-dispatcher
 
-# ------------- Station -----------------
-mh.station.enabled=true
-mh.station.dir=./mh-station
+# ------------- Processor -----------------
+mh.processor.enabled=true
+mh.processor.dir=./mh-processor
 ```
 
 This config file is for installation with mysql. 
 If you are using postgresql, you need to uncomment section for postgresql and comment out for mysql one.
 
 Current connection parameters to database are:   
-    -- spring.datasource.username = mh  - defines db's username   
-    -- spring.datasource.password = qwe321 - defines db's username   
+    -- spring.datasource.username = mh  - defines username in db   
+    -- spring.datasource.password = qwe321 - defines password in db   
     -- spring.datasource.url = jdbc:mysql://localhost:3306/mh - defines IP address (localhost) and port (3306) of db,
-        and db scheme (mh). If you want to use the different values, you need to change them accordingly   
+        and db scheme (mh). If you want to use the different values, you need to change them accordingly.   
 
 Descriptions of all mh.* parameters can be found in [mh.* parameters](description-of-mh-application-properties) 
 
-#### Configure Station
+#### Configure Processor
 
-Now you need to configure station. You can skip this part for now and launch 
-Metaheuristic with predefined files by going to [Launching of Metaheuristic]{Launching of Metaheuristic} section.
+Now you need to configure Processor. You can skip this part for now and launch 
+Metaheuristic with predefined files by going to [Launching of Metaheuristic]() section.
 
 - Create file /mh-root/mh-station/launchpad.yaml with follow content:
    
 ```yaml
-launchpads:   
+dispatchers:   
   - signatureRequired: false   
-    securityEnabled: true   
     url: http://localhost:8080   
     lookupType: direct   
     authType: basic   
@@ -139,12 +139,11 @@ launchpads:
     taskProcessingTime: |   
       workingDay: 0:00-23:59   
       weekend: 0:00-23:59   
-    acceptOnlySignedSnippets: false   
 ```
-Descriptions of all parameters can be found in [description of launchpad.yaml](description-of-launchpad-yaml) 
+Descriptions of all parameters can be found in [description of dispatcher.yaml](description-of-dispatcher-yaml) 
 
 
-- Create file /mh-root/mh-station/env.yaml with follow content:
+- Create file /mh-root/mh-processor/env.yaml with the follow content:
    
 ```yaml
 envs:
@@ -156,14 +155,14 @@ Descriptions of all parameters can be found in [description of env.yaml](descrip
 
 #### Launching of Metaheuristic
 
-- That's all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:
+That's all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:
 
-If you skipped the creation of launchpad.yaml and env.yaml, the command for launching is:
+- If you skipped the creation of dispatcher.yaml and env.yaml, the command for launching is:
 ```text
-java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.processor.default-dispatcher-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/dispatcher.yaml --mh.processor.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
 ```
 
-If you created custom version of launchpad.yaml and env.yaml, the command for launching is:
+- If you created a custom version of dispatcher.yaml and env.yaml, the command for launching is:
 ```text
 java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
 ```

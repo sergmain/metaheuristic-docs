@@ -28,21 +28,20 @@ SPRING_APPLICATION_JSON =
   "spring.datasource.continue-on-error": false,  
   
   "mh.thread-number": 4,  
-  "mh.launchpad.is-ssl-required": true,  
-  "mh.launchpad.master-password": "$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu",  
-  "mh.launchpad.master-username": "q",  
-  "mh.launchpad.public-key": "<public-key>",  
-  "mh.launchpad.enabled": true,  
-  "mh.launchpad.dir": "./mh-launchpad",  
-  "mh.launchpad.is-replace-snapshot": false,  
-  "mh.launchpad.chunk-size": "900k",  
-  "mh.station.enabled": false,  
+  "mh.dispatcher.is-ssl-required": true,  
+  "mh.dispatcher.master-password": "$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu",  
+  "mh.dispatcher.master-username": "q",  
+  "mh.dispatcher.public-key": "<public-key>",  
+  "mh.dispatcher.enabled": true,  
+  "mh.dispatcher.dir": "./mh-launchpad",  
+  "mh.dispatcher.chunk-size": "900k",  
+  "mh.processor.enabled": false,  
   "mh.branding": "<desired-branding-name>"
 }  
 ```
 
 > - Heroku has limitation that output of server can't be more that 1Mb. 
-So you must keep the value of mh.launchpad.chunk-size below 1Mb. From experience, the best value is 900k.
+So you must keep the value of mh.dispatcher.chunk-size below 1Mb. From experience, the best value is 900k.
 [See on Heroku 'HTTP response buffering'](https://devcenter.heroku.com/articles/http-routing#response-buffering)   
 
 
@@ -54,11 +53,12 @@ Load balanser =========
 
 Optional step if your cloud provider doesn't support :
 - change redirection rule by adding to nginx-jelastic.conf the following line in the HTTP (80) server block:
+```
 return 301 https://$host$request_uri;
-
+```
 
 Application server =====  
-- SpringBoot, jdk - OpenJDK 11.0.2  
+- SpringBoot, jdk - OpenJDK 11.0.7  
   min 2, max 4 cloudlets, Horizontal scaling - 1 node, statefull  
   Variables:  
 ```
@@ -88,28 +88,15 @@ Preparing:
 - replace <ip-address>: in app server's variable JDBC_DATABASE_URL   
    
 
-
-Build node =============  
-- Maven 3.6.1, jdk - OpenJDK 11.0.2  
-  min 1, max 4 cloudlets  
-  variables:  
-```
-  MAVEN_DEPLOY_ARTIFACT = metaheuristic.jar  
-  MAVEN_OPTS = -Dmaven.test.skip=true  
-  MAVEN_RUN_ARGS = -T2 -f pom-heroku.xml  
-```
-
-
-Link github repo =======  
-- after creating a topology add a link to git repository - https://github.com/sergmain/metaheuristic.git   
-  branch - release  
-
+Building MH from source at jelastic side isn't supported. 
+You have to package MH locally and then upload fat-jar to jelastic manually. 
 
 
 =====================  
 login into Metaheuristic :  
 login: q  
 pass: 123  
+
 
 
 ## GCP

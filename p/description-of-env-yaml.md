@@ -12,8 +12,8 @@ layout: default
 
 ### Definition
 
-When snippet is being invoked it will be supplied with an absolute path to parameter file. 
-This parameter will always be the last parameter in the list of parameters which snippet will receive.
+When Function is being invoked at Processor side, it will be supplied with an absolute path to parameter file. 
+This parameter file will always be the last parameter in the list of parameters which Function will receive.
 
 ### Structure
 
