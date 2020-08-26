@@ -23,14 +23,14 @@ and then this result of transforming will eb sended to other snippet as input re
 
 ### Creation
 
-There are [two forms of uploading resources](http://localhost:8080/launchpad/resource/resources)
+There are [two forms of uploading resources](http://localhost:8080/dispatcher/variable/variables)
 
 The first one is for uploading files and assign pool code (required) and code (optional) for uploaded resource.
 
 The second one is for defining resources which isn't controlled by Metaheuristic and 
 stored somewhere else.
 Right now two type of remote sourcing of resources are supported - 'git' and 'disk'
- -- git - resources is in a git repository and Station has to clone repository before accessing that resource
+ -- git - variable is in a git repository and Processor has to clone repository before accessing that variable
  
  ```yaml
 sourcing: git

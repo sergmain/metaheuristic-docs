@@ -59,7 +59,7 @@ mh.branding=Metaheuristic
 mh.cors-allowed-origins=http://localhost:4200, http://localhost:8888
 mh.is-event-enabled=true
 
-# --- Launchpad ---
+# --- Dispatcher ---
 mh.dispatcher.is-ssl-required=false
 
 
@@ -135,12 +135,12 @@ mh.dispatcher.asset.mode = local
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.dispatcher.dir' )) }")
 
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.max-tasks-per-workbook'), 1, 100000, 5000) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.resource-table-rows-limit'), 5, 100, 20) }")
+    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.variable-table-rows-limit'), 5, 100, 20) }")
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.experiment-table-rows-limit'), 5, 30, 10) }")
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.atlas-experiment-table-rows-limit'), 5, 100, 20) }")
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.plan-table-rows-limit'), 5, 50, 10) }")
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.workbook-table-rows-limit'), 5, 50, 20) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.station-table-rows-limit'), 5, 100, 50) }")
+    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.processor-table-rows-limit'), 5, 100, 50) }")
     @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.account-table-rows-limit'), 5, 100, 20) }")
 
     @Value("${mh.dispatcher.is-replace-snapshot:#{true}}")
@@ -155,8 +155,8 @@ mh.processor.enabled=true
 mh.processor.dir=./mh-processor
     
 @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.logging.file' )) }")
-@Value("${mh.station.enabled:#{false}}")
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.station.dir' )) }")
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.station.default-launchpad-yaml-file' )) }")
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.station.default-env-yaml-file' )) }")
+@Value("${mh.processor.enabled:#{false}}")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.processor.dir' )) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.processor.default-dispatcher-yaml-file' )) }")
+@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.processor.default-env-yaml-file' )) }")
 ```

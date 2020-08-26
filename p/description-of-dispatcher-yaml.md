@@ -46,7 +46,7 @@ Fields in dispatchers:
 - authType: basic - right now there is only one value which is 'basic'  
 - restPassword: <string> - password for connecting to Dispatcher  
 - restUsername: <String> - login for connecting to Dispatcher  
-- taskProcessingTime <String> - schedule when tasks have to processed at Station side. 
+- taskProcessingTime <String> - schedule when tasks have to processed at Processor side. 
     Full description see [below](#schedule)   
 - disabled: false - is this Dispatcher disabled or not
       
@@ -71,7 +71,7 @@ For purpose of controlling when Processor can process the Task, there is taskPro
 
 #### WeekTimePeriod
 Structure WeekTimePeriod has 7 fields - mon, tue, wed, thu, fri, sat, sun. 
-Each field has value of comma separated list of time periods when Station is active while working day.
+Each field has value of comma separated list of time periods when Processor is active while working day.
 
 #### Schedule samples
 

@@ -104,7 +104,7 @@ Fields in this function.yaml almost the same as the previous one, except the fol
  this file will be executed in defined environment(env field)    
 - metas - for this case two additional metas must be configured   
 -- mh.function-params-as-file - true, tells that the params field must be evaluated as scripting file   
--- mh.function-params-file-ext - extension for scripting file which will be created at Station side   
+-- mh.function-params-file-ext - extension for scripting file which will be created at Processor side   
 
 
 
@@ -125,8 +125,8 @@ functions:
       commit: 5d809f50e3ccb45688deefd9e1e70f6202d8d18a
 ```
  
-For using git as source of snippet two fields must be defined:            
-- sourcing - git . This value tells Station that it function is stored in git repository   
+For using git as source of Function, two fields must be defined:            
+- sourcing - git . This value tells Processor that Function is stored in git repository   
 - git - definition of git, the follow additional fields must be specified:     
 -- repo - url to git repo   
 -- branch - name of branch which will be used   
@@ -134,63 +134,59 @@ For using git as source of snippet two fields must be defined:
 
 
 ### Metadata
-Metadata is being used for configuring a snippet. 
-Metadata as a solution for flexible configuration of snippet was chosen because in this case we can upgrade 
+Metadata is being used for configuring a Function. 
+Metadata as a solution for a flexible configuration of Function was chosen because in this case we can upgrade 
 the code of Metaheuristic without loosing backward compatibility. 
 
-Declaration of metadata in snippet's config is follow:
+Declaration of metadata in Function's config is follow:
 ```yaml
-snippets:
+functions:
   - code: simple-metrics.fit:1.2
     metas:
-      - key: mh.task-params-version
-        value: 3
-      - key: mh.snippet-supported-os
-        value: linux, macos
-      - key: mh.snippet-params-as-file
-        value: true
-      - key: mh.snippet-params-file-ext
-        value: .py
+      - mh.task-params-version: 3
+      - mh.snippet-supported-os: linux, macos
+      - mh.snippet-params-as-file: true
+      - mh.snippet-params-file-ext: .py
 ```
 
 Current list of metadatas includes: 
-- mh.task-params-version -  defines which version of params.yaml must be used for invoking snippet. 
+- mh.task-params-version -  defines which version of params.yaml must be used for invoking Function. 
     If requested version is below of current default version, a downgrade will be tried
-- mh.snippet-params-as-file - defines that the field 'params' contains actual code of script and 
+- mh.function-params-as-file - defines that the field 'params' contains actual code of script and 
     must be stored in temporary file. 
-- mh.snippet-params-file-ext - if meta 'mh.snippet-params-as-file' is defined, extension of temporary file can be specified if needed.
-- mh.snippet-supported-os - if Metaheuristic's stations installed in heterogeneous environment (i.e. on windows OS and on Linux ), target OS can be specified.
+- mh.function-params-file-ext - if meta 'mh.function-params-as-file' is defined, extension of temporary file can be specified if needed.
+- mh.function-supported-os - if Metaheuristic's Processors are installed in heterogeneous environment (i.e. on windows OS and on Linux ), target OS can be specified.
  Possible values are - windows, linux, macos. Values can be combined in comma-separated list. 
   
 
 ### Packaging
 
-In some cases snippet has to be packaged before uploading to Launchpad:   
-- snippet is an external file (like .py, .jar, and so on)    
-- snippet has to be signed so Launchpad can verify legibility of snippet's source 
+In some cases a Function has to be packaged before uploading to Dispatcher:   
+- Function is an external file (like .py, .jar, and so on)    
+- Function has to be signed so Dispatcher can verify legibility of Function's source 
 
-An application 'package-snippet' is used for packaging purpose. For details see [Package snippet](package-snippet) page.
+An application 'package-function' is used for packaging purpose. For details see [Package function](package-function) page.
 
-Default steps for packaging snippet are:   
+Default steps for packaging Functions are:   
 - create temporary folder   
-- in that temp folder, create file snippets.yaml and configure desired parameters   
+- in that temp folder, create file functions.yaml and configure desired parameters   
 - from this temp folder, run the follow command  
 
-java -jar /mh/git/apps/package-snippet/target/package-snippet.jar snippet.zip \[path to private key file\]   
+java -jar /mh/git/apps/package-function/target/package-function.jar function.zip \[path to private key file\]   
 
-- first parameter is the name of resulted .zip archive (in this example it's snippet.zip)   
-- second parameter is optional and is used only when the snippet has to be signed.   
+- first parameter is the name of resulted .zip archive (in this example it's function.zip)   
+- second parameter is optional and is used only when the Function has to be signed.   
 \[path to private key file\] must point to a valid private key, i.e. /mh/git/private-key.txt
 
-For details how to generate public and privat keys, see [Gen keys](gen-keys) page   
+For details how to generate public and private keys, see [Gen keys](gen-keys) page   
 
 
 ### Uploading
-After snippet is prepared in form of snippet.yaml or snippet.zip it has to be uploaded to Launchpad.  
+After a Function is prepared in form of function.yaml or function.zip, it has to be uploaded to Dispatcher.  
 
-This can be done via web interface at url [http://localhost:8080/launchpad/snippet/snippets]()
+This can be done via web interface at url [http://localhost:8080/dispatcher/function/functions]()
 
-Other way to upload snippet is using REST-based url:      
+Other way to upload a Function is using REST-based url:      
 ```text   
-curl -u q:123 -F "file=@simple-metrics-snippets-as-one-file.yaml"  http://localhost:8080/rest/v1/launchpad/snippet/snippet-upload-from-file
+curl -u q:123 -F "file=@simple-metrics-functions-as-one-file.yaml"  http://localhost:8080/rest/v1/dispatcher/function/function-upload-from-file
 ```

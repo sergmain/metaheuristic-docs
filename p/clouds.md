@@ -33,7 +33,7 @@ SPRING_APPLICATION_JSON =
   "mh.dispatcher.master-username": "q",  
   "mh.dispatcher.public-key": "<public-key>",  
   "mh.dispatcher.enabled": true,  
-  "mh.dispatcher.dir": "./mh-launchpad",  
+  "mh.dispatcher.dir": "./mh-dispatcher",  
   "mh.dispatcher.chunk-size": "900k",  
   "mh.processor.enabled": false,  
   "mh.branding": "<desired-branding-name>"
@@ -72,7 +72,7 @@ Application server =====
   MH_IS_SSL_REQUIRED = true  
   MH_DEFAULT_RESULT_FILE_EXTENSION = <desired-default-extension>  
   MH_BRANDING = <desired-branding-name>  
-  MH_LAUNCHPAD_DIR = target/launchpad  
+  MH_DISPATCHER_DIR = target/dispatcher  
 ```
 
 

@@ -9,11 +9,11 @@ layout: default
 1.1. Общая концепция
 
 логически Metaheuristic состоит из 2-ух верхнеуровневых модулей:
-- launchpad - стартовая площадка
-- station - станция
+- Dispatcher - Диспетчер
+- Processor - Процессор
 
-Стартовая площадка используется для управления заданиями, которые будут обрабатываться на станциях.
-Станции могут получать задания от неограниченного количества стартовыз площадок.
+Диспетчер используется для управления заданиями, которые будут обрабатываться на процессорах.
+Процессоры могут получать задания от неограниченного количества Диспетчеров.
 Выбор стартовой площадки у которой необходимо запросить новое задание на выполнение осучествляется
 на основе Round-robin алгоритма.
 
@@ -27,10 +27,10 @@ layout: default
 
 Рабочая книга - это сущность, которая включает в себя инфрмацию о выполнении преобразования данных.
 
-1.4 Resource (ресурс)
+1.4 Variable (ресурс)
 
 Ресурс - это данные, которые используются или создаются в процессе преобразования данных потоком.
-Ресурны бывают 2-ух типов - DATA (данные), SNIPPET(спипет)
+Ресурны бывают 2-ух типов - DATA (данные), function(спипет)
 Данные - это все, что загружается в снипеты или является продуктом их работы.
 Снипет, как ресурс - это исполняемый код, который соответствует одному из описателей снипетов
 
@@ -77,8 +77,8 @@ layout: default
 \mh - главный директорий для Metaheuristic
 \mh\config - директорий, в котором будет находиться application.properties конфиг файл
 \mh\git - в данный директорий будет делаться clone из git
-\mh\launchpad - директорий для стартовой площадки
-\mh\station - директорий для станции
+\mh\dispatcher - директорий для стартовой площадки
+\mh\processor - директорий для станции
 
 3.2 git
 
@@ -205,17 +205,17 @@ mh.launchpad.master-password
 3.7.1 application.properties для станции
 
 ```properties
-spring.profiles.active=station
+spring.profiles.active=processor
 
-mh.station.enabled=true
-mh.station.dir=./station
+mh.processor.enabled=true
+mh.processor.dir=./processor
 ```
 
 3.7.2 Конфигурация launchpad.yaml
 
 Для конфигурации стартовых площадок, с которыми будет взаимодействовать конкретная станция используется
 конфиг файл launchpad.yaml. Данный файл должен располагаться в директории который является главным для станции,
-в данном руковосдстве это \mh\station
+в данном руковосдстве это \mh\processor
 формат файла:
 ```yaml
 launchpads:
@@ -257,21 +257,21 @@ acceptOnlySignedSnippets: принимать только подписанные
 
 3.8 Конфигурация spring.profiles.active
 
-в настоящее время в Metaheuristic поддерживается 2 профиля - launchpad и station
+в настоящее время в Metaheuristic поддерживается 2 профиля - dispatcher и processor
 эти профили можно использовать как по отдельности, так и комбинировать. В любом случаев,
 в файле application.properties должна быть только ОДНА строка spring.profiles.active=
 Например:
-spring.profiles.active=launchpad
+spring.profiles.active=dispatcher
 или
-spring.profiles.active=launchpad, station
+spring.profiles.active=dispatcher, processor
 или
-spring.profiles.active=station
+spring.profiles.active=processor
 
 !Внимание! данная инструкция написана для случая когда используются оба профиля.
 поэтому параметр spring.profiles.active в apllication.properties должен быть следующим:
 
 ```properties
-spring.profiles.active=launchpad, station
+spring.profiles.active=dispatcher, processor
 ```
   
 3.9 Конфигурация Http сервера на стороне стартовой площадки
@@ -391,7 +391,7 @@ fileProvided=true
 snippets:
     - code: simple-app:1.0
       type: query
-      sourcing: station
+      sourcing: processor
       file: curl http://localhost:8888
       skipParams: true
 ```
@@ -406,12 +406,12 @@ snippets:
 snippets:
     - code: simple-app:1.0
       type: query
-      sourcing: station
+      sourcing: processor
       file: curl http://localhost:8888
       skipParams: true
 ```
 
-используя приложние apps/package-snippet запаковать и подписать снипет. 
+используя приложние apps/package-function запаковать и подписать снипет. 
 package-snippet описан в п.10
 
 
@@ -450,7 +450,7 @@ http://localhost:8080/launchpad/snippets
 12.1 env.yaml
 
 для того, чтобы снипеты запускались на стороне станции необходимо сконфигурировать
-исполняемое окуржение. для этого необходимо создать файл \mh\station\env.yaml
+исполняемое окуржение. для этого необходимо создать файл \mh\processor\env.yaml
 
 конфиг:
 ```yaml
@@ -509,9 +509,9 @@ Input pool code for this plan - simple-resource-pool
 
 Запустить поток на выполнение нажатием кнопки "Start"
 
-в директории \mh\station\task
+в директории \mh\processor\task
 должен появиться директорий 0 и в нем директорий с номером задачи.
-в директории \mh\station\task\0\xxx\system после выполнения задачи
+в директории \mh\processor\task\0\xxx\system после выполнения задачи
 будет содан файл system-console.log в котором будет выведно содержимое файла,
 который мы загрузили как ресурс.
 

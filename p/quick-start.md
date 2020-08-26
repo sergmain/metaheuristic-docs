@@ -47,10 +47,10 @@ It'll be /mh-root in follow text.
 
 1. Change dir to /mh-root and run command:
 ```text
-java -Dspring.profiles.active=quickstart,launchpad,station -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+java -Dspring.profiles.active=quickstart,dispatcher,processor -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.processor.default-dispatcher-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/dispatcher.yaml --mh.processor.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
 ```
 
-1. Now you can find our experiment data at http://localhost:8080/launchpad/atlas/atlas-experiments
+1. Now you can find our experiment data at http://localhost:8080/dispatcher/atlas/atlas-experiments
 login - q, password - 123
 
 1. Press 'Details' for experiment info (there should be only one record in atlas)
@@ -67,17 +67,17 @@ Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocume
 
 1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
     ```text
-    curl-upload-snippet-as-one-file
-    curl-add-resource-stub
+    curl-upload-functions-as-one-file
+    curl-add-variable-stub
     curl-add-experiment
-    curl-add-plan
-    curl-bind-experiment-to-plan-with-resource
-    curl-create-workbook
+    curl-add-source-code
+    curl-bind-experiment-to-source-code--with-varaible
+    curl-create-exec-context
     curl-produce-experiment-tasks
     ```
 
 1. At this point Metaheuristic started to produce tasks 
-and you have to have until status will 'PRODUCED'. You can check current status by running script
+and you have to wait until status will be changed to 'PRODUCED'. You can check current status by running script
     ```text
     curl-get-experiment-processing-status
     ```
@@ -97,7 +97,7 @@ and you have to have until status will 'PRODUCED'. You can check current status 
     STOPPED - processing of tasks was stopped  
     FINISHED - processing of tasks was finished  
 
-1. After status will change to FINISHED you can find our experiment at http://localhost:8080/launchpad/experiment/experiments  
+1. After status will change to FINISHED you can find our experiment at http://localhost:8080/dispatcher/experiment/experiments  
 login - q, password - 123
 
 1. Press 'Info' button and on the next page 'Info' button at the bottom of page.

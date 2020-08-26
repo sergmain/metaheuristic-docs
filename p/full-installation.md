@@ -126,7 +126,7 @@ Descriptions of all mh.* parameters can be found in [mh.* parameters](descriptio
 Now you need to configure Processor. You can skip this part for now and launch 
 Metaheuristic with predefined files by going to [Launching of Metaheuristic]() section.
 
-- Create file /mh-root/mh-station/launchpad.yaml with follow content:
+- Create file /mh-root/mh-processor/dispatcher.yaml with follow content:
    
 ```yaml
 dispatchers:   
