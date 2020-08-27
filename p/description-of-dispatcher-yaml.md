@@ -2,7 +2,7 @@
 layout: default
 ---
 
-- [Index](/index)
+# Description of Dispatcher
 
 ## Table of contents
 
@@ -11,6 +11,8 @@ layout: default
 - [Schedule](#Schedule)
 - [WeekTimePeriod](#WeekTimePeriod)
 - [Schedule samples](#Schedule samples)
+
+- [to Index](/index)
 
 
 ### Definition

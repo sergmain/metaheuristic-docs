@@ -13,7 +13,7 @@ layout: default
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
+- [A](#a) B [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
 
 ### A
 - [application.properties](/p/application_properties)
@@ -42,6 +42,7 @@ layout: default
 ### I
 - [Installation (full)](/p/full-installation)
 - [Installation (quick)](/p/quick-start)
+- [Internal function](/p/internal-function)
 
 ### L
 - [License, licensing](/p/license-licensing-copyright#license-and-licensing)

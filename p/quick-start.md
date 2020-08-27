@@ -2,13 +2,15 @@
 layout: default
 ---
 
-- [Index](/index)
+# Quick start
 
 ## Table of contents
 
 - [Quick start](#quick-start)
 - [Quick start for evaluating UI only](#quick-start-for-evaluating-ui-only)
 - [Quick start with running the actual tasks](#quick-start-with-running-the-actual-tasks)
+
+- [to Index](/index)
 
 ## Prerequisites: Java Development Kit (JDK) 11
 
@@ -63,7 +65,7 @@ login - q, password - 123
 ##### Quick start with running the actual tasks
 >To run actual tasks in Metaheuristic you have to have python 3.x.  
 Be sure to add the python bin dir to your **$PATH**  
-Also PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocumentation) 
+Also, PyYAML 5.1 package must [be installed](https://pyyaml.org/wiki/PyYAMLDocumentation) 
 
 1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
     ```text

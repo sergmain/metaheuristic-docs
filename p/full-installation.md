@@ -2,7 +2,9 @@
 layout: default
 ---
 
-- [Index](/index)
+# Full installation
+
+- [to Index](/index)
 
 ## Table of contents
 

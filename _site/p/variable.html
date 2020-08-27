@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<title>Variable | Metaheuristic.ai</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Metaheuristic.ai" />
+<meta property="og:title" content="Variable" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/variable.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/variable.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/variable.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Variable","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
+    <link rel="stylesheet" href="/assets/css/style.css?v=5d9557385095a11d04b8f35f5635efcd12f1119f">
   </head>
   <body>
     <section class="page-header">
@@ -32,39 +32,43 @@
     </section>
 
     <section class="main-content">
-      <ul>
-  <li><a href="/index">Index</a></li>
-</ul>
+      <h1 id="variable">Variable</h1>
 
 <h2 id="table-of-contents">Table of contents</h2>
 
 <ul>
   <li><a href="#definition">Definition</a></li>
-  <li><a href="#creation">Creation</a></li>
+  <li>
+    <p><a href="#creation">Creation</a></p>
+  </li>
+  <li><a href="/index">to Index</a></li>
 </ul>
 
 <h3 id="definition">Definition</h3>
 
-<p>Resource in Metaheuristic is any information which stored in Metaheuristic’s database and has its own code and pool code.</p>
+<p>Variable in Metaheuristic is any information which stored in Metaheuristic’s database and has its name and type (optionally) .</p>
 
-<p>Pool code is using to group resources in pool. When <a href="/p/snippet">Snippet</a> is executed, 
-pool code will be used to decide which resources need to be provided to snippet.</p>
-
-<p>For example, we have historical data in number of files, i.e. year-by-year. 
-While uploading those files we will specify pool code, i.e. ‘historical-dataset’
-Then we can transform all files which are loaded with this pool code into one dataset file 
-and then this result of transforming will eb sended to other snippet as input resource.</p>
+<p>Variables can be just Variable or Global variable:</p>
+<ul>
+  <li>the scope of Variable is concrete Execution Context</li>
+  <li>Global variables are being shared between all Execution Contexts</li>
+</ul>
 
 <h3 id="creation">Creation</h3>
 
-<p>There are <a href="http://localhost:8080/dispatcher/variable/variables">two forms of uploading resources</a></p>
+<p>Global variable can be created at web console of Dispatcher - <a href="">http://localhost:8080/dispatcher/variable/variables</a></p>
 
-<p>The first one is for uploading files and assign pool code (required) and code (optional) for uploaded resource.</p>
+<p>There are two options how to create Global variable:</p>
+<ul>
+  <li>by uploading file and assigning name</li>
+  <li>by uploading descriptor which defines Global variable on external storage. 
+Metaheuristic doesn’t control content of such Global variables.</li>
+</ul>
 
-<p>The second one is for defining resources which isn’t controlled by Metaheuristic and 
-stored somewhere else.
-Right now two type of remote sourcing of resources are supported - ‘git’ and ‘disk’
- – git - variable is in a git repository and Processor has to clone repository before accessing that variable</p>
+<p>Global variable and Variable can be configured with external sourcing:</p>
+<ul>
+  <li>git, variable will be initialized by check outing and Processor side</li>
+</ul>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sourcing</span><span class="pi">:</span> <span class="s">git</span>
 <span class="na">git</span><span class="pi">:</span>
@@ -73,15 +77,18 @@ Right now two type of remote sourcing of resources are supported - ‘git’ and
   <span class="na">commit</span><span class="pi">:</span> <span class="s">b25331edba72a1a901634212ac55752238fd2dd5</span>
 </code></pre></div></div>
 
-<p>– disk - resources are stored on shared devices (i.e. shared dir)</p>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sourcing</span><span class="pi">:</span> <span class="s">disk</span>
+<ul>
+  <li>disk, content of variable is supposed to be provided as file and must be accessible for Processor
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sourcing</span><span class="pi">:</span> <span class="s">disk</span>
 <span class="na">disk</span><span class="pi">:</span>
-  <span class="na">code</span><span class="pi">:</span> <span class="s">storage-code</span>
-  <span class="na">mask</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*'</span>
-</code></pre></div></div>
+<span class="na">code</span><span class="pi">:</span> <span class="s">storage-code</span>
+<span class="na">mask</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*'</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
 
 <p>Field disk/code must have the value which is specified as metadata disk/code in <a href="/p/description-of-env-yaml#structure">env.yaml file</a>.
-For supporting the yaml config which is showed above, env.yaml must be like this:</p>
+For supporting the definition of variable which is showed above, env.yaml must be like this:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">disk</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">storage-code</span>

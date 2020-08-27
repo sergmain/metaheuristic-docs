@@ -2,7 +2,9 @@
 layout: default
 ---
 
-- [Index](/index)
+# Experiment
+
+- [to Index](/index)
 
 ## Table of contents
 

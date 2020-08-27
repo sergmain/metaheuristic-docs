@@ -2,12 +2,14 @@
 layout: default
 ---
 
-- [Index](/index)
+# License, licensing, copyright
 
 ## Table of contents
 
 - [License and licensing](#license-and-licensing)
 - [Copyright](#copyright)
+
+- [to Index](/index)
 
 ## License and licensing
 Metaheuristic has dual licensing.

@@ -2,36 +2,36 @@
 layout: default
 ---
 
-- [Index](/index)
+# Variable
 
 ## Table of contents
 
 - [Definition](#definition)
 - [Creation](#creation)
 
+- [to Index](/index)
+
 ### Definition
 
-Resource in Metaheuristic is any information which stored in Metaheuristic's database and has its own code and pool code.
+Variable in Metaheuristic is any information which stored in Metaheuristic's database and has its name and type (optionally) .
 
-Pool code is using to group resources in pool. When [Snippet](/p/snippet) is executed, 
-pool code will be used to decide which resources need to be provided to snippet.
-
-For example, we have historical data in number of files, i.e. year-by-year. 
-While uploading those files we will specify pool code, i.e. 'historical-dataset'
-Then we can transform all files which are loaded with this pool code into one dataset file 
-and then this result of transforming will eb sended to other snippet as input resource.  
+Variables can be just Variable or Global variable:
+- the scope of Variable is concrete Execution Context
+- Global variables are being shared between all Execution Contexts   
 
 ### Creation
 
-There are [two forms of uploading resources](http://localhost:8080/dispatcher/variable/variables)
+Global variable can be created at web console of Dispatcher - [http://localhost:8080/dispatcher/variable/variables]()
 
-The first one is for uploading files and assign pool code (required) and code (optional) for uploaded resource.
+There are two options how to create Global variable:
+- by uploading file and assigning name
+- by uploading descriptor which defines Global variable on external storage. 
+  Metaheuristic doesn't control content of such Global variables. 
+  
+  
+Global variable and Variable can be configured with external sourcing:
+- git, variable will be initialized by check outing and Processor side 
 
-The second one is for defining resources which isn't controlled by Metaheuristic and 
-stored somewhere else.
-Right now two type of remote sourcing of resources are supported - 'git' and 'disk'
- -- git - variable is in a git repository and Processor has to clone repository before accessing that variable
- 
  ```yaml
 sourcing: git
 git:
@@ -40,7 +40,7 @@ git:
   commit: b25331edba72a1a901634212ac55752238fd2dd5
  ```
 
-  -- disk - resources are stored on shared devices (i.e. shared dir)
+- disk, content of variable is supposed to be provided as file and must be accessible for Processor 
 ```yaml
 sourcing: disk
 disk:
@@ -49,7 +49,7 @@ disk:
 ```  
 
 Field disk/code must have the value which is specified as metadata disk/code in [env.yaml file](/p/description-of-env-yaml#structure).
-For supporting the yaml config which is showed above, env.yaml must be like this:
+For supporting the definition of variable which is showed above, env.yaml must be like this:
 
 ```yaml
 disk:

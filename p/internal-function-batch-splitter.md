@@ -2,14 +2,13 @@
 layout: default
 ---
 
-# Generate keys
+# Internal function mh.batch-splitter
 
 ## Table of contents
 
 - [Definition](#definition)
-- [Configuration](#configuration)
-- [Packaging](#packaging)
 
 - [to Index](/index)
+- [to list of Internal functions](internal-function)
 
-
+### Definition

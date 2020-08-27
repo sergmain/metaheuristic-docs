@@ -2,13 +2,14 @@
 layout: default
 ---
 
-- [Index](/index)
+# Description of application.properties
 
 ## Table of contents
 
 - [Definition](#definition)
 - [Structure](#structure)
 
+- [to Index](/index)
 
 
 ### Definition

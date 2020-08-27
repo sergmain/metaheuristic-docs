@@ -2,7 +2,9 @@
 layout: default
 ---
 
-- [Index](/index)
+# Function
+
+- [to Index](/index)
 
 ## Table of contents
 
