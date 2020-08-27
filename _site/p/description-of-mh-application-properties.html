@@ -1,50 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=972e901cdf530f1720efb07a28437c188a2fb67d" media="screen" type="text/css">
-    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Metaheuristic | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Metaheuristic" />
+<meta property="og:title" content="Metaheuristic.ai" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
 <link rel="canonical" href="http://localhost:4000/p/description-of-mh-application-properties.html" />
 <meta property="og:url" content="http://localhost:4000/p/description-of-mh-application-properties.html" />
-<meta property="og:site_name" content="Metaheuristic" />
+<meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/description-of-mh-application-properties.html","headline":"Metaheuristic","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/description-of-mh-application-properties.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <a href="http://localhost:4000/">
-          <h1>Metaheuristic</h1>
-        </a>
-        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
-        
-          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
-        
-        
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <ul>
+    <section class="main-content">
+      <ul>
   <li><a href="/index">Index</a></li>
 </ul>
 
@@ -57,69 +45,59 @@
 
 <h3 id="definition">Definition</h3>
 
-<p>When snippet is being invoked it will be supplied with an absolute path to parameter file. 
+<p>When Processor is being invoked it will be supplied with an absolute path to parameter file. 
 This parameter will always be the last parameter in the list of parameters which snippet will receive.</p>
 
 <h3 id="structure">Structure</h3>
 
 <p>This parameter file has the follow structure:</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">taskYaml</span><span class="pi">:</span>
-  <span class="na">inputResourceAbsolutePaths</span><span class="pi">:</span>
-    <span class="na">mainDocument</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">/sandbox/git/mh/mh-station/task/localhost-8080/11/6691/DATA/uploaded-file-17064922919341969220-264882960313000.bin</span>
-  <span class="na">inputResourceCodes</span><span class="pi">:</span>
-    <span class="na">mainDocument</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">uploaded-file-17064922919341969220-264882960313000.bin</span>
-  <span class="na">outputResourceAbsolutePath</span><span class="pi">:</span> <span class="s">/sandbox/git/mh/mh-station/task/localhost-8080/11/6691/artifacts/1449-1-fake-snippet-1_1-simple-app-with-timeout-0</span>
-  <span class="na">outputResourceCode</span><span class="pi">:</span> <span class="s">1449-1-fake-snippet-1_1-simple-app-with-timeout-0</span>
-  <span class="na">realNames</span><span class="pi">:</span>
-    <span class="s">uploaded-file-17064922919341969220-264882960313000.bin</span><span class="pi">:</span> <span class="s">81509 some file name.xml</span>
-  <span class="na">resourceStorageUrls</span><span class="pi">:</span>
-    <span class="s">uploaded-file-17064922919341969220-264882960313000.bin</span><span class="pi">:</span>
-      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">launchpad</span>
-    <span class="na">1449-1-fake-snippet-1_1-simple-app-with-timeout-0</span><span class="pi">:</span>
-      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">launchpad</span>
-  <span class="na">snippet</span><span class="pi">:</span>
-    <span class="na">checksum</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{"checksums":{"SHA256":"6e8ac7a2d3c6c6ea5ac01cf9ca678106f6fc61b045fd0a045580b54908c1d731"}}'</span>
-    <span class="na">code</span><span class="pi">:</span> <span class="s">fake-snippet:1.1</span>
-    <span class="na">env</span><span class="pi">:</span> <span class="s">fake</span>
-    <span class="na">info</span><span class="pi">:</span>
-      <span class="na">length</span><span class="pi">:</span> <span class="s">0</span>
-      <span class="na">signed</span><span class="pi">:</span> <span class="no">false</span>
-    <span class="na">metas</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">task-params-version</span>
-      <span class="na">value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
-    <span class="na">metrics</span><span class="pi">:</span> <span class="no">false</span>
-    <span class="na">skipParams</span><span class="pi">:</span> <span class="no">false</span>
-    <span class="na">sourcing</span><span class="pi">:</span> <span class="s">station</span>
-    <span class="na">type</span><span class="pi">:</span> <span class="s">fileless</span>
-  <span class="na">timeoutBeforeTerminate</span><span class="pi">:</span> <span class="s">2</span>
-  <span class="na">workingPath</span><span class="pi">:</span> <span class="s">/sandbox/git/mh/mh-station/task/localhost-8080/11/6691</span>
-<span class="na">version</span><span class="pi">:</span> <span class="s">3</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">task</span><span class="pi">:</span>
+  <span class="na">clean</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">execContextId</span><span class="pi">:</span> <span class="s">1373</span>
+  <span class="na">inline</span><span class="pi">:</span> <span class="pi">{</span>
+  <span class="pi">}</span>
+  <span class="na">inputs</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">dataType</span><span class="pi">:</span> <span class="s">variable</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s">5700</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">var-batch-item</span>
+      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">dispatcher</span>
+  <span class="na">outputs</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">dataType</span><span class="pi">:</span> <span class="s">variable</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s">5701</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">var-processed-file-1</span>
+      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">dispatcher</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-processed-file</span>
+    <span class="pi">-</span> <span class="na">dataType</span><span class="pi">:</span> <span class="s">variable</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s">5702</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">var-processing-status-1</span>
+      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">dispatcher</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-processing-status</span>
+    <span class="pi">-</span> <span class="na">dataType</span><span class="pi">:</span> <span class="s">variable</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s">5703</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">var-item-mapping-1</span>
+      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">dispatcher</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-mapping</span>
+  <span class="na">workingPath</span><span class="pi">:</span> <span class="s">/sandbox/git/mh/mh-processor/task/localhost-8080/11/6691</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s">1</span>
 </code></pre></div></div>
 
-<p>Top-level fields in params-v3.yaml:</p>
+<p>Top-level fields in params.yaml:</p>
 <ul>
   <li>version - The current version of format of params.yaml file.</li>
-  <li>taskYaml - The holder of all fields, except field ‘version’</li>
+  <li>task - The holder of all fields, except field ‘version’</li>
 </ul>
 
 <p>Fields in taskYaml:</p>
 
-        </section>
 
-        <aside id="sidebar">
-          
-
-          
-            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
-          
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
-        </aside>
-      </div>
-    </div>
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
 
     
   </body>

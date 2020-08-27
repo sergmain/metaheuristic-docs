@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Metaheuristic.ai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/function.html" />
+<meta property="og:url" content="http://localhost:4000/p/function.html" />
+<meta property="og:site_name" content="Metaheuristic.ai" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/p/function.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <ul>
+  <li><a href="/index">Index</a></li>
+</ul>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#configuration">Configuration</a></li>
+  <li><a href="#metadata">Metadata</a></li>
+  <li><a href="#packaging">Packaging</a></li>
+  <li><a href="#uploading">Uploading</a></li>
+</ul>
+
+<h3 id="definition">Definition</h3>
+
+<p>A processing entity which is configured, packaged, and uploaded to the Dispatcher, and is being run at Processor is a Function.
+Function can be executable application, .jar file, python notebook, 
+file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on.</p>
+
+<p>From a delivery point of view, the Function can be provisioned from Dispatcher or from git repository.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Before uploading of Function to Dispatcher, the Function has to be configured with function.yaml file</p>
+
+<p>sunction.yaml for the case with external .py file:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-function-1.2</span>
+  <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
+  <span class="na">file</span><span class="pi">:</span> <span class="s">some-python-file.py</span>
+  <span class="na">params</span><span class="pi">:</span> <span class="s">param1 param2 param3</span>
+  <span class="na">metas</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+    <span class="na">value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1'</span>
+  <span class="na">skipParams</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">sourcing</span><span class="pi">:</span> <span class="s">dispatcher</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">simple-function</span>
+</code></pre></div></div>
+
+<p>How does it work?
+python3 is a string reference to environment which is configured at Processor side. Such a configuration is done in <a href="/p/description-of-env-yaml">env.yaml file</a> 
+I.e.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
+  <span class="na">python-3</span><span class="pi">:</span> <span class="s">/anaconda3/envs/python-3.6/python</span>
+</code></pre></div></div>
+
+<p>The final command to execute Function at Processor side will be</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  /anaconda3/envs/python-3.6/python some-python-file.py param1 param2 param3 &lt;full-path-to-file&gt;/params.yaml
+</code></pre></div></div>
+
+<p>Fields in function.yaml:</p>
+<ul>
+  <li>code - string representation of code of concrete Function must be unique within Dispatcher</li>
+  <li>env - string reference to environment</li>
+  <li>file - name of file which must be provisioned alongside with function.yaml</li>
+  <li>params - parameters for a file, which is specified in the field ‘file’</li>
+  <li>metas - dictionary for key-value based configuration parameters <br />
+– mh.task-params-version - the version of format of params.yaml file which 
+ is the last parameter for executable file (skipParams must be false)</li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>mh.task-params-version defines which format must be used for params.yaml file which is provided to snippet 
+ as the last parameter in command line (skipParams is false). For details see <a href="/p/description-of-task-params-yaml.html">description of task’s params.yaml config</a></li>
+  </ul>
+</blockquote>
+
+<ul>
+  <li>skipParams - boolean, true/false, should params.yaml file be omitted?</li>
+  <li>sourcing - enum, possible values - dispatcher, processor, git
+    <ul>
+      <li>dispatcher - Function will be downloaded from Dispatcher</li>
+      <li>processor - Function already has been deployed locally at Processor</li>
+      <li>git - snippet will be downloaded from git</li>
+    </ul>
+  </li>
+  <li>type - a freely defined field</li>
+</ul>
+
+<p>function.yaml for the case when scripting file is embedded in a config:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">fit</span>
+    <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
+    <span class="na">sourcing</span><span class="pi">:</span> <span class="s">processor</span>
+    <span class="na">metas</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.function-params-as-file</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.function-params-file-ext</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">.py</span>
+    <span class="na">params</span><span class="pi">:</span> <span class="pi">|+</span>
+      <span class="no">import sys</span>
+      <span class="no">from datetime import datetime</span>
+
+      <span class="no">print(sys.argv)</span>
+      <span class="no">print(str(datetime.now()))</span>
+</code></pre></div></div>
+
+<p>Fields in this function.yaml almost the same as the previous one, except the follow:</p>
+<ul>
+  <li>sourcing - processor . This value tells Processor that it doesn’t need to download Function from Dispatcher</li>
+  <li>params - contains the code for executing. Will be stored in file and 
+ this file will be executed in defined environment(env field)</li>
+  <li>metas - for this case two additional metas must be configured <br />
+– mh.function-params-as-file - true, tells that the params field must be evaluated as scripting file <br />
+– mh.function-params-file-ext - extension for scripting file which will be created at Processor side</li>
+</ul>
+
+<p>function.yaml for the case when Function will be provisioned from git repository:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">fit</span>
+    <span class="na">file</span><span class="pi">:</span> <span class="s">examples/simple-metrics/functions/simple-metrics-fit.py</span>
+    <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
+    <span class="na">sourcing</span><span class="pi">:</span> <span class="s">git</span>
+    <span class="na">metas</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
+    <span class="na">git</span><span class="pi">:</span>
+      <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/sergmain/metaheuristic-assets.git</span>
+      <span class="na">branch</span><span class="pi">:</span> <span class="s">master</span>
+      <span class="na">commit</span><span class="pi">:</span> <span class="s">5d809f50e3ccb45688deefd9e1e70f6202d8d18a</span>
+</code></pre></div></div>
+
+<p>For using git as source of Function, two fields must be defined:</p>
+<ul>
+  <li>sourcing - git . This value tells Processor that Function is stored in git repository</li>
+  <li>git - definition of git, the follow additional fields must be specified:   <br />
+– repo - url to git repo <br />
+– branch - name of branch which will be used <br />
+– commit - sha256 representation of commit in current branch</li>
+</ul>
+
+<h3 id="metadata">Metadata</h3>
+<p>Metadata is being used for configuring a Function. 
+Metadata as a solution for a flexible configuration of Function was chosen because in this case we can upgrade 
+the code of Metaheuristic without loosing backward compatibility.</p>
+
+<p>Declaration of metadata in Function’s config is follow:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
+    <span class="na">metas</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">mh.task-params-version</span><span class="pi">:</span> <span class="s">3</span>
+      <span class="pi">-</span> <span class="s">mh.snippet-supported-os</span><span class="pi">:</span> <span class="s">linux, macos</span>
+      <span class="pi">-</span> <span class="s">mh.snippet-params-as-file</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="s">mh.snippet-params-file-ext</span><span class="pi">:</span> <span class="s">.py</span>
+</code></pre></div></div>
+
+<p>Current list of metadatas includes:</p>
+<ul>
+  <li>mh.task-params-version -  defines which version of params.yaml must be used for invoking Function. 
+  If requested version is below of current default version, a downgrade will be tried</li>
+  <li>mh.function-params-as-file - defines that the field ‘params’ contains actual code of script and 
+  must be stored in temporary file.</li>
+  <li>mh.function-params-file-ext - if meta ‘mh.function-params-as-file’ is defined, extension of temporary file can be specified if needed.</li>
+  <li>mh.function-supported-os - if Metaheuristic’s Processors are installed in heterogeneous environment (i.e. on windows OS and on Linux ), target OS can be specified.
+ Possible values are - windows, linux, macos. Values can be combined in comma-separated list.</li>
+</ul>
+
+<h3 id="packaging">Packaging</h3>
+
+<p>In some cases a Function has to be packaged before uploading to Dispatcher:</p>
+<ul>
+  <li>Function is an external file (like .py, .jar, and so on)</li>
+  <li>Function has to be signed so Dispatcher can verify legibility of Function’s source</li>
+</ul>
+
+<p>An application ‘package-function’ is used for packaging purpose. For details see <a href="package-function">Package function</a> page.</p>
+
+<p>Default steps for packaging Functions are:</p>
+<ul>
+  <li>create temporary folder</li>
+  <li>in that temp folder, create file functions.yaml and configure desired parameters</li>
+  <li>from this temp folder, run the follow command</li>
+</ul>
+
+<p>java -jar /mh/git/apps/package-function/target/package-function.jar function.zip [path to private key file]</p>
+
+<ul>
+  <li>first parameter is the name of resulted .zip archive (in this example it’s function.zip)</li>
+  <li>second parameter is optional and is used only when the Function has to be signed. <br />
+[path to private key file] must point to a valid private key, i.e. /mh/git/private-key.txt</li>
+</ul>
+
+<p>For details how to generate public and private keys, see <a href="gen-keys">Gen keys</a> page</p>
+
+<h3 id="uploading">Uploading</h3>
+<p>After a Function is prepared in form of function.yaml or function.zip, it has to be uploaded to Dispatcher.</p>
+
+<p>This can be done via web interface at url <a href="">http://localhost:8080/dispatcher/function/functions</a></p>
+
+<p>Other way to upload a Function is using REST-based url:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -u q:123 -F "file=@simple-metrics-functions-as-one-file.yaml"  http://localhost:8080/rest/v1/dispatcher/function/function-upload-from-file
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>

@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=25d93bfa0922dd234147fb01ca18e44fa053e1e2" media="screen" type="text/css">
-    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
@@ -22,29 +14,25 @@
 <meta property="og:url" content="http://localhost:4000/p/full-installation.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/full-installation.html","headline":"Metaheuristic.ai","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/full-installation.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <a href="http://localhost:4000/">
-          <h1>Metaheuristic.ai</h1>
-        </a>
-        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
-        
-          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
-        
-        
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <ul>
+    <section class="main-content">
+      <ul>
   <li><a href="/index">Index</a></li>
 </ul>
 
@@ -63,16 +51,16 @@
 <h4 id="java-development-kit-jdk-11">Java Development Kit (JDK) 11</h4>
 
 <p>To run Metaheuristic you have to have jdk 11<br />
-Right now there isn’t any known bug which restricts to use certain JDK.</p>
+Right now, there isn’t any known bug which restricts to use certain JDK.</p>
 
 <p><a href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html">Amazon Corretto 11</a><br />
 <a href="https://adoptopenjdk.net/?variant=openjdk11&amp;jvmVariant=hotspot">AdoptOpenJDK (AKA OpenJDK) 11</a><br />
 <a href="https://www.azul.com/downloads/zulu-community/?&amp;version=java-11-lts">Zulu JDK 11</a></p>
 
 <h4 id="database">Database</h4>
-<p>At this moment we are supporting two databases - mysql and postgresql.  <br />
-By supporting we means that there is sql scripts for initialization of db. 
-Quick start is using H2 db, so this db is fine too.</p>
+<p>At this moment we are supporting two databases for production environment - mysql and postgresql.  <br />
+By supporting we mean that there is sql scripts for initialization of db. 
+Quick start is using H2 db, so this db is fine too but only for testing environment.</p>
 
 <p>Sql files for db’s scheme: <br />
  – <a href="https://github.com/sergmain/metaheuristic/blob/master/sql/schema-postgresql.sql">Postgresql</a> <br />
@@ -89,14 +77,14 @@ Quick start is using H2 db, so this db is fine too.</p>
 It’ll be /mh-root in the follow text.</p>
   </li>
   <li>
-    <p>Change dir to /mh-root and the follow dirs:</p>
+    <p>Change dir to /mh-root and create the follow dirs:</p>
   </li>
 </ul>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/mh-root/config
 /mh-root/logs
-/mh-root/mh-launchpad
-/mh-root/mh-station
+/mh-root/mh-dispatcher
+/mh-root/mh-processor
 </code></pre></div></div>
 
 <ul>
@@ -108,11 +96,11 @@ It’ll be /mh-root in the follow text.</p>
     <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvnw clean install -f pom.xml -Dmaven.test.skip=true
 </code></pre></div>    </div>
   </li>
-  <li>Change dir to /mh-root/config and create file application.properties with follow content:</li>
+  <li>Change dir to /mh-root/config and create file application.properties with the follow content:</li>
 </ul>
 
 <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
-<span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">launchpad, station</span>
+<span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">dispatcher, processor</span>
 
 <span class="c"># ------------- Logging -----------------
 </span><span class="py">logging.file</span><span class="p">=</span><span class="s">logs/logs/mh.log</span>
@@ -124,20 +112,22 @@ It’ll be /mh-root in the follow text.</p>
 # = DATA SOURCE
 # ===============================
 </span>
-<span class="c"># postgresql db @localhost
+<span class="c"># start of postgresql section db @localhost
 #spring.datasource.url=jdbc:postgresql://localhost:5432/mh?user=mh&amp;password=qwe321&amp;sslmode=require
 #spring.datasource.username=mh
 #spring.datasource.password=qwe321
 #spring.datasource.driver-class-name=org.postgresql.Driver
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+# end of postgresql section
 </span>
-<span class="c"># mysql db @localhost
+<span class="c"># # start of mysql section db @localhost
 </span><span class="py">spring.datasource.url</span> <span class="p">=</span> <span class="s">jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;sslMode=DISABLED&amp;allowPublicKeyRetrieval=true</span>
 <span class="py">spring.datasource.username</span> <span class="p">=</span> <span class="s">mh</span>
 <span class="py">spring.datasource.password</span> <span class="p">=</span> <span class="s">qwe321</span>
 <span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
 <span class="py">spring.jpa.properties.hibernate.dialect</span> <span class="p">=</span> <span class="s">org.hibernate.dialect.MySQL57Dialect</span>
-
+<span class="c"># end of mysql section
+</span>
 <span class="py">spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults</span> <span class="p">=</span> <span class="s">false</span>
 
 
@@ -146,43 +136,41 @@ It’ll be /mh-root in the follow text.</p>
 <span class="py">spring.datasource.validationQuery</span> <span class="p">=</span> <span class="s">SELECT 1</span>
 
 <span class="c"># ============== ai.metaheuristic ==================
-# ------------- Launchpad -----------------
-</span><span class="py">mh.launchpad.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
+# ------------- Dispatcher -----------------
+</span><span class="py">mh.dispatcher.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
 <span class="c"># password is 123
-</span><span class="py">mh.launchpad.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
-<span class="py">mh.launchpad.master-username</span><span class="p">=</span><span class="s">q</span>
-<span class="py">mh.launchpad.enabled</span><span class="p">=</span><span class="s">true</span>
-<span class="py">mh.launchpad.dir</span><span class="p">=</span><span class="s">./mh-launchpad</span>
-<span class="py">mh.launchpad.is-replace-snapshot</span><span class="p">=</span><span class="s">true</span>
+</span><span class="py">mh.dispatcher.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
+<span class="py">mh.dispatcher.master-username</span><span class="p">=</span><span class="s">q</span>
+<span class="py">mh.dispatcher.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.dispatcher.dir</span><span class="p">=</span><span class="s">./mh-dispatcher</span>
 
-<span class="c"># ------------- Station -----------------
-</span><span class="py">mh.station.enabled</span><span class="p">=</span><span class="s">true</span>
-<span class="py">mh.station.dir</span><span class="p">=</span><span class="s">./mh-station</span>
+<span class="c"># ------------- Processor -----------------
+</span><span class="py">mh.processor.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.processor.dir</span><span class="p">=</span><span class="s">./mh-processor</span>
 </code></pre></div></div>
 
 <p>This config file is for installation with mysql. 
 If you are using postgresql, you need to uncomment section for postgresql and comment out for mysql one.</p>
 
 <p>Current connection parameters to database are: <br />
-    – spring.datasource.username = mh  - defines db’s username <br />
-    – spring.datasource.password = qwe321 - defines db’s username <br />
+    – spring.datasource.username = mh  - defines username in db <br />
+    – spring.datasource.password = qwe321 - defines password in db <br />
     – spring.datasource.url = jdbc:mysql://localhost:3306/mh - defines IP address (localhost) and port (3306) of db,
-        and db scheme (mh). If you want to use the different values, you need to change them accordingly</p>
+        and db scheme (mh). If you want to use the different values, you need to change them accordingly.</p>
 
 <p>Descriptions of all mh.* parameters can be found in <a href="description-of-mh-application-properties">mh.* parameters</a></p>
 
-<h4 id="configure-station">Configure Station</h4>
+<h4 id="configure-processor">Configure Processor</h4>
 
-<p>Now you need to configure station. You can skip this part for now and launch 
-Metaheuristic with predefined files by going to [Launching of Metaheuristic]{Launching of Metaheuristic} section.</p>
+<p>Now you need to configure Processor. You can skip this part for now and launch 
+Metaheuristic with predefined files by going to <a href="">Launching of Metaheuristic</a> section.</p>
 
 <ul>
-  <li>Create file /mh-root/mh-station/launchpad.yaml with follow content:</li>
+  <li>Create file /mh-root/mh-processor/dispatcher.yaml with follow content:</li>
 </ul>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>   
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dispatchers</span><span class="pi">:</span>   
   <span class="pi">-</span> <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>   
-    <span class="na">securityEnabled</span><span class="pi">:</span> <span class="no">true</span>   
     <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
     <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
     <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
@@ -191,12 +179,11 @@ Metaheuristic with predefined files by going to [Launching of Metaheuristic]{Lau
     <span class="na">taskProcessingTime</span><span class="pi">:</span> <span class="pi">|</span>   
       <span class="no">workingDay: 0:00-23:59   </span>
       <span class="no">weekend: 0:00-23:59   </span>
-    <span class="na">acceptOnlySignedSnippets</span><span class="pi">:</span> <span class="no">false</span>   
 </code></pre></div></div>
-<p>Descriptions of all parameters can be found in <a href="description-of-launchpad-yaml">description of launchpad.yaml</a></p>
+<p>Descriptions of all parameters can be found in <a href="description-of-dispatcher-yaml">description of dispatcher.yaml</a></p>
 
 <ul>
-  <li>Create file /mh-root/mh-station/env.yaml with follow content:</li>
+  <li>Create file /mh-root/mh-processor/env.yaml with the follow content:</li>
 </ul>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
@@ -207,32 +194,28 @@ Metaheuristic with predefined files by going to [Launching of Metaheuristic]{Lau
 
 <h4 id="launching-of-metaheuristic">Launching of Metaheuristic</h4>
 
+<p>That’s all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:</p>
+
 <ul>
-  <li>That’s all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:</li>
+  <li>If you skipped the creation of dispatcher.yaml and env.yaml, the command for launching is:
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.processor.default-dispatcher-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/dispatcher.yaml --mh.processor.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+</code></pre></div>    </div>
+  </li>
+  <li>If you created a custom version of dispatcher.yaml and env.yaml, the command for launching is:
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
+</code></pre></div>    </div>
+  </li>
 </ul>
 
-<p>If you skipped the creation of launchpad.yaml and env.yaml, the command for launching is:</p>
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.station.default-launchpad-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/launchpad.yaml --mh.station.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
-</code></pre></div></div>
-
-<p>If you created custom version of launchpad.yaml and env.yaml, the command for launching is:</p>
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
-</code></pre></div></div>
 
 
-        </section>
-
-        <aside id="sidebar">
-          
-
-          
-            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
-          
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
-        </aside>
-      </div>
-    </div>
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
 
     
   </body>

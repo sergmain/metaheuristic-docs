@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=21308de88b061608a77c1ff99f9dc400f3138c9f" media="screen" type="text/css">
-    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
@@ -22,29 +14,25 @@
 <meta property="og:url" content="http://localhost:4000/p/concept-architecture-roadmap.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/concept-architecture-roadmap.html","headline":"Metaheuristic.ai","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/concept-architecture-roadmap.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <a href="http://localhost:4000/">
-          <h1>Metaheuristic.ai</h1>
-        </a>
-        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
-        
-          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
-        
-        
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <ul>
+    <section class="main-content">
+      <ul>
   <li><a href="/index">Index</a></li>
 </ul>
 
@@ -57,66 +45,68 @@
 </ul>
 
 <h2 id="concept">Concept</h2>
-<p>Metaheuristic is an application for an AI model’s hyper-parameter optimization purpose. 
-Each step of optimization is presented as Experiment. An Experiment consists of some Tasks.
-Tasks are created at Launchpad and distributed to Stations. For evaluating a performance of models, 
-metrics and other data are collected and are evaluated later by Metaheuristic.</p>
+<p>Metaheuristic is an application which is implemented Turing complete machine(or intended to be). 
+The main use of MH is a management of distributed task. Right now there two main areas where MH is being used:</p>
+<ul>
+  <li>
+    <p>AI model’s hyper-parameter optimization purpose. \
+ Each optimization is presented as Experiment. An Experiment consists of some Tasks.
+ Tasks are created at Dispatcher and distributed to Processor. For evaluating a performance of models, 
+ metrics and other data are collected and evaluated later by Metaheuristic.</p>
+  </li>
+  <li>
+    <p>Batch processing. \
+  Common usage of batch processing - split data, create tasks for processing each part of data, 
+  process Tasks, aggregate results</p>
+  </li>
+</ul>
 
 <h2 id="architecture">Architecture</h2>
-<p>Metaheuristic has two main modules - Launchpad and Station
-The purpose of Launchpad is to manage tasks which will be processed at Station side.
-Station is an module of Metaheuristic which is responsible for receiving tasks, 
-preparing assets, processing task, and delivering results of processing of task to the Launchpad.</p>
+<p>Metaheuristic has two main modules - Dispatcher and Processor
+The purpose of Dispatcher is to manage tasks which will be processed at Processor side.
+Processor is a module of Metaheuristic which is responsible for receiving tasks, 
+preparing assets, processing task, and delivering results of processing of task to the Dispatcher.</p>
 
-<p>The typical configuration is one Launchpad and N Station. But Station could be configured to host 
-tasks from unlimited number of Launchpads. The current algorithm to determine the order of receiving 
-tasks from Launchpads is round-robin.</p>
+<p>The typical configuration is one Dispatcher and N Processor. Processor could be configured to host 
+tasks from unlimited number of Dispatchers. The current algorithm to determine the order of receiving 
+tasks from Processors is round-robin.</p>
 
-<p>A processing module which is configured at Launchpad and is being run at Station is a Snippet.
-Snippet can be executable application, .jar file, python notebook, 
-file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on
-For full description of Snippet see <a href="snippet">documentation on Snippets</a></p>
+<p>A processing entity which is configured at Dispatcher and is being run at Processor is a Function.
+Function can be executable application, .jar file, python notebook, 
+file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on.
+Instance of Function is Task. \
+For full description of Function see <a href="function">documentation on Functions</a></p>
 
-<p>From delivery point of view Snippet can be provisioned from Launchpad or from git repository.</p>
+<p>From delivery point of view Function can be provisioned from Dispatcher or from git repository.</p>
 
-<p>There are two special type of Snippets for fitting and predicting with AI models. 
-Those Snippets are configured while configuring an Experiment. An Experiment is 
-special set of tasks which is processing hyper-parameter optimization. For full 
-description of Experiment see <a href="experiment">documentation on Experiment</a></p>
+<p>For full description how to use Function for hyper-parameter optimization see <a href="experiment">documentation on Experiment</a></p>
 
-<p>For creating set of tasks Launchpad is using a directed acyclic graph which define the order 
-in which Stations have to process tasks.</p>
+<p>For creating set of tasks, Dispatcher is using a dynamic directed acyclic graph which defines the order 
+in which Processors have to process tasks.</p>
 
-<p>Tasks can have any kind of resources for its execution purpose. 
-The most common case is when resource is dataset for model fitting/predicting.
-For full description of Resource see <a href="resource">documentation on Resource</a></p>
+<p>Tasks can have any number of Variables for its execution purpose. 
+The most common case for hyper-parameter optimization is when Variables are dataset, model fitting/predicting, metrics.
+For full description of Variables see <a href="variable">documentation on Variables</a></p>
 
 <h2 id="roadmap">Roadmap</h2>
 
 <ul>
-  <li>Overfitting detector in Experiment.</li>
   <li>Series of Experiments.</li>
   <li>Implementation the different strategies for Series - Genetic algorithm, Bayesian optimization, GRASP, ILS. 
  The concrete algo which will be implemented in first place will be chosen later.</li>
-  <li>DSL for fitness function (in term of GA) or adapt a standard language for this purpose</li>
   <li>Prototype 2-side platform for optimization based on Metaheuristic.</li>
   <li>TBD</li>
 </ul>
 
 
-        </section>
 
-        <aside id="sidebar">
-          
-
-          
-            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
-          
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
-        </aside>
-      </div>
-    </div>
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
 
     
   </body>

@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=221e164ebe509f1884f8e2448fc439f980a6e6b1" media="screen" type="text/css">
-    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
@@ -22,29 +14,25 @@
 <meta property="og:url" content="http://localhost:4000/p/description.ru.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/description.ru.html","headline":"Metaheuristic.ai","description":"Distributer framework for hyper-parameter optimization and AutoML.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/p/description.ru.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <a href="http://localhost:4000/">
-          <h1>Metaheuristic.ai</h1>
-        </a>
-        <h2>Distributer framework for hyper-parameter optimization and AutoML.</h2>
-        
-          <a href="https://github.com/sergmain/metaheuristic" class="button"><small>View project on</small> GitHub</a>
-        
-        
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <p>Общее описание</p>
+    <section class="main-content">
+      <p>Общее описание</p>
 
 <ol>
   <li>Сущности, общая концепция</li>
@@ -54,12 +42,12 @@
 
 <p>логически Metaheuristic состоит из 2-ух верхнеуровневых модулей:</p>
 <ul>
-  <li>launchpad - стартовая площадка</li>
-  <li>station - станция</li>
+  <li>Dispatcher - Диспетчер</li>
+  <li>Processor - Процессор</li>
 </ul>
 
-<p>Стартовая площадка используется для управления заданиями, которые будут обрабатываться на станциях.
-Станции могут получать задания от неограниченного количества стартовыз площадок.
+<p>Диспетчер используется для управления заданиями, которые будут обрабатываться на процессорах.
+Процессоры могут получать задания от неограниченного количества Диспетчеров.
 Выбор стартовой площадки у которой необходимо запросить новое задание на выполнение осучествляется
 на основе Round-robin алгоритма.</p>
 
@@ -73,10 +61,10 @@
 
 <p>Рабочая книга - это сущность, которая включает в себя инфрмацию о выполнении преобразования данных.</p>
 
-<p>1.4 Resource (ресурс)</p>
+<p>1.4 Variable (ресурс)</p>
 
 <p>Ресурс - это данные, которые используются или создаются в процессе преобразования данных потоком.
-Ресурны бывают 2-ух типов - DATA (данные), SNIPPET(спипет)
+Ресурны бывают 2-ух типов - DATA (данные), function(спипет)
 Данные - это все, что загружается в снипеты или является продуктом их работы.
 Снипет, как ресурс - это исполняемый код, который соответствует одному из описателей снипетов</p>
 
@@ -122,8 +110,8 @@
 \mh - главный директорий для Metaheuristic
 \mh\config - директорий, в котором будет находиться application.properties конфиг файл
 \mh\git - в данный директорий будет делаться clone из git
-\mh\launchpad - директорий для стартовой площадки
-\mh\station - директорий для станции</li>
+\mh\dispatcher - директорий для стартовой площадки
+\mh\processor - директорий для станции</li>
 </ul>
 
 <p>3.2 git</p>
@@ -239,17 +227,17 @@ mh.launchpad.master-password
 
 <p>3.7.1 application.properties для станции</p>
 
-<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">station</span>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">processor</span>
 
-<span class="py">mh.station.enabled</span><span class="p">=</span><span class="s">true</span>
-<span class="py">mh.station.dir</span><span class="p">=</span><span class="s">./station</span>
+<span class="py">mh.processor.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">mh.processor.dir</span><span class="p">=</span><span class="s">./processor</span>
 </code></pre></div></div>
 
 <p>3.7.2 Конфигурация launchpad.yaml</p>
 
 <p>Для конфигурации стартовых площадок, с которыми будет взаимодействовать конкретная станция используется
 конфиг файл launchpad.yaml. Данный файл должен располагаться в директории который является главным для станции,
-в данном руковосдстве это \mh\station
+в данном руковосдстве это \mh\processor
 формат файла:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launchpads</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>
@@ -287,20 +275,20 @@ taskProcessingTime: рассписание, когда задачи с данн�
 
 <p>3.8 Конфигурация spring.profiles.active</p>
 
-<p>в настоящее время в Metaheuristic поддерживается 2 профиля - launchpad и station
+<p>в настоящее время в Metaheuristic поддерживается 2 профиля - dispatcher и processor
 эти профили можно использовать как по отдельности, так и комбинировать. В любом случаев,
 в файле application.properties должна быть только ОДНА строка spring.profiles.active=
 Например:
-spring.profiles.active=launchpad
+spring.profiles.active=dispatcher
 или
-spring.profiles.active=launchpad, station
+spring.profiles.active=dispatcher, processor
 или
-spring.profiles.active=station</p>
+spring.profiles.active=processor</p>
 
 <p>!Внимание! данная инструкция написана для случая когда используются оба профиля.
 поэтому параметр spring.profiles.active в apllication.properties должен быть следующим:</p>
 
-<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">launchpad, station</span>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">dispatcher, processor</span>
 </code></pre></div></div>
 
 <p>3.9 Конфигурация Http сервера на стороне стартовой площадки</p>
@@ -409,11 +397,11 @@ Code of plan –&gt;  simple-plan</p>
 <p>отсутствие необходимости иметь исполняемый код помечается в
 fileProvided=true</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">simple-app</span>
-      <span class="na">version</span><span class="pi">:</span> <span class="s">1.1</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">simple</span>
-      <span class="na">env</span><span class="pi">:</span> <span class="s">simple-app</span>
-      <span class="na">fileProvided</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-app:1.0</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">query</span>
+      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">processor</span>
+      <span class="na">file</span><span class="pi">:</span> <span class="s">curl http://localhost:8888</span>
+      <span class="na">skipParams</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div></div>
 
 <p>сама ссылка на исполняемое приложение конфигурируется в env: simple-app</p>
@@ -423,14 +411,14 @@ fileProvided=true</p>
 <p>создать временный директорий и в нем создать файл snippets.yaml
 поместить в данный файл конфиг снипета</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">snippets</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">simple-app</span>
-      <span class="na">version</span><span class="pi">:</span> <span class="s">1.1</span>
-      <span class="na">type</span><span class="pi">:</span> <span class="s">simple</span>
-      <span class="na">env</span><span class="pi">:</span> <span class="s">simple-app</span>
-      <span class="na">fileProvided</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-app:1.0</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">query</span>
+      <span class="na">sourcing</span><span class="pi">:</span> <span class="s">processor</span>
+      <span class="na">file</span><span class="pi">:</span> <span class="s">curl http://localhost:8888</span>
+      <span class="na">skipParams</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div></div>
 
-<p>используя приложние apps/package-snippet запаковать и подписать снипет. 
+<p>используя приложние apps/package-function запаковать и подписать снипет. 
 package-snippet описан в п.10</p>
 
 <p>10. apps/package-snippet</p>
@@ -469,7 +457,7 @@ package-snippet описан в п.10</p>
 <p>12.1 env.yaml</p>
 
 <p>для того, чтобы снипеты запускались на стороне станции необходимо сконфигурировать
-исполняемое окуржение. для этого необходимо создать файл \mh\station\env.yaml</p>
+исполняемое окуржение. для этого необходимо создать файл \mh\processor\env.yaml</p>
 
 <p>конфиг:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
@@ -522,26 +510,21 @@ Input pool code for this plan - simple-resource-pool</p>
 
 <p>Запустить поток на выполнение нажатием кнопки “Start”</p>
 
-<p>в директории \mh\station\task
+<p>в директории \mh\processor\task
 должен появиться директорий 0 и в нем директорий с номером задачи.
-в директории \mh\station\task\0\xxx\system после выполнения задачи
+в директории \mh\processor\task\0\xxx\system после выполнения задачи
 будет содан файл system-console.log в котором будет выведно содержимое файла,
 который мы загрузили как ресурс.</p>
 
 
-        </section>
 
-        <aside id="sidebar">
-          
-
-          
-            <p class="repo-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</p>
-          
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
-        </aside>
-      </div>
-    </div>
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
 
     
   </body>
