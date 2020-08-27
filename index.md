@@ -13,52 +13,52 @@ layout: default
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U V W X Y Z 
+- [A](#a) B [C](#c) D [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
 
 ### A
-- [application.properties](/p/application_properties.md)
-- [Architecture](/p/concept-architecture-roadmap.md#architecture)
+- [application.properties](/p/application_properties)
+- [Architecture](/p/concept-architecture-roadmap#architecture)
 
 ### C
 - [Clounds](/p/clouds.md)
-- [Concept](/p/concept-architecture-roadmap.md#concept)
-- [Copyright](/p/license-licensing-copyright.md#copyright)
-- [Cases](/p/c/cases.md)
+- [Concept](/p/concept-architecture-roadmap#concept)
+- [Copyright](/p/license-licensing-copyright#copyright)
+- [Cases](/p/c/cases)
 
 ### D
-- 
+- [dispatcher.yaml file](/p/description-of-dispatcher-yaml)
 
 ### E
-- [Experiment](/p/experiment.md)
-- [env.yaml file](/p/description-of-env-yaml.md)
+- [Experiment](/p/experiment)
+- [env.yaml file](/p/description-of-env-yaml)
 
 ### F
-- [Full installation](/p/full-installation.md)
+- [Full installation](/p/full-installation)
+- [Function](/p/function)
 
 ### G
-- [Gen keys](/p/gen-keys.md)
+- [Gen keys](/p/gen-keys)
 
 ### I
-- [Installation (full)](/p/full-installation.md)
-- [Installation (quick)](/p/quick-start.md)
+- [Installation (full)](/p/full-installation)
+- [Installation (quick)](/p/quick-start)
 
 ### L
-- [License, licensing](/p/license-licensing-copyright.md#license-and-licensing)
-- [launchpad.yaml file](/p/description-of-launchpad-yaml)
+- [License, licensing](/p/license-licensing-copyright#license-and-licensing)
 
 ### M
 
 ### Q
-- [Quick start](/p/quick-start.md)
+- [Quick start](/p/quick-start)
 
 ### R
-- [Resources](/p/resources)
-- [Roadmap](/p/concept-architecture-roadmap.md#roadmap)
+- [Roadmap](/p/concept-architecture-roadmap#roadmap)
 
 ### S
-- [Schedule](/p/schedule.md)
-- [Snippet](/p/function.md)
+- [Schedule](/p/schedule)
 
 ### T
-- [Task's params.yaml file](/p/description-of-task-params-yaml.md)
+- [Task's params.yaml file](/p/description-of-task-params-yaml)
 
+### V
+- [Variables](/p/variable)
