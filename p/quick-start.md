@@ -42,15 +42,15 @@ It'll be /mh-root in follow text.
     mvnw clean install -f pom.xml -Dmaven.test.skip=true
     ```
 
-1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    ```text
-    curl-upload-simple-metrics-to-atlas
-    ```
-
 1. Change dir to /mh-root and run command:
 ```text
 java -Dspring.profiles.active=quickstart,dispatcher,processor -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.processor.default-dispatcher-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/dispatcher.yaml --mh.processor.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
 ```
+
+1. Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
+    ```text
+    curl-upload-simple-metrics-to-atlas
+    ```
 
 1. Now you can find our experiment data at http://localhost:8080/dispatcher/atlas/atlas-experiments
 login - q, password - 123

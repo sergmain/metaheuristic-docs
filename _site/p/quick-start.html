@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=5d9557385095a11d04b8f35f5635efcd12f1119f">
+    <link rel="stylesheet" href="/assets/css/style.css?v=5e5df8076ecd4ea58b456cdde4f8a2705f6ad41a">
   </head>
   <body>
     <section class="page-header">
@@ -76,12 +76,12 @@ It’ll be /mh-root in follow text.</p>
     <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mvnw clean install -f pom.xml -Dmaven.test.skip=true
 </code></pre></div>    </div>
   </li>
-  <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-upload-simple-metrics-to-atlas
-</code></pre></div>    </div>
-  </li>
   <li>Change dir to /mh-root and run command:
     <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -Dspring.profiles.active=quickstart,dispatcher,processor -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.processor.default-dispatcher-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/dispatcher.yaml --mh.processor.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
+</code></pre></div>    </div>
+  </li>
+  <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-upload-simple-metrics-to-atlas
 </code></pre></div>    </div>
   </li>
   <li>
