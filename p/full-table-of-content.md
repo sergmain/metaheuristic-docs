@@ -11,6 +11,7 @@ layout: default
 ### A
 - [application.properties](/p/application_properties)
 - [Architecture](/p/concept-architecture-roadmap#architecture)
+- [Asset server](/p/asset-server)
 
 ### C
 - [Clounds](/p/clouds.md)

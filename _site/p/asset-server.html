@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Asset server | Metaheuristic.ai</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Asset server" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/asset-server.html" />
+<meta property="og:url" content="http://localhost:4000/p/asset-server.html" />
+<meta property="og:site_name" content="Metaheuristic.ai" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/p/asset-server.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Asset server","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=6a6572cf7bdf3f2ef1e984ff8d4ce8a1ff0f0817">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="asset-server">Asset server</h1>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#concept">Concept</a></li>
+  <li>
+    <p><a href="#description">Description</a></p>
+  </li>
+  <li><a href="/index">to Index</a></li>
+</ul>
+
+<h2 id="concept">Concept</h2>
+<p>When an installation of Metaheuristic contains several Processors and some Dispatchers 
+you can move administrating of assets (Companies, Accounts, Source codes, Functions) to dedicated Asset server.</p>
+
+<p>Technically, Asset server is a <a href="p/concept-architecture-roadmap#Architecture">Dispatcher</a>.</p>
+
+<p>That Asset server will deliver assets to Dispatchers and then Dispatcher will provide Processors with those assets.
+Also, Asset server serves all requests from Processors 
+to check checksums of assets which were downloaded from Dispatchers to Processors.</p>
+
+<h2 id="description">Description</h2>
+
+<h3 id="configuring-asset-server">Configuring Asset server</h3>
+
+<p>To enable Assert server functionality you have to set the following properties 
+in <a href="/p/application_properties">application.properties</a> file</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span> <span class="p">=</span> <span class="s">dispatcher</span>
+<span class="py">mh.launchpad.asset.mode</span> <span class="p">=</span> <span class="s">source</span>
+</code></pre></div></div>
+
+<p>Create new user in Company #1 and add a role ASSET_REST_ACCESS to this account</p>
+
+<h3 id="configuring-dispatcher-with-replication-mode">Configuring Dispatcher with ‘replication’ mode</h3>
+<p>To enable communication of Dispather with Assert server the following properties must be set: 
+in <a href="/p/application_properties">application.properties</a> file</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.profiles.active</span> <span class="p">=</span> <span class="s">dispatcher</span>
+
+<span class="py">mh.dispatcher.asset.source-url</span> <span class="p">=</span> <span class="s">http://localhost:8080</span>
+<span class="py">mh.dispatcher.asset.password</span><span class="p">=</span><span class="s">123</span>
+<span class="py">mh.dispatcher.asset.username</span><span class="p">=</span><span class="s">rest_user</span>
+<span class="py">mh.dispatcher.asset.mode</span> <span class="p">=</span> <span class="s">replicated</span>
+</code></pre></div></div>
+
+<p>properties mh.dispatcher.asset.password and mh.dispatcher.asset.username 
+must contain credential of user which was created in the previous step.</p>
+
+<h3 id="configuring-processors">Configuring Processors</h3>
+<p>Configuration of Processor is done by modifying <a href="/p/description-of-dispatcher-yaml">dispatcher.yaml</a> file</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">asset</span><span class="pi">:</span>
+      <span class="na">url</span><span class="pi">:</span> 
+      <span class="na">username</span><span class="pi">:</span> 
+      <span class="na">password</span><span class="pi">:</span> 
+</code></pre></div></div>
+
+<ul>
+  <li>url - url of Asset server</li>
+  <li>username - username of user which will be used to make rest-based query to Asset server</li>
+  <li>username - password of user</li>
+</ul>
+
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>
