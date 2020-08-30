@@ -129,7 +129,7 @@ functions:
  
 For using git as source of Function, two fields must be defined:            
 - sourcing - git . This value tells Processor that Function is stored in git repository   
-- git - definition of git, the follow additional fields must be specified:     
+- git - definition of git, the following additional fields must be specified:     
 -- repo - url to git repo   
 -- branch - name of branch which will be used   
 -- commit - sha256 representation of commit in current branch    
@@ -140,7 +140,7 @@ Metadata is being used for configuring a Function.
 Metadata as a solution for a flexible configuration of Function was chosen because in this case we can upgrade 
 the code of Metaheuristic without loosing backward compatibility. 
 
-Declaration of metadata in Function's config is follow:
+Declaration of metadata in Function's config is as follows:
 ```yaml
 functions:
   - code: simple-metrics.fit:1.2
@@ -172,7 +172,7 @@ An application 'package-function' is used for packaging purpose. For details see
 Default steps for packaging Functions are:   
 - create temporary folder   
 - in that temp folder, create file functions.yaml and configure desired parameters   
-- from this temp folder, run the follow command  
+- from this temp folder, run the following command  
 
 java -jar /mh/git/apps/package-function/target/package-function.jar function.zip \[path to private key file\]   
 

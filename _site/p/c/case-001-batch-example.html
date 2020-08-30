@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Description of Dispatcher | Metaheuristic.ai</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Description of Dispatcher" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/c/case-001-batch-example.html" />
+<meta property="og:url" content="http://localhost:4000/p/c/case-001-batch-example.html" />
+<meta property="og:site_name" content="Metaheuristic.ai" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/p/c/case-001-batch-example.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Description of Dispatcher","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=6a6572cf7bdf3f2ef1e984ff8d4ce8a1ff0f0817">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Metaheuristic.ai</h1>
+      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      
+        <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="description-of-dispatcher">Description of Dispatcher</h1>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#Description">Description</a></li>
+  <li>
+    <p><a href="#Implementation">Implementation</a></p>
+  </li>
+  <li><a href="/index">to Index</a></li>
+  <li><a href="/p/c/cases">Back to Cases</a></li>
+</ul>
+
+<h3 id="description">Description</h3>
+
+<p>This is an example of batch processing implemented with Metaheuristic.</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>Metaheuristic has simple application called simple-batch-app. 
+You can find a code of this application here - <a href="">https://github.com/sergmain/metaheuristic/tree/master/apps/simple-batch-app</a></p>
+
+<p>To implement this example with Metaheuristic you need to do the following steps:</p>
+
+<ol>
+  <li>Add to <a href="/p/description-of-env-yaml.md">env.yaml</a> a mapping for simple-batch-application:</li>
+</ol>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
+  <span class="na">batch-cmd</span><span class="pi">:</span> <span class="s">java -jar /mh-root/apps/simple-batch-app/target/simple-batch-app.jar</span>
+</code></pre></div></div>
+
+<p>We suppose that you have installed Metaheuristic locally. 
+If you want to try batch example with quick-start 
+you have to package simple-batch-app as <a href="/p/function.md">Function</a> and upload it with web interface.</p>
+
+<ol>
+  <li>At <a href="">http://localhost:8080/dispatcher/source-code/source-code-add</a> create new <a href="/p/source-code.md">Source code</a> with following content:</li>
+</ol>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">source</span><span class="pi">:</span>
+  <span class="na">uid</span><span class="pi">:</span> <span class="s">source-code-for-batch-processing-1.4</span>
+  <span class="na">variables</span><span class="pi">:</span>
+    <span class="na">startInputAs</span><span class="pi">:</span> <span class="s">input-data</span>
+  <span class="na">metas</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">mh.result-file-extension</span><span class="pi">:</span> <span class="s">.zip</span>
+  <span class="na">processes</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">mh.batch-splitter</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">mh.batch-splitter</span>
+      <span class="na">function</span><span class="pi">:</span>
+        <span class="na">code</span><span class="pi">:</span> <span class="s">mh.batch-splitter</span>
+        <span class="na">context</span><span class="pi">:</span> <span class="s">internal</span>
+      <span class="na">metas</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">variable-for-splitting</span><span class="pi">:</span> <span class="s">input-data</span>
+        <span class="pi">-</span> <span class="na">output-is-dynamic</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="pi">-</span> <span class="na">output-variable</span><span class="pi">:</span> <span class="s">var-batch-item</span>
+      <span class="na">subProcesses</span><span class="pi">:</span>
+        <span class="na">logic</span><span class="pi">:</span> <span class="s">sequential</span>
+        <span class="na">processes</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">batch-1</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">batch 1</span>
+            <span class="na">function</span><span class="pi">:</span>
+              <span class="na">code</span><span class="pi">:</span> <span class="s">batch-function:1.0</span>
+            <span class="na">inputs</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-batch-item</span>
+                <span class="na">array</span><span class="pi">:</span> <span class="no">true</span>
+            <span class="na">outputs</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-processed-file-1</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-processed-file</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-processing-status-1</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-processing-status</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-item-mapping-1</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-mapping</span>
+    <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">mh.batch-result-processor</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">batch result processor</span>
+      <span class="na">function</span><span class="pi">:</span>
+        <span class="na">code</span><span class="pi">:</span> <span class="s">mh.batch-result-processor</span>
+        <span class="na">context</span><span class="pi">:</span> <span class="s">internal</span>
+      <span class="na">outputs</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-batch-result</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">batch-result</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-batch-status</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">batch-status</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s">1</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Package ‘simple-batch-app’ <a href="">Function</a> - <a href="/p/function#packaging">Packaging of Function</a></li>
+</ol>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">batch-function:1.0</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">batch-processing</span>
+    <span class="na">sourcing</span><span class="pi">:</span> <span class="s">processor</span>
+    <span class="na">env</span><span class="pi">:</span> <span class="s">batch-cmd</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Upload the packaged Function at <a href="">http://localhost:8080/dispatcher/function/functions</a></p>
+  </li>
+  <li>
+    <p>At <a href="">http://localhost:8080/dispatcher/batch/batch-add</a> create a new Batch. 
+As a file you can select any file which contains at least one byte. 
+The processing of newly created Batch will be started automatically.</p>
+  </li>
+  <li>You can see the progress of execution of Batch at <a href="">http://localhost:8080/dispatcher/source-code/source-codes</a>:
+    <ul>
+      <li>press ‘Exec Contexts’ button</li>
+      <li>press ‘Task states’ button</li>
+    </ul>
+  </li>
+  <li>When a status of batch has changed to ‘Finished’, 
+you will be able to download result archive and see status.txt t <a href="">http://localhost:8080/dispatcher/batch/batches</a>.</li>
+</ol>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/sergmain/metaheuristic">metaheuristic</a> is maintained by <a href="https://github.com/sergmain">sergmain</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>

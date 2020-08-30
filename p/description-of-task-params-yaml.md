@@ -19,7 +19,7 @@ This parameter will always be the last parameter in the list of parameters which
 
 ### Structure
 
-This parameter file has the follow structure:   
+This parameter file has the following structure:   
 
 ```yaml
 task:

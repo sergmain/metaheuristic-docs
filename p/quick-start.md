@@ -28,8 +28,8 @@ As a result after stopping Metaheuristic all data will be lost.
 
 ##### Quick start for evaluating UI only
 
-1. Create temporary dir for Metaheuristic, i.e. /mh-root 
-It'll be /mh-root in follow text. 
+1. Create a temporary dir for Metaheuristic, i.e. /mh-root 
+It'll be /mh-root in following text. 
 
 1. from /mh-root run git cloning command:
     ```text

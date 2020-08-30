@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=5d9557385095a11d04b8f35f5635efcd12f1119f">
+    <link rel="stylesheet" href="/assets/css/style.css?v=6a6572cf7bdf3f2ef1e984ff8d4ce8a1ff0f0817">
   </head>
   <body>
     <section class="page-header">
@@ -165,7 +165,7 @@ I.e.</p>
 <p>For using git as source of Function, two fields must be defined:</p>
 <ul>
   <li>sourcing - git . This value tells Processor that Function is stored in git repository</li>
-  <li>git - definition of git, the follow additional fields must be specified:   <br />
+  <li>git - definition of git, the following additional fields must be specified:   <br />
 – repo - url to git repo <br />
 – branch - name of branch which will be used <br />
 – commit - sha256 representation of commit in current branch</li>
@@ -176,7 +176,7 @@ I.e.</p>
 Metadata as a solution for a flexible configuration of Function was chosen because in this case we can upgrade 
 the code of Metaheuristic without loosing backward compatibility.</p>
 
-<p>Declaration of metadata in Function’s config is follow:</p>
+<p>Declaration of metadata in Function’s config is as follows:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
     <span class="na">metas</span><span class="pi">:</span>
@@ -211,7 +211,7 @@ the code of Metaheuristic without loosing backward compatibility.</p>
 <ul>
   <li>create temporary folder</li>
   <li>in that temp folder, create file functions.yaml and configure desired parameters</li>
-  <li>from this temp folder, run the follow command</li>
+  <li>from this temp folder, run the following command</li>
 </ul>
 
 <p>java -jar /mh/git/apps/package-function/target/package-function.jar function.zip [path to private key file]</p>

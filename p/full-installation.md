@@ -38,9 +38,9 @@ In this documentation we expect that you'll create db's scheme 'mh', db's user w
 ## On-premises installation
 
 - Create dir for Metaheuristic, i.e. /mh-root 
-It'll be /mh-root in the follow text. 
+It'll be /mh-root in the following text. 
 
-- Change dir to /mh-root and create the follow dirs:
+- Change dir to /mh-root and create the following dirs:
    
 ```text
 /mh-root/config
@@ -59,7 +59,7 @@ git clone https://github.com/sergmain/metaheuristic.git
 mvnw clean install -f pom.xml -Dmaven.test.skip=true
 ```
 
-- Change dir to /mh-root/config and create file application.properties with the follow content:   
+- Change dir to /mh-root/config and create file application.properties with the following content:   
 
 ```properties
 server.address=127.0.0.1
@@ -128,7 +128,7 @@ Descriptions of all mh.* parameters can be found in [mh.* parameters](descriptio
 Now you need to configure Processor. You can skip this part for now and launch 
 Metaheuristic with predefined files by going to [Launching of Metaheuristic]() section.
 
-- Create file /mh-root/mh-processor/dispatcher.yaml with follow content:
+- Create file /mh-root/mh-processor/dispatcher.yaml with following content:
    
 ```yaml
 dispatchers:   
@@ -145,7 +145,7 @@ dispatchers:
 Descriptions of all parameters can be found in [description of dispatcher.yaml](description-of-dispatcher-yaml) 
 
 
-- Create file /mh-root/mh-processor/env.yaml with the follow content:
+- Create file /mh-root/mh-processor/env.yaml with the following content:
    
 ```yaml
 envs:
