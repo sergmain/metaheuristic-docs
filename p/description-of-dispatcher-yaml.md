@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Description of Dispatcher
+# Description of dispatcher.yaml config file
 
 ## Table of contents
 

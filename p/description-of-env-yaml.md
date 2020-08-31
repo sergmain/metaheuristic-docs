@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Description of env.yaml
+# Description of env.yaml config file
 
 ## Table of contents
 

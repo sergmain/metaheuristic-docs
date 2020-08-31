@@ -4,12 +4,15 @@ layout: default
 
 # Full installation
 
-- [to Index](/index)
-
 ## Table of contents
 
 - [Prerequisites](#prerequisites)
 - [On-premises installation](#on-premises-installation)
+- [Configure Processor](#configure-processor)
+- [Launching of Metaheuristic](#launching-of-metaheuristic)
+
+- [to Index](/index)
+
 
 >This documentation is about how to install Metaheuristic locally. For cloud installation see [Clouds](clouds.md) 
 
@@ -138,7 +141,7 @@ Descriptions of all mh.* parameters can be found in [mh.* parameters](descriptio
 #### Configure Processor
 
 Now you need to configure Processor. You can skip this part for now and launch 
-Metaheuristic with predefined files by going to [Launching of Metaheuristic]() section.
+Metaheuristic with predefined files by going to [Launching of Metaheuristic](#Launching of Metaheuristic) section.
 
 - Create file /mh-root/mh-processor/dispatcher.yaml with following content:
    
@@ -154,7 +157,7 @@ dispatchers:
       workingDay: 0:00-23:59   
       weekend: 0:00-23:59   
 ```
-Descriptions of all parameters can be found in [description of dispatcher.yaml](description-of-dispatcher-yaml) 
+Descriptions of all parameters can be found in [description of dispatcher.yaml](/p/description-of-dispatcher-yaml) 
 
 
 - Create file /mh-root/mh-processor/env.yaml with the following content:
