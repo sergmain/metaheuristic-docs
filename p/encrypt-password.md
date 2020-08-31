@@ -11,7 +11,7 @@ layout: default
 - [to Index](/index)
 
 ## Definition
-Metaheuristic is using password with BCrypt encryption. For encrypting a password use the following command:
+Metaheuristic is using a password with BCrypt encryption. For encrypting a password use the following command:
 
 ```text
 java -jar metaheuristic/apps/encrypt-password/target/encrypt-password.jar <password>

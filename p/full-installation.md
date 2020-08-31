@@ -189,7 +189,9 @@ java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar
 Processors are communicating with Dispatcher via special rest account. 
 For creating this account you have to log in with master account. 
 Master account is account which configured in [application_properties.md]() file. 
-The properties are mh.dispatcher.master-username and mh.dispatcher.master-password
+The properties are:
+- mh.dispatcher.master-username
+- mh.dispatcher.master-password
 
 Process of preparing password is describing here - [Encrypt password](/p/encrypt-password)
 
