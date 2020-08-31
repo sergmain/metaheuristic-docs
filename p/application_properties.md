@@ -19,13 +19,7 @@ Usually, its location is a dir 'config'. Beside this option there are some other
 Common properties and values of application.properties are: 
 
 ```properties
-spring.jmx.enabled=false
 server.address=127.0.0.1
-server.http2.enabled=true
-#server.connection-timeout=-1
-server.forward-headers-strategy=native
-
-#spring.profiles.active=dispatcher
 spring.profiles.active=dispatcher, processor
 
 # ------------- Logging -----------------
@@ -38,13 +32,22 @@ logging.level.ai.metaheuristic.ai.*=warn
 # = DATA SOURCE
 # ===============================
 
-# postgresql db @localhost
-spring.datasource.url=jdbc:postgresql://localhost:5432/mh?user=mh&password=qwe321&sslmode=require
-spring.datasource.username=mh
-spring.datasource.password=qwe321
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
-#
+# start of postgresql section db @localhost
+#spring.datasource.url=jdbc:postgresql://localhost:5432/mh?user=mh&password=qwe321&sslmode=require
+#spring.datasource.username=mh
+#spring.datasource.password=qwe321
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+# end of postgresql section
+
+# # start of mysql section db @localhost
+spring.datasource.url = jdbc:mysql://localhost:3306/mh?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Los_Angeles&sslMode=DISABLED&allowPublicKeyRetrieval=true
+spring.datasource.username = mh
+spring.datasource.password = qwe321
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect
+# end of mysql section
+
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
 
 
@@ -53,38 +56,21 @@ spring.datasource.testWhileIdle = true
 spring.datasource.validationQuery = SELECT 1
 
 # ============== ai.metaheuristic ==================
-# ------------- common -----------------
-mh.thread-number=4
-mh.branding=Metaheuristic
-mh.cors-allowed-origins=http://localhost:4200, http://localhost:8888
-mh.is-event-enabled=true
-
-# --- Dispatcher ---
+# ------------- Dispatcher -----------------
 mh.dispatcher.is-ssl-required=false
-
-
-# password - 123
+# password is 123
 mh.dispatcher.master-password=$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu
 mh.dispatcher.master-username=q
-
-mh.dispatcher.public-key= MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtS3jRjE1wlHcxiqn6fCRvTahRt6LBvhrqxzgo1FcpJ9uZvRUmf3KwszwQoL+Ypw7aM9oxmg15Q+pssKcrulS/ofDfbuusiYdny7wMlil1H11svQM3yGwMl9gjZ2FupaRwpyZkIMj1ILaDhylTudQCBoJgJ/BWyMCDn2kzh5EpV7hkhhfjZ/2/NRIcayQVmMKOikCXR8q1bb3QNQ2HiMyUsBUGzeO2DuvX4n375+SaFIDrse4eGNVbR/ImWw7TeD4wk0h5kJ2VTdgl2J7gVS7gCCMwBN9TVxPErRDxg/OtXreS8VRUd0hOZiadX12KjwI4mjhC4q+geXAq2sC1DOV8wIDAQAB
-
 mh.dispatcher.enabled=true
 mh.dispatcher.dir=./mh-dispatcher
-#mh.dispatcher.chunk-size=500k
 
-#mh.dispatcher.asset.source-url = http://localhost:8080
-#mh.dispatcher.asset.password=123
-#mh.dispatcher.asset.username=rest_user
-#mh.dispatcher.asset.mode = source
-#mh.dispatcher.asset.mode = replicated
-mh.dispatcher.asset.mode = local
-
-# ------------- processor -----------------
-
+# ------------- Processor -----------------
 mh.processor.enabled=true
 mh.processor.dir=./mh-processor
 ```
+> - For mysql Connect/J 5.7 the value zeroDateTimeBehavior must be zeroDateTimeBehavior=convertToNull
+> - for version 8.x correct value is zeroDateTimeBehavior=CONVERT_TO_NULL
+
 
 The full list of Spring's properties you can find here:
 [list of Spring's properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)

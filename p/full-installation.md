@@ -112,6 +112,9 @@ mh.processor.enabled=true
 mh.processor.dir=./mh-processor
 ```
 
+> - For mysql Connect/J 5.7 the value zeroDateTimeBehavior must be zeroDateTimeBehavior=convertToNull
+> - for version 8.x correct value is zeroDateTimeBehavior=CONVERT_TO_NULL
+
 This config file is for installation with mysql. 
 If you are using postgresql, you need to uncomment section for postgresql and comment out for mysql one.
 

@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=4fa5a778ee8854853a35c532a659e4aacf6265b9">
+    <link rel="stylesheet" href="/assets/css/style.css?v=17ecf150aca13f0cf1038bd2752a767f66e2d3b6">
   </head>
   <body>
     <section class="page-header">
@@ -50,14 +50,8 @@ Usually, its location is a dir ‘config’. Beside this option there are some o
 
 <p>Common properties and values of application.properties are:</p>
 
-<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.jmx.enabled</span><span class="p">=</span><span class="s">false</span>
-<span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
-<span class="py">server.http2.enabled</span><span class="p">=</span><span class="s">true</span>
-<span class="c">#server.connection-timeout=-1
-</span><span class="py">server.forward-headers-strategy</span><span class="p">=</span><span class="s">native</span>
-
-<span class="c">#spring.profiles.active=dispatcher
-</span><span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">dispatcher, processor</span>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">dispatcher, processor</span>
 
 <span class="c"># ------------- Logging -----------------
 </span><span class="py">logging.file</span><span class="p">=</span><span class="s">logs/logs/mh.log</span>
@@ -69,14 +63,23 @@ Usually, its location is a dir ‘config’. Beside this option there are some o
 # = DATA SOURCE
 # ===============================
 </span>
-<span class="c"># postgresql db @localhost
-</span><span class="py">spring.datasource.url</span><span class="p">=</span><span class="s">jdbc:postgresql://localhost:5432/mh?user=mh&amp;password=qwe321&amp;sslmode=require</span>
-<span class="py">spring.datasource.username</span><span class="p">=</span><span class="s">mh</span>
-<span class="py">spring.datasource.password</span><span class="p">=</span><span class="s">qwe321</span>
-<span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">org.postgresql.Driver</span>
-<span class="py">spring.jpa.properties.hibernate.dialect</span><span class="p">=</span><span class="s">org.hibernate.dialect.PostgreSQL95Dialect</span>
-<span class="c">#
-</span><span class="py">spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults</span> <span class="p">=</span> <span class="s">false</span>
+<span class="c"># start of postgresql section db @localhost
+#spring.datasource.url=jdbc:postgresql://localhost:5432/mh?user=mh&amp;password=qwe321&amp;sslmode=require
+#spring.datasource.username=mh
+#spring.datasource.password=qwe321
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+# end of postgresql section
+</span>
+<span class="c"># # start of mysql section db @localhost
+</span><span class="py">spring.datasource.url</span> <span class="p">=</span> <span class="s">jdbc:mysql://localhost:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;sslMode=DISABLED&amp;allowPublicKeyRetrieval=true</span>
+<span class="py">spring.datasource.username</span> <span class="p">=</span> <span class="s">mh</span>
+<span class="py">spring.datasource.password</span> <span class="p">=</span> <span class="s">qwe321</span>
+<span class="py">spring.datasource.driver-class-name</span><span class="p">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+<span class="py">spring.jpa.properties.hibernate.dialect</span> <span class="p">=</span> <span class="s">org.hibernate.dialect.MySQL57Dialect</span>
+<span class="c"># end of mysql section
+</span>
+<span class="py">spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults</span> <span class="p">=</span> <span class="s">false</span>
 
 
 <span class="c"># Keep the connection alive if idle for a long time (needed in production)
@@ -84,38 +87,24 @@ Usually, its location is a dir ‘config’. Beside this option there are some o
 <span class="py">spring.datasource.validationQuery</span> <span class="p">=</span> <span class="s">SELECT 1</span>
 
 <span class="c"># ============== ai.metaheuristic ==================
-# ------------- common -----------------
-</span><span class="py">mh.thread-number</span><span class="p">=</span><span class="s">4</span>
-<span class="py">mh.branding</span><span class="p">=</span><span class="s">Metaheuristic</span>
-<span class="py">mh.cors-allowed-origins</span><span class="p">=</span><span class="s">http://localhost:4200, http://localhost:8888</span>
-<span class="py">mh.is-event-enabled</span><span class="p">=</span><span class="s">true</span>
-
-<span class="c"># --- Dispatcher ---
+# ------------- Dispatcher -----------------
 </span><span class="py">mh.dispatcher.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
-
-
-<span class="c"># password - 123
+<span class="c"># password is 123
 </span><span class="py">mh.dispatcher.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
 <span class="py">mh.dispatcher.master-username</span><span class="p">=</span><span class="s">q</span>
-
-<span class="py">mh.dispatcher.public-key</span><span class="p">=</span> <span class="s">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtS3jRjE1wlHcxiqn6fCRvTahRt6LBvhrqxzgo1FcpJ9uZvRUmf3KwszwQoL+Ypw7aM9oxmg15Q+pssKcrulS/ofDfbuusiYdny7wMlil1H11svQM3yGwMl9gjZ2FupaRwpyZkIMj1ILaDhylTudQCBoJgJ/BWyMCDn2kzh5EpV7hkhhfjZ/2/NRIcayQVmMKOikCXR8q1bb3QNQ2HiMyUsBUGzeO2DuvX4n375+SaFIDrse4eGNVbR/ImWw7TeD4wk0h5kJ2VTdgl2J7gVS7gCCMwBN9TVxPErRDxg/OtXreS8VRUd0hOZiadX12KjwI4mjhC4q+geXAq2sC1DOV8wIDAQAB</span>
-
 <span class="py">mh.dispatcher.enabled</span><span class="p">=</span><span class="s">true</span>
 <span class="py">mh.dispatcher.dir</span><span class="p">=</span><span class="s">./mh-dispatcher</span>
-<span class="c">#mh.dispatcher.chunk-size=500k
-</span>
-<span class="c">#mh.dispatcher.asset.source-url = http://localhost:8080
-#mh.dispatcher.asset.password=123
-#mh.dispatcher.asset.username=rest_user
-#mh.dispatcher.asset.mode = source
-#mh.dispatcher.asset.mode = replicated
-</span><span class="py">mh.dispatcher.asset.mode</span> <span class="p">=</span> <span class="s">local</span>
 
-<span class="c"># ------------- processor -----------------
-</span>
-<span class="py">mh.processor.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="c"># ------------- Processor -----------------
+</span><span class="py">mh.processor.enabled</span><span class="p">=</span><span class="s">true</span>
 <span class="py">mh.processor.dir</span><span class="p">=</span><span class="s">./mh-processor</span>
 </code></pre></div></div>
+<blockquote>
+  <ul>
+    <li>For mysql Connect/J 5.7 the value zeroDateTimeBehavior must be zeroDateTimeBehavior=convertToNull</li>
+    <li>for version 8.x correct value is zeroDateTimeBehavior=CONVERT_TO_NULL</li>
+  </ul>
+</blockquote>
 
 <p>The full list of Spring’s properties you can find here:
 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html">list of Spring’s properties</a></p>
