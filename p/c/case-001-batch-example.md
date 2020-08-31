@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Description of Dispatcher
+# Case: Batch example
 
 ## Table of contents
 
@@ -92,6 +92,13 @@ functions:
     type: batch-processing
     sourcing: processor
     env: batch-cmd
+``` 
+
+Or you can use a pre-packed [functions.zip](/bin/functions.zip) 
+if you turned off a signature checking in [dispatcher.yaml](/p/description-of-dispatcher-yaml)
+
+```yaml
+ - signatureRequired: false
 ``` 
 
 3. Upload the packaged Function at [http://localhost:8080/dispatcher/function/functions]()
