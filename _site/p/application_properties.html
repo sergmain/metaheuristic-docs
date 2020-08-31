@@ -50,7 +50,10 @@ Usually, its location is a dir ‘config’. Beside this option there are some o
 
 <p>Common properties and values of application.properties are:</p>
 
-<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.jmx.enabled</span><span class="p">=</span><span class="s">false</span>
+<span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<span class="py">server.http2.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">server.forward-headers-strategy</span><span class="p">=</span><span class="s">native</span>
 <span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">dispatcher, processor</span>
 
 <span class="c"># ------------- Logging -----------------
@@ -87,7 +90,13 @@ Usually, its location is a dir ‘config’. Beside this option there are some o
 <span class="py">spring.datasource.validationQuery</span> <span class="p">=</span> <span class="s">SELECT 1</span>
 
 <span class="c"># ============== ai.metaheuristic ==================
-# ------------- Dispatcher -----------------
+# ------------- common -----------------
+</span><span class="py">mh.thread-number</span><span class="p">=</span><span class="s">4</span>
+<span class="py">mh.branding</span><span class="p">=</span><span class="s">Metaheuristic</span>
+<span class="py">mh.cors-allowed-origins</span><span class="p">=</span><span class="s">http://localhost:4200, http://localhost:8888</span>
+<span class="py">mh.is-event-enabled</span><span class="p">=</span><span class="s">false</span>
+
+<span class="c"># ------------- Dispatcher -----------------
 </span><span class="py">mh.dispatcher.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
 <span class="c"># password is 123
 </span><span class="py">mh.dispatcher.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>

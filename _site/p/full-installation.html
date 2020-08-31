@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=6a6572cf7bdf3f2ef1e984ff8d4ce8a1ff0f0817">
+    <link rel="stylesheet" href="/assets/css/style.css?v=17ecf150aca13f0cf1038bd2752a767f66e2d3b6">
   </head>
   <body>
     <section class="page-header">
@@ -101,7 +101,10 @@ It’ll be /mh-root in the following text.</p>
   <li>Change dir to /mh-root/config and create file application.properties with the following content:</li>
 </ul>
 
-<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">spring.jmx.enabled</span><span class="p">=</span><span class="s">false</span>
+<span class="py">server.address</span><span class="p">=</span><span class="s">127.0.0.1</span>
+<span class="py">server.http2.enabled</span><span class="p">=</span><span class="s">true</span>
+<span class="py">server.forward-headers-strategy</span><span class="p">=</span><span class="s">native</span>
 <span class="py">spring.profiles.active</span><span class="p">=</span><span class="s">dispatcher, processor</span>
 
 <span class="c"># ------------- Logging -----------------
@@ -138,7 +141,13 @@ It’ll be /mh-root in the following text.</p>
 <span class="py">spring.datasource.validationQuery</span> <span class="p">=</span> <span class="s">SELECT 1</span>
 
 <span class="c"># ============== ai.metaheuristic ==================
-# ------------- Dispatcher -----------------
+# ------------- common -----------------
+</span><span class="py">mh.thread-number</span><span class="p">=</span><span class="s">4</span>
+<span class="py">mh.branding</span><span class="p">=</span><span class="s">Metaheuristic</span>
+<span class="py">mh.cors-allowed-origins</span><span class="p">=</span><span class="s">http://localhost:4200, http://localhost:8888</span>
+<span class="py">mh.is-event-enabled</span><span class="p">=</span><span class="s">false</span>
+
+<span class="c"># ------------- Dispatcher -----------------
 </span><span class="py">mh.dispatcher.is-ssl-required</span><span class="p">=</span><span class="s">false</span>
 <span class="c"># password is 123
 </span><span class="py">mh.dispatcher.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
@@ -150,6 +159,13 @@ It’ll be /mh-root in the following text.</p>
 </span><span class="py">mh.processor.enabled</span><span class="p">=</span><span class="s">true</span>
 <span class="py">mh.processor.dir</span><span class="p">=</span><span class="s">./mh-processor</span>
 </code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>For mysql Connect/J 5.7 the value zeroDateTimeBehavior must be zeroDateTimeBehavior=convertToNull</li>
+    <li>for version 8.x correct value is zeroDateTimeBehavior=CONVERT_TO_NULL</li>
+  </ul>
+</blockquote>
 
 <p>This config file is for installation with mysql. 
 If you are using postgresql, you need to uncomment section for postgresql and comment out for mysql one.</p>

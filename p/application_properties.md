@@ -19,7 +19,10 @@ Usually, its location is a dir 'config'. Beside this option there are some other
 Common properties and values of application.properties are: 
 
 ```properties
+spring.jmx.enabled=false
 server.address=127.0.0.1
+server.http2.enabled=true
+server.forward-headers-strategy=native
 spring.profiles.active=dispatcher, processor
 
 # ------------- Logging -----------------
@@ -56,6 +59,12 @@ spring.datasource.testWhileIdle = true
 spring.datasource.validationQuery = SELECT 1
 
 # ============== ai.metaheuristic ==================
+# ------------- common -----------------
+mh.thread-number=4
+mh.branding=Metaheuristic
+mh.cors-allowed-origins=http://localhost:4200, http://localhost:8888
+mh.is-event-enabled=false
+
 # ------------- Dispatcher -----------------
 mh.dispatcher.is-ssl-required=false
 # password is 123
