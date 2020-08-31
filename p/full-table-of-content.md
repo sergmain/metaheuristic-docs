@@ -23,8 +23,9 @@ layout: default
 - [dispatcher.yaml file](/p/description-of-dispatcher-yaml)
 
 ### E
-- [Experiment](/p/experiment)
 - [env.yaml file](/p/description-of-env-yaml)
+- [Encrypt password](/p/encrypt-password)
+- [Experiment](/p/experiment)
 
 ### F
 - [Full installation](/p/full-installation)

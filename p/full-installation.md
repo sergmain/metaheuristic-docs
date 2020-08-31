@@ -10,6 +10,7 @@ layout: default
 - [On-premises installation](#on-premises-installation)
 - [Configure Processor](#configure-processor)
 - [Launching of Metaheuristic](#launching-of-metaheuristic)
+- [Configure REST account](#configure-rest-account)
 
 - [to Index](/index)
 
@@ -172,7 +173,7 @@ Descriptions of all parameters can be found in [description of env.yaml](descrip
 
 #### Launching of Metaheuristic
 
-That's all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:
+Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:
 
 - If you skipped the creation of dispatcher.yaml and env.yaml, the command for launching is:
 ```text
@@ -184,6 +185,14 @@ java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.process
 java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
 ```
 
+## Configure REST account
+Processors are communicating with Dispatcher via special rest account. 
+For creating this account you have to log in with master account. 
+Master account is account which configured in [application_properties.md]() file. 
+The properties are mh.dispatcher.master-username and mh.dispatcher.master-password
 
+Process of preparing password is describing here - [Encrypt password](/p/encrypt-password)
+
+   
 
 

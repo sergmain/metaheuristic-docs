@@ -40,8 +40,9 @@
   <li><a href="#prerequisites">Prerequisites</a></li>
   <li><a href="#on-premises-installation">On-premises installation</a></li>
   <li><a href="#configure-processor">Configure Processor</a></li>
+  <li><a href="#launching-of-metaheuristic">Launching of Metaheuristic</a></li>
   <li>
-    <p><a href="#launching-of-metaheuristic">Launching of Metaheuristic</a></p>
+    <p><a href="#configure-rest-account">Configure REST account</a></p>
   </li>
   <li><a href="/index">to Index</a></li>
 </ul>
@@ -213,7 +214,7 @@ Metaheuristic with predefined files by going to <a href="#Launching of Metaheuri
 
 <h4 id="launching-of-metaheuristic">Launching of Metaheuristic</h4>
 
-<p>That’s all. Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:</p>
+<p>Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:</p>
 
 <ul>
   <li>If you skipped the creation of dispatcher.yaml and env.yaml, the command for launching is:
@@ -225,6 +226,14 @@ Metaheuristic with predefined files by going to <a href="#Launching of Metaheuri
 </code></pre></div>    </div>
   </li>
 </ul>
+
+<h2 id="configure-rest-account">Configure REST account</h2>
+<p>Processors are communicating with Dispatcher via special rest account. 
+For creating this account you have to log in with master account. 
+Master account is account which configured in <a href="">application_properties.md</a> file. 
+The properties are mh.dispatcher.master-username and mh.dispatcher.master-password</p>
+
+<p>Process of preparing password is describing here - <a href="/p/encrypt-password">Encrypt password</a></p>
 
 
 
