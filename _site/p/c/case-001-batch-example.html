@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=41be72efd804be1b50309df6a062e1cbd49e3d24">
+    <link rel="stylesheet" href="/assets/css/style.css?v=b74afedef778283edba704587054a90b0f2267af">
   </head>
   <body>
     <section class="page-header">
@@ -73,7 +73,7 @@ you have to package simple-batch-app as <a href="/p/function.md">Function</a> an
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">source</span><span class="pi">:</span>
-  <span class="na">uid</span><span class="pi">:</span> <span class="s">source-code-for-batch-processing-1.4</span>
+  <span class="na">uid</span><span class="pi">:</span> <span class="s">source-code-for-batch-processing-1.6</span>
   <span class="na">variables</span><span class="pi">:</span>
     <span class="na">startInputAs</span><span class="pi">:</span> <span class="s">input-data</span>
   <span class="na">metas</span><span class="pi">:</span>
@@ -100,11 +100,13 @@ you have to package simple-batch-app as <a href="/p/function.md">Function</a> an
                 <span class="na">array</span><span class="pi">:</span> <span class="no">true</span>
             <span class="na">outputs</span><span class="pi">:</span>
               <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-processed-file-1</span>
-                <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-processed-file</span>
-              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-processing-status-1</span>
-                <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-processing-status</span>
-              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-item-mapping-1</span>
-                <span class="na">type</span><span class="pi">:</span> <span class="s">batch-item-mapping</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">processed-file-type-1</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-processed-file-2</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">processed-file-type-2</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-processing-status</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">processing-status-type</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-item-mapping</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">mapping-type</span>
     <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">mh.batch-result-processor</span>
       <span class="na">name</span><span class="pi">:</span> <span class="s">batch result processor</span>
       <span class="na">function</span><span class="pi">:</span>
@@ -115,6 +117,10 @@ you have to package simple-batch-app as <a href="/p/function.md">Function</a> an
           <span class="na">type</span><span class="pi">:</span> <span class="s">batch-result</span>
         <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">var-batch-status</span>
           <span class="na">type</span><span class="pi">:</span> <span class="s">batch-status</span>
+      <span class="na">metas</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">batch-type-processed-file</span><span class="pi">:</span> <span class="s">processed-file-type-1, processed-file-type-2</span>
+        <span class="pi">-</span> <span class="na">batch-type-processing-status</span><span class="pi">:</span> <span class="s">processing-status-type</span>
+        <span class="pi">-</span> <span class="na">batch-type-mapping</span><span class="pi">:</span> <span class="s">mapping-type</span>
 <span class="na">version</span><span class="pi">:</span> <span class="s">1</span>
 </code></pre></div></div>
 

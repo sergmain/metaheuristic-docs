@@ -39,7 +39,7 @@ you have to package simple-batch-app as [Function](/p/function.md) and upload it
 
 ```yaml
 source:
-  uid: source-code-for-batch-processing-1.4
+  uid: source-code-for-batch-processing-1.6
   variables:
     startInputAs: input-data
   metas:
@@ -66,11 +66,13 @@ source:
                 array: true
             outputs:
               - name: var-processed-file-1
-                type: batch-item-processed-file
-              - name: var-processing-status-1
-                type: batch-item-processing-status
-              - name: var-item-mapping-1
-                type: batch-item-mapping
+                type: processed-file-type-1
+              - name: var-processed-file-2
+                type: processed-file-type-2
+              - name: var-processing-status
+                type: processing-status-type
+              - name: var-item-mapping
+                type: mapping-type
     - code: mh.batch-result-processor
       name: batch result processor
       function:
@@ -81,6 +83,10 @@ source:
           type: batch-result
         - name: var-batch-status
           type: batch-status
+      metas:
+        - batch-type-processed-file: processed-file-type-1, processed-file-type-2
+        - batch-type-processing-status: processing-status-type
+        - batch-type-mapping: mapping-type
 version: 1
 ```  
 
