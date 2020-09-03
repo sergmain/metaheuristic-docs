@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=6a6572cf7bdf3f2ef1e984ff8d4ce8a1ff0f0817">
+    <link rel="stylesheet" href="/assets/css/style.css?v=76e5d7824ba712f698acd4e0ad148683cd059599">
   </head>
   <body>
     <section class="page-header">
@@ -67,8 +67,7 @@ file in any scripting language. It can be ‘curl’ command to request external
   <span class="na">file</span><span class="pi">:</span> <span class="s">some-python-file.py</span>
   <span class="na">params</span><span class="pi">:</span> <span class="s">param1 param2 param3</span>
   <span class="na">metas</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
-    <span class="na">value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1'</span>
+  <span class="pi">-</span> <span class="s">mh.task-params-version</span><span class="pi">:</span> <span class="s">1</span>
   <span class="na">skipParams</span><span class="pi">:</span> <span class="no">false</span>
   <span class="na">sourcing</span><span class="pi">:</span> <span class="s">dispatcher</span>
   <span class="na">type</span><span class="pi">:</span> <span class="s">simple-function</span>
@@ -122,12 +121,9 @@ I.e.</p>
     <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
     <span class="na">sourcing</span><span class="pi">:</span> <span class="s">processor</span>
     <span class="na">metas</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
-        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
-      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.function-params-as-file</span>
-        <span class="na">value</span><span class="pi">:</span> <span class="no">true</span>
-      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.function-params-file-ext</span>
-        <span class="na">value</span><span class="pi">:</span> <span class="s">.py</span>
+      <span class="pi">-</span> <span class="s">mh.task-params-version</span><span class="pi">:</span> <span class="s">1</span>
+      <span class="pi">-</span> <span class="s">mh.function-params-as-file</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="s">mh.function-params-file-ext</span><span class="pi">:</span> <span class="s">.py</span>
     <span class="na">params</span><span class="pi">:</span> <span class="pi">|+</span>
       <span class="no">import sys</span>
       <span class="no">from datetime import datetime</span>
@@ -154,8 +150,7 @@ I.e.</p>
     <span class="na">env</span><span class="pi">:</span> <span class="s">python-3</span>
     <span class="na">sourcing</span><span class="pi">:</span> <span class="s">git</span>
     <span class="na">metas</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">key</span><span class="pi">:</span> <span class="s">mh.task-params-version</span>
-        <span class="na">value</span><span class="pi">:</span> <span class="s">3</span>
+      <span class="pi">-</span> <span class="s">mh.task-params-version</span><span class="pi">:</span> <span class="s">1</span>
     <span class="na">git</span><span class="pi">:</span>
       <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/sergmain/metaheuristic-assets.git</span>
       <span class="na">branch</span><span class="pi">:</span> <span class="s">master</span>
@@ -180,7 +175,7 @@ the code of Metaheuristic without loosing backward compatibility.</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">simple-metrics.fit:1.2</span>
     <span class="na">metas</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">mh.task-params-version</span><span class="pi">:</span> <span class="s">3</span>
+      <span class="pi">-</span> <span class="s">mh.task-params-version</span><span class="pi">:</span> <span class="s">1</span>
       <span class="pi">-</span> <span class="s">mh.snippet-supported-os</span><span class="pi">:</span> <span class="s">linux, macos</span>
       <span class="pi">-</span> <span class="s">mh.snippet-params-as-file</span><span class="pi">:</span> <span class="no">true</span>
       <span class="pi">-</span> <span class="s">mh.snippet-params-file-ext</span><span class="pi">:</span> <span class="s">.py</span>
@@ -229,7 +224,7 @@ the code of Metaheuristic without loosing backward compatibility.</p>
 
 <p>This can be done via web interface at url <a href="">http://localhost:8080/dispatcher/function/functions</a></p>
 
-<p>Other way to upload a Function is using REST-based url:</p>
+<p>Other way to upload a Function is to use a REST-based url:</p>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -u q:123 -F "file=@simple-metrics-functions-as-one-file.yaml"  http://localhost:8080/rest/v1/dispatcher/function/function-upload-from-file
 </code></pre></div></div>
 

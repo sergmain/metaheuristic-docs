@@ -37,8 +37,7 @@ functions:
   file: some-python-file.py
   params: param1 param2 param3
   metas:
-  - key: mh.task-params-version
-    value: '1'
+  - mh.task-params-version: 1
   skipParams: false
   sourcing: dispatcher
   type: simple-function
@@ -86,12 +85,9 @@ functions:
     env: python-3
     sourcing: processor
     metas:
-      - key: mh.task-params-version
-        value: 3
-      - key: mh.function-params-as-file
-        value: true
-      - key: mh.function-params-file-ext
-        value: .py
+      - mh.task-params-version: 1
+      - mh.function-params-as-file: true
+      - mh.function-params-file-ext: .py
     params: |+
       import sys
       from datetime import datetime
@@ -119,8 +115,7 @@ functions:
     env: python-3
     sourcing: git
     metas:
-      - key: mh.task-params-version
-        value: 3
+      - mh.task-params-version: 1
     git:
       repo: https://github.com/sergmain/metaheuristic-assets.git
       branch: master
@@ -145,7 +140,7 @@ Declaration of metadata in Function's config is as follows:
 functions:
   - code: simple-metrics.fit:1.2
     metas:
-      - mh.task-params-version: 3
+      - mh.task-params-version: 1
       - mh.snippet-supported-os: linux, macos
       - mh.snippet-params-as-file: true
       - mh.snippet-params-file-ext: .py
@@ -188,7 +183,7 @@ After a Function is prepared in form of function.yaml or function.zip, it has to
 
 This can be done via web interface at url [http://localhost:8080/dispatcher/function/functions]()
 
-Other way to upload a Function is using REST-based url:      
+Other way to upload a Function is to use a REST-based url:      
 ```text   
 curl -u q:123 -F "file=@simple-metrics-functions-as-one-file.yaml"  http://localhost:8080/rest/v1/dispatcher/function/function-upload-from-file
 ```
