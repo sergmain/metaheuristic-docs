@@ -24,7 +24,7 @@ You can find a code of this application here - [https://github.com/sergmain/meta
 
 To implement this example with Metaheuristic you need to do the following steps:
 
-1. Add to [env.yaml](/p/description-of-env-yaml.md) a mapping for simple-batch-application:
+1. Add a mapping for simple-batch-application to [env.yaml](/p/description-of-env-yaml.md) :
 
 ````yaml
 envs:

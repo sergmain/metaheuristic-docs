@@ -2,7 +2,7 @@
 layout: default
 ---
 
-- [Index](/index)
+# Source code
 
 ## Table of contents
 
@@ -10,6 +10,7 @@ layout: default
 - [Batch specific Source code](#batch-specific-source-code)
 - [Experiment specific Source code](#experiment-specific-source-code)
 
+- [to Index](/index)
 
 ## General Source code
 
@@ -62,6 +63,7 @@ source:
         - result-file-extension: .zip
 version: 1
 ````
+
 For batch processing you have to use two specific internal functions:
  - mh.batch-splitter 
  - mh.batch-result-processor
