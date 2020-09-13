@@ -3,28 +3,26 @@
   <head>
     <meta charset="UTF-8">
 
-<!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Metaheuristic.ai | Distributer framework for hyper-parameter optimization and AutoML.</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Metaheuristic.ai" />
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Source code | Metaheuristic.ai</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Source code" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Distributer framework for hyper-parameter optimization and AutoML." />
-<meta property="og:description" content="Distributer framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/p/source-code.html" />
-<meta property="og:url" content="http://localhost:4000/p/source-code.html" />
+<meta name="description" content="Distributed framework for hyper-parameter optimization and AutoML." />
+<meta property="og:description" content="Distributed framework for hyper-parameter optimization and AutoML." />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/p/source-code.html","description":"Distributer framework for hyper-parameter optimization and AutoML.","headline":"Metaheuristic.ai","@type":"WebPage","@context":"http://schema.org"}</script>
+{"@type":"WebPage","url":"/p/source-code.html","headline":"Source code","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=5d9557385095a11d04b8f35f5635efcd12f1119f">
+    <link rel="stylesheet" href="/assets/css/style.css?v=b48d538f968c920bb7109c6fbb6c9a3f08d342b0">
   </head>
   <body>
     <section class="page-header">
       <h1 class="project-name">Metaheuristic.ai</h1>
-      <h2 class="project-tagline">Distributer framework for hyper-parameter optimization and AutoML.</h2>
+      <h2 class="project-tagline">Distributed framework for hyper-parameter optimization and AutoML.</h2>
       
         <a href="https://github.com/sergmain/metaheuristic" class="btn">View on GitHub</a>
       
@@ -32,16 +30,17 @@
     </section>
 
     <section class="main-content">
-      <ul>
-  <li><a href="/index">Index</a></li>
-</ul>
+      <h1 id="source-code">Source code</h1>
 
 <h2 id="table-of-contents">Table of contents</h2>
 
 <ul>
   <li><a href="#general-source-code">General Source code</a></li>
   <li><a href="#batch-specific-source-code">Batch specific Source code</a></li>
-  <li><a href="#experiment-specific-source-code">Experiment specific Source code</a></li>
+  <li>
+    <p><a href="#experiment-specific-source-code">Experiment specific Source code</a></p>
+  </li>
+  <li><a href="/index">to Index</a></li>
 </ul>
 
 <h2 id="general-source-code">General Source code</h2>
@@ -66,7 +65,7 @@
         <span class="na">logic</span><span class="pi">:</span> <span class="s">sequential</span>
         <span class="na">processes</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">batch-1</span>
-            <span class="na">name</span><span class="pi">:</span> <span class="s">batch 1</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">batch </span><span class="m">1</span>
             <span class="na">function</span><span class="pi">:</span>
               <span class="na">code</span><span class="pi">:</span> <span class="s">batch-function:1.0</span>
             <span class="na">inputs</span><span class="pi">:</span>
@@ -91,8 +90,9 @@
           <span class="na">type</span><span class="pi">:</span> <span class="s">batch-status</span>
       <span class="na">metas</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="na">result-file-extension</span><span class="pi">:</span> <span class="s">.zip</span>
-<span class="na">version</span><span class="pi">:</span> <span class="s">1</span>
+<span class="na">version</span><span class="pi">:</span> <span class="m">1</span>
 </code></pre></div></div>
+
 <p>For batch processing you have to use two specific internal functions:</p>
 <ul>
   <li>mh.batch-splitter</li>
@@ -110,6 +110,16 @@
       </footer>
     </section>
 
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-1592690-18', 'auto');
+        ga('send', 'pageview');
+      </script>
     
   </body>
 </html>

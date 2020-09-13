@@ -4,3 +4,6 @@ build and serve site locally:
 
 markdown basic syntax:
     https://www.markdownguide.org/basic-syntax/
+
+google analytics
+    https://stackoverflow.com/questions/17207458/how-to-add-google-analytics-tracking-id-to-github-pages
