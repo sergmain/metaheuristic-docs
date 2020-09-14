@@ -139,7 +139,7 @@ dispatchers:
 ```
 
 
-Sample \#4, Processor is working at weekend only (from 0:00 till 23:59)
+Sample \#4, Processor is working at weekend only (from 0:00 till 23:59).
 Policy is strict.  
 
 ```yaml

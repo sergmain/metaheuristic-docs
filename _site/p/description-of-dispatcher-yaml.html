@@ -10,14 +10,16 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributed framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributed framework for hyper-parameter optimization and AutoML." />
+<link rel="canonical" href="http://localhost:4000/p/description-of-dispatcher-yaml.html" />
+<meta property="og:url" content="http://localhost:4000/p/description-of-dispatcher-yaml.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"/p/description-of-dispatcher-yaml.html","headline":"Description of dispatcher.yaml config file","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/description-of-dispatcher-yaml.html","headline":"Description of dispatcher.yaml config file","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=1aa7b1fc1cd132452762bf6b8890d7288d593302">
+    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
   </head>
   <body>
     <section class="page-header">
@@ -127,6 +129,8 @@ Each field has value of comma separated list of time periods when Processor is a
     <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>   
 </code></pre></div></div>
 
+<p>or just omit taskProcessingTime completely.</p>
+
 <p>Sample #2, Processor is working with interruption on mon, the, and sat. 
 There are two holidays (15/01/2019 and 16/01/2019) and one working day which is on Saturday (19/01/2019)</p>
 
@@ -165,7 +169,7 @@ There are two holidays (15/01/2019 and 16/01/2019) and one working day which is 
     <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>   
 </code></pre></div></div>
 
-<p>Sample #4, Processor is working at weekend only (from 0:00 till 23:59)
+<p>Sample #4, Processor is working at weekend only (from 0:00 till 23:59).
 Policy is strict.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dispatchers</span><span class="pi">:</span>   
