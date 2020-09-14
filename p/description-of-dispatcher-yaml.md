@@ -94,6 +94,9 @@ dispatchers:
     signatureRequired: false   
 ```   
 
+or just omit taskProcessingTime completely.
+
+
 Sample \#2, Processor is working with interruption on mon, the, and sat. 
 There are two holidays (15/01/2019 and 16/01/2019) and one working day which is on Saturday (19/01/2019)  
 
@@ -115,6 +118,7 @@ dispatchers:
     signatureRequired: false   
 ```
 
+
 Sample \#3, Processor is working at night only (from 19:00 till 8:45) and full day at holidays (sat, sun)  
 There are two holidays (15/01/2019 and 16/01/2019) and one working day which is on Saturday (19/01/2019)
 
@@ -133,6 +137,7 @@ dispatchers:
       exceptionWorkingDay: 19/01/2019
     signatureRequired: false   
 ```
+
 
 Sample \#4, Processor is working at weekend only (from 0:00 till 23:59)
 Policy is strict.  
