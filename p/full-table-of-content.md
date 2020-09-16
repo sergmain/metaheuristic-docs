@@ -9,6 +9,7 @@ layout: default
 - [A](#a) B [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O [P](#p) [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
 
 ### A
+- [Angular-based web-interface](/p/angular-based-web-interface)
 - [application.properties](/p/application_properties)
 - [Architecture](/p/concept-architecture-roadmap#architecture)
 - [Asset server](/p/asset-server)
@@ -20,6 +21,7 @@ layout: default
 - [Cases](/p/c/cases)
 
 ### D
+- [Development of Function](/p/development-of-function.md)
 - [dispatcher.yaml file](/p/description-of-dispatcher-yaml)
 
 ### E
