@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/security.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/security.html","headline":"Security","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/security.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Security","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f48d47bbdd18e2850f6b37ce6a66b78aebfda269">
   </head>
   <body>
     <section class="page-header">
@@ -37,15 +37,184 @@
 <h2 id="table-of-contents">Table of contents</h2>
 
 <ul>
+  <li><a href="#intro">Intro</a></li>
+  <li><a href="#master-account-configuration">Master account configuration</a></li>
+  <li><a href="#concept-of-main-company">Concept of ‘main company’</a></li>
+  <li><a href="#configuring-access-for-rest-request-from-procesor">Configuring access for rest-request from Processor</a></li>
+  <li><a href="#configuring-rest-access-on-processor-side">Configuring rest-access on Processor side</a></li>
+  <li><a href="#configuring-admin-account-for-a-new-company">Configuring ‘Admin’ account for a new company</a></li>
+  <li><a href="#verifying-rest-access">Verifying rest-access</a></li>
+  <li><a href="#asset-server">Asset server</a></li>
+  <li><a href="#the-current-role-matrix">The current role matrix</a></li>
+  <li><a href="#general-information-about-securing-a-function">General information about securing a Function</a></li>
+  <li><a href="#configuring-for-using-a-signed-function">Configuring for using a signed Function</a></li>
   <li>
-    <p><a href="#intro">Intro</a></p>
+    <p><a href="#configuring-public-key">Configuring Public key</a></p>
   </li>
-  <li>
-    <p><a href="/index">to Index</a></p>
-  </li>
+  <li><a href="/index">to Index</a></li>
 </ul>
 
 <h2 id="intro">Intro</h2>
+
+<p>As a distributed application Metaheuristic has a complex security model which protects itself from different vectors.</p>
+
+<h3 id="master-account-configuration">Master account configuration</h3>
+
+<p>For configuring the main properties of Metaheuristic, such as rest access for Processors, 
+the master admin account must be used. Master admin account is configured in 
+<a href="/p/application_properties.md">application.properties</a> file and can’t be changed dynamically via web-interface.
+Properties for configuring:</p>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># password - 123
+</span><span class="py">mh.dispatcher.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
+<span class="py">mh.dispatcher.master-username</span><span class="p">=</span><span class="s">q</span>
+</code></pre></div></div>
+
+<p>For storing/verifying a password, Metaheuristic is using bcrypt method. 
+You need to use an application <a href="/p/encrypt-password.md">encript-password</a>  for producing a new encrypted password.</p>
+
+<p>After configuring master account you should be able to log in Metaheuristic.</p>
+
+<h3 id="concept-of-main-company">Concept of ‘main company’</h3>
+<p>Metaheuristic is using multi-tenant architecture based on Companies. 
+There is predefined ‘Main company’ which has an uniqueCompanyId==1. 
+‘Master admin’ and all rest accounts belong to this company.</p>
+
+<h3 id="configuring-access-for-rest-request-from-processor">Configuring access for rest-request from Processor</h3>
+<p>All communications between Dispatcher and Processors are a rest-requests. 
+Metaheuristic is using pull-model of communication in which Processor is asking for new task via rest-based request.</p>
+
+<p>As a result Processor can be deployed in private environment but Dispatcher can be deployed on public hosting.</p>
+
+<p>For configuring rest accounts, ‘master admin’ account has to be used:</p>
+<ul>
+  <li>Log in Metaheuristic</li>
+  <li>navigate to ‘Control panel’/’Company’</li>
+  <li>select ‘Main company’</li>
+  <li>create a new account and select the role ‘ROLE_SERVER_REST_ACCESS’</li>
+</ul>
+
+<h3 id="configuring-rest-access-on-processor-side">Configuring rest-access on Processor side</h3>
+<p>After configuring a rest account in Dispatcher,
+this account has to be registered in <a href="/p/description-of-dispatcher-yaml.md">dispatcher.yaml</a>
+Properties for configuring:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dispatchers</span><span class="pi">:</span>   
+  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
+    <span class="na">lookupType</span><span class="pi">:</span> <span class="s">direct</span>   
+    <span class="na">authType</span><span class="pi">:</span> <span class="s">basic</span>   
+    <span class="na">restUsername</span><span class="pi">:</span> <span class="s">q</span>
+    <span class="na">restPassword</span><span class="pi">:</span> <span class="s">123</span>   
+</code></pre></div></div>
+
+<p>url is the address at which Dispatcher will response to requests.
+lookupType has only one value as ‘direct’ right now
+authType has only one value as ‘basic’ right now</p>
+
+<blockquote>
+  <p>as a password you have to specify a plain password, not encrypted form.</p>
+</blockquote>
+
+<h3 id="configuring-admin-account-for-a-new-company">Configuring ‘Admin’ account for a new company</h3>
+<p>For interaction with Metaheuristic user has to have its own account.
+Let’s create ‘Admin’ account:</p>
+<ul>
+  <li>Log in Metaheuristing with ‘Master admin’ account</li>
+  <li>navigate to ‘Control panel’/’Company’</li>
+  <li>create a new Company, ie ‘Company #1’</li>
+  <li>navigate to ‘Company #1’/’Accounts’</li>
+  <li>create a new account and select the role ‘ROLE_ADMIN’</li>
+</ul>
+
+<h3 id="verifying-rest-access">Verifying rest-access</h3>
+<p>If a rest-acceess was configured correctly, you will see a new Processor in the list of Processors:</p>
+<ul>
+  <li>Log in Metaheuristing with ‘Admin’ account</li>
+  <li>navigate to ‘Control panel’/’Processors’</li>
+</ul>
+
+<p>if there isn’t any Processor, you have to check mh.log for troubleshooting. 
+Common errors are usually about wrong url of Dispatcher, wrong credential of rest account, 
+the role ‘ROLE_SERVER_REST_ACCESS’ wasn’t selected.</p>
+
+<h3 id="asset-server">Asset server</h3>
+<p>Configuring of assert server is describing in a dedicated page about <a href="/p/asset-server.md">Asset server</a></p>
+
+<h3 id="the-current-role-matrix">The current role matrix</h3>
+<p>The current role martix is following:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'AI' - 'ADMIN', 'DATA', 'MANAGER'
+all sub-menu - the same roles
+
+'Batch' = 'ADMIN', 'DATA', 'MANAGER', 'OPERATOR'
+all sub-menu - the same roles
+
+'Control panel' - 'MASTER_ADMIN', 'MASTER_OPERATOR', 'MASTER_SUPPORT', 'ADMIN', 'DATA', 'MANAGER'
+sub-menu:
+    'Source codes' - 'ADMIN', 'DATA', 'MANAGER'
+    'Variables' - 'ADMIN', 'DATA'
+    'Functions' - 'ADMIN', 'DATA'
+    'Processors' - 'ADMIN', 'DATA'
+    'Accounts' - 'ADMIN'
+    'Company' - 'MASTER_ADMIN', 'MASTER_OPERATOR', 'MASTER_SUPPORT'
+</code></pre></div></div>
+
+<h3 id="general-information-about-securing-a-function">General information about securing a Function</h3>
+<p>One of the main feature of Metaheuristic is a built-in provisioning of <a href="/p/function.md">Functions</a>.
+Because a Function is an executable code, Metaheuristic has internal mechanism for verifying consitency of Functions 
+and can verify authority of deploying of new Function.</p>
+
+<h3 id="configuring-for-using-a-signed-function">Configuring for using a signed Function</h3>
+<p>Metaheuristic can operate in two modes:</p>
+<ul>
+  <li>there isn’t any requirements for singing of Function</li>
+  <li>all Function must be signed</li>
+</ul>
+
+<p>This behaviour is controlled by:</p>
+<ul>
+  <li>property mh.dispatcher.function-signature-required in <a href="/p/application_properties.md">application.properties</a> file.</li>
+  <li>property signatureRequired in <a href="/p/description-of-dispatcher-yaml.md">dispatcher.yaml</a>
+    <blockquote>
+      <p>There is <a href="/p/internal-function.md">Internal function</a> which is executed at Dispatcher side but right now 
+there isn’t any possibility to dynamically upload Internal function to Dispatcher and execute it. 
+All Internal functions are part of Metaheuristic code-base.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>If installation has mixed rules about signing Functions and mh.dispatcher.function-signature-required=false, 
+a Processor with signatureRequired=true will receive only signed Functions, 
+and a Processor with signatureRequired=false will receive all Functions.</p>
+
+<p>For operating without signing there isn’t any required special steps.</p>
+
+<p>If Processor configured with signatureRequired=true, all Functions which are intended to be executed 
+at this Processor have to be signed with <a href="/p/package-a-function.md">Package a Function</a>.</p>
+
+<h3 id="configuring-public-key">Configuring Public key</h3>
+<p>For verifying that Function is signed with correct private key, the Public key must be configured in two config files:</p>
+<ul>
+  <li>application.properties - the property for specifying Public key is ‘mh.dispatcher.public-key’</li>
+  <li>dispatcher.yaml - the property for specifying Public key is ‘publicKey’</li>
+</ul>
+
+<blockquote>
+  <p>Current implementation of Metaheuristic is using RSA-2048 for generating a pair of keys. 
+If you want to use different an algo please fill in a new issue at <a href="">https://github.com/sergmain/metaheuristic/issues</a></p>
+</blockquote>
+
+<p>Common problem about configuring public keys is:</p>
+<ul>
+  <li>generated public and/or private keys contain an information text. Remove the information text before using keys - 
+‘Private key in base64 format:’ and ‘Public key in base64 format’.</li>
+</ul>
+
+<blockquote>
+  <p>‘Private key in base64 format:’ and ‘Public key in base64 format’ 
+aren’t parts of keys and must not be used or stored in config file. 
+This information text is output of <a href="/p/gen-keys.md">Generate keys</a> application for information only.</p>
+
+</blockquote>
+
 
 
       <footer class="site-footer">

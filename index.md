@@ -13,7 +13,7 @@ layout: default
 
 ## Full Table of contents
 
-- [A](#a) B [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O P [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
+- [A](#a) B [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) H [I](#i) J K [L](#l) [M](#m) N O [P](#p) [Q](#q) [R](#r) [S](#s) [T](#t) U [V](#v) W X Y Z 
 
 ### A
 - [application.properties](/p/application_properties)
@@ -51,6 +51,9 @@ layout: default
 - [License, licensing](/p/license-licensing-copyright#license-and-licensing)
 
 ### M
+
+### P
+- [Package a Function](/p/package-a-function)
 
 ### Q
 - [Quick start](/p/quick-start)

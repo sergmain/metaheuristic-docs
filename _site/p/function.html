@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/function.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/function.html","headline":"Function","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/function.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Function","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f48d47bbdd18e2850f6b37ce6a66b78aebfda269">
   </head>
   <body>
     <section class="page-header">
@@ -209,13 +209,21 @@ the code of Metaheuristic without loosing backward compatibility.</p>
   <li>from this temp folder, run the following command</li>
 </ul>
 
-<p>java -jar /mh/git/apps/package-function/target/package-function.jar function.zip [path to private key file]</p>
+<p>java -jar /mh-root/git/apps/package-function/target/package-function.jar function.zip [path to private key file]</p>
+<blockquote>
+  <p>the path ‘/mh-root/git’ is related to directory structure as described on <a href="/p/full-installation.md">Full installation</a> page.</p>
+</blockquote>
 
 <ul>
   <li>first parameter is the name of resulted .zip archive (in this example it’s function.zip)</li>
+  <li>second parameter is optional and is used only when the Function has to be signed.</li>
   <li>second parameter is optional and is used only when the Function has to be signed. <br />
-[path to private key file] must point to a valid private key, i.e. /mh/git/private-key.txt</li>
+[path to private key file] must point to a valid private key, i.e. /mh-root/git/private-key.txt</li>
 </ul>
+
+<blockquote>
+  <p>the path ‘/mh-root/git’ is related to directory structure as described on <a href="/p/full-installation.md">Full installation</a> page.</p>
+</blockquote>
 
 <p>For details how to generate public and private keys, see <a href="gen-keys">Gen keys</a> page</p>
 

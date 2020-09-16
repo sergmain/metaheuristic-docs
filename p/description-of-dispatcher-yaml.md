@@ -36,6 +36,7 @@ dispatchers:
       workingDay: 0:00-23:59   
       weekend: 0:00-23:59   
     disabled: false
+    publicKey: public-key
 ```
 
 Top-level fields in dispatcher.yaml:   
@@ -51,6 +52,7 @@ Fields in dispatchers:
 - taskProcessingTime <String> - schedule when tasks have to processed at Processor side. 
     Full description see [below](#schedule)   
 - disabled: false - is this Dispatcher disabled or not
+- publicKey - public key for verifying the signature of Function
       
       
 ### Schedule   
@@ -139,7 +141,7 @@ dispatchers:
 ```
 
 
-Sample \#4, Processor is working at weekend only (from 0:00 till 23:59).
+Sample \#4, Processor is working at the weekend only (from 0:00 till 23:59).
 Policy is strict.  
 
 ```yaml

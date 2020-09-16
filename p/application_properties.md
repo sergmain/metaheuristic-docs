@@ -110,7 +110,8 @@ mh.dispatcher.public-key= MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtS3jRjE1wl
 
 mh.dispatcher.enabled=true
 mh.dispatcher.dir=./mh-dispatcher
-#mh.dispatcher.chunk-size=500k
+mh.dispatcher.chunk-size=10m
+mh.dispatcher.default-result-file-extension=.bin
 
 #mh.dispatcher.asset.source-url = http://localhost:8080
 #mh.dispatcher.asset.password=123
@@ -118,29 +119,6 @@ mh.dispatcher.dir=./mh-dispatcher
 #mh.dispatcher.asset.mode = source
 #mh.dispatcher.asset.mode = replicated
 mh.dispatcher.asset.mode = local
-
-    @Value("${mh.dispatcher.is-security-enabled:#{true}}")
-    @Value("${mh.dispatcher.is-ssl-required:#{true}}")
-    @Value("${mh.dispatcher.snippet-checksum-required:#{true}}")
-    @Value("${mh.dispatcher.snippet-signature-required:#{true}}")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.dispatcher.master-username')) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.dispatcher.master-password')) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.dispatcher.public-key')) }")
-    @Value("${mh.dispatcher.enabled:#{false}}")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.dispatcher.dir' )) }")
-
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.max-tasks-per-workbook'), 1, 100000, 5000) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.variable-table-rows-limit'), 5, 100, 20) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.experiment-table-rows-limit'), 5, 30, 10) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.atlas-experiment-table-rows-limit'), 5, 100, 20) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.plan-table-rows-limit'), 5, 50, 10) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.workbook-table-rows-limit'), 5, 50, 20) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.processor-table-rows-limit'), 5, 100, 50) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).minMax( environment.getProperty('mh.dispatcher.account-table-rows-limit'), 5, 100, 20) }")
-
-    @Value("${mh.dispatcher.is-replace-snapshot:#{true}}")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.dispatcher.default-result-file-extension')) }")
-    @Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).strIfNotBlankElseNull( environment.getProperty('mh.dispatcher.chunk-size')) }")
 ```
 
 Processor related properties:  
@@ -149,9 +127,6 @@ Processor related properties:
 mh.processor.enabled=true
 mh.processor.dir=./mh-processor
     
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.logging.file' )) }")
-@Value("${mh.processor.enabled:#{false}}")
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.processor.dir' )) }")
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.processor.default-dispatcher-yaml-file' )) }")
-@Value("#{ T(ai.metaheuristic.ai.utils.EnvProperty).toFile( environment.getProperty('mh.processor.default-env-yaml-file' )) }")
+#mh.processor.default-dispatcher-yaml-file=...
+#mh.processor.default-env-yaml-file=...
 ```

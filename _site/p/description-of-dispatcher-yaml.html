@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/description-of-dispatcher-yaml.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/description-of-dispatcher-yaml.html","headline":"Description of dispatcher.yaml config file","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/description-of-dispatcher-yaml.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Description of dispatcher.yaml config file","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f48d47bbdd18e2850f6b37ce6a66b78aebfda269">
   </head>
   <body>
     <section class="page-header">
@@ -67,6 +67,7 @@ This parameter will always be the last parameter in the list of parameters which
       <span class="s">workingDay: 0:00-23:59   </span>
       <span class="s">weekend: 0:00-23:59   </span>
     <span class="na">disabled</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="na">publicKey</span><span class="pi">:</span> <span class="s">public-key</span>
 </code></pre></div></div>
 
 <p>Top-level fields in dispatcher.yaml:</p>
@@ -85,6 +86,7 @@ This parameter will always be the last parameter in the list of parameters which
   <li>taskProcessingTime <String> - schedule when tasks have to processed at Processor side. 
   Full description see [below](#schedule)</String></li>
   <li>disabled: false - is this Dispatcher disabled or not</li>
+  <li>publicKey - public key for verifying the signature of Function</li>
 </ul>
 
 <h3 id="schedule">Schedule</h3>
@@ -169,7 +171,7 @@ There are two holidays (15/01/2019 and 16/01/2019) and one working day which is 
     <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>   
 </code></pre></div></div>
 
-<p>Sample #4, Processor is working at weekend only (from 0:00 till 23:59).
+<p>Sample #4, Processor is working at the weekend only (from 0:00 till 23:59).
 Policy is strict.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dispatchers</span><span class="pi">:</span>   
