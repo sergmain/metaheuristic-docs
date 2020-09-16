@@ -7,7 +7,7 @@ layout: default
 ## Table of contents
 
 - [Intro](#intro)
-- [Master account configuration](#master-account-configuration)
+- ['Master admin' account configuration](#master-admin-account-configuration)
 - [Concept of 'main company'](#concept-of-main-company)
 - [Configuring access for rest-request from Processor](#configuring-access-for-rest-request-from-processor)
 - [Configuring rest-access on Processor side](#configuring-rest-access-on-processor-side)
@@ -27,10 +27,10 @@ As a distributed application Metaheuristic has a complex security model which pr
 
 
 
-### Master account configuration
+### 'Master admin' account configuration
 
 For configuring the main properties of Metaheuristic, such as rest access for Processors, 
-the master admin account must be used. Master admin account is configured in 
+the 'Master admin' account must be used. Master admin account is configured in 
 [application.properties](/p/application_properties.md) file and can't be changed dynamically via web-interface.
 Properties for configuring:
 ```properties
@@ -42,7 +42,7 @@ mh.dispatcher.master-username=q
 For storing/verifying a password, Metaheuristic is using bcrypt method. 
 You need to use an application [encript-password](/p/encrypt-password.md)  for producing a new encrypted password.
 
-After configuring master account you should be able to log in Metaheuristic.
+After configuring master admin account you should be able to log in Metaheuristic the first time.
 
 ### Concept of 'main company'
 Metaheuristic is using multi-tenant architecture based on Companies. 

@@ -38,7 +38,7 @@
 
 <ul>
   <li><a href="#intro">Intro</a></li>
-  <li><a href="#master-account-configuration">Master account configuration</a></li>
+  <li><a href="#master-admin-account-configuration">‘Master admin’ account configuration</a></li>
   <li><a href="#concept-of-main-company">Concept of ‘main company’</a></li>
   <li><a href="#configuring-access-for-rest-request-from-processor">Configuring access for rest-request from Processor</a></li>
   <li><a href="#configuring-rest-access-on-processor-side">Configuring rest-access on Processor side</a></li>
@@ -58,10 +58,10 @@
 
 <p>As a distributed application Metaheuristic has a complex security model which protects itself from different vectors.</p>
 
-<h3 id="master-account-configuration">Master account configuration</h3>
+<h3 id="master-admin-account-configuration">‘Master admin’ account configuration</h3>
 
 <p>For configuring the main properties of Metaheuristic, such as rest access for Processors, 
-the master admin account must be used. Master admin account is configured in 
+the ‘Master admin’ account must be used. Master admin account is configured in 
 <a href="/p/application_properties.md">application.properties</a> file and can’t be changed dynamically via web-interface.
 Properties for configuring:</p>
 <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># password - 123
@@ -72,7 +72,7 @@ Properties for configuring:</p>
 <p>For storing/verifying a password, Metaheuristic is using bcrypt method. 
 You need to use an application <a href="/p/encrypt-password.md">encript-password</a>  for producing a new encrypted password.</p>
 
-<p>After configuring master account you should be able to log in Metaheuristic.</p>
+<p>After configuring master admin account you should be able to log in Metaheuristic the first time.</p>
 
 <h3 id="concept-of-main-company">Concept of ‘main company’</h3>
 <p>Metaheuristic is using multi-tenant architecture based on Companies. 
