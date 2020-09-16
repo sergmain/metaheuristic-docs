@@ -55,6 +55,7 @@ layout: default
 
 ### S
 - [Schedule](/p/schedule)
+- [Security](/p/security)
 
 ### T
 - [Task's params.yaml file](/p/description-of-task-params-yaml)
