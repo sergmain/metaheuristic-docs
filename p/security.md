@@ -9,7 +9,7 @@ layout: default
 - [Intro](#intro)
 - [Master account configuration](#master-account-configuration)
 - [Concept of 'main company'](#concept-of-main-company)
-- [Configuring access for rest-request from Processor](#configuring-access-for-rest-request-from-procesor)
+- [Configuring access for rest-request from Processor](#configuring-access-for-rest-request-from-processor)
 - [Configuring rest-access on Processor side](#configuring-rest-access-on-processor-side)
 - [Configuring 'Admin' account for a new company](#configuring-admin-account-for-a-new-company)
 - [Verifying rest-access](#verifying-rest-access)
