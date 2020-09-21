@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=f48d47bbdd18e2850f6b37ce6a66b78aebfda269">
+    <link rel="stylesheet" href="/assets/css/style.css?v=2674c4aea7ae45c20c28d3fba3740298319fed04">
   </head>
   <body>
     <section class="page-header">
@@ -48,8 +48,9 @@
   <li><a href="#the-current-role-matrix">The current role matrix</a></li>
   <li><a href="#general-information-about-securing-a-function">General information about securing a Function</a></li>
   <li><a href="#configuring-for-using-a-signed-function">Configuring for using a signed Function</a></li>
+  <li><a href="#configuring-public-key">Configuring Public key</a></li>
   <li>
-    <p><a href="#configuring-public-key">Configuring Public key</a></p>
+    <p><a href="#enabling-cors-protection">Enabling CORS protection</a></p>
   </li>
   <li><a href="/index">to Index</a></li>
 </ul>
@@ -214,6 +215,14 @@ aren’t parts of keys and must not be used or stored in config file.
 This information text is output of <a href="/p/gen-keys.md">Generate keys</a> application for information only.</p>
 
 </blockquote>
+
+<h3 id="enabling-cors-protection">Enabling CORS protection</h3>
+<p>CORS can be enabled for protecting rest end-points. By default, the value of allowed-origin is ‘*’.  <br />
+Config file <a href="/p/application_properties.md">application.properties</a> has a property ‘mh.cors-allowed-origins’ 
+which allows to make a fine-grained restriction. 
+For example, allowing localhost only:</p>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">mh.cors-allowed-origins</span><span class="p">=</span><span class="s">http://localhost:4200, http://localhost:8888</span>
+</code></pre></div></div>
 
 
 

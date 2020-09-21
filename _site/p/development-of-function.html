@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=f48d47bbdd18e2850f6b37ce6a66b78aebfda269">
+    <link rel="stylesheet" href="/assets/css/style.css?v=2674c4aea7ae45c20c28d3fba3740298319fed04">
   </head>
   <body>
     <section class="page-header">
@@ -42,13 +42,39 @@
 
 <ul>
   <li><a href="#definition">Definition</a></li>
-  <li><a href="#configuration">Configuration</a></li>
-  <li><a href="#metadata">Metadata</a></li>
-  <li><a href="#packaging">Packaging</a></li>
-  <li><a href="#uploading">Uploading</a></li>
 </ul>
 
 <h3 id="definition">Definition</h3>
+
+<p><a href="/p/function">Function</a> is an executable code which can be run from command-line. It can be python script, 
+Spring Boot based application, curl to invoke specific url, and others.</p>
+
+<p>Function has the following life-cycle stages:</p>
+<ul>
+  <li>Coded, <a href="/p/package-a-function">packaged</a> for uploading to Dispatcher</li>
+  <li>stored at Dispather</li>
+  <li>provisioned to Processor</li>
+  <li>executed by Processor</li>
+</ul>
+
+<p>Before execute a Function, Processor is preparing directory structure in which a Function will be executed.</p>
+
+<p>Execution of Function is a Task in terminology of Metaheuristic.</p>
+
+<p>Task has its own directory with following structure:</p>
+
+<p>Root director for Task:
+&lt;directory specified in property ‘‘mh.processor.dir’&gt;/task/&lt;code of dispatcher’s url&gt;/0/0001</p>
+
+<p>inside the Task directory there are the following directories:</p>
+<ul>
+  <li>artifacts - dir where user has to create any assets while Function is being executed.</li>
+  <li>system - dir where Metaheuristic is storing output to console.</li>
+  <li>global_variable - dir where Global variabled are stored before executing a Function.</li>
+  <li>variable - input variables for this FUnction</li>
+  <li></li>
+</ul>
+
 
 
       <footer class="site-footer">
