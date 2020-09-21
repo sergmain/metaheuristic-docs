@@ -95,7 +95,7 @@ Globals properties
 - mh.branding - string, default value is 'Metaheuristic project'. Branding title for web interface. 
 - mh.is-event-enabled - boolean, default value is false. When true MH's internal events will be stored in db. 
 - mh.cors-allowed-origins - string, comma separated list of site urls which will be allowed by CORS, 
-    i.e. http://acme.com . There isn't default value for this property
+    i.e. http://acme.com . There isn't default value for this property.
  
     
 Dispatcher related properties:   

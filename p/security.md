@@ -18,6 +18,7 @@ layout: default
 - [General information about securing a Function](#general-information-about-securing-a-function)
 - [Configuring for using a signed Function](#configuring-for-using-a-signed-function)
 - [Configuring Public key](#configuring-public-key)
+- [Enabling CORS protection](#enabling-cors-protection)
 
 - [to Index](/index)
 
@@ -173,4 +174,12 @@ Common problem about configuring public keys is:
 >
 >
 
-    
+### Enabling CORS protection
+CORS can be enabled for protecting rest end-points. By default, the value of allowed-origin is '*'.    
+Config file [application.properties](/p/application_properties.md) has a property 'mh.cors-allowed-origins' 
+which allows to make a fine-grained restriction. 
+For example, allowing localhost only:
+```properties
+mh.cors-allowed-origins=http://localhost:4200, http://localhost:8888
+```
+     
