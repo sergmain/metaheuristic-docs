@@ -19,6 +19,7 @@ layout: default
 
 ````yaml
 source:
+  instances: 10
   uid: source-code-for-batch-processing-1.4
   variables:
     startInputAs: input-data
