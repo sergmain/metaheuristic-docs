@@ -34,7 +34,7 @@ source:
         - output-variable: var-batch-item
       cache:
         enabled: true
-      tag: tag1, tag2        
+      tags: tag1, tag2        
       priority: -1
       subProcesses:
         logic: sequential

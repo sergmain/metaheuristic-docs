@@ -30,7 +30,7 @@ envs:
   java-11: java -jar
 mirrors:
   https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
-tag: tag1, tag2
+tags: tag1, tag2
 ```
 
 Top-level fields in env.yaml:   
@@ -45,6 +45,6 @@ https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
     https://github.com/sergmain/metaheuristic.git - remote git's url
     /git-mirror/mh/metaheuristic.git - local directory of git's repository
     
-- tag comma-separated list of tags for this Processor    
+- tags comma-separated list of tags for this Processor    
       
  
