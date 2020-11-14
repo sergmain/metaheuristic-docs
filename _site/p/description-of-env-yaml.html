@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/description-of-env-yaml.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/description-of-env-yaml.html","headline":"Description of env.yaml config file","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/description-of-env-yaml.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Description of env.yaml config file","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1be813ec454aea5f1d5afd5ed23e9c8c9e0bfe00">
   </head>
   <body>
     <section class="page-header">
@@ -61,6 +61,7 @@ This parameter file will always be the last parameter in the list of parameters 
   <span class="na">java-11</span><span class="pi">:</span> <span class="s">java -jar</span>
 <span class="na">mirrors</span><span class="pi">:</span>
   <span class="s">https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git</span>
+<span class="na">tag</span><span class="pi">:</span> <span class="s">tag1, tag2</span>
 </code></pre></div></div>
 
 <p>Top-level fields in env.yaml:</p>
@@ -73,8 +74,9 @@ This parameter file will always be the last parameter in the list of parameters 
     <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
 </code></pre></div>    </div>
     <p>https://github.com/sergmain/metaheuristic.git - remote git’s url
-/git-mirror/mh/metaheuristic.git - local directory of git’s repository</p>
+  /git-mirror/mh/metaheuristic.git - local directory of git’s repository</p>
   </li>
+  <li>tag comma-separated list of tags for this Processor</li>
 </ul>
 
 

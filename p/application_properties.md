@@ -53,6 +53,13 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL57Dialect
 
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
 
+spring.datasource.maxActive=100
+spring.datasource.maxIdle=50
+spring.datasource.minIdle=50
+spring.datasource.initialSize=50
+spring.datasource.removeAbandoned=true
+
+spring.jpa.show-sql = false
 
 # Keep the connection alive if idle for a long time (needed in production)
 spring.datasource.testWhileIdle = true

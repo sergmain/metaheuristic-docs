@@ -32,6 +32,10 @@ source:
         - variable-for-splitting: input-data
         - output-is-dynamic: true
         - output-variable: var-batch-item
+      cache:
+        enabled: true
+      tag: tag1, tag2        
+      priority: -1
       subProcesses:
         logic: sequential
         processes:
@@ -61,7 +65,7 @@ source:
           type: batch-status
       metas:
         - result-file-extension: .zip
-version: 1
+version: 2
 ````
 
 For batch processing you have to use two specific internal functions:

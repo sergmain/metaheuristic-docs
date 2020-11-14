@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=2674c4aea7ae45c20c28d3fba3740298319fed04">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1be813ec454aea5f1d5afd5ed23e9c8c9e0bfe00">
   </head>
   <body>
     <section class="page-header">
@@ -84,6 +84,13 @@ Usually, its location is a dir ‘config’. Beside this option there are some o
 </span>
 <span class="py">spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults</span> <span class="p">=</span> <span class="s">false</span>
 
+<span class="py">spring.datasource.maxActive</span><span class="p">=</span><span class="s">100</span>
+<span class="py">spring.datasource.maxIdle</span><span class="p">=</span><span class="s">50</span>
+<span class="py">spring.datasource.minIdle</span><span class="p">=</span><span class="s">50</span>
+<span class="py">spring.datasource.initialSize</span><span class="p">=</span><span class="s">50</span>
+<span class="py">spring.datasource.removeAbandoned</span><span class="p">=</span><span class="s">true</span>
+
+<span class="py">spring.jpa.show-sql</span> <span class="p">=</span> <span class="s">false</span>
 
 <span class="c"># Keep the connection alive if idle for a long time (needed in production)
 </span><span class="py">spring.datasource.testWhileIdle</span> <span class="p">=</span> <span class="s">true</span>

@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/source-code.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/source-code.html","headline":"Source code","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/source-code.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Source code","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1be813ec454aea5f1d5afd5ed23e9c8c9e0bfe00">
   </head>
   <body>
     <section class="page-header">
@@ -63,6 +63,10 @@
         <span class="pi">-</span> <span class="na">variable-for-splitting</span><span class="pi">:</span> <span class="s">input-data</span>
         <span class="pi">-</span> <span class="na">output-is-dynamic</span><span class="pi">:</span> <span class="no">true</span>
         <span class="pi">-</span> <span class="na">output-variable</span><span class="pi">:</span> <span class="s">var-batch-item</span>
+      <span class="na">cache</span><span class="pi">:</span>
+        <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">tag</span><span class="pi">:</span> <span class="s">tag1, tag2</span>        
+      <span class="na">priority</span><span class="pi">:</span> <span class="s">-1</span>
       <span class="na">subProcesses</span><span class="pi">:</span>
         <span class="na">logic</span><span class="pi">:</span> <span class="s">sequential</span>
         <span class="na">processes</span><span class="pi">:</span>
@@ -92,7 +96,7 @@
           <span class="na">type</span><span class="pi">:</span> <span class="s">batch-status</span>
       <span class="na">metas</span><span class="pi">:</span>
         <span class="pi">-</span> <span class="na">result-file-extension</span><span class="pi">:</span> <span class="s">.zip</span>
-<span class="na">version</span><span class="pi">:</span> <span class="m">1</span>
+<span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
 </code></pre></div></div>
 
 <p>For batch processing you have to use two specific internal functions:</p>

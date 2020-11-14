@@ -30,6 +30,7 @@ envs:
   java-11: java -jar
 mirrors:
   https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
+tag: tag1, tag2
 ```
 
 Top-level fields in env.yaml:   
@@ -39,10 +40,11 @@ Top-level fields in env.yaml:
 - mirrors \<key-value\> - defines pair of key-value for real url of git's repository (key) and 
     local dir which represents the mirror of remote git's repository. So in this string:   
 ```text
-  https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
+https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
 ```
-https://github.com/sergmain/metaheuristic.git - remote git's url
-/git-mirror/mh/metaheuristic.git - local directory of git's repository
+    https://github.com/sergmain/metaheuristic.git - remote git's url
+    /git-mirror/mh/metaheuristic.git - local directory of git's repository
     
+- tag comma-separated list of tags for this Processor    
       
  
