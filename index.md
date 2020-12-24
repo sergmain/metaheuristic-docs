@@ -62,6 +62,7 @@ layout: default
 
 ### R
 - [Roadmap](/p/concept-architecture-roadmap#roadmap)
+- [Role matrix](/p/role-matrix)
 
 ### S
 - [Schedule](/p/schedule)

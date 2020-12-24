@@ -26,7 +26,7 @@ server.forward-headers-strategy=native
 spring.profiles.active=dispatcher, processor
 
 # ------------- Logging -----------------
-logging.file=logs/logs/mh.log
+logging.file.name=logs/logs/mh.log
 logging.level.root = warn
 logging.level.ai.metaheuristic.ai.Monitoring=error
 logging.level.ai.metaheuristic.ai.*=warn
