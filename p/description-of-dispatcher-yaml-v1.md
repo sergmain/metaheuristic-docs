@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Description of dispatcher.yaml config file, version 2
+# Description of dispatcher.yaml config file, version 1
 
 ## Table of contents
 
@@ -12,7 +12,7 @@ layout: default
 - [WeekTimePeriod](#WeekTimePeriod)
 - [Schedule samples](#Schedule samples)
 
-- [to description of dispatcher.yaml, version 1](/p/description-of-dispatcher-yaml-v1)
+- [to description of dispatcher.yaml, version 2](/p/description-of-dispatcher-yaml)
 - [to Index](/index)
 
 
@@ -26,7 +26,6 @@ This parameter will always be the last parameter in the list of parameters which
 This parameter file has the following structure:   
 
 ```yaml
-version: 2
 dispatchers:   
   - signatureRequired: false
     url: http://localhost:8080   
@@ -39,19 +38,15 @@ dispatchers:
       weekend: 0:00-23:59   
     disabled: false
     publicKey: public-key
-    asserManagerUrl: http://localhost:8889
-assetManagers:
-  - url: http://localhost:8889
-    username: rest_user
-    password: 123
-    publicKey: <public key>
-    disabled: false
+    asset:
+      url: http://localhost:8889
+      username: rest_user
+      password: 123
+      publicKey: <public key>
 ```
 
 Top-level fields in dispatcher.yaml:   
 - dispatchers - The list of configuration of Dispatchers
-- assetManagers - The list of configuration of AssetManagers. 
-  Actual when Metaheuristic is running in replicated mode
       
 Fields in dispatchers:
 - signatureRequired: false - does Function have to be signed with signature  
@@ -64,14 +59,8 @@ Fields in dispatchers:
     Full description see [below](#schedule)   
 - disabled: false - is this Dispatcher disabled or not
 - publicKey - public key for verifying the signature of Function
-- assetManagerUrl - reference to assetManager configured in 'assetManagers' element
-
-Fields in assetManagers:
-- url - url of AssetManager at which it's deployed
-- username - username of rest account for interaction with asset manager
-- username - password of rest account for interaction with asset manager
-- publicKey - public key for verifying a signature
-- disabled - field for enabling/disabling interaction with this asset manager  
+      
+- asset: group of parameters for configuring info about Asset manager
       
 ### Schedule   
       
