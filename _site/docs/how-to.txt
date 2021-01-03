@@ -13,3 +13,7 @@ Get versions
     bundle exec jekyll -v
     ruby -v
     gem -v
+
+
+jekyll upgrading
+    https://jekyllrb.com/docs/upgrading/3-to-4/

@@ -56,7 +56,7 @@ Fields in dispatchers:
 - restPassword: <string> - password for connecting to Dispatcher  
 - restUsername: <String> - login for connecting to Dispatcher  
 - taskProcessingTime <String> - schedule when tasks have to processed at Processor side. 
-    Full description see [below](#schedule)   
+    Full description see [below](#Schedule)   
 - disabled: false - is this Dispatcher disabled or not
 - publicKey - public key for verifying the signature of Function
       
