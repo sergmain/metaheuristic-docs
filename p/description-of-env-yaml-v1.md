@@ -2,14 +2,14 @@
 layout: default
 ---
 
-# Description of env.yaml config file, version 2
+# Description of env.yaml config file, version 1
 
 ## Table of contents
 
 - [Definition](#definition)
 - [Structure](#structure)
 
-- [to description of env.yaml, version 1](/p/description-of-env-yaml-v1)
+- [to description of env.yaml, version 2](/p/description-of-env-yaml)
 - [to Index](/index)
 
 
@@ -23,7 +23,6 @@ This parameter file will always be the last parameter in the list of parameters 
 This parameter file has the following structure:   
 
 ```yaml
-version: 2
 disk:
 - code: input-dir
   path: /dataset/input-dir
@@ -32,28 +31,21 @@ envs:
   java-11: java -jar
 mirrors:
   https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
-processors:
-  - code: processor-code-1
-    tags: tag1, tag2
-  - code: processor-code-2
-    tags: tag1
-  - code: processor-code-3
+tags: tag1, tag2
 ```
 
 Top-level fields in env.yaml:   
 - disk \<meta\> - Meta object has two fields - code and path. Code defines the code of metadata 
     and path is path to dir where variable are stored.    
 - envs \<key-value\> - defines pair of key-value for code of env (key) and executable (value)
-- mirrors \<key-value\> - defines a pair of key-value for real url of git's repository (key) and 
-    local dir which represents the mirror of remote git's repository. So in this string:
+- mirrors \<key-value\> - defines pair of key-value for real url of git's repository (key) and 
+    local dir which represents the mirror of remote git's repository. So in this string:   
 ```text
 https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
 ```
     https://github.com/sergmain/metaheuristic.git - remote git's url
     /git-mirror/mh/metaheuristic.git - local directory of git's repository
-
-- processors - List of definitions of processors.
-  code -  code of processor. it'll be used as name of directory for this Processor.
-  tags - comma-separated list of tags for this Processor    
+    
+- tags comma-separated list of tags for this Processor    
       
  

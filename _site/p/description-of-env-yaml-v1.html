@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Description of env.yaml config file, version 2 | Metaheuristic.ai</title>
+<title>Description of env.yaml config file, version 1 | Metaheuristic.ai</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Description of env.yaml config file, version 2" />
+<meta property="og:title" content="Description of env.yaml config file, version 1" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributed framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributed framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/p/description-of-env-yaml.html" />
-<meta property="og:url" content="http://localhost:4000/p/description-of-env-yaml.html" />
+<link rel="canonical" href="http://localhost:4000/p/description-of-env-yaml-v1.html" />
+<meta property="og:url" content="http://localhost:4000/p/description-of-env-yaml-v1.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/description-of-env-yaml.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Description of env.yaml config file, version 2","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/description-of-env-yaml-v1.html","description":"Distributed framework for hyper-parameter optimization and AutoML.","headline":"Description of env.yaml config file, version 1","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
     </section>
 
     <section class="main-content">
-      <h1 id="description-of-envyaml-config-file-version-2">Description of env.yaml config file, version 2</h1>
+      <h1 id="description-of-envyaml-config-file-version-1">Description of env.yaml config file, version 1</h1>
 
 <h2 id="table-of-contents">Table of contents</h2>
 
@@ -41,7 +41,7 @@
   <li>
     <p><a href="#structure">Structure</a></p>
   </li>
-  <li><a href="/p/description-of-env-yaml-v1">to description of env.yaml, version 1</a></li>
+  <li><a href="/p/description-of-env-yaml">to description of env.yaml, version 2</a></li>
   <li><a href="/index">to Index</a></li>
 </ul>
 
@@ -54,8 +54,7 @@ This parameter file will always be the last parameter in the list of parameters 
 
 <p>This parameter file has the following structure:</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
-<span class="na">disk</span><span class="pi">:</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">disk</span><span class="pi">:</span>
 <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">input-dir</span>
   <span class="na">path</span><span class="pi">:</span> <span class="s">/dataset/input-dir</span>
 <span class="na">envs</span><span class="pi">:</span>
@@ -63,12 +62,7 @@ This parameter file will always be the last parameter in the list of parameters 
   <span class="na">java-11</span><span class="pi">:</span> <span class="s">java -jar</span>
 <span class="na">mirrors</span><span class="pi">:</span>
   <span class="s">https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git</span>
-<span class="na">processors</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">processor-code-1</span>
-    <span class="na">tags</span><span class="pi">:</span> <span class="s">tag1, tag2</span>
-  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">processor-code-2</span>
-    <span class="na">tags</span><span class="pi">:</span> <span class="s">tag1</span>
-  <span class="pi">-</span> <span class="na">code</span><span class="pi">:</span> <span class="s">processor-code-3</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="s">tag1, tag2</span>
 </code></pre></div></div>
 
 <p>Top-level fields in env.yaml:</p>
@@ -76,16 +70,14 @@ This parameter file will always be the last parameter in the list of parameters 
   <li>disk &lt;meta&gt; - Meta object has two fields - code and path. Code defines the code of metadata 
   and path is path to dir where variable are stored.</li>
   <li>envs &lt;key-value&gt; - defines pair of key-value for code of env (key) and executable (value)</li>
-  <li>mirrors &lt;key-value&gt; - defines a pair of key-value for real url of git’s repository (key) and 
+  <li>mirrors &lt;key-value&gt; - defines pair of key-value for real url of git’s repository (key) and 
   local dir which represents the mirror of remote git’s repository. So in this string:
     <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
 </code></pre></div>    </div>
     <p>https://github.com/sergmain/metaheuristic.git - remote git’s url
   /git-mirror/mh/metaheuristic.git - local directory of git’s repository</p>
   </li>
-  <li>processors - List of definitions of processors.
-code -  code of processor. it’ll be used as name of directory for this Processor.
-tags - comma-separated list of tags for this Processor</li>
+  <li>tags comma-separated list of tags for this Processor</li>
 </ul>
 
 
