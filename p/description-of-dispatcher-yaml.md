@@ -39,7 +39,7 @@ dispatchers:
       weekend: 0:00-23:59   
     disabled: false
     publicKey: public-key
-    asserManagerUrl: http://localhost:8889
+    assetManagerUrl: http://localhost:8889
 assetManagers:
   - url: http://localhost:8889
     username: rest_user
