@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
 title: Metaheuristic.ai
-description: Distributed framework for hyper-parameter optimization and AutoML.
+description: Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.
 repository: sergmain/metaheuristic
 exclude: [.idea, CNAME, Gemfile, Gemfile.lock,how-to.txt]
 plugins:
