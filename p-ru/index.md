@@ -11,8 +11,8 @@ layout: default
 - [К](#к) 
 
 ### К
-- [Концепция, архитектура, планы развития](/p-ru/concept-architecture-roadmap#Концепция)
-- [Copyright](/p-ru/license-licensing-copyright#копирайт)
+- [Концепция, архитектура, планы развития](/p-ru/concept-architecture-roadmap)
+- [Лицензия, лицензирование, копирайт](/p-ru/license-licensing-copyright)
 
 
 ## На других языках

@@ -9,26 +9,25 @@ layout: default
 - [Лицензия, лицензирование](#Лицензия-и-лицензирование)
 - [Копирайт](#copyright)
 
-- [to Index](/p-ru/index)
+- [На главную](/p-ru/index)
 
 ## Лицензия и лицензирование
-Metaheuristic has a dual licensing.
+Метаэвристика имеет двойную лицензию.
+Весь код в репозитории (https://github.com/sergmain/metaheuristic) лицензирован под лицензией GPL-3.0  
+Для коммерческого использования необходимо купить коммерческую годовую подписку, если она требуется:   
+:
 
-All code in a repository (https://github.com/sergmain/metaheuristic) is licensed under GPL-3.0  
+| Тип пооьзователя - организация или частное лицо                              | Условия использования  |
+|------------------------------------------------------------------------------|------------------------|
+| Персональное использование (использование в коммерческих проектах запрещено) | Свободно               |
+| Научные исследования                                                         | Свободно + цитирование | 
+| Некоммерческие организации                                                   | Свободно + цитирование | 
+| Коммерческое использование, меньше чем 25 Процессоров\*                      | Свободно               | 
+| Коммерческое использование, Процессоров больше чем 24\*                      | Годовая подписка, $50k - Диспетчер\*\*, $500 за Процессор\* | 
 
-For commercial use you must buy commercial annual subscription if needed:
+\* Процессор - часть Метаэвристики которая выполняет задачи. В одной исталляии Метаэвристики может быть сконфигурировано любое количество процессоров   
+\*\* Диспетчер - серверная часть Метаэвристики, которая содержит все конфигурации (Функции, Исходные коды, Пользователи, Компании) 
+и управляет процессот создания, назначения и управления задачами. 
 
-| Type of customer (Org or personal)                     | Conditions of using |
-|--------------------------------------------------------|---------------------|
-| Personal use  (using in commercial project prohibited) | Free to use         |
-| Scientific researches                                  | Free to use, citing | 
-| Non-profit organizations                               | Free to use, citing | 
-| Commercial use, less than 25 Processors\*                | Free to use         | 
-| All other cases when there are 25 Processors\* or more   | Annual subscription, $50k for Dispatcher\*\*, $200 per Processor\* | 
-
-\* Processor is a client part of metaheuristic which is processing tasks.   
-\*\* Dispatcher is a server part of metaheuristic which is serving all configurations 
-and managing the process of assigning tasks to Processors. 
-
-## Copyright
+## Копирайт
 Innovation platforms LLC, San Francisco, US 
