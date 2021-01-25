@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Общее описание | Metaheuristic.ai</title>
+<title>Full Table of contents | Metaheuristic.ai</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Общее описание" />
+<meta property="og:title" content="Full Table of contents" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Distributed framework for hyper-parameter optimization and AutoML." />
 <meta property="og:description" content="Distributed framework for hyper-parameter optimization and AutoML." />
-<link rel="canonical" href="http://localhost:4000/p/description.ru.html" />
-<meta property="og:url" content="http://localhost:4000/p/description.ru.html" />
+<link rel="canonical" href="http://localhost:4000/p-ru/description.html" />
+<meta property="og:url" content="http://localhost:4000/p-ru/description.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/description.ru.html","headline":"Общее описание","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p-ru/description.html","headline":"Full Table of contents","description":"Distributed framework for hyper-parameter optimization and AutoML.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=9a1702b3d24f45f534de45ff312e7ea792cef701">
+    <link rel="stylesheet" href="/assets/css/style.css?v=335c3fc78e6a2f8c732cc5cdba854ac71d6ca923">
   </head>
   <body>
     <section class="page-header">
@@ -32,7 +32,67 @@
     </section>
 
     <section class="main-content">
-      <h1 id="общее-описание">Общее описание</h1>
+      <h2 id="full-table-of-contents">Full Table of contents</h2>
+
+<ul>
+  <li><a href="#a">A</a> B <a href="#c">C</a> <a href="#d">D</a> <a href="#e">E</a> <a href="#f">F</a> <a href="#g">G</a> H <a href="#i">I</a> J K <a href="#l">L</a> <a href="#m">M</a> N O <a href="#p">P</a> <a href="#q">Q</a> <a href="#r">R</a> <a href="#s">S</a> <a href="#t">T</a> U <a href="#v">V</a> W X Y Z</li>
+</ul>
+
+<h1 id="общее-описание">Общее описание</h1>
+
+<h2 id="concept">Concept</h2>
+<p>Metaheuristic is an application which is implemented Turing complete machine(or intended to be).
+The main use of MH is a management of distributed task. Right now there two main areas where MH is being used:</p>
+<ul>
+  <li>
+    <p>AI model’s hyper-parameter optimization purpose. <br />
+Each optimization is presented as Experiment. An Experiment consists of some Tasks.
+Tasks are created at Dispatcher and distributed to Processor. For evaluating a performance of models,
+metrics and other data are collected and evaluated later by Metaheuristic.</p>
+  </li>
+  <li>
+    <p>Batch processing. <br />
+Common usage of batch processing - split data, create tasks for processing each part of data,
+process Tasks, aggregate results</p>
+  </li>
+</ul>
+
+<h2 id="architecture">Architecture</h2>
+<p>Metaheuristic has two main modules - Dispatcher and Processor
+The purpose of Dispatcher is to manage tasks which will be processed at Processor side.
+Processor is a module of Metaheuristic which is responsible for receiving tasks,
+preparing assets, processing task, and delivering results of processing of task to the Dispatcher.</p>
+
+<p>The typical configuration is one Dispatcher and N Processor. Processor could be configured to host
+tasks from unlimited number of Dispatchers. The current algorithm to determine the order of receiving
+tasks from Processors is round-robin.</p>
+
+<p>A processing entity which is configured at Dispatcher and is being run at Processor is a Function.
+Function can be executable application, .jar file, python notebook,
+file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on.
+Instance of Function is Task. <br />
+For full description of Function see <a href="function">documentation on Functions</a></p>
+
+<p>From delivery point of view Function can be provisioned from Dispatcher or from git repository.</p>
+
+<p>For full description how to use Function for hyper-parameter optimization see <a href="experiment">documentation on Experiment</a></p>
+
+<p>For creating set of tasks, Dispatcher is using a dynamic directed acyclic graph which defines the order
+in which Processors have to process tasks.</p>
+
+<p>Tasks can have any number of Variables for its execution purpose.
+The most common case for hyper-parameter optimization is when Variables are dataset, model fitting/predicting, metrics.
+For full description of Variables see <a href="variable">documentation on Variables</a></p>
+
+<h2 id="roadmap">Roadmap</h2>
+
+<ul>
+  <li>Series of Experiments.</li>
+  <li>Implementation the different strategies for Series - Genetic algorithm, Bayesian optimization, GRASP, ILS.
+The concrete algo which will be implemented in first place will be chosen later.</li>
+  <li>Prototype 2-side platform for optimization based on Metaheuristic.</li>
+  <li>TBD</li>
+</ul>
 
 <ol>
   <li>Сущности, общая концепция</li>
@@ -516,6 +576,11 @@ Input pool code for this plan - simple-resource-pool</p>
 будет содан файл system-console.log в котором будет выведно содержимое файла,
 который мы загрузили как ресурс.</p>
 
+<h2 id="in-other-languages">In other languages</h2>
+
+<ul>
+  <li><a href="/index">English</a> <a href="#r">Russian</a></li>
+</ul>
 
 
       <footer class="site-footer">

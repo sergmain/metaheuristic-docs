@@ -13,7 +13,7 @@ layout: default
 - [to Index](/index)
 
 ## Concept
-Metaheuristic is an application which is implemented Turing complete machine(or intended to be). 
+Metaheuristic is an application which implements (or intended to) a Turing complete machine. 
 The main use of MH is a management of distributed task. Right now there two main areas where MH is being used:
  - AI model's hyper-parameter optimization purpose. \
     Each optimization is presented as Experiment. An Experiment consists of some Tasks.

@@ -2,16 +2,16 @@
 layout: default
 ---
 
-# License, licensing, copyright
+# Лицензия, лицензирование, копирайт
 
-## Table of contents
+## Содержание
 
-- [License and licensing](#license-and-licensing)
-- [Copyright](#copyright)
+- [Лицензия, лицензирование](#Лицензия-и-лицензирование)
+- [Копирайт](#copyright)
 
-- [to Index](/index)
+- [to Index](/p-ru/index)
 
-## License and licensing
+## Лицензия и лицензирование
 Metaheuristic has a dual licensing.
 
 All code in a repository (https://github.com/sergmain/metaheuristic) is licensed under GPL-3.0  

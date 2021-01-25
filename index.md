@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Table of contents
+## Main articles
 
 - [Quick start](/p/quick-start)
 - [Concept, architecture, roadmap](/p/concept-architecture-roadmap)
@@ -74,3 +74,8 @@ layout: default
 
 ### V
 - [Variables](/p/variable)
+
+
+## In other languages
+
+- [English](/index) [Russian](/p-ru/index) 
