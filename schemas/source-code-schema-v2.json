@@ -34,6 +34,10 @@
         "clean": {
           "type": "boolean"
         },
+        "instances": {
+          "type": "integer",
+          "minimum": 0
+        },
         "ac": {
           "$ref": "#/definitions/AC"
         },
