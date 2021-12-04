@@ -36,7 +36,7 @@
         },
         "instances": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 1
         },
         "ac": {
           "$ref": "#/definitions/AC"
