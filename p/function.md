@@ -8,11 +8,18 @@ layout: default
 
 ## Table of contents
 
+- [Schemas](#schemas)
 - [Definition](#definition)
 - [Configuration](#configuration)
 - [Metadata](#metadata)
 - [Packaging](#packaging)
 - [Uploading](#uploading)
+
+
+### Schemas
+
+Function schema v1 - [https://docs.metaheuristic.ai/schemas/function-schema-v1.json](https://docs.metaheuristic.ai/schemas/function-schema-v1.json)  
+Function schema v2 - [https://docs.metaheuristic.ai/schemas/function-schema-v2.json](https://docs.metaheuristic.ai/schemas/function-schema-v2.json)  
 
 
 ### Definition

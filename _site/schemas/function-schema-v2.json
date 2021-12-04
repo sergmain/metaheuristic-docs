@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome7",
+  "definitions": {
+    "Welcome7": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 2
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Function"
+          }
+        }
+      },
+      "required": [
+        "functions"
+      ],
+      "title": "Welcome7"
+    },
+    "Function": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "params": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "sourcing": {
+          "enum" : ["dispatcher", "processor", "git"]
+        },
+        "checksumMap": {
+          "$ref": "#/definitions/ChecksumMap"
+        },
+        "metas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Meta"
+          }
+        },
+        "git": {
+          "$ref": "#/definitions/Git"
+        },
+        "skipParams": {
+          "type": "boolean"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "sourcing"
+      ],
+      "title": "Function"
+    },
+    "ChecksumMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(SHA256WithSignature|MD5|SHA256)": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "title": "ChecksumMap"
+    },
+    "Git": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "branch",
+        "commit",
+        "repo"
+      ],
+      "title": "Git"
+    },
+    "Meta": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {"type": ["string", "boolean", "integer"]
+        }
+      },
+      "additionalProperties": false,
+      "required": [],
+      "title": "Meta"
+    }
+  }
+}

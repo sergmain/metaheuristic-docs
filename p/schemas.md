@@ -14,6 +14,9 @@ layout: default
 
 ## Function schemas
 
+Function schema v1 - [https://docs.metaheuristic.ai/schemas/function-schema-v1.json](https://docs.metaheuristic.ai/schemas/function-schema-v1.json)  
+Function schema v2 - [https://docs.metaheuristic.ai/schemas/function-schema-v2.json](https://docs.metaheuristic.ai/schemas/function-schema-v2.json)
+
 ## Source code schemas
 
 SourceCode schema v1 - [https://docs.metaheuristic.ai/schemas/source-code-schema-v1.json](https://docs.metaheuristic.ai/schemas/source-code-schema-v1.json)  
