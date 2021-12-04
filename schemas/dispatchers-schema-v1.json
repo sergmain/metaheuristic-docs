@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome1",
+  "definitions": {
+    "Welcome1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1
+        },
+        "dispatchers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Dispatcher"
+          }
+        }
+      },
+      "required": [
+        "dispatchers"
+      ],
+      "title": "Welcome1"
+    },
+    "Dispatcher": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "taskProcessingTime": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        },
+        "signatureRequired": {
+          "type": "boolean"
+        },
+        "lookupType": {
+          "enum" : ["direct", "registry"]
+        },
+        "authType": {
+          "enum" : ["basic", "oauth"]
+        },
+        "restPassword": {"type": ["string", "integer"]},
+        "restUsername": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "asset": {
+          "type": "object",
+          "items": {
+            "$ref": "#/definitions/Asset"
+          }
+        }
+      },
+      "required": [
+        "restPassword",
+        "restUsername",
+        "url"
+      ],
+      "title": "Dispatcher"
+    },
+    "Asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "integer"
+        },
+        "publicKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "password",
+        "publicKey",
+        "url",
+        "username"
+      ],
+      "title": "Asset"
+    }
+  }
+}

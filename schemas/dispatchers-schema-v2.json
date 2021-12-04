@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome1",
+  "definitions": {
+    "Welcome1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 2
+        },
+        "dispatchers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Dispatcher"
+          }
+        },
+        "assetManagers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetManager"
+          }
+        }
+      },
+      "required": [
+        "dispatchers",
+        "version"
+      ],
+      "title": "Welcome1"
+    },
+    "Dispatcher": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "taskProcessingTime": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        },
+        "signatureRequired": {
+          "type": "boolean"
+        },
+        "lookupType": {
+          "enum" : ["direct", "registry"]
+        },
+        "authType": {
+          "enum" : ["basic", "oauth"]
+        },
+        "restPassword": {"type": ["string", "integer"]},
+        "restUsername": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "assetManagerUrl": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "assetManagerUrl",
+        "restPassword",
+        "restUsername",
+        "url"
+      ],
+      "title": "Dispatcher"
+    },
+    "AssetManager": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {"type": ["string", "integer"]},
+        "publicKey": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "password",
+        "publicKey",
+        "url",
+        "username"
+      ],
+      "title": "AssetManager"
+    }
+  }
+}

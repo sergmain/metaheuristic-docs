@@ -6,11 +6,17 @@ layout: default
 
 ## Table of contents
 
+- [Dispatcher schemas](#dispatcher-schemas)
 - [Function schemas](#function-schemas)
 - [Source code schemas](#source-code-schemas)
 - [Task schemas](#task-schemas)
 
 - [to Index](/index)
+
+## Dispatchers schemas
+
+Dispatcher schema v1 - [https://docs.metaheuristic.ai/schemas/dispatchers-schema-v1.json](https://docs.metaheuristic.ai/schemas/dispatchers-schema-v1.json)  
+Dispatcher schema v2 - [https://docs.metaheuristic.ai/schemas/dispatchers-schema-v2.json](https://docs.metaheuristic.ai/schemas/dispatchers-schema-v2.json)
 
 ## Function schemas
 

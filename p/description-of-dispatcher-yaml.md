@@ -6,6 +6,7 @@ layout: default
 
 ## Table of contents
 
+- [Schemas](#schemas)
 - [Definition](#definition)
 - [Structure](#structure)
 - [Schedule](#Schedule)
@@ -15,6 +16,11 @@ layout: default
 - [to description of dispatcher.yaml, version 1](/p/description-of-dispatcher-yaml-v1)
 - [to Index](/index)
 
+
+### Schemas
+
+Dispatcher schema v1 - [https://docs.metaheuristic.ai/schemas/dispatchers-schema-v1.json](https://docs.metaheuristic.ai/schemas/dispatchers-schema-v1.json)  
+Dispatcher schema v2 - [https://docs.metaheuristic.ai/schemas/dispatchers-schema-v2.json](https://docs.metaheuristic.ai/schemas/dispatchers-schema-v2.json)
 
 ### Definition
 
