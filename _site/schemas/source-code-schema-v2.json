@@ -58,7 +58,6 @@
         }
       },
       "required": [
-          "processes",
           "uid"
       ],
       "title": "Source"
