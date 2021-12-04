@@ -66,6 +66,7 @@ layout: default
 
 ### S
 - [Schedule](/p/schedule)
+- [Schemas](/p/schemas)
 - [Security](/p/security)
 - [SourceCode](/p/source-code)
 
