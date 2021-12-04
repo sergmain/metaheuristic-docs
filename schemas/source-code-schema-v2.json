@@ -25,6 +25,10 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "instances": {
+          "type": "integer",
+          "minimum": 1
+        },
         "strictNaming": {
           "type": "boolean"
         },
@@ -33,10 +37,6 @@
         },
         "clean": {
           "type": "boolean"
-        },
-        "instances": {
-          "type": "integer",
-          "minimum": 1
         },
         "ac": {
           "$ref": "#/definitions/AC"
