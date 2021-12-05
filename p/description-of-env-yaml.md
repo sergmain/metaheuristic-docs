@@ -6,12 +6,19 @@ layout: default
 
 ## Table of contents
 
+- [Schemas](#schemas)
 - [Definition](#definition)
 - [Structure](#structure)
 
 - [to description of env.yaml, version 1](/p/description-of-env-yaml-v1)
 - [to Index](/index)
 
+
+### Schemas
+
+Env schema v1 - [https://docs.metaheuristic.ai/schemas/env-schema-v1.json](https://docs.metaheuristic.ai/schemas/env-schema-v1.json)  
+Env schema v2 - [https://docs.metaheuristic.ai/schemas/env-schema-v2.json](https://docs.metaheuristic.ai/schemas/env-schema-v2.json)
+Env schema v3 - [https://docs.metaheuristic.ai/schemas/env-schema-v3.json](https://docs.metaheuristic.ai/schemas/env-schema-v3.json)
 
 ### Definition
 

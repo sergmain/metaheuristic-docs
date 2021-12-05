@@ -1,0 +1,92 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome2",
+    "definitions": {
+        "Welcome2": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "version": {
+                    "type": "integer",
+                    "minimum": 2,
+                    "maximum": 2
+                },
+                "disk": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DiskStorage"
+                    }
+                },
+                "envs": {
+                    "$ref": "#/definitions/Envs"
+                },
+                "mirrors": {
+                    "$ref": "#/definitions/Mirrors"
+                },
+                "processors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Processor"
+                    }
+                }
+            },
+            "required": [],
+            "title": "Welcome2"
+        },
+        "DiskStorage": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code",
+                "path"
+            ],
+            "title": "DiskStorage"
+        },
+        "Envs": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^.*$": {"type": ["string", "boolean", "integer"]
+                }
+            },
+            "required": [
+            ],
+            "title": "Envs"
+        },
+        "Mirrors": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^.*$": {"type": ["string", "boolean", "integer"]
+                }
+            },
+            "required": [
+            ],
+            "title": "Mirrors"
+        },
+        "Processor": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code"
+            ],
+            "title": "Processor"
+        }
+    }
+}
