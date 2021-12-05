@@ -6,11 +6,16 @@ layout: default
 
 ## Table of contents
 
+- [Schemas](#schemas)
 - [Definition](#definition)
 - [Structure](#structure)
 
 - [to Index](/index)
 
+
+### Schemas
+
+Task params schema v1 - [https://docs.metaheuristic.ai/schemas/task-params-schema-v1.json](https://docs.metaheuristic.ai/schemas/task-params-schema-v1.json)  
 
 ### Definition
 

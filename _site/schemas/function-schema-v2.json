@@ -92,7 +92,7 @@
           "type": "string"
         },
         "commit": {
-          "type": "integer"
+          "type": "string"
         }
       },
       "required": [
