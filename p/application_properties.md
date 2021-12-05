@@ -93,7 +93,7 @@ The full list of Spring's properties you can find here:
 
 ## Metaheuristic properties
 
-Metaheuristic's properties divided in 3 big groups - globals, dispatcher related, and processor related
+Metaheuristic's properties divided in 3 big groups - globals, related to dispatcher, and related to processor
 
 Globals properties   
 - mh.thread-number - integer value in range from 1 to 16, default value is 4. This property defines how many threads will be used.

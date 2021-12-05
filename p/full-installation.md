@@ -18,14 +18,13 @@ layout: default
 >This documentation is about how to install Metaheuristic locally. For cloud installation see [Clouds](clouds.md) 
 
 ## Prerequisites: 
-#### Java Development Kit (JDK) 11
+#### Java Development Kit (JDK) 17
 
-To run Metaheuristic you have to have jdk 11  
+To run Metaheuristic you have to have jdk 17  
 Right now, there isn't any known bug which restricts to use certain JDK.
 
-[Amazon Corretto 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)  
-[AdoptOpenJDK (AKA OpenJDK) 11](https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot)  
-[Zulu JDK 11](https://www.azul.com/downloads/zulu-community/?&version=java-11-lts)  
+[AdoptiumJDK (AKA OpenJDK) 17](https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot)  
+[Zulu JDK 17](https://www.azul.com/downloads/?version=java-17-lts)  
 
 #### Database
 At this moment we are supporting two databases for production environment - mysql and postgresql.    
@@ -33,8 +32,8 @@ By supporting we mean that there is sql scripts for initialization of db.
 Quick start is using H2 db, so this db is fine too but only for testing environment.
  
 Sql files for db's scheme:   
- -- [Postgresql](https://github.com/sergmain/metaheuristic/blob/master/sql/schema-postgresql.sql)   
- -- [Mysql](https://github.com/sergmain/metaheuristic/blob/master/sql/schema-mysql.sql)   
+ -- [Postgresql](https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-postgresql.sql)   
+ -- [Mysql](https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-mysql.sql)   
  -- [H2](https://github.com/sergmain/metaheuristic/blob/master/apps/metaheuristic/src/main/resources/schema-h2.sql)   
 
 In this documentation we expect that you'll create db's scheme 'mh', db's user will be 'mh' and password will be 'qwe321'
@@ -137,7 +136,7 @@ Current connection parameters to database are:
     -- spring.datasource.url = jdbc:mysql://localhost:3306/mh - defines IP address (localhost) and port (3306) of db,
         and db scheme (mh). If you want to use the different values, you need to change them accordingly.   
 
-Descriptions of all mh.* parameters can be found in [mh.* parameters](description-of-mh-application-properties) 
+Descriptions of all mh.* parameters can be found in [mh.* parameters](application_properties) 
 
 #### Configure Processor
 
@@ -175,12 +174,12 @@ Descriptions of all parameters can be found in [description of env.yaml](descrip
 
 Now you can launch Metaheuristic. Change dir to /mh-root and run Metaheuristic:
 
-- If you skipped the creation of dispatcher.yaml and env.yaml, the command for launching is:
+- If you've skipped the creation of dispatcher.yaml and env.yaml, the command for launching is:
 ```text
 java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar --mh.processor.default-dispatcher-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/dispatcher.yaml --mh.processor.default-env-yaml-file=metaheuristic/docs-dev/cfg/default-cfg/env.yaml 
 ```
 
-- If you created a custom version of dispatcher.yaml and env.yaml, the command for launching is:
+- If you've created a custom version of dispatcher.yaml and env.yaml, the command for launching is:
 ```text
 java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar 
 ```
@@ -188,12 +187,12 @@ java -jar metaheuristic/apps/metaheuristic/target/metaheuristic.jar
 ## Configure REST account
 Processors are communicating with Dispatcher via special rest account. 
 For creating this account you have to log in with master account. 
-Master account is account which configured in [application_properties.md]() file. 
+Master account is account which configured in [application.properties](/p/application_properties) file. 
 The properties are:
 - mh.dispatcher.master-username
 - mh.dispatcher.master-password
 
-Process of preparing password is describing here - [Encrypt password](/p/encrypt-password)
+Process of preparing a password is describing here - [Encrypt password](/p/encrypt-password)
 
    
 
