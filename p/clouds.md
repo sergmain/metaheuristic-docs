@@ -7,18 +7,15 @@ layout: default
 
 - [Heroku](#heroku)
 - [Jelastic](#jelastic)
-- [GCP](#gcp)
-- [AWS](#aws)
 - [Docker](#docker)
-- [K8s](#k8s)
+- [GCP, AWS, K8s](#tba)
 
 - [to Index](/index)
 
 
 ## Heroku
 set environment variable:
-
-```
+```text
 MAVEN_CONFIG = -f pom-heroku.xml
 
 SPRING_APPLICATION_JSON =   
@@ -63,7 +60,7 @@ Application server =====
 - SpringBoot, jdk - OpenJDK 11.0.7  
   min 2, max 4 cloudlets, Horizontal scaling - 1 node, statefull  
   Variables:  
-```
+```text
   JDBC_DATABASE_PASSWORD = <pass-for-db>  
   JDBC_DATABASE_URL = jdbc:mysql://<ip-address>:3306/mh?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Los_Angeles&allowPublicKeyRetrieval=true    
   JDBC_DATABASE_USERNAME = mh  
@@ -100,16 +97,25 @@ login: q
 pass: 123  
 
 
-
-## GCP
-TBD
-
-## AWS
-TBD
-
 ## Docker
-TBD
+Docker images are located here:
+```text
+https://hub.docker.com/repository/docker/sergmain/metaheuristic
+```
 
-## K8s
-TBD
+There are two images - quick start image and angular-based web interface.
+
+Quick start image is ready for using only as demo because it has 
+a configured embeded in-mmemory database (which is H2) and after shut dowing all data will be lost.
+For persistent installation you need to use stand-alone db - mysql or postgres
+
+Image with angular-based web interface configured to use Metaheuristic on localhost only.
+
+
+If you want to have images of Metaheuristic configured for your environment you have to build them yourself.
+
+
+## TBA 
+GCP, AWS, K8s
+TBA
 

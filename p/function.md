@@ -195,6 +195,6 @@ After a Function is prepared in form of function.yaml or function.zip, it has to
 This can be done via web interface at url [http://localhost:8080/dispatcher/function/functions]()
 
 Other way to upload a Function is to use a REST-based url:      
-```text   
+```text
 curl -u q:123 -F "file=@simple-metrics-functions-as-one-file.yaml"  http://localhost:8080/rest/v1/dispatcher/function/function-upload-from-file
 ```

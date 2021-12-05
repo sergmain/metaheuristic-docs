@@ -53,6 +53,7 @@ Top-level fields in env.yaml:
 - envs \<key-value\> - defines pair of key-value for code of env (key) and executable (value)
 - mirrors \<key-value\> - defines a pair of key-value for real url of git's repository (key) and 
     local dir which represents the mirror of remote git's repository. So in this string:
+
 ```text
 https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
 ```
