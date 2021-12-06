@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/clouds.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/clouds.html","headline":"Clouds","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/clouds.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","headline":"Clouds","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=a1117f21de024b06a22cb2436823197b37d9dc42">
+    <link rel="stylesheet" href="/assets/css/style.css?v=cb5ae33e6267db2deef861d529fd22218f913549">
   </head>
   <body>
     <section class="page-header">
@@ -39,19 +39,16 @@
 <ul>
   <li><a href="#heroku">Heroku</a></li>
   <li><a href="#jelastic">Jelastic</a></li>
-  <li><a href="#gcp">GCP</a></li>
-  <li><a href="#aws">AWS</a></li>
   <li><a href="#docker">Docker</a></li>
   <li>
-    <p><a href="#k8s">K8s</a></p>
+    <p><a href="#tba">GCP, AWS, K8s</a></p>
   </li>
   <li><a href="/index">to Index</a></li>
 </ul>
 
 <h2 id="heroku">Heroku</h2>
 <p>set environment variable:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAVEN_CONFIG = -f pom-heroku.xml
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAVEN_CONFIG = -f pom-heroku.xml
 
 SPRING_APPLICATION_JSON =   
 {  
@@ -103,7 +100,7 @@ So you must keep the value of mh.dispatcher.chunk-size below 1Mb. From experienc
   <li>SpringBoot, jdk - OpenJDK 11.0.7<br />
 min 2, max 4 cloudlets, Horizontal scaling - 1 node, statefull<br />
 Variables:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JDBC_DATABASE_PASSWORD = &lt;pass-for-db&gt;  
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JDBC_DATABASE_PASSWORD = &lt;pass-for-db&gt;  
 JDBC_DATABASE_URL = jdbc:mysql://&lt;ip-address&gt;:3306/mh?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=CONVERT_TO_NULL&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=America/Los_Angeles&amp;allowPublicKeyRetrieval=true    
 JDBC_DATABASE_USERNAME = mh  
 MH_JDBC_DRIVER_CLASS_NAME = com.mysql.cj.jdbc.Driver    
@@ -141,17 +138,26 @@ login into Metaheuristic :<br />
 login: q<br />
 pass: 123</p>
 
-<h2 id="gcp">GCP</h2>
-<p>TBD</p>
-
-<h2 id="aws">AWS</h2>
-<p>TBD</p>
-
 <h2 id="docker">Docker</h2>
-<p>TBD</p>
+<p>Docker image is located here:
+<a href="https://hub.docker.com/repository/docker/sergmain/metaheuristic">https://hub.docker.com/repository/docker/sergmain/metaheuristic</a></p>
 
-<h2 id="k8s">K8s</h2>
-<p>TBD</p>
+<p>its tag:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sergmain/metaheuristic:metaheuristic-quickstart-embeded
+</code></pre></div></div>
+
+<p>Quick start image is ready for using only as demo because it has 
+a configured embedded in-memory database (which is H2) and after shut downing all data will be lost.
+For persistent installation you need to use stand-alone db, mysql or postgres.</p>
+
+<p>bind ports: 8083:8083</p>
+
+<p>Access an Angular-based UI of Metaheuristic via
+<a href="https://adocker8083.metaheuristic.ai/#/">https://adocker8083.metaheuristic.ai/#/</a></p>
+
+<h2 id="tba">TBA</h2>
+<p>GCP, AWS, K8s
+TBA</p>
 
 
 

@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/quick-start.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/quick-start.html","headline":"Quick start","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/quick-start.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","headline":"Quick start","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=a1117f21de024b06a22cb2436823197b37d9dc42">
+    <link rel="stylesheet" href="/assets/css/style.css?v=cb5ae33e6267db2deef861d529fd22218f913549">
   </head>
   <body>
     <section class="page-header">
@@ -37,6 +37,7 @@
 <h2 id="table-of-contents">Table of contents</h2>
 
 <ul>
+  <li><a href="#quick-start-from-docker">Quick start from docker</a></li>
   <li><a href="#quick-start">Quick start</a></li>
   <li><a href="#quick-start-for-evaluating-ui-only">Quick start for evaluating UI only</a></li>
   <li>
@@ -45,20 +46,31 @@
   <li><a href="/index">to Index</a></li>
 </ul>
 
-<h2 id="prerequisites-java-development-kit-jdk-11">Prerequisites: Java Development Kit (JDK) 11</h2>
+<h2 id="quick-start-from-docker">Quick start from docker</h2>
 
-<p>To run Metaheuristic you have to have jdk 11<br />
-Right now there isn’t any known bug which restricts to use certain JDK.</p>
+<p>Docker tag: sergmain/metaheuristic:metaheuristic-quickstart-embeded<br />
+bind ports 8083:3083</p>
 
-<p><a href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html">Amazon Corretto 11</a><br />
-<a href="https://adoptopenjdk.net/?variant=openjdk11&amp;jvmVariant=hotspot">AdoptOpenJDK (AKA OpenJDK) 11</a><br />
-<a href="https://www.azul.com/downloads/zulu-community/?&amp;version=java-11-lts">Zulu JDK 11</a></p>
+<p>Access a simple UI of Metaheuristic via <a href="http://localhost:8083">http://localhost:8083</a></p>
+
+<p>or access an Angular-based UI of Metaheuristic via
+<a href="https://adocker8083.metaheuristic.ai/#/">https://adocker8083.metaheuristic.ai/#/</a></p>
+
+<p>continue reading at <a href="#quick-start-with-running-the-actual-tasks">start running the actual tasks</a></p>
 
 <h2 id="quick-start-1">Quick start</h2>
 <blockquote>
   <p><strong>Attention</strong>. The ‘Quick start’ mode is working with embedded db which is being hosted in memory. 
 As a result after stopping Metaheuristic all data will be lost.</p>
 </blockquote>
+
+<h4 id="prerequisites-for-command-line-installation-java-development-kit-jdk-17">Prerequisites for command-line installation: Java Development Kit (JDK) 17</h4>
+
+<p>To run Metaheuristic from command-line you have to have jdk 17 installed.<br />
+Right now there isn’t any known bug which restricts to use certain JDK.</p>
+
+<p><a href="https://adoptium.net/releases.html?variant=openjdk17&amp;jvmVariant=hotspot">Adoptium.net JDK 17</a><br />
+<a href="https://www.azul.com/downloads/?version=java-17-lts&amp;package=jdk">Zulu JDK 17</a></p>
 
 <h5 id="quick-start-for-evaluating-ui-only">Quick start for evaluating UI only</h5>
 
@@ -68,12 +80,12 @@ As a result after stopping Metaheuristic all data will be lost.</p>
 It’ll be /mh-root in following text.</p>
   </li>
   <li>from /mh-root run git cloning command:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/sergmain/metaheuristic.git
- git clone https://github.com/sergmain/metaheuristic-assets.git
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/sergmain/metaheuristic.git
+git clone https://github.com/sergmain/metaheuristic-assets.git
 </code></pre></div>    </div>
   </li>
   <li>Change dir to /mh-root/metaheuristis and run command:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mvnw clean install -f pom.xml -Dmaven.test.skip=true
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvnw clean install -f pom.xml -Dmaven.test.skip=true
 </code></pre></div>    </div>
   </li>
   <li>Change dir to /mh-root and run command:
@@ -81,7 +93,7 @@ It’ll be /mh-root in following text.</p>
 </code></pre></div>    </div>
   </li>
   <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-upload-simple-metrics-to-atlas
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl-upload-simple-metrics-to-atlas
 </code></pre></div>    </div>
   </li>
   <li>
@@ -106,26 +118,26 @@ Also, PyYAML 5.1 package must <a href="https://pyyaml.org/wiki/PyYAMLDocumentati
 
 <ol>
   <li>Change dir to /mh-root/metaheuristic-assets/examples/simple-metrics and run scripts:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-upload-functions-as-one-file
- curl-add-variable-stub
- curl-add-experiment
- curl-add-source-code
- curl-bind-experiment-to-source-code--with-varaible
- curl-create-exec-context
- curl-produce-experiment-tasks
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl-upload-functions-as-one-file
+curl-add-variable-stub
+curl-add-experiment
+curl-add-source-code
+curl-bind-experiment-to-source-code--with-varaible
+curl-create-exec-context
+curl-produce-experiment-tasks
 </code></pre></div>    </div>
   </li>
   <li>At this point Metaheuristic started to produce tasks 
 and you have to wait until status will be changed to ‘PRODUCED’. You can check current status by running script
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-get-experiment-processing-status
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl-get-experiment-processing-status
 </code></pre></div>    </div>
   </li>
   <li>After being changed to ‘PRODUCED’ run the command:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-start-processing-of-experiment-tasks
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl-start-processing-of-experiment-tasks
 </code></pre></div>    </div>
   </li>
   <li>All tasks will be completed in 10 minutes approximately. You can get the current status of processing by command:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl-get-experiment-processing-status
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl-get-experiment-processing-status
 </code></pre></div>    </div>
 
     <p>there are 3 possible statuses at this point:<br />

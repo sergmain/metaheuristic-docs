@@ -98,21 +98,22 @@ pass: 123
 
 
 ## Docker
-Docker images are located here:
+Docker image is located here:
+[https://hub.docker.com/repository/docker/sergmain/metaheuristic](https://hub.docker.com/repository/docker/sergmain/metaheuristic)
+
+its tag: 
 ```text
-https://hub.docker.com/repository/docker/sergmain/metaheuristic
+sergmain/metaheuristic:metaheuristic-quickstart-embeded
 ```
 
-There are two images - quick start image and angular-based web interface.
-
 Quick start image is ready for using only as demo because it has 
-a configured embeded in-mmemory database (which is H2) and after shut dowing all data will be lost.
-For persistent installation you need to use stand-alone db - mysql or postgres
+a configured embedded in-memory database (which is H2) and after shut downing all data will be lost.
+For persistent installation you need to use stand-alone db, mysql or postgres.
 
-Image with angular-based web interface configured to use Metaheuristic on localhost only.
+bind ports: 8083:8083
 
-
-If you want to have images of Metaheuristic configured for your environment you have to build them yourself.
+Access an Angular-based UI of Metaheuristic via
+[https://adocker8083.metaheuristic.ai/#/](https://adocker8083.metaheuristic.ai/#/)
 
 
 ## TBA 

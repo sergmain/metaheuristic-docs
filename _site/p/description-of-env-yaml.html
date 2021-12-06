@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/description-of-env-yaml.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/description-of-env-yaml.html","headline":"Description of env.yaml config file, version 2","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/description-of-env-yaml.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","headline":"Description of env.yaml config file, version 2","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=dd6af3c468bcaedfed3418871f13cd83d598f92c">
+    <link rel="stylesheet" href="/assets/css/style.css?v=cb5ae33e6267db2deef861d529fd22218f913549">
   </head>
   <body>
     <section class="page-header">
@@ -84,12 +84,16 @@ This parameter file will always be the last parameter in the list of parameters 
   and path is path to dir where variable are stored.</li>
   <li>envs &lt;key-value&gt; - defines pair of key-value for code of env (key) and executable (value)</li>
   <li>mirrors &lt;key-value&gt; - defines a pair of key-value for real url of git’s repository (key) and 
-  local dir which represents the mirror of remote git’s repository. So in this string:
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
-</code></pre></div>    </div>
-    <p>https://github.com/sergmain/metaheuristic.git - remote git’s url
-  /git-mirror/mh/metaheuristic.git - local directory of git’s repository</p>
-  </li>
+  local dir which represents the mirror of remote git’s repository. So in this string:</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git: /git-mirror/mh/metaheuristic.git
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/sergmain/metaheuristic.git - remote git's url
+/git-mirror/mh/metaheuristic.git - local directory of git's repository
+</code></pre></div></div>
+
+<ul>
   <li>processors - List of definitions of processors.
 code -  code of processor. it’ll be used as name of directory for this Processor.
 tags - comma-separated list of tags for this Processor</li>
