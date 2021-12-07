@@ -73,7 +73,7 @@ Fields in function.yaml:
  is the last parameter for executable file (skipParams must be false)   
  
 > - mh.task-params-version defines which format must be used for params.yaml file which is provided to snippet 
- as the last parameter in command line (skipParams is false). For details see [description of task's params.yaml config](description-of-task-params-yaml.md)   
+ as the last parameter in command line (skipParams is false). For details see [description of task's params.yaml config](description-of-task-params-yaml)   
    
  
 - skipParams - boolean, true/false, should params.yaml file be omitted?   
@@ -169,7 +169,7 @@ In some cases a Function has to be packaged before uploading to Dispatcher:
 - Function is an external file (like .py, .jar, and so on)    
 - Function has to be signed so Dispatcher can verify legibility of Function's source 
 
-An application 'package-function' is used for packaging purpose. For details see [Package function](package-function) page.
+An application 'package-function' is used for packaging purpose. For details see [Package a function](package-a-function) page.
 
 Default steps for packaging Functions are:   
 - create temporary folder   
@@ -177,14 +177,14 @@ Default steps for packaging Functions are:
 - from this temp folder, run the following command  
 
 java -jar /mh-root/git/apps/package-function/target/package-function.jar function.zip \[path to private key file\]   
-> the path '/mh-root/git' is related to directory structure as described on [Full installation](/p/full-installation.md) page. 
+> the path '/mh-root/git' is related to directory structure as described on [Full installation](full-installation) page. 
 
 - first parameter is the name of resulted .zip archive (in this example it's function.zip)   
 - second parameter is optional and is used only when the Function has to be signed.   
 - second parameter is optional and is used only when the Function has to be signed.   
 \[path to private key file\] must point to a valid private key, i.e. /mh-root/git/private-key.txt
 
-> the path '/mh-root/git' is related to directory structure as described on [Full installation](/p/full-installation.md) page. 
+> the path '/mh-root/git' is related to directory structure as described on [Full installation](full-installation) page. 
 
 For details how to generate public and private keys, see [Gen keys](gen-keys) page   
 

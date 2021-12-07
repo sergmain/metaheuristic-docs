@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/c/case-001-batch-example.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/c/case-001-batch-example.html","headline":"Case: Batch example","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/c/case-001-batch-example.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","headline":"Case: Batch example","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=a1117f21de024b06a22cb2436823197b37d9dc42">
+    <link rel="stylesheet" href="/assets/css/style.css?v=01b8038aec54c8b06833e41df2a93bc5a0d829ff">
   </head>
   <body>
     <section class="page-header">
@@ -57,7 +57,7 @@ You can find a code of this application here - <a href="">https://github.com/ser
 <p>To implement this example with Metaheuristic you need to do the following steps:</p>
 
 <ol>
-  <li>Add a mapping for simple-batch-application to <a href="/p/description-of-env-yaml.md">env.yaml</a> :</li>
+  <li>Add a mapping for simple-batch-application to <a href="../description-of-env-yaml">env.yaml</a> :</li>
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">envs</span><span class="pi">:</span>
@@ -66,10 +66,10 @@ You can find a code of this application here - <a href="">https://github.com/ser
 
 <p>We suppose that you have installed Metaheuristic locally. 
 If you want to try batch example with quick-start 
-you have to package simple-batch-app as <a href="/p/function.md">Function</a> and upload it with web interface.</p>
+you have to package simple-batch-app as <a href="../function">Function</a> and upload it with web interface.</p>
 
 <ol>
-  <li>At <a href="">http://localhost:8080/dispatcher/source-code/source-code-add</a> create new <a href="/p/source-code.md">Source code</a> with following content:</li>
+  <li>At <a href="">http://localhost:8080/dispatcher/source-code/source-code-add</a> create new <a href="../source-code">Source code</a> with following content:</li>
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">source</span><span class="pi">:</span>
@@ -125,7 +125,7 @@ you have to package simple-batch-app as <a href="/p/function.md">Function</a> an
 </code></pre></div></div>
 
 <ol>
-  <li>Package ‘simple-batch-app’ <a href="">Function</a> - <a href="/p/function#packaging">Packaging of Function</a></li>
+  <li>Package ‘simple-batch-app’ <a href="">Function</a> - <a href="../function#packaging">Packaging of Function</a></li>
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">functions</span><span class="pi">:</span>
@@ -136,7 +136,7 @@ you have to package simple-batch-app as <a href="/p/function.md">Function</a> an
 </code></pre></div></div>
 
 <p>Or you can use a pre-packed <a href="/bin/functions.zip">functions.zip</a> 
-if you turned off a signature checking in <a href="/p/description-of-dispatcher-yaml">dispatcher.yaml</a></p>
+if you turned off a signature checking in <a href="../description-of-dispatcher-yaml">dispatcher.yaml</a></p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="pi">-</span> <span class="na">signatureRequired</span><span class="pi">:</span> <span class="no">false</span>
 </code></pre></div></div>

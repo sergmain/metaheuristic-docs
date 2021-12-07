@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/security.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/security.html","headline":"Security","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/security.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","headline":"Security","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=a1117f21de024b06a22cb2436823197b37d9dc42">
+    <link rel="stylesheet" href="/assets/css/style.css?v=01b8038aec54c8b06833e41df2a93bc5a0d829ff">
   </head>
   <body>
     <section class="page-header">
@@ -63,7 +63,7 @@
 
 <p>For configuring the main properties of Metaheuristic, such as rest access for Processors, 
 the ‘Master admin’ account must be used. Master admin account is configured in 
-<a href="/p/application_properties.md">application.properties</a> file and can’t be changed dynamically via web-interface.
+<a href="application_properties">application.properties</a> file and can’t be changed dynamically via web-interface.
 Properties for configuring:</p>
 <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># password - 123
 </span><span class="py">mh.dispatcher.master-password</span><span class="p">=</span><span class="s">$2a$10$jaQkP.gqwgenn.xKtjWIbeP4X.LDJx92FKaQ9VfrN2jgdOUTPTMIu</span>
@@ -71,7 +71,7 @@ Properties for configuring:</p>
 </code></pre></div></div>
 
 <p>For storing/verifying a password, Metaheuristic is using bcrypt method. 
-You need to use an application <a href="/p/encrypt-password.md">encript-password</a>  for producing a new encrypted password.</p>
+You need to use an application <a href="encrypt-password">encript-password</a>  for producing a new encrypted password.</p>
 
 <p>After configuring master admin account you should be able to log in Metaheuristic the first time.</p>
 
@@ -96,7 +96,7 @@ Metaheuristic is using pull-model of communication in which Processor is asking 
 
 <h3 id="configuring-rest-access-on-processor-side">Configuring rest-access on Processor side</h3>
 <p>After configuring a rest account in Dispatcher,
-this account has to be registered in <a href="/p/description-of-dispatcher-yaml.md">dispatcher.yaml</a>
+this account has to be registered in <a href="description-of-dispatcher-yaml">dispatcher.yaml</a>
 Properties for configuring:</p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dispatchers</span><span class="pi">:</span>   
   <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:8080</span>   
@@ -137,7 +137,7 @@ Common errors are usually about wrong url of Dispatcher, wrong credential of res
 the role ‘ROLE_SERVER_REST_ACCESS’ wasn’t selected.</p>
 
 <h3 id="asset-server">Asset server</h3>
-<p>Configuring of assert server is describing in a dedicated page about <a href="/p/asset-server.md">Asset server</a></p>
+<p>Configuring of assert server is describing in a dedicated page about <a href="asset-server">Asset server</a></p>
 
 <h3 id="the-current-role-matrix">The current role matrix</h3>
 <p>The current role martix is following:</p>
@@ -159,8 +159,8 @@ sub-menu:
 </code></pre></div></div>
 
 <h3 id="general-information-about-securing-a-function">General information about securing a Function</h3>
-<p>One of the main feature of Metaheuristic is a built-in provisioning of <a href="/p/function.md">Functions</a>.
-Because a Function is an executable code, Metaheuristic has internal mechanism for verifying consitency of Functions 
+<p>One of the main feature of Metaheuristic is a built-in provisioning of <a href="function">Functions</a>.
+Because a Function is an executable code, Metaheuristic has internal mechanism for verifying consistency of Functions 
 and can verify authority of deploying of new Function.</p>
 
 <h3 id="configuring-for-using-a-signed-function">Configuring for using a signed Function</h3>
@@ -172,10 +172,10 @@ and can verify authority of deploying of new Function.</p>
 
 <p>This behaviour is controlled by:</p>
 <ul>
-  <li>property mh.dispatcher.function-signature-required in <a href="/p/application_properties.md">application.properties</a> file.</li>
-  <li>property signatureRequired in <a href="/p/description-of-dispatcher-yaml.md">dispatcher.yaml</a>
+  <li>property mh.dispatcher.function-signature-required in <a href="application_properties">application.properties</a> file.</li>
+  <li>property signatureRequired in <a href="description-of-dispatcher-yaml">dispatcher.yaml</a>
     <blockquote>
-      <p>There is <a href="/p/internal-function.md">Internal function</a> which is executed at Dispatcher side but right now 
+      <p>There is <a href="internal-function">Internal function</a> which is executed at Dispatcher side but right now 
 there isn’t any possibility to dynamically upload Internal function to Dispatcher and execute it. 
 All Internal functions are part of Metaheuristic code-base.</p>
     </blockquote>
@@ -189,7 +189,7 @@ and a Processor with signatureRequired=false will receive all Functions.</p>
 <p>For operating without signing there isn’t any required special steps.</p>
 
 <p>If Processor configured with signatureRequired=true, all Functions which are intended to be executed 
-at this Processor have to be signed with <a href="/p/package-a-function.md">Package a Function</a>.</p>
+at this Processor have to be signed with <a href="package-a-function">Package a Function</a>.</p>
 
 <h3 id="configuring-public-key">Configuring Public key</h3>
 <p>For verifying that Function is signed with correct private key, the Public key must be configured in two config files:</p>
@@ -212,13 +212,13 @@ If you want to use different an algo please fill in a new issue at <a href="">ht
 <blockquote>
   <p>‘Private key in base64 format:’ and ‘Public key in base64 format’ 
 aren’t parts of keys and must not be used or stored in config file. 
-This information text is output of <a href="/p/gen-keys.md">Generate keys</a> application for information only.</p>
+This information text is output of <a href="gen-keys">Generate keys</a> application for information only.</p>
 
 </blockquote>
 
 <h3 id="enabling-cors-protection">Enabling CORS protection</h3>
 <p>CORS can be enabled for protecting rest end-points. By default, the value of allowed-origin is ‘*’.  <br />
-Config file <a href="/p/application_properties.md">application.properties</a> has a property ‘mh.cors-allowed-origins’ 
+Config file <a href="application_properties">application.properties</a> has a property ‘mh.cors-allowed-origins’ 
 which allows to make a fine-grained restriction. 
 For example, allowing localhost only:</p>
 <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">mh.cors-allowed-origins</span><span class="p">=</span><span class="s">http://localhost:4200, http://localhost:8888</span>

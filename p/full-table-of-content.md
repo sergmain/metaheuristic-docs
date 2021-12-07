@@ -15,13 +15,13 @@ layout: default
 - [Asset server](/p/asset-server)
 
 ### C
-- [Clounds](/p/clouds.md)
+- [Clounds](/p/clouds)
 - [Concept](/p/concept-architecture-roadmap#concept)
 - [Copyright](/p/license-licensing-copyright#copyright)
 - [Cases](/p/c/cases)
 
 ### D
-- [Development of Function](/p/development-of-function.md)
+- [Development of Function](/p/development-of-function)
 - [dispatcher.yaml file](/p/description-of-dispatcher-yaml)
 
 ### E

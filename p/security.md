@@ -32,7 +32,7 @@ As a distributed application Metaheuristic has a complex security model which pr
 
 For configuring the main properties of Metaheuristic, such as rest access for Processors, 
 the 'Master admin' account must be used. Master admin account is configured in 
-[application.properties](/p/application_properties.md) file and can't be changed dynamically via web-interface.
+[application.properties](application_properties) file and can't be changed dynamically via web-interface.
 Properties for configuring:
 ```properties
 # password - 123
@@ -41,7 +41,7 @@ mh.dispatcher.master-username=q
 ```
 
 For storing/verifying a password, Metaheuristic is using bcrypt method. 
-You need to use an application [encript-password](/p/encrypt-password.md)  for producing a new encrypted password.
+You need to use an application [encript-password](encrypt-password)  for producing a new encrypted password.
 
 After configuring master admin account you should be able to log in Metaheuristic the first time.
 
@@ -66,7 +66,7 @@ For configuring rest accounts, 'master admin' account has to be used:
 
 ### Configuring rest-access on Processor side
 After configuring a rest account in Dispatcher,
-this account has to be registered in [dispatcher.yaml](/p/description-of-dispatcher-yaml.md)
+this account has to be registered in [dispatcher.yaml](description-of-dispatcher-yaml)
 Properties for configuring:
 ```yaml
 dispatchers:   
@@ -105,7 +105,7 @@ the role 'ROLE_SERVER_REST_ACCESS' wasn't selected.
 
 
 ### Asset server
-Configuring of assert server is describing in a dedicated page about [Asset server](/p/asset-server.md)  
+Configuring of assert server is describing in a dedicated page about [Asset server](asset-server)  
   
 ### The current role matrix
 The current role martix is following:
@@ -128,8 +128,8 @@ sub-menu:
 ```
 
 ### General information about securing a Function
-One of the main feature of Metaheuristic is a built-in provisioning of [Functions](/p/function.md).
-Because a Function is an executable code, Metaheuristic has internal mechanism for verifying consitency of Functions 
+One of the main feature of Metaheuristic is a built-in provisioning of [Functions](function).
+Because a Function is an executable code, Metaheuristic has internal mechanism for verifying consistency of Functions 
 and can verify authority of deploying of new Function.
 
 
@@ -139,9 +139,9 @@ Metaheuristic can operate in two modes:
 - all Function must be signed 
 
 This behaviour is controlled by: 
-  -  property mh.dispatcher.function-signature-required in [application.properties](/p/application_properties.md) file.
-  -  property signatureRequired in [dispatcher.yaml](/p/description-of-dispatcher-yaml.md)
-> There is [Internal function](/p/internal-function.md) which is executed at Dispatcher side but right now 
+  -  property mh.dispatcher.function-signature-required in [application.properties](application_properties) file.
+  -  property signatureRequired in [dispatcher.yaml](description-of-dispatcher-yaml)
+> There is [Internal function](internal-function) which is executed at Dispatcher side but right now 
 > there isn't any possibility to dynamically upload Internal function to Dispatcher and execute it. 
 > All Internal functions are part of Metaheuristic code-base.  
 
@@ -154,7 +154,7 @@ For operating without signing there isn't any required special steps.
 
 
 If Processor configured with signatureRequired=true, all Functions which are intended to be executed 
-at this Processor have to be signed with [Package a Function](/p/package-a-function.md).
+at this Processor have to be signed with [Package a Function](package-a-function).
 
 ### Configuring Public key
 For verifying that Function is signed with correct private key, the Public key must be configured in two config files:
@@ -170,13 +170,13 @@ Common problem about configuring public keys is:
 
 > 'Private key in base64 format:' and 'Public key in base64 format' 
 >aren't parts of keys and must not be used or stored in config file. 
->This information text is output of [Generate keys](/p/gen-keys.md) application for information only. 
+>This information text is output of [Generate keys](gen-keys) application for information only. 
 >
 >
 
 ### Enabling CORS protection
 CORS can be enabled for protecting rest end-points. By default, the value of allowed-origin is '*'.    
-Config file [application.properties](/p/application_properties.md) has a property 'mh.cors-allowed-origins' 
+Config file [application.properties](application_properties) has a property 'mh.cors-allowed-origins' 
 which allows to make a fine-grained restriction. 
 For example, allowing localhost only:
 ```properties

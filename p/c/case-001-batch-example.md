@@ -24,7 +24,7 @@ You can find a code of this application here - [https://github.com/sergmain/meta
 
 To implement this example with Metaheuristic you need to do the following steps:
 
-1. Add a mapping for simple-batch-application to [env.yaml](/p/description-of-env-yaml.md) :
+1. Add a mapping for simple-batch-application to [env.yaml](../description-of-env-yaml) :
 
 ````yaml
 envs:
@@ -33,9 +33,9 @@ envs:
 
 We suppose that you have installed Metaheuristic locally. 
 If you want to try batch example with quick-start 
-you have to package simple-batch-app as [Function](/p/function.md) and upload it with web interface.
+you have to package simple-batch-app as [Function](../function) and upload it with web interface.
 
-2. At [http://localhost:8080/dispatcher/source-code/source-code-add]() create new [Source code](/p/source-code.md) with following content:
+2. At [http://localhost:8080/dispatcher/source-code/source-code-add]() create new [Source code](../source-code) with following content:
 
 ```yaml
 source:
@@ -90,7 +90,7 @@ source:
 version: 1
 ```  
 
-2. Package 'simple-batch-app' [Function]() - [Packaging of Function](/p/function#packaging)
+2. Package 'simple-batch-app' [Function]() - [Packaging of Function](../function#packaging)
 
 ```yaml
 functions:
@@ -101,7 +101,7 @@ functions:
 ``` 
 
 Or you can use a pre-packed [functions.zip](/bin/functions.zip) 
-if you turned off a signature checking in [dispatcher.yaml](/p/description-of-dispatcher-yaml)
+if you turned off a signature checking in [dispatcher.yaml](../description-of-dispatcher-yaml)
 
 ```yaml
  - signatureRequired: false

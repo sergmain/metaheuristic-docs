@@ -15,7 +15,7 @@ layout: default
 - [to Index](/index)
 
 
->This documentation is about how to install Metaheuristic locally. For cloud installation see [Clouds](clouds.md) 
+>This documentation is about how to install Metaheuristic locally. For cloud installation see [Clouds](clouds) 
 
 ## Prerequisites: 
 #### Java Development Kit (JDK) 17
