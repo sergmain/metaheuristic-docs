@@ -52,7 +52,7 @@ Load balanser =========
 
 Optional step if your cloud provider doesn't support :
 - change redirection rule by adding to nginx-jelastic.conf the following line in the HTTP (80) server block:
-```
+```text
 return 301 https://$host$request_uri;
 ```
 
@@ -103,7 +103,7 @@ Docker image is located here:
 
 its tag: 
 ```text
-sergmain/metaheuristic:metaheuristic-quickstart-embeded
+sergmain/metaheuristic:metaheuristic-quickstart-embedded
 ```
 
 Quick start image is ready for using only as demo because it has 

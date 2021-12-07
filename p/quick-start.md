@@ -16,7 +16,7 @@ layout: default
 
 ## Quick start from docker
 
-Docker tag: sergmain/metaheuristic:metaheuristic-quickstart-embeded  
+Docker tag: sergmain/metaheuristic:metaheuristic-quickstart-embedded  
 bind ports 8083:3083
 
 Access a simple UI of Metaheuristic via [http://localhost:8083](http://localhost:8083)

@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=cb5ae33e6267db2deef861d529fd22218f913549">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1a4abd804d4e538d90db3e0e6ae41635fb35c236">
   </head>
   <body>
     <section class="page-header">
@@ -90,7 +90,7 @@ So you must keep the value of mh.dispatcher.chunk-size below 1Mb. From experienc
 <p>Optional step if your cloud provider doesn’t support :</p>
 <ul>
   <li>change redirection rule by adding to nginx-jelastic.conf the following line in the HTTP (80) server block:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return 301 https://$host$request_uri;
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>return 301 https://$host$request_uri;
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -143,7 +143,7 @@ pass: 123</p>
 <a href="https://hub.docker.com/repository/docker/sergmain/metaheuristic">https://hub.docker.com/repository/docker/sergmain/metaheuristic</a></p>
 
 <p>its tag:</p>
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sergmain/metaheuristic:metaheuristic-quickstart-embeded
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sergmain/metaheuristic:metaheuristic-quickstart-embedded
 </code></pre></div></div>
 
 <p>Quick start image is ready for using only as demo because it has 
