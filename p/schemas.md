@@ -35,6 +35,7 @@ Function schema v2 - [https://docs.metaheuristic.ai/schemas/function-schema-v2.j
 SourceCode schema v1 - [https://docs.metaheuristic.ai/schemas/source-code-schema-v1.json](https://docs.metaheuristic.ai/schemas/source-code-schema-v1.json)  
 SourceCode schema v2 - [https://docs.metaheuristic.ai/schemas/source-code-schema-v2.json](https://docs.metaheuristic.ai/schemas/source-code-schema-v2.json)  
 SourceCode schema v3 - [https://docs.metaheuristic.ai/schemas/source-code-schema-v3.json](https://docs.metaheuristic.ai/schemas/source-code-schema-v3.json)  
+SourceCode schema v4 - [https://docs.metaheuristic.ai/schemas/source-code-schema-v4.json](https://docs.metaheuristic.ai/schemas/source-code-schema-v4.json)  
 
 ## Task params schemas
 
