@@ -11,13 +11,13 @@ layout: default
 ### A
 - [Angular-based web-interface](/p/angular-based-web-interface)
 - [application.properties](/p/application_properties)
-- [Architecture](/p/concept-architecture-roadmap#architecture)
+- [Architecture](/p/concept-architecture#architecture)
 - [Asset server](/p/asset-server)
 
 ### C
 - [Cases](/p/c/cases)
 - [Clouds](/p/clouds)
-- [Concept](/p/concept-architecture-roadmap#concept)
+- [Concept](/p/concept-architecture#concept)
 - [Contacts](/p/contacts)
 - [Copyright](/p/license-licensing-copyright#copyright)
 
@@ -54,7 +54,6 @@ layout: default
 - [Quick start](/p/quick-start)
 
 ### R
-- [Roadmap](/p/concept-architecture-roadmap#roadmap)
 - [Role matrix](/p/role-matrix)
 
 ### S

@@ -4,7 +4,7 @@ layout: default
 
 ## Main articles
 
-- [Concept, architecture, roadmap](/p/concept-architecture-roadmap)
+- [Concept, architecture](/p/concept-architecture)
 - [Quick start](/p/quick-start)
 - [Full installation](/p/full-installation)
 - [Cloud specific](/p/clouds)
@@ -24,7 +24,7 @@ layout: default
 ### C
 - [Cases](/p/c/cases)
 - [Clouds](/p/clouds)
-- [Concept](/p/concept-architecture-roadmap#concept)
+- [Concept](/p/concept-architecture#concept)
 - [Contacts](/p/contacts)
 - [Copyright](/p/license-licensing-copyright#copyright)
 
@@ -62,7 +62,6 @@ layout: default
 - [Quick start](/p/quick-start)
 
 ### R
-- [Roadmap](/p/concept-architecture-roadmap#roadmap)
 - [Role matrix](/p/role-matrix)
 
 ### S

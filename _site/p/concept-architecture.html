@@ -10,11 +10,11 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others." />
 <meta property="og:description" content="Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others." />
-<link rel="canonical" href="http://localhost:4000/p/concept-architecture-roadmap.html" />
-<meta property="og:url" content="http://localhost:4000/p/concept-architecture-roadmap.html" />
+<link rel="canonical" href="http://localhost:4000/p/concept-architecture.html" />
+<meta property="og:url" content="http://localhost:4000/p/concept-architecture.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","headline":"Concept, architecture, roadmap","url":"http://localhost:4000/p/concept-architecture-roadmap.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Concept, architecture, roadmap","url":"http://localhost:4000/p/concept-architecture.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,9 +38,8 @@
 
 <ul>
   <li><a href="#concept">Concept</a></li>
-  <li><a href="#architecture">Architecture</a></li>
   <li>
-    <p><a href="#roadmap">Roadmap</a></p>
+    <p><a href="#architecture">Architecture</a></p>
   </li>
   <li><a href="/index">to Index</a></li>
 </ul>
@@ -89,6 +88,9 @@ For full description of Variables see <a href="variable">documentation on Variab
 
 <p>Communications between Processors and Dispatcher base on pull mode - Processors constantly start communiccation with Dispatcher. 
 Push mode isn’t supported.</p>
+
+<p>The current implementation of Metaheuristic handles tens of thousands Tasks simultaneously in DAG. 
+Actual number of active tasks is limited by the number of Processors only.</p>
 
 
       <footer class="site-footer">

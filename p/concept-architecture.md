@@ -8,7 +8,6 @@ layout: default
 
 - [Concept](#concept)
 - [Architecture](#architecture)
-- [Roadmap](#roadmap)
 
 - [to Index](/index)
 
@@ -55,3 +54,7 @@ For full description of Variables see [documentation on Variables](variable)
 
 Communications between Processors and Dispatcher base on pull mode - Processors constantly start communiccation with Dispatcher. 
 Push mode isn't supported.
+
+
+The current implementation of Metaheuristic handles tens of thousands Tasks simultaneously in DAG. 
+Actual number of active tasks is limited by the number of Processors only.
