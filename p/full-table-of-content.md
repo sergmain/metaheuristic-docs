@@ -15,10 +15,11 @@ layout: default
 - [Asset server](/p/asset-server)
 
 ### C
-- [Clounds](/p/clouds)
-- [Concept](/p/concept-architecture-roadmap#concept)
-- [Copyright](/p/license-licensing-copyright#copyright)
 - [Cases](/p/c/cases)
+- [Clouds](/p/clouds)
+- [Concept](/p/concept-architecture-roadmap#concept)
+- [Contacts](/p/contacts)
+- [Copyright](/p/license-licensing-copyright#copyright)
 
 ### D
 - [Development of Function](/p/development-of-function)
