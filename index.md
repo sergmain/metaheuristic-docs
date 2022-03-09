@@ -4,8 +4,8 @@ layout: default
 
 ## Main articles
 
-- [Quick start](/p/quick-start)
 - [Concept, architecture, roadmap](/p/concept-architecture-roadmap)
+- [Quick start](/p/quick-start)
 - [Full installation](/p/full-installation)
 - [Cloud specific](/p/clouds)
 - [Full table of content](/p/full-table-of-content)

@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/concept-architecture-roadmap.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/concept-architecture-roadmap.html","headline":"Concept, architecture, roadmap","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Concept, architecture, roadmap","url":"http://localhost:4000/p/concept-architecture-roadmap.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=a1117f21de024b06a22cb2436823197b37d9dc42">
+    <link rel="stylesheet" href="/assets/css/style.css?v=caeaa886c06549aa9554ed124108d1717ae45cbb">
   </head>
   <body>
     <section class="page-header">
@@ -46,21 +46,22 @@
 </ul>
 
 <h2 id="concept">Concept</h2>
-<p>Metaheuristic is an application which implements (or intended to) a Turing complete machine. 
-The main use of MH is a management of distributed task. Right now there two main areas where MH is being used:</p>
+<p>Metaheuristic is an application which implements (or intended to) a Turing complete machine. The main use of MH is a management of distributed tasks.
+Common cases of usage are:</p>
+
 <ul>
-  <li>
-    <p>AI model’s hyper-parameter optimization purpose. <br />
- Each optimization is presented as Experiment. An Experiment consists of some Tasks.
- Tasks are created at Dispatcher and distributed to Processor. For evaluating a performance of models, 
- metrics and other data are collected and evaluated later by Metaheuristic.</p>
-  </li>
-  <li>
-    <p>Batch processing. <br />
+  <li>Batch processing. <br />
   Common usage of batch processing - split data, create tasks for processing each part of data, 
-  process Tasks, aggregate results</p>
-  </li>
+  process Tasks, aggregate results</li>
+  <li>Bulk processing of images.</li>
+  <li>Bulk processing of text.</li>
 </ul>
+
+<p>All calcualtions are performed by distributed functions.</p>
+
+<p>Metaheuristic can be deployed on-premiceses or in cloud. 
+On-premises deployment allows to utilize internal computationa resource in more efficient way, i.e. running tasks at night. 
+Also it helps to protect companies’ intellectual property.</p>
 
 <h2 id="architecture">Architecture</h2>
 <p>Metaheuristic has two main modules - Dispatcher and Processor
@@ -74,31 +75,20 @@ tasks from Processors is round-robin.</p>
 
 <p>A processing entity which is configured at Dispatcher and is being run at Processor is a Function.
 Function can be executable application, .jar file, python notebook, 
-file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on.
-Instance of Function is Task. <br />
+file in any scripting language. It can be ‘curl’ command to request external url, send e-mail and so on. \ 
 For full description of Function see <a href="function">documentation on Functions</a></p>
 
 <p>From delivery point of view Function can be provisioned from Dispatcher or from git repository.</p>
 
-<p>For full description how to use Function for hyper-parameter optimization see <a href="experiment">documentation on Experiment</a></p>
-
-<p>For creating set of tasks, Dispatcher is using a dynamic directed acyclic graph which defines the order 
+<p>For creating set of tasks, Dispatcher is using a dynamic directed acyclic graph (DAG) which defines the order 
 in which Processors have to process tasks.</p>
 
 <p>Tasks can have any number of Variables for its execution purpose. 
 The most common case for hyper-parameter optimization is when Variables are dataset, model fitting/predicting, metrics.
 For full description of Variables see <a href="variable">documentation on Variables</a></p>
 
-<h2 id="roadmap">Roadmap</h2>
-
-<ul>
-  <li>Series of Experiments.</li>
-  <li>Implementation the different strategies for Series - Genetic algorithm, Bayesian optimization, GRASP, ILS. 
- The concrete algo which will be implemented in first place will be chosen later.</li>
-  <li>Prototype 2-side platform for optimization based on Metaheuristic.</li>
-  <li>TBD</li>
-</ul>
-
+<p>Communications between Processors and Dispatcher base on pull mode - Processors constantly start communiccation with Dispatcher. 
+Push mode isn’t supported.</p>
 
 
       <footer class="site-footer">

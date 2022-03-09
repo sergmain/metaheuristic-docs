@@ -8,6 +8,7 @@ layout: default
 
 - [License and licensing](#license-and-licensing)
 - [Copyright](#copyright)
+- [How to cite Metaheuristic](#how-to-cite-metaheuristic)
 
 - [to Index](/index)
 
@@ -37,4 +38,21 @@ and managing the process of assigning tasks to Processors.
 you can buy it at the same price. 
 
 ## Copyright
-Innovation platforms LLC, San Francisco, US 
+Innovation platforms LLC, San Francisco, US, 2022
+
+
+## How to cite Metaheuristic
+
+Please cite this repository if it was useful for your research:
+
+The bibtex entry for this is:
+```text
+@misc{metaheuristic,
+  author = {Lissner, Sergio},
+  title = {Metaheuristic},
+  year = {2022},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/sergmain/metaheuristic}},
+}
+```
