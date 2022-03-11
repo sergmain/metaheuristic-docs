@@ -183,7 +183,7 @@
           "type": "string"
         },
         "refType": {
-          "type": "string"
+          "enum" : ["code", "type"]
         }
       },
       "required": [
