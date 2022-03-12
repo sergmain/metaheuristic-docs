@@ -239,9 +239,7 @@
             "type": "string"
           }
         },
-        "startInputAs": {
-          "type": "string"
-        },
+        "startInputAs": false,
         "inputs": {
           "type": "array",
           "items": {
@@ -253,7 +251,7 @@
           "items": {
             "$ref": "#/definitions/Variable"
           }
-        }
+        },
       },
       "required": [
       ],
