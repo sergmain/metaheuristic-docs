@@ -251,7 +251,7 @@
           "items": {
             "$ref": "#/definitions/Variable"
           }
-        },
+        }
       },
       "required": [
       ],

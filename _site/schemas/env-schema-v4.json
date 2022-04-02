@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome2",
+    "definitions": {
+        "Welcome2": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "version": {
+                    "type": "integer",
+                    "minimum": 4,
+                    "maximum": 4
+                },
+                "disk": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DiskStorage"
+                    }
+                },
+                "envs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Env"
+                    }
+                },
+                "mirrors": {
+                    "$ref": "#/definitions/Mirrors"
+                },
+                "processors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Processor"
+                    }
+                },
+                "quotas": {
+                    "$ref": "#/definitions/Quotas"
+                }
+            },
+            "required": [],
+            "title": "Welcome2"
+        },
+        "DiskStorage": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code",
+                "path"
+            ],
+            "title": "DiskStorage"
+        },
+        "VerifyEnv": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "run": {
+                    "type": "boolean"
+                },
+                "params": {
+                    "type": "string"
+                },
+                "responsePattern": {
+                    "type": "string"
+                },
+                "expectedResponse": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "VerifyEnv"
+        },
+        "Env": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "exec": {
+                    "type": "string"
+                },
+                "verify": {
+                    "$ref": "#/definitions/VerifyEnv"
+                }
+            },
+            "required": [
+                "code", "exec"
+            ],
+            "title": "Env"
+        },
+        "Mirrors": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^.*$": {"type": ["string", "boolean", "integer"]
+                }
+            },
+            "required": [
+            ],
+            "title": "Mirrors"
+        },
+        "Processor": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code"
+            ],
+            "title": "Processor"
+        },
+        "Quotas": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Quota"
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "disabled": {
+                    "type": "boolean"
+                },
+                "defaultValue": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+            ],
+            "title": "Quotas"
+        },
+        "Quota": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "tag": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "integer"
+                },
+                "processingTime": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "amount",
+                "tag"
+            ],
+            "title": "Quota"
+        }
+    }
+}
