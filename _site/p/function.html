@@ -14,12 +14,12 @@
 <meta property="og:url" content="http://localhost:4000/p/function.html" />
 <meta property="og:site_name" content="Metaheuristic.ai" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"http://localhost:4000/p/function.html","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","headline":"Function","@context":"https://schema.org"}</script>
+{"@type":"WebPage","url":"http://localhost:4000/p/function.html","headline":"Function","description":"Framework for creating custom pipeline such as hyper-parameter optimization, autoML, batch processing and others.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="stylesheet" href="/assets/css/style.css?v=01b8038aec54c8b06833e41df2a93bc5a0d829ff">
+    <link rel="stylesheet" href="/assets/css/style.css?v=de9b42262f100100d29fc9c804d00eabb9931ff3">
   </head>
   <body>
     <section class="page-header">
@@ -215,20 +215,20 @@ the code of Metaheuristic without loosing backward compatibility.</p>
   <li>from this temp folder, run the following command</li>
 </ul>
 
-<p>java -jar /mh-root/git/apps/package-function/target/package-function.jar function.zip [path to private key file]</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar /mh-root/metaheuristic/apps/package-function/target/package-function.jar function.zip &lt;path to private key file&gt;   
+</code></pre></div></div>
 <blockquote>
-  <p>the path ‘/mh-root/git’ is related to directory structure as described on <a href="full-installation">Full installation</a> page.</p>
+  <p>the path ‘/mh-root/metaheuristic’ is related to directory structure as described on <a href="full-installation">Full installation</a> page.</p>
 </blockquote>
 
 <ul>
   <li>first parameter is the name of resulted .zip archive (in this example it’s function.zip)</li>
-  <li>second parameter is optional and is used only when the Function has to be signed.</li>
   <li>second parameter is optional and is used only when the Function has to be signed. <br />
-[path to private key file] must point to a valid private key, i.e. /mh-root/git/private-key.txt</li>
+&lt;path to private key file&gt; must point to a valid private key, i.e. /mh-root/metaheuristic/private-key.txt</li>
 </ul>
 
 <blockquote>
-  <p>the path ‘/mh-root/git’ is related to directory structure as described on <a href="full-installation">Full installation</a> page.</p>
+  <p>the path ‘/mh-root/metaheuristic’ is related to directory structure as described on <a href="full-installation">Full installation</a> page.</p>
 </blockquote>
 
 <p>For details how to generate public and private keys, see <a href="gen-keys">Gen keys</a> page</p>
