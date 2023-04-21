@@ -38,8 +38,8 @@ As a result after stopping Metaheuristic all data will be lost.
 To run Metaheuristic from command-line you have to have jdk 17 installed.  
 Right now there isn't any known bug which restricts to use certain JDK.
 
-[Adoptium.net JDK 17](https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot)  
-[Zulu JDK 17](https://www.azul.com/downloads/?version=java-17-lts&package=jdk)
+[Adoptium.net JDK 17](https://adoptium.net/temurin/releases/?version=17)  
+[Zulu JDK 17](https://www.azul.com/downloads/?version=java-17-lts&package=jdk#zulu)
 
 
 ##### Quick start for evaluating UI only
