@@ -43,14 +43,14 @@ Innovation platforms LLC, San Francisco, US, 2022
 
 ## How to cite Metaheuristic
 
-Please cite this repository if it was useful for your research:
+Please cite this repository if it was useful in your research:
 
-The bibtex entry for this is:
+The BibTeX entry for this is:
 ```text
 @misc{metaheuristic,
   author = {Lissner, Sergio},
   title = {Metaheuristic},
-  year = {2022},
+  year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/sergmain/metaheuristic}},

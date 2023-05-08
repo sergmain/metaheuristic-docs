@@ -93,7 +93,7 @@ The full list of Spring's properties you can find here:
 
 ## Metaheuristic properties
 
-Metaheuristic's properties divided in 3 big groups - globals, related to dispatcher, and related to processor
+Metaheuristic's properties are divided in 3 big groups - globals, related to dispatcher, and related to processor
 
 Globals properties   
 - mh.thread-number - integer value in range from 1 to 16, default value is 4. This property defines how many threads will be used.
@@ -106,7 +106,7 @@ Globals properties
  
     
 Dispatcher related properties:   
-```
+```properties
 mh.dispatcher.is-ssl-required=false
 
 # password - 123
@@ -130,10 +130,19 @@ mh.dispatcher.asset.mode = local
 
 Processor related properties:  
  
-```
+```properties
 mh.processor.enabled=true
 mh.processor.dir=./mh-processor
     
 #mh.processor.default-dispatcher-yaml-file=...
 #mh.processor.default-env-yaml-file=...
 ```
+
+In case when dispatcher is disabled and there is only processor profile the following exclusion must be inserted in application.properties
+```properties
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,\
+    org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,\
+    org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,\
+    org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration
+```
+
